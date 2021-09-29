@@ -7,6 +7,7 @@ import { OfferStatusComponent } from './offer-status/offer-status.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { CustomerVolumeComponent } from './customer-volume/customer-volume.component';
 import { MissingInvoiceComponent } from './missing-invoice/missing-invoice.component';
+import { MaterialsModule } from 'src/app/materials/materials.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MissingInvoiceComponent } from './missing-invoice/missing-invoice.compo
   ],
   imports: [
     CommonModule,
-    MyTaskRoutingModule
+    MyTaskRoutingModule,
+    MaterialsModule
   ]
 })
 export class MyTaskModule { }
