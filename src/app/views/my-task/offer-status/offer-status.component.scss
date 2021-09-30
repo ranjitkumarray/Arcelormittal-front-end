@@ -1,8 +1,21 @@
-.navhead{
-    text-align: center;
-    width: 100%;
-  }
+@import '../../../../assets/color.scss';
+.no_data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+}
 
-  .mat-toolbar{
-    background: rgb(248, 171, 28);
-  }
+a.offer_id_link {
+    &:hover {
+        color: $primary;
+    }
+    cursor: pointer;
+    color: $primary;
+}

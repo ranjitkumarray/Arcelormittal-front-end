@@ -1,65 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-@font-face {
-  font-family: 'black';
-  src: url('./assets/fonts/Poppins-Black.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'bold';
-  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'regular';
-  src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'semi-bold';
-  src: url('./assets/fonts/Poppins-SemiBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'light';
-  src: url('./assets/fonts/Poppins-Light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'extra-bold';
-  src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'italic';
-  src: url('./assets/fonts/Poppins-Italic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'medium';
-  src: url('./assets/fonts/Poppins-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
-html {
-  body {
-      font-family: 'regular';
-      font-size: 12px;
-  }
-}
+// @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import './assets/color.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-@import './custom-theme.scss';
-// @import "../node_modules/angular-calendar/css/angular-calendar.css";
 // ------------- \\
 // common styles \\
 // ------------- \\
@@ -184,7 +126,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             padding: 0 10px;
             border-right: 1px solid;
             border-color: $tableBorder !important;
-            color: $white;
+            color: $black;
             font-size: 0.875rem;
         }
     }
@@ -1247,7 +1189,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             height: calc(100% - 30px);
         }
         .mat-tab-body-wrapper {
-            max-height: calc(100vh - 160px);
+            max-height: calc(100vh - 150px);
             overflow: auto;
         }
     }
@@ -1293,3 +1235,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         background: $scrollOrange; 
         border-radius: 10px;
     }
+
+
+// -------------------------------- \\
+//           scroll bar             \\
+// -------------------------------- \\
