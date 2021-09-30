@@ -127,3 +127,12 @@
 .main_container_content_toggled {
     width: calc(100% - 0px);
 }
+.nav-link[data-toggle].collapsed:after {
+    content: " ▾";
+    float: right;
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: " ▴";
+    float: right;
+
+}

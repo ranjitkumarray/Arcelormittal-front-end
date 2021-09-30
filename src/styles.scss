@@ -27,11 +27,11 @@ p{
 // mdc or ng component common style \\
 // -------------------------------- \\
     .table-outer-container {
-        border-radius: 8px;
+        // border-radius: 8px;
         background-color: white;
         overflow: hidden;
         padding: 10px 10px;
-        box-shadow: 0px 0px 6px 0px $tableShadow !important;
+        // box-shadow: 0px 0px 6px 0px $tableShadow !important;
         @media screen and (max-height:500px) {
             min-height: 250px;
         }

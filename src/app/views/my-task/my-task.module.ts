@@ -8,6 +8,7 @@ import { OrderStatusComponent } from './order-status/order-status.component';
 import { CustomerVolumeComponent } from './customer-volume/customer-volume.component';
 import { MissingInvoiceComponent } from './missing-invoice/missing-invoice.component';
 import { MaterialsModule } from 'src/app/materials/materials.module';
+import { FilterOptionsComponent } from './filter-options/filter-options.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MaterialsModule } from 'src/app/materials/materials.module';
     OfferStatusComponent,
     OrderStatusComponent,
     CustomerVolumeComponent,
-    MissingInvoiceComponent
+    MissingInvoiceComponent,
+    FilterOptionsComponent
   ],
   imports: [
     CommonModule,
