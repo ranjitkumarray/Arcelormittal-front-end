@@ -6,3 +6,32 @@
   .mat-toolbar{
     background: rgb(248, 171, 28);
   }
+  table {
+    width: 100%;
+    tr{
+      td{
+        text-align: center !important;
+      }
+    }
+  }
+  table.mat-table tbody tr:hover {
+    border-bottom:1px solid red;
+    border-top:1px solid red;
+  }
+
+
+
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  
+
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+
+  

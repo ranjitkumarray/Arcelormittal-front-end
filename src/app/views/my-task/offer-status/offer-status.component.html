@@ -22,7 +22,7 @@
      <br/>
    </div>
   
-  <table mat-table [dataSource]="alloy_surcharge_wire" class="custom_table">
+  <table mat-table [dataSource]="alloy_surcharge_wire" style="width: 100%;">
   
     <ng-container matColumnDef="VKORG">
       <th mat-header-cell *matHeaderCellDef> VKORG
@@ -56,7 +56,7 @@
       <th mat-header-cell *matHeaderCellDef> Month_year
   
       </th>
-      <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+      <td mat-cell *matCellDef="let element"> {{element?.Month_year | date:'MM-YYYY'}} </td>
     </ng-container>
   
   

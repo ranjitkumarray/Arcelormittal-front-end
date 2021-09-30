@@ -99,8 +99,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
     th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
         padding-right: 5px !important;
-        border-right: none;
-        border-left: none;
+      
     }
     .log_table {
         .details_row {
@@ -118,6 +117,44 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         tbody { 
             min-width: 100%;
         }
+    }
+    table.mat-table{
+        width: 100%;       
+        thead {
+            background-color: $tableHeadBg;
+            th {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: pre-wrap;
+                padding: 5px;
+                font-size: 0.875rem;
+                text-align: center;
+                color: $tableHeadColor;
+                font-family: 'semi-bold';
+                word-break: break-all;
+                word-break: break-word;
+                border-right: 1px solid rgba(0, 0, 0, 0.06);
+                border-left: 1px solid rgba(0, 0, 0, 0.06);
+            }
+        }
+        tbody {
+           
+            tr {
+               
+                cursor: pointer;
+                background-color: $primaryBg;
+                td {
+                    padding: 5px 5px;
+                    word-break: break-all;
+                    word-break: break-word;
+                    font-size: 0.875rem;
+                    color: black;
+                    text-align: center;
+                    border-right: 1px solid rgba(0, 0, 0, 0.06);
+                    border-left: 1px solid rgba(0, 0, 0, 0.06);
+                }
+            }
+        }        
     }
     .custom_table {
         width: 100%;
@@ -160,7 +197,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
                     word-break: break-all;
                     word-break: break-word;
                     font-size: 0.875rem;
-                    color: $tableColor;
+                    color: black;
                     border-right: 1px solid rgba(0, 0, 0, 0.06);
                     border-left: 1px solid rgba(0, 0, 0, 0.06);
                 }
