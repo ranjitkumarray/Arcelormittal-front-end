@@ -19,7 +19,9 @@
 // ------------- \\
 // common styles \\
 // ------------- \\
-
+p{
+    font-family: "regular";
+}
 
 // -------------------------------- \\
 // mdc or ng component common style \\
@@ -70,7 +72,7 @@
             display:table;
             table-layout:fixed;
             width: 100%;
-            background-color: $tableHeadBg;
+            background-color: $tableHeadColor;
             th {
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -78,20 +80,18 @@
                 padding: 5px;
                 font-size: 0.875rem;
                 text-align: center;
-                color: $tableHeadColor;
-                font-family: 'semi-bold';
+                color: $tableHeadColor !important;
+                font-family: 'semi-bold' !important;
                 word-break: break-all;
                 word-break: break-word;
-                border-right: 1px solid rgba(0, 0, 0, 0.06);
-                border-left: 1px solid rgba(0, 0, 0, 0.06);
+                border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+                border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
             }
         }
         tbody {
-            display:block;
             overflow-y:auto;
-            width: -webkit-fit-content;
-            width: -moz-fit-content;
-            width: fit-content;;
+            display:table;
+            width: 100%;
             tr {
                 display:table;
                 table-layout:fixed;
@@ -120,13 +120,13 @@
         border-left: 1px solid;
         border-top: 1px solid;
         border-color: $tableBorder !important;
-        background-color: $tableHeadBg;
+        background-color: $tableHeadColor;
         min-height: 35px;
         .mat-header-cell {
             padding: 0 10px;
             border-right: 1px solid;
             border-color: $tableBorder !important;
-            color: $black;
+            color: $white !important;
             font-size: 0.875rem;
         }
     }
@@ -143,7 +143,7 @@
             padding: 0 10px;
             word-break: break-all;
             word-break: break-word;
-            text-align: left;
+            text-align: center;
             border-right: 1px solid;
             border-color: $tableBorder !important;
             font-size: 0.875rem;
