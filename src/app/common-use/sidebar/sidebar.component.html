@@ -1,8 +1,8 @@
 <div class="sidebar" [class.sidebar_open]="isOpen">
-    <button (click)="isOpen = !isOpen" class="sidebar_toggler">
+    <!-- <button (click)="isOpen = !isOpen" class="sidebar_toggler">
         <i class="fa fa-bars" aria-hidden="true" *ngIf="isOpen"></i>
         <i class="fas fa-times" *ngIf="!isOpen"></i>
-    </button>
+    </button> -->
     <div class="">
         <div class="container-fluid logo_outer">
             <a class="logo">
@@ -13,46 +13,64 @@
 
     <div class="content">
         <div class="line"></div>
-        <div class="items" routerLink="/my-task" [routerLinkActive]="['active']">
-            <div class="img">
-                <img class="active_img" src="../../../assets/images/offer.png " />
-                <img class="inactive_img" src="../../../assets/images/offer 2.png " />
-            </div>
-            My Task
-        </div>
-        <div class="line"></div>
-        <div class="items" routerLink="/my-offers" [routerLinkActive]="['active']">
-            <div class="img">
-                <img class="active_img" src="../../../assets/images/offer.png " />
-                <img class="inactive_img" src="../../../assets/images/offer 2.png " />
-            </div>
-            My Offers
-        </div>
-        <div class="line"></div>
-       <div class="sub_menu_con">
-            <div class="items" >
-                <div class="img">
-                    <img class="active_img" src="../../../assets/images/order.png" />
-                    <img class="inactive_img" src="../../../assets/images/order 2.png" />
+        <ul class="nav flex-column flex-nowrap overflow-hidden">
+            <li class="nav-item">
+                <div class="sub_menu_con">
+                    <div class=" items nav-link collapsed text-truncate" data-toggle="collapse" data-target="#submenu1">
+                        <img class="active_img" src="../../../assets/images/order.png" />
+                        <img class="inactive_img" src="../../../assets/images/order 2.png" /> <span
+                            class="d-none d-sm-inline">My tasks</span>
+                    </div>
                 </div>
-                My Order Book
-            </div>
-            <div class="sub items" routerLink="/orders/stock" [routerLinkActive]="['active']">
-               
-                <span class="sub_hyphen"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                From Stock
-            </div>
-            <div class="sub items" routerLink="/orders/rolling" [routerLinkActive]="['active']">
-               
-                <span class="sub_hyphen"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                From Rolling
-            </div>
-        </div>
+                <div class="collapse" id="submenu1" aria-expanded="false">
+                    <ul class="flex-column pl-2 nav">
+                        <li class="nav-item">
+                            <div class="sub items" [routerLink]="['/offer-status']" [routerLinkActive]="['active']">
+                                <span class="sub_hyphen"><i class="fa fa-file" aria-hidden="true"></i></span>
+                                Upload Files
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="sub items" [routerLink]="['/order-status']" [routerLinkActive]="['active']">
+                                <span class="sub_hyphen"><i class="fa fa-history" aria-hidden="true"></i></span>
+                                History
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <div class="line"></div>
+            <li class="nav-item">
+                <div class="sub_menu_con">
+                    <div class=" items nav-link collapsed text-truncate" data-toggle="collapse" data-target="#submenu2">
+                        <img class="active_img" src="/assets/images/offer.png " />
+                        <img class="inactive_img" src="/assets/images/offer 2.png " />
+                        <span class="d-none d-sm-inline">My Offers</span>
+                    </div>
+                </div>
+                <div class="collapse" id="submenu2" aria-expanded="false">
+                    <ul class="flex-column pl-2 nav">
+                        <li class="nav-item">
+                            <div class="sub items" [routerLink]="['/offer-status']" [routerLinkActive]="['active']">
+                                <span class="sub_hyphen"><i class="fa fa-file" aria-hidden="true"></i></span>
+                                Upload Files
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="sub items" [routerLink]="['/orders/stock']" [routerLinkActive]="['active']">
+                                <span class="sub_hyphen"><i class="fa fa-history" aria-hidden="true"></i></span>
+                                History
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 <div class="main_container_content" [class.main_container_content_toggled]="isOpen">
     <app-header></app-header>
     <router-outlet></router-outlet>
-
     <!-- <app-footer></app-footer> -->
 </div>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
+  showFiller:boolean=false
   collapsed: boolean = false;
   isOpen: boolean = false;
   version: string = '';

@@ -58,7 +58,7 @@
         border-left: 6px solid transparent;
         padding: 13px 10px;
         color: $sideBarInactive;
-        display: flex;
+        flex: 0 0 100%;        
         align-items: center;
         cursor: pointer;
         outline: none;
