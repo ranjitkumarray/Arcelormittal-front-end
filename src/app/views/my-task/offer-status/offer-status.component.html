@@ -1,7 +1,7 @@
 <mat-tab-group>
   <mat-tab label="Alloy Surcharge Wire">
     <mat-card>
-      <div class="container">
+      <div>
         <app-filter-options></app-filter-options>
       </div>
       <div class="row">
@@ -44,7 +44,7 @@
                       <th mat-header-cell *matHeaderCellDef> Month_year
 
                       </th>
-                      <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element?.Month_year | date:"MM-YYYY"}} </td>
                     </ng-container>
 
 
@@ -91,14 +91,14 @@
 
   <mat-tab label="Alloy Surcharge Billet">
     <mat-card>
-      <div class="container">
+      <div>
         <app-filter-options></app-filter-options>
       </div>
       <div class="row">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
-              <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative h-100">
+              <div class="table-outer-container offer_table_container position-relative h-100">
                 <div class="table-inner-container h-100">
                   <table mat-table [dataSource]="alloy_surcharge_billet" class="custom_table order_table">
 
@@ -134,7 +134,7 @@
                       <th mat-header-cell *matHeaderCellDef> Month_year
 
                       </th>
-                      <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element?.Month_year | date:"MM-YYYY"}} </td>
                     </ng-container>
 
 
@@ -189,7 +189,7 @@
 
   <mat-tab label="scrap Surcharge Billet">
     <mat-card>
-      <div class="container">
+      <div>
         <app-filter-options></app-filter-options>
       </div>
       <div class="row">
@@ -197,7 +197,7 @@
 
           <div class="my_offer_table_container">
             <div class="text-center h-100">
-              <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative h-100">
+              <div class="table-outer-container offer_table_container position-relative h-100">
                 <div class="table-inner-container h-100">
                   <table mat-table [dataSource]="scrap_surcharge_billet" class="custom_table order_table">
 
@@ -233,7 +233,7 @@
                       <th mat-header-cell *matHeaderCellDef> Month_year
 
                       </th>
-                      <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element?.Month_year | date:"MM-YYYY"}} </td>
                     </ng-container>
 
 
