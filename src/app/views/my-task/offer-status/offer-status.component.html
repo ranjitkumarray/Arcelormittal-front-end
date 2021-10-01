@@ -1,3 +1,8 @@
+<ng-container *ngIf="loadingRouteConfig">
+  <div class="loading-overlay is-active">
+    <span class="signal"></span>
+  </div>
+</ng-container>
 <mat-tab-group>
   <mat-tab label="Alloy Surcharge Wire">
     <mat-card>
@@ -50,7 +55,7 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <div class="row">
+      <div class="row" *ngIf="table_data">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">

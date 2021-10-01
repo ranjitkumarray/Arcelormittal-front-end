@@ -20,8 +20,8 @@ export class OfferStatusComponent implements OnInit {
   alloy_surcharge_billet: any;
   alloy_surcharge_wire: any;
   scrap_surcharge_billet: any;
-  selectedFiles: any=[];
-
+  selectedFiles: any = [];
+  loadingRouteConfig: boolean = false
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -120,8 +120,10 @@ export class OfferStatusComponent implements OnInit {
     this.selectedFiles.forEach((file: any) => {
       formData.append("filename", file.selectedFile)
     })
+    this.loadingRouteConfig = true
     this.apiMethod.post_request(this.apiString.alloy_files_upload, formData).subscribe((data) => {
       console.log(data)
+      this.loadingRouteConfig = false
       this.dataToBeUploaded()
       this._snackBar.open('Files are uploaded successfully', "", {
         duration: 4000,
@@ -130,8 +132,7 @@ export class OfferStatusComponent implements OnInit {
         verticalPosition: 'bottom',
       });
     }, error => {
-      this.dataToBeUploaded()
-
+      this.loadingRouteConfig = false
       this._snackBar.open("Somthing went wrong. ", "", {
         duration: 4000,
         panelClass: ['error'],
@@ -145,8 +146,10 @@ export class OfferStatusComponent implements OnInit {
 
 
   // get uploaded file
-  dataToBeUploaded(){
+  dataToBeUploaded() {
+    this.loadingRouteConfig = true
     this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
+      this.loadingRouteConfig = false
       this.table_data = data
       this.alloy_surcharge_wire = this.table_data.wire
 
@@ -163,6 +166,14 @@ export class OfferStatusComponent implements OnInit {
       // console.log(this.alloy_surcharge_wire)    
       // this.dataSource=JSON.parse(this.alloy_surcharge_wire)
 
+    }, error => {
+      this.loadingRouteConfig = false
+      this._snackBar.open("Somthing went wrong. ", "", {
+        duration: 4000,
+        panelClass: ['error'],
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+      });
     })
   }
   submitdata() {
