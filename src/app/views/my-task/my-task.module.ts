@@ -9,6 +9,7 @@ import { CustomerVolumeComponent } from './customer-volume/customer-volume.compo
 import { MissingInvoiceComponent } from './missing-invoice/missing-invoice.component';
 import { MaterialsModule } from 'src/app/materials/materials.module';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
+import { UploadTaskFileComponent } from './upload-task-file/upload-task-file.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FilterOptionsComponent } from './filter-options/filter-options.componen
     OrderStatusComponent,
     CustomerVolumeComponent,
     MissingInvoiceComponent,
-    FilterOptionsComponent
+    FilterOptionsComponent,
+    UploadTaskFileComponent,
   ],
   imports: [
     CommonModule,

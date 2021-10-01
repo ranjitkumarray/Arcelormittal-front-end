@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from 'src/app/common-use/sidebar/sidebar.component';
 import { OfferStatusComponent } from './offer-status/offer-status.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
+import { UploadTaskFileComponent } from './upload-task-file/upload-task-file.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'order-status',
         component: OrderStatusComponent
+      },
+      {
+        path: 'upload-file',
+        component: UploadTaskFileComponent
       }
     ]
   }
