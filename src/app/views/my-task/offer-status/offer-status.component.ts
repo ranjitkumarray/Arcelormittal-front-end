@@ -125,20 +125,12 @@ export class OfferStatusComponent implements OnInit {
       console.log(data)
       this.loadingRouteConfig = false
       this.dataToBeUploaded()
-      this._snackBar.open('Files are uploaded successfully', "", {
-        duration: 4000,
-        panelClass: ['success'],
-        horizontalPosition: 'end',
-        verticalPosition: 'bottom',
-      });
+      this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false
-      this._snackBar.open("Somthing went wrong. ", "", {
-        duration: 4000,
-        panelClass: ['error'],
-        horizontalPosition: 'end',
-        verticalPosition: 'bottom',
-      });
+      this.apiMethod.popupMessage('error')
+
+
     })
   }
 
@@ -152,56 +144,51 @@ export class OfferStatusComponent implements OnInit {
       this.loadingRouteConfig = false
       this.table_data = data
       this.alloy_surcharge_wire = this.table_data.wire
-
       this.alloy_surcharge_billet = this.table_data.billet
       this.scrap_surcharge_billet = this.table_data.scrap
-
-
       this.alloy_surcharge_wire = JSON.parse(this.alloy_surcharge_wire)
       this.alloy_surcharge_billet = JSON.parse(this.alloy_surcharge_billet)
-
       this.scrap_surcharge_billet = JSON.parse(this.scrap_surcharge_billet)
-
-      // console.log(this.alloy_surcharge_billet)
-      // console.log(this.alloy_surcharge_wire)    
-      // this.dataSource=JSON.parse(this.alloy_surcharge_wire)
+      this.apiMethod.popupMessage('success')
 
     }, error => {
       this.loadingRouteConfig = false
-      this._snackBar.open("Somthing went wrong. ", "", {
-        duration: 4000,
-        panelClass: ['error'],
-        horizontalPosition: 'end',
-        verticalPosition: 'bottom',
-      });
+      this.apiMethod.popupMessage('error')
     })
   }
-  submitdata() {
-
-    window.location.reload()
-    this.data = { "inputaction": 'validated_wire' }
-    this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
-      console.log("success")
-    })
-    window.setTimeout(function () { location.reload() }, 3000)
-  }
-
-  submitdata1() {
-    this.data = { "inputaction": 'validated_billet' }
-    this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
-      console.log("success")
-    })
-    window.setTimeout(function () { location.reload() }, 3000)
-  }
-
-
-
-  submitdata2() {
-    this.data = { "inputaction": 'validated_scrap' }
-    this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
-      console.log("success")
-    })
-    window.setTimeout(function () { location.reload() }, 3000)
+  validateDataForm(type: any) {
+    if (type === 'alloy_surcharge_wire') {
+      this.loadingRouteConfig = true
+      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((result: any) => {
+        console.log("success")
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('success')
+      }, error => {
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('error')
+      })
+    }
+    if (type === 'alloy_surcharge_wire') {
+      this.data = { "inputaction": 'validated_billet' }
+      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
+        console.log("success")
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('success')
+      }, error => {
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('error')
+      })
+    }
+    if (type === 'scrap_surcharge_billet') {
+      this.data = { "inputaction": 'validated_scrap' }
+      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
+        console.log("success")
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('success')
+      }, error => {
+        this.apiMethod.popupMessage('success')
+      })
+    }
   }
   ontabchange(event: any) {
     alert('hooo')

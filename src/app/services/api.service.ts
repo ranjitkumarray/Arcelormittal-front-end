@@ -24,4 +24,22 @@ export class ApiService {
     patch_request(url: any, param: any) {
         return this.https.patch(url, param)
     }
+    popupMessage(statusType: any) {
+        if (statusType === 'success') {
+            this._snackBar.open('Files are uploaded successfully', "", {
+                duration: 4000,
+                panelClass: ['success'],
+                horizontalPosition: 'end',
+                verticalPosition: 'bottom',
+            });
+        } else {
+            this._snackBar.open("Somthing went wrong. ", "", {
+                duration: 4000,
+                panelClass: ['error'],
+                horizontalPosition: 'end',
+                verticalPosition: 'bottom',
+            });
+        }
+
+    }
 }
