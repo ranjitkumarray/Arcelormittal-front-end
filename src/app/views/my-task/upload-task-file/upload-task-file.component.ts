@@ -186,6 +186,26 @@ export class UploadTaskFileComponent implements OnInit {
     this.selectedFiles.splice(this.selectedFiles.indexOf(file), 1);
   }
   uploadFiles() {
-
+    const formData = new FormData();
+    formData.append("upload_deleted", 'true')
+    this.selectedFiles.forEach((file: any) => {
+      formData.append("filename", file.selectedFile)
+    })
+    this.apiMethod.post_request(this.apiString.alloy_files_upload, formData).subscribe((data) => {
+      console.log(data)
+      this._snackBar.open('Files are uploaded successfully', "", {
+        duration: 4000,
+        panelClass: ['success'],
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+      });
+    }, error => {
+      this._snackBar.open("Somthing went wrong. ", "", {
+        duration: 4000,
+        panelClass: ['error'],
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+      });
+    })
   }
 }
