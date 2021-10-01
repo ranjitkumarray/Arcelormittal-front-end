@@ -5,5 +5,5 @@ import { environment } from "../../environments/environment";
 @Injectable({ providedIn: "root" })
 export class CitGlobalConstantService {
     baseUrl: string = environment.domain;
-    login: string = this.baseUrl + "login/"
+    alloy_scrap: string = this.baseUrl + "Alloy_scrap"
 }
