@@ -285,6 +285,21 @@ table.mat-table {
         justify-content: center;
     }
 }
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+.ml-10 {
+    margin-left: 10px !important;
+}
+.mr-10 {
+    margin-right: 10px !important;
+}
+.mt-10 {
+    margin-top: 10px !important;
+}
+.text-center {
+    text-align: center;
+}
 
 // table width
 .width_75 {
@@ -1196,8 +1211,11 @@ input:read-only {
 .mat-form-field-disabled input:disabled {
     background-color: transparent !important;
 }
-.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary1{
-    background:#f05b31;
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary1 {
+    background: #f05b31;
     color: $white;
 }
 // disabled input color

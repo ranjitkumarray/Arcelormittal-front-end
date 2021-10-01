@@ -35,10 +35,12 @@
                             <mat-divider></mat-divider>
                         </mat-list-item>
                     </mat-list>
-                    <button mat-raised-button color="primary" (click)="uploadFiles()" class="btn btn-primary mt-3"
-                        [disabled]="this.selectedFiles.length <=0"> Upload
-                        file
-                    </button>
+                    <div class="mb-10 text-right">
+                        <button mat-raised-button color="primary" (click)="uploadFiles()" class="btn btn-primary mt-3"
+                            [disabled]="this.selectedFiles.length <=0"> Upload
+                            file
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
