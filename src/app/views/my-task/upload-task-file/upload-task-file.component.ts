@@ -52,7 +52,6 @@ export class UploadTaskFileComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.updateBreadCrumb()
     this.selectedFiles = []
   }
   ngAfterViewInit() {
@@ -66,59 +65,38 @@ export class UploadTaskFileComponent implements OnInit {
   }
   dropFiles(ev: any): any {
     ev.preventDefault();
-    if (ev.dataTransfer.items) {
-      // Use DataTransferItemList interface to access the file(s)
-      for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-        // If dropped items aren't files, reject them
-        const allowed_types = [
-          'application/vnd.ms-excel',
-          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+    let data: any = ev.dataTransfer.items[0]
+    console.log(data)
+    if (data) {
+      console.log("coming inside")
+      // If dropped items aren't files, reject them
+      const allowed_types = [
+        'application/vnd.ms-excel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 
-        if (!_.includes(allowed_types, ev.dataTransfer.items[i].type)) {
-          this.imageError = 'Only Images are allowed.';
-          this._snackBar.open(this.imageError, "", {
-            duration: 4000,
-            panelClass: ['error'],
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-          });
-          return false;
-        }
-        if (ev.dataTransfer.items[i].kind === 'file') {
-          let file = ev.dataTransfer.items[i].getAsFile();
-          let obj: any = {
-            fileName: file.name,
-            selectedFile: file,
-            fileId: `${file.name}-${file.lastModified}`,
-            uploadCompleted: false
-          }
-          this.selectedFiles.push(obj);
-          console.log('... file[' + i + '].name = ' + file.name);
-          console.log("... file= ' + ", file);
-        }
+      if (!_.includes(allowed_types, data.type)) {
+        this.imageError = 'Only xlsx are allowed.';
+        this._snackBar.open(this.imageError, "", {
+          duration: 4000,
+          panelClass: ['error'],
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+        });
+        return false;
       }
-    } else {
-      for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-        console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-      };
-    };
+      if (data.kind === 'file') {
+        let file = data.getAsFile();
+        let obj: any = {
+          fileName: file.name,
+          selectedFile: file,
+          fileId: `${file.name}-${file.lastModified}`,
+          uploadCompleted: false
+        }
+        this.selectedFiles.push(obj);
+      }
+    }
   }
-  // filesDropped(files: FileHandle[]): void {
-  //   let files1: any = files;
-  //   console.log(files1, "file data ", files1[0], files1[0].file)
-  //   files1.forEach((element: any) => {
-  //     let file: any = element
-  //     let obj: any = {
-  //       fileName: file.name,
-  //       selectedFile: file,
-  //       fileId: `${file.name}-${file.lastModified}`,
-  //       uploadCompleted: false
-  //     }
-  //     this.selectedFiles.push(obj);
-  //   });
-
-  //   console.log(this.files1)
-  // }
+  
   dragOverHandler(ev: any) {
     console.log(ev)
     ev.preventDefault();
@@ -161,27 +139,6 @@ export class UploadTaskFileComponent implements OnInit {
     }
   }
 
-  updateBreadCrumb() {
-
-    this.breadCrumblocationsList = [{
-      'locationName': 'Dashboard',
-      'link': '/distributor/dashboard',
-      'currentPage': false
-    }, {
-      'locationName': 'Images',
-      'link': '',
-      'currentPage': true
-    }];
-
-    window.scrollTo(0, 0);
-    console.log("breadCrumblocationsList", this.breadCrumblocationsList);
-  }
-  redirect(link: any) {
-    console.log(link);
-    if (link != undefined && link != '') {
-      this.router.navigateByUrl(link);
-    }
-  }
   deleteFile(file: any) {
     this.selectedFiles.splice(this.selectedFiles.indexOf(file), 1);
   }

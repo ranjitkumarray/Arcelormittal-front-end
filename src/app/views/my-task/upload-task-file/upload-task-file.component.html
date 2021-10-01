@@ -12,10 +12,11 @@
                             </span>
                         </div>
                         <div>
-                            <button type="button" color="primary" mat-raised-button (click)="fileInput2.click()">
+                            <button type="button" color="primary" mat-raised-button [disabled]="selectedFiles.length>0"
+                                (click)="fileInput2.click()">
                                 Choose file
                             </button>
-                            <input hidden type='file' (change)="onSelectFile($event)" multiple #fileInput2 id="file"
+                            <input hidden type='file' (change)="onSelectFile($event)" #fileInput2 id="file"
                                 accept=".xls, .xlsx">
                         </div>
                     </div>
@@ -28,6 +29,9 @@
                             <div mat-line>{{file?.fileName}}</div>
 
                             <div>
+                                <button mat-icon-button color="primary" (click)="uploadFiles()">
+                                    <mat-icon>upload</mat-icon>
+                                </button>
                                 <button mat-icon-button color="warn" (click)="deleteFile(file)">
                                     <mat-icon>delete_forever</mat-icon>
                                 </button>
@@ -35,15 +39,8 @@
                             <mat-divider></mat-divider>
                         </mat-list-item>
                     </mat-list>
-                    <div class="mb-10 text-right">
-                        <button mat-raised-button color="primary" (click)="uploadFiles()" class="btn btn-primary mt-3"
-                            [disabled]="this.selectedFiles.length <=0"> Upload
-                            file
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
