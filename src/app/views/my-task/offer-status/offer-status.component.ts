@@ -130,6 +130,8 @@ export class OfferStatusComponent implements OnInit {
         verticalPosition: 'bottom',
       });
     }, error => {
+      this.dataToBeUploaded()
+
       this._snackBar.open("Somthing went wrong. ", "", {
         duration: 4000,
         panelClass: ['error'],
