@@ -142,8 +142,8 @@
                       </span>
                     </div>
                     <div>
-                      <button type="button" color="primary" mat-raised-button [disabled]="selectedFiles.scrap_surcharge_billet.file"
-                        (click)="fileInput2.click()">
+                      <button type="button" color="primary" mat-raised-button
+                        [disabled]="selectedFiles.alloy_surcharge_billet.file!=''" (click)="fileInput2.click()">
                         Choose file
                       </button>
                       <input hidden type='file' (change)="onSelectFile($event)" #fileInput2 id="file"
@@ -153,15 +153,16 @@
                 </div>
                 <div>
                   <mat-list>
-                    <mat-list-item *ngIf="selectedFiles.scrap_surcharge_billet.uploadCompleted">
+                    <mat-list-item *ngIf="selectedFiles.alloy_surcharge_billet.uploadCompleted">
                       <mat-icon mat-list-icon>note</mat-icon>
-                      <div mat-line>{{selectedFiles.scrap_surcharge_billet.file?.fileName}}</div>
+                      <div mat-line>{{selectedFiles.alloy_surcharge_billet.file?.fileName}}</div>
 
                       <div>
-                        <button mat-icon-button color="primary" (click)="uploadFiles()">
+                        <button mat-icon-button color="primary" (click)="uploadFiles(SelectedTab)">
                           <mat-icon>upload</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteFile(file,SelectedTab)">
+                        <button mat-icon-button color="warn"
+                          (click)="deleteFile(selectedFiles.alloy_surcharge_billet.file,SelectedTab)">
                           <mat-icon>delete_forever</mat-icon>
                         </button>
                       </div>
@@ -175,9 +176,10 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <!-- <div class="row">
+      <div class="row" *ngIf="alloy_surcharge_billet && (selectedFiles.alloy_surcharge_billet.file)">
         <div class="col-12">
-          <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_billet')">
+          <button type="button" color="primary" class="text-right mt-10" mat-raised-button
+            (click)="validateDataForm('alloy_surcharge_billet')">
             Validate Alloy Surcharge Billet
           </button>
         </div>
@@ -241,7 +243,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </mat-card>
   </mat-tab>
 
@@ -278,7 +280,7 @@
                       <mat-icon mat-list-icon>note</mat-icon>
                       <div mat-line>{{file?.fileName}}</div>
                       <div>
-                        <button mat-icon-button color="primary" (click)="uploadFiles()">
+                        <button mat-icon-button color="primary" (click)="uploadFiles(SelectedTab)">
                           <mat-icon>upload</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" (click)="deleteFile(file,SelectedTab)">

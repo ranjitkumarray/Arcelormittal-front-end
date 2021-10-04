@@ -240,18 +240,17 @@ export class OfferStatusComponent implements OnInit {
       this.loadingRouteConfig = false
       this.table_data = data
       if (uploadDataTo === "alloy_surcharge_billet") {
-        this.alloy_surcharge_billet = this.table_data.billet
+        this.alloy_surcharge_billet = this.table_data.data
         this.alloy_surcharge_billet = JSON.parse(this.alloy_surcharge_billet)
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
-        this.alloy_surcharge_wire = this.table_data.wire
+        this.alloy_surcharge_wire = this.table_data.data
         this.alloy_surcharge_wire = JSON.parse(this.alloy_surcharge_wire)
-
 
       }
       if (uploadDataTo === "scrap_surcharge_billet") {
-        this.scrap_surcharge_billet = this.table_data.scrap
+        this.scrap_surcharge_billet = this.table_data.data
         this.scrap_surcharge_billet = JSON.parse(this.scrap_surcharge_billet)
 
       }
