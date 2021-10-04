@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-offer-status',
@@ -14,6 +16,8 @@ export class OfferStatusComponent implements OnInit {
   displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
   displayedColumns_billet: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'WARENEMPFAENGER_NR', 'Materialnr', 'dRUCKSPERRE'];
   displayedColumns_scrap: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Model', 'Amount']
+  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild(MatSort) sort: any = MatSort;
   tab: any;
   table_data: any;
   data: any = { "inputaction": '' };
@@ -21,19 +25,9 @@ export class OfferStatusComponent implements OnInit {
   alloy_surcharge_wire: any;
   scrap_surcharge_billet: any;
   selectedFiles: any = {
-    "alloy_surcharge_billet": {
-      file: '',
-      uploadCompleted: false
-    },
-    "alloy_surcharge_wire": {
-      file: '',
-      uploadCompleted: false
-
-    },
-    "scrap_surcharge_billet": {
-      file: '',
-      uploadCompleted: false
-    }
+    "alloy_surcharge_billet": { file: '', uploadCompleted: false },
+    "alloy_surcharge_wire": { file: '', uploadCompleted: false },
+    "scrap_surcharge_billet": { file: '', uploadCompleted: false }
   };
   loadingRouteConfig: boolean = false
   fileEv: any;
@@ -41,6 +35,7 @@ export class OfferStatusComponent implements OnInit {
   alloy_surcharge_billet_data: any;
   scrap_surcharge_billet_data: any;
   alloy_surcharge_wire_data: any;
+
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -166,7 +161,7 @@ export class OfferStatusComponent implements OnInit {
         }
 
         reader.readAsDataURL(event.target.files[i]);
-        event.target.value=''
+        event.target.value = ''
 
       }
     }
@@ -220,27 +215,39 @@ export class OfferStatusComponent implements OnInit {
       if (uploadDataTo === "alloy_surcharge_billet") {
         this.alloy_surcharge_billet_data = resultData
         this.alloy_surcharge_billet = JSON.parse(resultData.data)
+        this.alloy_surcharge_billet.paginator = this.paginator;
+        this.alloy_surcharge_billet.sort = this.sort;
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
         this.alloy_surcharge_wire_data = resultData
         this.alloy_surcharge_wire = JSON.parse(resultData.data)
-
+        this.alloy_surcharge_wire.paginator = this.paginator;
+        this.alloy_surcharge_wire.sort = this.sort;
       }
       if (uploadDataTo === "scrap_surcharge_billet") {
         this.scrap_surcharge_billet_data = resultData
         this.scrap_surcharge_billet = JSON.parse(resultData.data)
+        this.scrap_surcharge_billet.paginator = this.paginator;
+        this.scrap_surcharge_billet.sort = this.sort;
       }
       this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error')
-
-
     })
   }
 
   //==========================end===================================
+//filter 
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.alloy_surcharge_billet_data.filter = filterValue.trim().toLowerCase();
+
+  if (this.alloy_surcharge_billet_data.paginator) {
+    this.alloy_surcharge_billet_data.paginator.firstPage();
+  }
+}
 
   //data validate
   validateDataForm(uploadDataTo: any) {
