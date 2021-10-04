@@ -19,15 +19,15 @@ a.offer_id_link {
     cursor: pointer;
     color: $primary;
 }
- .mat-card {
+.mat-card {
     padding-top: 10px;
     padding-left: 0px;
     padding-right: 0px;
 }
 
 //file upload css
-#drag_zone{
-    width:100%;
+#drag_zone {
+    width: 100%;
     min-height: 200px;
     margin: auto;
     padding: 8px;
@@ -36,11 +36,14 @@ a.offer_id_link {
     // border: 2px dashed gray;
     border-radius: 8px;
     color: black;
-  }
-  .pointCenter{
+}
+.pointCenter {
     padding: 70px 0;
     border: 3px dashed #f05b31;
-    text-align: center;  
+    text-align: center;
 }
 
 //
+.test {
+    color: red;
+}

@@ -20,8 +20,24 @@ export class OfferStatusComponent implements OnInit {
   alloy_surcharge_billet: any;
   alloy_surcharge_wire: any;
   scrap_surcharge_billet: any;
-  selectedFiles: any = [];
+  selectedFiles: any = {
+    "alloy_surcharge_billet": {
+      file: '',
+      uploadCompleted: false
+    },
+    "alloy_surcharge_wire": {
+      file: '',
+      uploadCompleted: false
+
+    },
+    "scrap_surcharge_billet": {
+      file: '',
+      uploadCompleted: false
+    }
+  };
   loadingRouteConfig: boolean = false
+  fileEv: any;
+  SelectedTab: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -30,13 +46,31 @@ export class OfferStatusComponent implements OnInit {
 
   ngOnInit() {
     this.data = { "inputaction": '' }
+    this.myTaksTabChange("Alloy Surcharge Wire")
   }
 
+  //tab change event 
+  myTaksTabChange(tabLable: any) {
+    if (tabLable === 'Alloy Surcharge Wire') {
+      console.log(tabLable)
+      this.SelectedTab = "alloy_surcharge_wire"
+      console.log(this.fileEv)
+    }
+    if (tabLable === 'Alloy Surcharge Billet') {
+      console.log(tabLable)
+      this.SelectedTab = "alloy_surcharge_billet"
+      console.log(this.fileEv)
 
-
+    }
+    if (tabLable === 'Scrap Surcharge Billet') {
+      console.log(tabLable)
+      this.SelectedTab = "scrap_surcharge_billet"
+    }
+  }
   // ==================== file change event ========================
   dropFiles(ev: any): any {
     ev.preventDefault();
+    this.fileEv = ev
     let data: any = ev.dataTransfer.items[0]
     console.log(data)
     if (data) {
@@ -56,17 +90,34 @@ export class OfferStatusComponent implements OnInit {
         });
         return false;
       }
+      let obj: any
       if (data.kind === 'file') {
         let file = data.getAsFile();
-        let obj: any = {
+        obj = {
           fileName: file.name,
           selectedFile: file,
-          fileId: `${file.name}-${file.lastModified}`,
-          uploadCompleted: false
         }
-        this.selectedFiles.push(obj);
+      }
+      if (this.SelectedTab === "alloy_surcharge_billet") {
+        this.selectedFiles.alloy_surcharge_billet = {
+          file: obj,
+          uploadCompleted: true
+        }
+        if (this.SelectedTab === "alloy_surcharge_wire") {
+          this.selectedFiles.alloy_surcharge_wire = {
+            file: obj,
+            uploadCompleted: true
+          }
+        }
+        if (this.SelectedTab === "scrap_surcharge_billet") {
+          this.selectedFiles.scrap_surcharge_billet = {
+            file: obj,
+            uploadCompleted: true
+          }
+        }
       }
     }
+
   }
 
   dragOverHandler(ev: any) {
@@ -76,6 +127,7 @@ export class OfferStatusComponent implements OnInit {
   }
 
   onSelectFile(event: any) {
+    this.fileEv = event
     console.log(event.target.files)
     if (event.target.files && event.target.files[0]) {
       var filesAmount = event.target.files.length;
@@ -86,40 +138,68 @@ export class OfferStatusComponent implements OnInit {
 
         let obj: any = {
           fileName: file.name,
-          selectedFile: file,
-          fileId: `${file.name}-${file.lastModified}`,
-          uploadCompleted: false
+          selectedFile: file
         }
-        this.selectedFiles.push(obj);
+        if (this.SelectedTab === "alloy_surcharge_billet") {
+          this.selectedFiles.alloy_surcharge_billet = {
+            file: obj,
+            uploadCompleted: true
+          }
+        }
+        if (this.SelectedTab === "alloy_surcharge_wire") {
+          this.selectedFiles.alloy_surcharge_wire = {
+            file: obj,
+            uploadCompleted: true
+          }
+        }
+        if (this.SelectedTab === "scrap_surcharge_billet") {
+          this.selectedFiles.scrap_surcharge_billet = {
+            file: obj,
+            uploadCompleted: true
+          }
+        }
+        // this.selectedFiles.push(obj);
         reader.onload = (event: any) => {
         }
 
         reader.readAsDataURL(event.target.files[i]);
       }
-    } if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-
-        reader.onload = (event: any) => {
-          // this.urls.push(event.target.result);
-        }
-
-        reader.readAsDataURL(event.target.files[i]);
-      }
-      // console.log(this.urls)
     }
   }
 
-  deleteFile(file: any) {
-    this.selectedFiles.splice(this.selectedFiles.indexOf(file), 1);
+  deleteFile(file: any, tabName: any) {
+
+    if (this.SelectedTab === "alloy_surcharge_billet") {
+      this.selectedFiles.alloy_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "alloy_surcharge_wire") {
+      this.selectedFiles.alloy_surcharge_wire = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "scrap_surcharge_billet") {
+      this.selectedFiles.scrap_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    this.fileEv.target.value = "";
   }
-  uploadFiles() {
+  uploadFiles(uploadDataTo: any) {
     const formData = new FormData();
-    formData.append("upload_deleted", 'true')
-    this.selectedFiles.forEach((file: any) => {
-      formData.append("filename", file.selectedFile)
-    })
+    if (uploadDataTo === "alloy_surcharge_billet") {
+      formData.append("filename", this.selectedFiles.alloy_surcharge_billet.file.selectedFile)
+    }
+    if (uploadDataTo === "alloy_surcharge_wire") {
+      formData.append("filename", this.selectedFiles.alloy_surcharge_wire.file.selectedFile)
+    }
+    if (uploadDataTo === "scrap_surcharge_billet") {
+      formData.append("filename", this.selectedFiles.scrap_surcharge_billet.file.selectedFile)
+    }
     this.loadingRouteConfig = true
     this.apiMethod.post_request(this.apiString.alloy_files_upload, formData).subscribe((data) => {
       console.log(data)

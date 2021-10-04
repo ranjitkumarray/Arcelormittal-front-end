@@ -3,7 +3,7 @@
     <span class="signal"></span>
   </div>
 </ng-container>
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="myTaksTabChange($event.tab.textLabel)">
   <mat-tab label="Alloy Surcharge Wire">
     <mat-card>
       <!-- ========================file upload start here==========================  -->
@@ -22,8 +22,8 @@
                       </span>
                     </div>
                     <div>
-                      <button type="button" color="primary" mat-raised-button [disabled]="selectedFiles.length>0"
-                        (click)="fileInput2.click()">
+                      <button type="button" color="primary" mat-raised-button
+                        [disabled]="selectedFiles.alloy_surcharge_wire.file!=''" (click)="fileInput2.click()">
                         Choose file
                       </button>
                       <input hidden type='file' (change)="onSelectFile($event)" #fileInput2 id="file"
@@ -33,15 +33,16 @@
                 </div>
                 <div>
                   <mat-list>
-                    <mat-list-item *ngFor="let file of this.selectedFiles" [class.upload-sucess]="file.uploadCompleted">
+                    <mat-list-item *ngIf="selectedFiles.alloy_surcharge_wire.uploadCompleted">
                       <mat-icon mat-list-icon>note</mat-icon>
-                      <div mat-line>{{file?.fileName}}</div>
+                      <div mat-line>{{selectedFiles.alloy_surcharge_wire.file?.fileName}}</div>
 
                       <div>
-                        <button mat-icon-button color="primary" (click)="uploadFiles()">
+                        <button mat-icon-button color="primary" (click)="uploadFiles(SelectedTab)">
                           <mat-icon>upload</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteFile(file)">
+                        <button mat-icon-button color="warn"
+                          (click)="deleteFile(selectedFiles.alloy_surcharge_wire.file,SelectedTab)">
                           <mat-icon>delete_forever</mat-icon>
                         </button>
                       </div>
@@ -55,7 +56,7 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.length>0)">
+      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
         <div class="col-12">
           <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_wire')">
             Validate Alloy Surcharge Wire
@@ -126,7 +127,7 @@
   <mat-tab label="Alloy Surcharge Billet">
     <mat-card>
       <!-- ========================file upload start here==========================  -->
-      <div>
+      <!-- <div>
         <div class="row bg-w">
           <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 col-12">
             <div class="mtb-10">
@@ -160,7 +161,7 @@
                         <button mat-icon-button color="primary" (click)="uploadFiles()">
                           <mat-icon>upload</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteFile(file)">
+                        <button mat-icon-button color="warn" (click)="deleteFile(file,SelectedTab)">
                           <mat-icon>delete_forever</mat-icon>
                         </button>
                       </div>
@@ -172,9 +173,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- ========================file upload end ========================= -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12">
           <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_billet')">
             Validate Alloy Surcharge Billet
@@ -240,14 +241,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </mat-card>
   </mat-tab>
 
   <mat-tab label="Scrap Surcharge Billet">
     <mat-card>
       <!-- ========================file upload start here==========================  -->
-      <div>
+      <!-- <div>
         <div class="row bg-w">
           <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 col-12">
             <div class="mtb-10">
@@ -280,7 +281,7 @@
                         <button mat-icon-button color="primary" (click)="uploadFiles()">
                           <mat-icon>upload</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteFile(file)">
+                        <button mat-icon-button color="warn" (click)="deleteFile(file,SelectedTab)">
                           <mat-icon>delete_forever</mat-icon>
                         </button>
                       </div>
@@ -292,9 +293,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- ========================file upload end ========================= -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12">
           <button type="button" color="primary" mat-raised-button (click)="validateDataForm('scrap_surcharge_billet')">
             Validate Scrap Surcharge Billet
@@ -312,7 +313,6 @@
                       <td mat-cell *matCellDef="let element"> {{element?.VKORG}} </td>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container matColumnDef="COND_TYPE">
                       <th mat-header-cell *matHeaderCellDef> COND_TYPE </th>
                       <td mat-cell *matCellDef="let element"> {{element?.COND_TYPE}} </td>
@@ -351,7 +351,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </mat-card>
   </mat-tab>
 </mat-tab-group>
