@@ -56,8 +56,8 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
-      <!-- <div class="row"> -->
+      <!-- <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)"> -->
+      <div class="row">
         <div class="col-6">
           <div class="text-left mt-10">
             <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_wire')">
@@ -68,13 +68,15 @@
         <div class="col-6">
           <div class="text-right mt-10">
             <mat-form-field appearance="outline">
-              <mat-label>Filter</mat-label>
-              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+              <mat-label>Search</mat-label>
+              <input matInput (keyup)="applyFilter($event,SelectedTab)" #input>
+              <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
+
           </div>
         </div>
       </div>
-      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
+      <div class="row">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
@@ -126,6 +128,8 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns_wire;"></tr>
 
                   </table>
+                  <!-- <mat-paginator [pageSizeOptions]="[2, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
+
                 </div>
               </div>
             </div>

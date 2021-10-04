@@ -5,7 +5,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
+import { MatTableDataSource } from '@angular/material/table';
+export interface wireData {
+  VKORG: string;
+  COND_TYPE: string;
+  DST_CH: string;
+  DIV: string;
+  Month_year: string;
+  Amount: string;
+  Customer_ID: string;
+  Internal_Grade: string;
+}
 @Component({
   selector: 'app-offer-status',
   templateUrl: './offer-status.component.html',
@@ -29,6 +39,7 @@ export class OfferStatusComponent implements OnInit {
     "alloy_surcharge_wire": { file: '', uploadCompleted: false },
     "scrap_surcharge_billet": { file: '', uploadCompleted: false }
   };
+  dataOf: any = "[{\"VKORG\":\"0300\",\"COND_TYPE\":\"Z133\",\"DST_CH\":\"02\",\"DIV\":\"02\",\"Month_year\":\"202110\",\"Amount\":9,\"Customer_ID\":31503,\"Internal_Grade\":3785},{\"VKORG\":\"0300\",\"COND_TYPE\":\"Z133\",\"DST_CH\":\"02\",\"DIV\":\"02\",\"Month_year\":\"202111\",\"Amount\":12,\"Customer_ID\":78213,\"Internal_Grade\":2589},{\"VKORG\":\"0300\",\"COND_TYPE\":\"Z133\",\"DST_CH\":\"02\",\"DIV\":\"02\",\"Month_year\":\"202201\",\"Amount\":20,\"Customer_ID\":78213,\"Internal_Grade\":2607}]"
   loadingRouteConfig: boolean = false
   fileEv: any;
   SelectedTab: any;
@@ -40,12 +51,14 @@ export class OfferStatusComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private _snackBar: MatSnackBar,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.data = { "inputaction": '' }
     this.myTaksTabChange("Alloy Surcharge Wire")
   }
+
 
   //tab change event 
   myTaksTabChange(tabLable: any) {
@@ -214,14 +227,15 @@ export class OfferStatusComponent implements OnInit {
       this.loadingRouteConfig = false
       if (uploadDataTo === "alloy_surcharge_billet") {
         this.alloy_surcharge_billet_data = resultData
-        this.alloy_surcharge_billet = JSON.parse(resultData.data)
-        this.alloy_surcharge_billet.paginator = this.paginator;
-        this.alloy_surcharge_billet.sort = this.sort;
+        this.alloy_surcharge_billet = new MatTableDataSource<wireData>(JSON.parse(resultData.data))
+
+        // this.alloy_surcharge_billet.paginator = this.paginator;
+        // this.alloy_surcharge_billet.sort = this.sort;
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
         this.alloy_surcharge_wire_data = resultData
-        this.alloy_surcharge_wire = JSON.parse(resultData.data)
+        this.alloy_surcharge_wire = new MatTableDataSource<wireData>(JSON.parse(resultData.data))
         this.alloy_surcharge_wire.paginator = this.paginator;
         this.alloy_surcharge_wire.sort = this.sort;
       }
@@ -239,16 +253,32 @@ export class OfferStatusComponent implements OnInit {
   }
 
   //==========================end===================================
-//filter 
-applyFilter(event: Event) {
-  
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.alloy_surcharge_billet.filter = filterValue.trim().toLowerCase();
+  //filter 
+  applyFilter(event: Event, searchFrom: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue, this.alloy_surcharge_wire,)
+    if (searchFrom === "alloy_surcharge_billet") {
+      this.alloy_surcharge_billet.filter = filterValue.trim().toLowerCase();
+      if (this.alloy_surcharge_billet.paginator) {
+        this.alloy_surcharge_billet.paginator.firstPage();
+      }
+    }
+    if (searchFrom === "alloy_surcharge_wire") {
+      this.alloy_surcharge_wire.filter = filterValue.trim().toLowerCase();
 
-  if (this.alloy_surcharge_billet.paginator) {
-    this.alloy_surcharge_billet.paginator.firstPage();
+      if (this.alloy_surcharge_wire.paginator) {
+        this.alloy_surcharge_wire.paginator.firstPage();
+      }
+    }
+    if (searchFrom === "scrap_surcharge_billet") {
+      this.scrap_surcharge_billet.filter = filterValue.trim().toLowerCase();
+
+      if (this.scrap_surcharge_billet.paginator) {
+        this.scrap_surcharge_billet.paginator.firstPage();
+      }
+    }
+
   }
-}
 
   //data validate
   validateDataForm(uploadDataTo: any) {
