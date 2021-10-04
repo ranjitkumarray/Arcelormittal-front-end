@@ -38,6 +38,9 @@ export class OfferStatusComponent implements OnInit {
   loadingRouteConfig: boolean = false
   fileEv: any;
   SelectedTab: any;
+  alloy_surcharge_billet_data: any;
+  scrap_surcharge_billet_data: any;
+  alloy_surcharge_wire_data: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -213,15 +216,18 @@ export class OfferStatusComponent implements OnInit {
       let resultData: any = data
       this.loadingRouteConfig = false
       if (uploadDataTo === "alloy_surcharge_billet") {
+        this.alloy_surcharge_billet_data = resultData
         this.alloy_surcharge_billet = JSON.parse(resultData.data)
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
-        this.alloy_surcharge_billet = JSON.parse(resultData.data)
+        this.alloy_surcharge_wire_data = resultData
+        this.alloy_surcharge_wire = JSON.parse(resultData.data)
 
       }
       if (uploadDataTo === "scrap_surcharge_billet") {
-        this.alloy_surcharge_billet = JSON.parse(resultData.data)
+        this.scrap_surcharge_billet_data = resultData
+        this.scrap_surcharge_billet = JSON.parse(resultData.data)
       }
       this.apiMethod.popupMessage('success')
     }, error => {
@@ -237,18 +243,22 @@ export class OfferStatusComponent implements OnInit {
   //data validate
   validateDataForm(uploadDataTo: any) {
     let urlString: any
+    let data: any
     if (uploadDataTo === "alloy_surcharge_billet") {
       urlString = this.apiString.alloy_billet_validate
+      data = this.alloy_surcharge_billet_data
     }
     if (uploadDataTo === "alloy_surcharge_wire") {
       urlString = this.apiString.alloy_wire_validate
+      data = this.alloy_surcharge_wire_data
 
     }
     if (uploadDataTo === "scrap_surcharge_billet") {
       urlString = this.apiString.scrap_validate
+      data = this.scrap_surcharge_billet_data
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(urlString, this.data).subscribe((result: any) => {
+    this.apiMethod.post_request(urlString, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success')
