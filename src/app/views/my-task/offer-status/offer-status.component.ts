@@ -241,11 +241,12 @@ export class OfferStatusComponent implements OnInit {
   //==========================end===================================
 //filter 
 applyFilter(event: Event) {
+  
   const filterValue = (event.target as HTMLInputElement).value;
-  this.alloy_surcharge_billet_data.filter = filterValue.trim().toLowerCase();
+  this.alloy_surcharge_billet.filter = filterValue.trim().toLowerCase();
 
-  if (this.alloy_surcharge_billet_data.paginator) {
-    this.alloy_surcharge_billet_data.paginator.firstPage();
+  if (this.alloy_surcharge_billet.paginator) {
+    this.alloy_surcharge_billet.paginator.firstPage();
   }
 }
 
