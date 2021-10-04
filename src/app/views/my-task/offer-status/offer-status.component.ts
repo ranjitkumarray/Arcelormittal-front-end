@@ -166,6 +166,8 @@ export class OfferStatusComponent implements OnInit {
         }
 
         reader.readAsDataURL(event.target.files[i]);
+        event.target.value=''
+
       }
     }
   }
@@ -191,7 +193,7 @@ export class OfferStatusComponent implements OnInit {
       }
     }
     console.log(this.fileEv, "FILE EV ")
-    this.fileEv.target.value = "";
+    // this.fileEv.target.value = "";
   }
   uploadFiles(uploadDataTo: any) {
     console.log(uploadDataTo)
