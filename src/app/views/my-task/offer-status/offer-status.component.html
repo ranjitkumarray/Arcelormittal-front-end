@@ -56,8 +56,8 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <!-- <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)"> -->
-      <div class="row">
+      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
+        <!-- <div class="row"> -->
         <div class="col-6">
           <div class="text-left mt-10">
             <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_wire')">
@@ -76,7 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
@@ -194,12 +194,26 @@
       </div>
       <!-- ========================file upload end ========================= -->
       <div class="row" *ngIf="alloy_surcharge_billet && (selectedFiles.alloy_surcharge_billet.file)">
-        <div class="col-12 text-right">
-          <button type="button" color="primary" class="text-right mt-10" mat-raised-button
-            (click)="validateDataForm('alloy_surcharge_billet')">
-            Validate Alloy Surcharge Billet
-          </button>
+        <div class="col-6">
+          <div class="text-left mt-10">
+            <button type="button" color="primary" class="text-right mt-10" mat-raised-button
+              (click)="validateDataForm('alloy_surcharge_billet')">
+              Validate Alloy Surcharge Billet
+            </button>
+          </div>
         </div>
+        <div class="col-6">
+          <div class="text-right mt-10">
+            <mat-form-field appearance="outline">
+              <mat-label>Search</mat-label>
+              <input matInput (keyup)="applyFilter($event,SelectedTab)" #input>
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="alloy_surcharge_billet && (selectedFiles.alloy_surcharge_billet.file)">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
@@ -316,11 +330,26 @@
       </div>
       <!-- ========================file upload end ========================= -->
       <div class="row" *ngIf="scrap_surcharge_billet && (selectedFiles.scrap_surcharge_billet.file)">
-        <div class="col-12 text-right">
-          <button type="button" color="primary" mat-raised-button (click)="validateDataForm('scrap_surcharge_billet')">
-            Validate Scrap Surcharge Billet
-          </button>
+        <div class="col-6 ">
+          <div class="text-left mt-10">
+            <button type="button" color="primary" mat-raised-button
+              (click)="validateDataForm('scrap_surcharge_billet')">
+              Validate Scrap Surcharge Billet
+            </button>
+          </div>
         </div>
+        <div class="col-6">
+          <div class="text-right mt-10">
+            <mat-form-field appearance="outline">
+              <mat-label>Search</mat-label>
+              <input matInput (keyup)="applyFilter($event,SelectedTab)" #input>
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="scrap_surcharge_billet && (selectedFiles.scrap_surcharge_billet.file)">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
