@@ -191,20 +191,25 @@ export class OfferStatusComponent implements OnInit {
   }
   uploadFiles(uploadDataTo: any) {
     const formData = new FormData();
+    let urlString: any
     if (uploadDataTo === "alloy_surcharge_billet") {
       formData.append("filename", this.selectedFiles.alloy_surcharge_billet.file.selectedFile)
+      urlString = this.apiString.alloy_billet_upload
     }
     if (uploadDataTo === "alloy_surcharge_wire") {
       formData.append("filename", this.selectedFiles.alloy_surcharge_wire.file.selectedFile)
+      urlString = this.apiString.alloy_wire_upload
+
     }
     if (uploadDataTo === "scrap_surcharge_billet") {
       formData.append("filename", this.selectedFiles.scrap_surcharge_billet.file.selectedFile)
+      urlString = this.apiString.scrap_upload
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.alloy_files_upload, formData).subscribe((data) => {
+    this.apiMethod.post_request(urlString, formData).subscribe((data) => {
       console.log(data)
       this.loadingRouteConfig = false
-      this.dataToBeUploaded()
+      this.dataToBeUploaded(uploadDataTo)
       this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false
@@ -218,57 +223,67 @@ export class OfferStatusComponent implements OnInit {
 
 
   // get uploaded file
-  dataToBeUploaded() {
+  dataToBeUploaded(uploadDataTo: any) {
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
+    let urlString: any
+    if (uploadDataTo === "alloy_surcharge_billet") {
+      urlString = this.apiString.alloy_billet_upload
+    }
+    if (uploadDataTo === "alloy_surcharge_wire") {
+      urlString = this.apiString.alloy_wire_upload
+
+    }
+    if (uploadDataTo === "scrap_surcharge_billet") {
+      urlString = this.apiString.scrap_upload
+    }
+    this.apiMethod.get_request(urlString).subscribe((data) => {
       this.loadingRouteConfig = false
       this.table_data = data
-      this.alloy_surcharge_wire = this.table_data.wire
-      this.alloy_surcharge_billet = this.table_data.billet
-      this.scrap_surcharge_billet = this.table_data.scrap
-      this.alloy_surcharge_wire = JSON.parse(this.alloy_surcharge_wire)
-      this.alloy_surcharge_billet = JSON.parse(this.alloy_surcharge_billet)
-      this.scrap_surcharge_billet = JSON.parse(this.scrap_surcharge_billet)
-      this.apiMethod.popupMessage('success')
+      if (uploadDataTo === "alloy_surcharge_billet") {
+        this.alloy_surcharge_billet = this.table_data.billet
+        // this.alloy_surcharge_billet = JSON.parse(this.alloy_surcharge_billet)
 
+      }
+      if (uploadDataTo === "alloy_surcharge_wire") {
+        this.alloy_surcharge_wire = this.table_data.wire
+        // this.alloy_surcharge_wire = JSON.parse(this.alloy_surcharge_wire)
+
+
+      }
+      if (uploadDataTo === "scrap_surcharge_billet") {
+        this.scrap_surcharge_billet = this.table_data.scrap
+        // this.scrap_surcharge_billet = JSON.parse(this.scrap_surcharge_billet)
+
+      }
+
+      this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error')
     })
   }
-  validateDataForm(type: any) {
-    if (type === 'alloy_surcharge_wire') {
-      this.loadingRouteConfig = true
-      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((result: any) => {
-        console.log("success")
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('success')
-      }, error => {
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('error')
-      })
+  validateDataForm(uploadDataTo: any) {
+    let urlString: any
+    if (uploadDataTo === "alloy_surcharge_billet") {
+      urlString = this.apiString.alloy_billet_validate
     }
-    if (type === 'alloy_surcharge_wire') {
-      this.data = { "inputaction": 'validated_billet' }
-      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
-        console.log("success")
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('success')
-      }, error => {
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('error')
-      })
+    if (uploadDataTo === "alloy_surcharge_wire") {
+      urlString = this.apiString.alloy_wire_validate
+
     }
-    if (type === 'scrap_surcharge_billet') {
-      this.data = { "inputaction": 'validated_scrap' }
-      this.apiMethod.post_request(this.apiString.alloy_scrap, this.data).subscribe((data) => {
-        console.log("success")
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('success')
-      }, error => {
-        this.apiMethod.popupMessage('success')
-      })
+    if (uploadDataTo === "scrap_surcharge_billet") {
+      urlString = this.apiString.scrap_validate
     }
+    this.loadingRouteConfig = true
+    this.apiMethod.post_request(urlString, this.data).subscribe((result: any) => {
+      console.log("success")
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('success')
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error')
+    })
+
   }
   ontabchange(event: any) {
     alert('hooo')

@@ -5,6 +5,14 @@ import { environment } from "../../environments/environment";
 @Injectable({ providedIn: "root" })
 export class CitGlobalConstantService {
     baseUrl: string = environment.domain;
-    alloy_scrap: string = this.baseUrl + "Alloy_scrap";
-    alloy_files_upload:string=this.baseUrl+"Alloy_files_upload"
+    alloy_wire_upload: string = this.baseUrl + "Alloy_wire_upload";
+    alloy_wire_validate: string = this.baseUrl + "Alloy_wire_validate";
+
+    alloy_billet_upload: string = this.baseUrl + "Alloy_billet_upload";
+    alloy_billet_validate: string = this.baseUrl + "Alloy_billet_validate";
+
+    scrap_upload: string = this.baseUrl + "scrap_upload";
+    scrap_validate: string = this.baseUrl + "Alloy_billet_validate";
+
+    get_history: string = this.baseUrl + "get_history";
 }
