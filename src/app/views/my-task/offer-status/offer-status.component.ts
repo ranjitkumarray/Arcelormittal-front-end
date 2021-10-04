@@ -187,9 +187,11 @@ export class OfferStatusComponent implements OnInit {
         uploadCompleted: false
       }
     }
+    console.log(this.fileEv, "FILE EV ")
     this.fileEv.target.value = "";
   }
   uploadFiles(uploadDataTo: any) {
+    console.log(uploadDataTo)
     const formData = new FormData();
     let urlString: any
     if (uploadDataTo === "alloy_surcharge_billet") {
@@ -211,15 +213,15 @@ export class OfferStatusComponent implements OnInit {
       let resultData: any = data
       this.loadingRouteConfig = false
       if (uploadDataTo === "alloy_surcharge_billet") {
-        this.alloy_surcharge_billet = JSON.parse(resultData).data
+        this.alloy_surcharge_billet = JSON.parse(resultData.data)
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
-        this.alloy_surcharge_billet = JSON.parse(resultData).data
+        this.alloy_surcharge_billet = JSON.parse(resultData.data)
 
       }
       if (uploadDataTo === "scrap_surcharge_billet") {
-        this.alloy_surcharge_billet = JSON.parse(resultData).data
+        this.alloy_surcharge_billet = JSON.parse(resultData.data)
       }
       this.apiMethod.popupMessage('success')
     }, error => {
@@ -232,46 +234,7 @@ export class OfferStatusComponent implements OnInit {
 
   //==========================end===================================
 
-
-  // get uploaded file
-  dataToBeUploaded(uploadDataTo: any) {
-    this.loadingRouteConfig = true
-    let urlString: any
-    if (uploadDataTo === "alloy_surcharge_billet") {
-      urlString = this.apiString.alloy_billet_upload
-    }
-    if (uploadDataTo === "alloy_surcharge_wire") {
-      urlString = this.apiString.alloy_wire_upload
-
-    }
-    if (uploadDataTo === "scrap_surcharge_billet") {
-      urlString = this.apiString.scrap_upload
-    }
-    this.apiMethod.get_request(urlString).subscribe((data) => {
-      this.loadingRouteConfig = false
-      this.table_data = data
-      if (uploadDataTo === "alloy_surcharge_billet") {
-        this.alloy_surcharge_billet = this.table_data.data
-        this.alloy_surcharge_billet = JSON.parse(this.alloy_surcharge_billet)
-
-      }
-      if (uploadDataTo === "alloy_surcharge_wire") {
-        this.alloy_surcharge_wire = this.table_data.data
-        this.alloy_surcharge_wire = JSON.parse(this.alloy_surcharge_wire)
-
-      }
-      if (uploadDataTo === "scrap_surcharge_billet") {
-        this.scrap_surcharge_billet = this.table_data.data
-        this.scrap_surcharge_billet = JSON.parse(this.scrap_surcharge_billet)
-
-      }
-
-      this.apiMethod.popupMessage('success')
-    }, error => {
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error')
-    })
-  }
+  //data validate
   validateDataForm(uploadDataTo: any) {
     let urlString: any
     if (uploadDataTo === "alloy_surcharge_billet") {

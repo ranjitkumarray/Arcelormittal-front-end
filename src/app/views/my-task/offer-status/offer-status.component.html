@@ -250,7 +250,7 @@
   <mat-tab label="Scrap Surcharge Billet">
     <mat-card>
       <!-- ========================file upload start here==========================  -->
-      <!-- <div>
+      <div>
         <div class="row bg-w">
           <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 col-12">
             <div class="mtb-10">
@@ -265,7 +265,7 @@
                       </span>
                     </div>
                     <div>
-                      <button type="button" color="primary" mat-raised-button [disabled]="selectedFiles.length>0"
+                      <button type="button" color="primary" mat-raised-button [disabled]="selectedFiles.scrap_surcharge_billet.file!=''"
                         (click)="fileInput2.click()">
                         Choose file
                       </button>
@@ -276,14 +276,14 @@
                 </div>
                 <div>
                   <mat-list>
-                    <mat-list-item *ngFor="let file of this.selectedFiles" [class.upload-sucess]="file.uploadCompleted">
+                    <mat-list-item  *ngIf="selectedFiles.scrap_surcharge_billet.uploadCompleted">
                       <mat-icon mat-list-icon>note</mat-icon>
-                      <div mat-line>{{file?.fileName}}</div>
+                      <div mat-line>{{selectedFiles.scrap_surcharge_billet.file?.fileName}}</div>
                       <div>
                         <button mat-icon-button color="primary" (click)="uploadFiles(SelectedTab)">
                           <mat-icon>upload</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" (click)="deleteFile(file,SelectedTab)">
+                        <button mat-icon-button color="warn" (click)="deleteFile(selectedFiles.scrap_surcharge_billet.file,SelectedTab)">
                           <mat-icon>delete_forever</mat-icon>
                         </button>
                       </div>
@@ -295,9 +295,9 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
       <!-- ========================file upload end ========================= -->
-      <!-- <div class="row">
+      <div class="row" *ngIf="scrap_surcharge_billet && (selectedFiles.scrap_surcharge_billet.file)">
         <div class="col-12">
           <button type="button" color="primary" mat-raised-button (click)="validateDataForm('scrap_surcharge_billet')">
             Validate Scrap Surcharge Billet
@@ -353,7 +353,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </mat-card>
   </mat-tab>
 </mat-tab-group>
