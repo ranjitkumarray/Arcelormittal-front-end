@@ -246,16 +246,25 @@ export class OfferStatusComponent implements OnInit {
     let data: any
     if (uploadDataTo === "alloy_surcharge_billet") {
       urlString = this.apiString.alloy_billet_validate
-      data = this.alloy_surcharge_billet_data
+
+      data = {
+        "billet": this.alloy_surcharge_billet_data.data,
+        "filename": this.alloy_surcharge_billet_data.filename
+      }
     }
     if (uploadDataTo === "alloy_surcharge_wire") {
       urlString = this.apiString.alloy_wire_validate
-      data = this.alloy_surcharge_wire_data
-
+      data = {
+        "wire": this.alloy_surcharge_wire_data.data,
+        "filename": this.alloy_surcharge_wire_data.filename
+      }
     }
     if (uploadDataTo === "scrap_surcharge_billet") {
       urlString = this.apiString.scrap_validate
-      data = this.scrap_surcharge_billet_data
+      data = {
+        "scrap": this.scrap_surcharge_billet_data.data,
+        "filename": this.scrap_surcharge_billet_data.filename
+      }
     }
     this.loadingRouteConfig = true
     this.apiMethod.post_request(urlString, data).subscribe((result: any) => {
