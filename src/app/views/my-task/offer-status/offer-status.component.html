@@ -56,19 +56,25 @@
         </div>
       </div>
       <!-- ========================file upload end ========================= -->
-      <!-- <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)"> -->
-      <div class="row">
-        <div class="col-6 text-left mt-10">
-          <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_wire')">
-            Validate Alloy Surcharge Wire
-          </button>
-          <div class="col-6 text-left mt-10">
-            <mat-form-field appearance="standard">
+      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
+      <!-- <div class="row"> -->
+        <div class="col-6">
+          <div class="text-left mt-10">
+            <button type="button" color="primary" mat-raised-button (click)="validateDataForm('alloy_surcharge_wire')">
+              Validate Alloy Surcharge Wire
+            </button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="text-right mt-10">
+            <mat-form-field appearance="outline">
               <mat-label>Filter</mat-label>
               <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
             </mat-form-field>
           </div>
         </div>
+      </div>
+      <div class="row" *ngIf="alloy_surcharge_wire && (selectedFiles.alloy_surcharge_wire.file)">
         <div class="col-12">
           <div class="my_offer_table_container">
             <div class="text-center h-100">
