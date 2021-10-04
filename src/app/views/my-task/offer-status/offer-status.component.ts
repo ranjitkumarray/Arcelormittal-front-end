@@ -248,21 +248,21 @@ export class OfferStatusComponent implements OnInit {
       urlString = this.apiString.alloy_billet_validate
 
       data = {
-        "billet": this.alloy_surcharge_billet_data.data,
+        "billet": JSON.parse(this.alloy_surcharge_billet_data.data),
         "filename": this.alloy_surcharge_billet_data.filename
       }
     }
     if (uploadDataTo === "alloy_surcharge_wire") {
       urlString = this.apiString.alloy_wire_validate
       data = {
-        "wire": this.alloy_surcharge_wire_data.data,
+        "wire": JSON.parse(this.alloy_surcharge_wire_data.data),
         "filename": this.alloy_surcharge_wire_data.filename
       }
     }
     if (uploadDataTo === "scrap_surcharge_billet") {
       urlString = this.apiString.scrap_validate
       data = {
-        "scrap": this.scrap_surcharge_billet_data.data,
+        "scrap": JSON.parse(this.scrap_surcharge_billet_data.data),
         "filename": this.scrap_surcharge_billet_data.filename
       }
     }
