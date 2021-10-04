@@ -208,8 +208,19 @@ export class OfferStatusComponent implements OnInit {
     this.loadingRouteConfig = true
     this.apiMethod.post_request(urlString, formData).subscribe((data) => {
       console.log(data)
+      let resultData: any = data
       this.loadingRouteConfig = false
-      this.dataToBeUploaded(uploadDataTo)
+      if (uploadDataTo === "alloy_surcharge_billet") {
+        this.alloy_surcharge_billet = JSON.parse(resultData).data
+
+      }
+      if (uploadDataTo === "alloy_surcharge_wire") {
+        this.alloy_surcharge_billet = JSON.parse(resultData).data
+
+      }
+      if (uploadDataTo === "scrap_surcharge_billet") {
+        this.alloy_surcharge_billet = JSON.parse(resultData).data
+      }
       this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false
