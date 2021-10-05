@@ -63,14 +63,12 @@ export class OfferStatusComponent implements OnInit {
   //tab change event 
   myTaksTabChange(tabLable: any) {
     if (tabLable === 'Alloy Surcharge Wire') {
-      console.log(tabLable)
       this.SelectedTab = "alloy_surcharge_wire"
-      console.log(this.fileEv)
+      console.log(this.SelectedTab)
     }
     if (tabLable === 'Alloy Surcharge Billet') {
       console.log(tabLable)
       this.SelectedTab = "alloy_surcharge_billet"
-      console.log(this.fileEv)
 
     }
     if (tabLable === 'Scrap Surcharge Billet') {
@@ -114,25 +112,23 @@ export class OfferStatusComponent implements OnInit {
           file: obj,
           uploadCompleted: true
         }
-        if (this.SelectedTab === "alloy_surcharge_wire") {
-          this.selectedFiles.alloy_surcharge_wire = {
-            file: obj,
-            uploadCompleted: true
-          }
+      }
+      if (this.SelectedTab === "alloy_surcharge_wire") {
+        this.selectedFiles.alloy_surcharge_wire = {
+          file: obj,
+          uploadCompleted: true
         }
-        if (this.SelectedTab === "scrap_surcharge_billet") {
-          this.selectedFiles.scrap_surcharge_billet = {
-            file: obj,
-            uploadCompleted: true
-          }
+      }
+      if (this.SelectedTab === "scrap_surcharge_billet") {
+        this.selectedFiles.scrap_surcharge_billet = {
+          file: obj,
+          uploadCompleted: true
         }
       }
     }
-
   }
 
   dragOverHandler(ev: any) {
-    console.log(ev)
     ev.preventDefault();
     ev.stopPropagation();
   }
