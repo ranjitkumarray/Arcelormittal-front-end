@@ -10,8 +10,8 @@
                 <div class="text-right mt-10">
                     <mat-form-field appearance="outline">
                         <mat-label>Search</mat-label>
-                        <input matInput (keyup.enter)="applyFilter($event)" #input>
-                        <mat-icon matSuffix>search</mat-icon>
+                        <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter()">
+                        <mat-icon matSuffix (click)="applyFilter()">search</mat-icon>
                     </mat-form-field>
 
                 </div>
@@ -46,10 +46,10 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
                 <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{searchValue}}"</td>
                 </tr>
             </table>
-            
+
             <mat-paginator [pageSizeOptions]="[10, 30, 50, 100]" aria-label="Select page of users"></mat-paginator>
         </div>
 

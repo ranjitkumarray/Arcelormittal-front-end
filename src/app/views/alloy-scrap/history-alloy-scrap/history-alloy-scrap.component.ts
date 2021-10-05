@@ -20,7 +20,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = ['Batch_ID', 'filename', 'username', 'date_time'];
   dataSource: any;
-
+  searchValue: any
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
   constructor(
@@ -50,8 +50,8 @@ export class HistoryAlloyScrapComponent implements OnInit {
     })
   }
   //filter 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  applyFilter() {
+    const filterValue = this.searchValue;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
