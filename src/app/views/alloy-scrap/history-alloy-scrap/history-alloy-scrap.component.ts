@@ -18,32 +18,6 @@ export interface historyData {
 })
 export class HistoryAlloyScrapComponent implements OnInit {
   loadingRouteConfig: boolean = false
-  data = [
-    {
-      "Batch_ID": 1,
-      "username": "Administrator",
-      "date_time": "05-10-2021 05: 54: 41",
-      "filename": "2021090800_ZLEZ_0200.xlsx"
-    },
-    {
-      "Batch_ID": 2,
-      "username": "Administrator",
-      "date_time": "05-10-2021 05: 54: 29",
-      "filename": "2021090800_Z133_0300.xlsx"
-    },
-    {
-      "Batch_ID": 3,
-      "username": "Administrator",
-      "date_time": "05-10-2021 05: 52: 31",
-      "filename": "2021090800_ZSCZ_0200.xlsx"
-    },
-    {
-      "Batch_ID": 4,
-      "username": "Administrator",
-      "date_time": "05-10-2021 05: 40: 48",
-      "filename": "2021090800_Z133_0300.xlsx"
-    }
-  ]
   displayedColumns: string[] = ['Batch_ID', 'filename', 'username', 'date_time'];
   dataSource: any;
 
@@ -76,6 +50,9 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //filter 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
