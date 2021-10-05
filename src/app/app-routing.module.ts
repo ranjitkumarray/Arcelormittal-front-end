@@ -5,9 +5,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./views/my-task/my-task.module').then(m => m.MyTaskModule)
+    redirectTo: 'alloy-scrap/upload',
+    pathMatch: "full"
   },
-  { path: 'my-offer', loadChildren: () => import('./views/my-offer/my-offer.module').then(m => m.MyOfferModule) },
+  { path: 'alloy-scrap', loadChildren: () => import('./views/alloy-scrap/alloy-scrap.module').then(m => m.AlloyScrapModule) },
+  { path: 'smb', loadChildren: () => import('./views/smb/smb.module').then(m => m.SmbModule) },
+  { path: 'smb-mini-bar', loadChildren: () => import('./views/smb-mini-bar/smb-mini-bar.module').then(m => m.SmbMiniBarModule) },
   {
     path: '**',
     component: PageNotFoundComponent

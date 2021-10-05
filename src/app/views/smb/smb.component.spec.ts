@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadTaskFileComponent } from './upload-task-file.component';
+import { SmbComponent } from './smb.component';
 
-describe('UploadTaskFileComponent', () => {
-  let component: UploadTaskFileComponent;
-  let fixture: ComponentFixture<UploadTaskFileComponent>;
+describe('SmbComponent', () => {
+  let component: SmbComponent;
+  let fixture: ComponentFixture<SmbComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UploadTaskFileComponent ]
+      declarations: [ SmbComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadTaskFileComponent);
+    fixture = TestBed.createComponent(SmbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

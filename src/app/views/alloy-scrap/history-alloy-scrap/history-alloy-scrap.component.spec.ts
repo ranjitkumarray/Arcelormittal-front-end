@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomerVolumeComponent } from './customer-volume.component';
+import { HistoryAlloyScrapComponent } from './history-alloy-scrap.component';
 
-describe('CustomerVolumeComponent', () => {
-  let component: CustomerVolumeComponent;
-  let fixture: ComponentFixture<CustomerVolumeComponent>;
+describe('HistoryAlloyScrapComponent', () => {
+  let component: HistoryAlloyScrapComponent;
+  let fixture: ComponentFixture<HistoryAlloyScrapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomerVolumeComponent ]
+      declarations: [ HistoryAlloyScrapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomerVolumeComponent);
+    fixture = TestBed.createComponent(HistoryAlloyScrapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

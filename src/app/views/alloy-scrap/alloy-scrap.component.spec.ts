@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyTaskComponent } from './my-task.component';
+import { AlloyScrapComponent } from './alloy-scrap.component';
 
-describe('MyTaskComponent', () => {
-  let component: MyTaskComponent;
-  let fixture: ComponentFixture<MyTaskComponent>;
+describe('AlloyScrapComponent', () => {
+  let component: AlloyScrapComponent;
+  let fixture: ComponentFixture<AlloyScrapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyTaskComponent ]
+      declarations: [ AlloyScrapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyTaskComponent);
+    fixture = TestBed.createComponent(AlloyScrapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -14,7 +14,7 @@
     <div class="content">
         <div class="line"></div>
         <ul class="nav flex-column flex-nowrap overflow-hidden">
-            <li class="nav-item">
+            <li class="nav-item" [routerLinkActive]="['active']">
                 <div class="sub_menu_con">
                     <div class=" items nav-link collapsed text-truncate" data-toggle="collapse" data-target="#submenu1">
                         <img class="active_img" src="../../../assets/images/order.png" />
@@ -25,7 +25,7 @@
                 <div class="collapse" id="submenu1" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
                         <li class="nav-item">
-                            <div class="sub items" [routerLink]="['/offer-status']" [routerLinkActive]="['active']">
+                            <div class="sub items" [routerLink]="['/alloy-scrap/upload']" [routerLinkActive]="['active']">
                                 <span class="sub_hyphen"><i class="fa fa-file" aria-hidden="true"></i></span>
                                 Upload Files
                             </div>
@@ -63,7 +63,7 @@
                             <div class="collapse" id="smbmenu11" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -72,7 +72,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -97,7 +97,7 @@
                             <div class="collapse" id="smbmenu12" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -106,7 +106,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -131,7 +131,7 @@
                             <div class="collapse" id="smbmenu13" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -140,7 +140,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -165,7 +165,7 @@
                             <div class="collapse" id="smbmenu14" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -211,7 +211,7 @@
                             <div class="collapse" id="subminbarmenu11" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -220,7 +220,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -245,7 +245,7 @@
                             <div class="collapse" id="subminbarmenu12" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -254,7 +254,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -279,7 +279,7 @@
                             <div class="collapse" id="subminbarmenu13" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -288,7 +288,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>
@@ -313,7 +313,7 @@
                             <div class="collapse" id="subminbarmenu14" aria-expanded="false">
                                 <ul class="flex-column pl-2 nav">
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/upload-file']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -322,7 +322,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="sub items" [routerLink]="['/orders/stock']"
+                                        <div class="sub items" 
                                             [routerLinkActive]="['active']">
                                             <span class="sub_hyphen">
                                                 <i class="fa fa-history" aria-hidden="true"></i>

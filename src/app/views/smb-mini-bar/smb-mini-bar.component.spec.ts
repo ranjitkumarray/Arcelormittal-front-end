@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderStatusComponent } from './order-status.component';
+import { SmbMiniBarComponent } from './smb-mini-bar.component';
 
-describe('OrderStatusComponent', () => {
-  let component: OrderStatusComponent;
-  let fixture: ComponentFixture<OrderStatusComponent>;
+describe('SmbMiniBarComponent', () => {
+  let component: SmbMiniBarComponent;
+  let fixture: ComponentFixture<SmbMiniBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderStatusComponent ]
+      declarations: [ SmbMiniBarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderStatusComponent);
+    fixture = TestBed.createComponent(SmbMiniBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

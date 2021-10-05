@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterOptionsComponent } from './filter-options.component';
+import { UploadAlloyScrapComponent } from './upload-alloy-scrap.component';
 
-describe('FilterOptionsComponent', () => {
-  let component: FilterOptionsComponent;
-  let fixture: ComponentFixture<FilterOptionsComponent>;
+describe('UploadAlloyScrapComponent', () => {
+  let component: UploadAlloyScrapComponent;
+  let fixture: ComponentFixture<UploadAlloyScrapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterOptionsComponent ]
+      declarations: [ UploadAlloyScrapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterOptionsComponent);
+    fixture = TestBed.createComponent(UploadAlloyScrapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
