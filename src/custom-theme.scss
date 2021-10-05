@@ -53,7 +53,9 @@
 .filter {
   padding: 10px 10px;
 }
-
+.pointer{
+  cursor: pointer;
+}
 // mat-icon-stepper selected color change
 .mat-step-header .mat-step-icon-selected,
 .mat-step-header .mat-step-icon-state-done,

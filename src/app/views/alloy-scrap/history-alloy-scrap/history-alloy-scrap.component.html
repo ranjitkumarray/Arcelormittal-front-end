@@ -11,7 +11,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Search</mat-label>
                         <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter()">
-                        <mat-icon matSuffix (click)="applyFilter()">search</mat-icon>
+                        <mat-icon matSuffix (click)="applyFilter()" class="pointer">search</mat-icon>
                     </mat-form-field>
 
                 </div>

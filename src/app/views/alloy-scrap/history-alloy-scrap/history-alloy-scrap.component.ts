@@ -52,9 +52,13 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //filter 
   applyFilter() {
     const filterValue = this.searchValue;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (this.dataSource && filterValue) {
+      this.loadingRouteConfig = true
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+      this.loadingRouteConfig = false
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
     }
   }
 }
