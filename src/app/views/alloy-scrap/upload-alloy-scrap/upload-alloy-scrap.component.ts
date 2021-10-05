@@ -44,7 +44,7 @@ export interface scrapData {
   styleUrls: ['./upload-alloy-scrap.component.scss']
 })
 export class UploadAlloyScrapComponent implements OnInit {
-
+  tableData = { "data": [{ "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202110", "Amount": 9, "Customer_ID": 31503, "Internal_Grade": 3785 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202111", "Amount": 12, "Customer_ID": 78213, "Internal_Grade": 2589 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202201", "Amount": 20, "Customer_ID": 78213, "Internal_Grade": 2607 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202202", "Amount": 2, "Customer_ID": 78213, "Internal_Grade": 2632 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202203", "Amount": 12, "Customer_ID": 78213, "Internal_Grade": 3364 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202204", "Amount": 12, "Customer_ID": 78213, "Internal_Grade": 4405 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202205", "Amount": 46, "Customer_ID": 78213, "Internal_Grade": 4436 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202206", "Amount": 20, "Customer_ID": 78214, "Internal_Grade": 2606 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202207", "Amount": 65, "Customer_ID": 78214, "Internal_Grade": 2635 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202208", "Amount": 226, "Customer_ID": 78214, "Internal_Grade": 2655 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202209", "Amount": 12, "Customer_ID": 78214, "Internal_Grade": 3364 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202210", "Amount": 15, "Customer_ID": 78214, "Internal_Grade": 3436 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202211", "Amount": 15, "Customer_ID": 78214, "Internal_Grade": 3437 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202212", "Amount": 25, "Customer_ID": 78292, "Internal_Grade": 3129 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202301", "Amount": 12, "Customer_ID": 78292, "Internal_Grade": 3364 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202302", "Amount": 46, "Customer_ID": 78292, "Internal_Grade": 4436 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202303", "Amount": 226, "Customer_ID": 81162, "Internal_Grade": 2655 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202304", "Amount": 199, "Customer_ID": 81162, "Internal_Grade": 2680 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202305", "Amount": 18, "Customer_ID": 81162, "Internal_Grade": 3036 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202306", "Amount": 15, "Customer_ID": 81162, "Internal_Grade": 3437 }, { "VKORG": "0300", "COND_TYPE": "Z133", "DST_CH": "02", "DIV": "02", "Month_year": "202307", "Amount": 244, "Customer_ID": 84698, "Internal_Grade": 2625 }] }
   loading: boolean = false
   displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
   displayedColumns_billet: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'WARENEMPFAENGER_NR', 'Materialnr', 'dRUCKSPERRE'];
@@ -246,22 +246,28 @@ export class UploadAlloyScrapComponent implements OnInit {
       if (uploadDataTo === "alloy_surcharge_billet") {
         this.alloy_surcharge_billet_data = resultData
         this.alloy_surcharge_billet = new MatTableDataSource<billetData>(JSON.parse(resultData.data))
+        setTimeout(() => {
+          this.alloy_surcharge_billet.paginator = this.paginator;
+          this.alloy_surcharge_billet.sort = this.sort;
+        });
 
-        // this.alloy_surcharge_billet.paginator = this.paginator;
-        // this.alloy_surcharge_billet.sort = this.sort;
 
       }
       if (uploadDataTo === "alloy_surcharge_wire") {
         this.alloy_surcharge_wire_data = resultData
         this.alloy_surcharge_wire = new MatTableDataSource<wireData>(JSON.parse(resultData.data))
-        this.alloy_surcharge_wire.paginator = this.paginator;
-        this.alloy_surcharge_wire.sort = this.sort;
+        setTimeout(() => {
+          this.alloy_surcharge_wire.paginator = this.paginator;
+          this.alloy_surcharge_wire.sort = this.sort;
+        });
       }
       if (uploadDataTo === "scrap_surcharge_billet") {
         this.scrap_surcharge_billet_data = resultData
-        this.scrap_surcharge_billet = new MatTableDataSource<wireData>(JSON.parse(resultData.data))
-        this.scrap_surcharge_billet.paginator = this.paginator;
-        this.scrap_surcharge_billet.sort = this.sort;
+        this.scrap_surcharge_billet = new MatTableDataSource<scrapData>(JSON.parse(resultData.data))
+        setTimeout(() => {
+          this.scrap_surcharge_billet.paginator = this.paginator;
+          this.scrap_surcharge_billet.sort = this.sort;
+        });
       }
       this.apiMethod.popupMessage('success')
     }, error => {

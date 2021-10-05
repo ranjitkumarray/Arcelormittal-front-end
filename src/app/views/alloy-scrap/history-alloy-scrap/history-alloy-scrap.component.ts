@@ -40,8 +40,10 @@ export class HistoryAlloyScrapComponent implements OnInit {
       let resultData: any = result
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<historyData>(resultData)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error')
