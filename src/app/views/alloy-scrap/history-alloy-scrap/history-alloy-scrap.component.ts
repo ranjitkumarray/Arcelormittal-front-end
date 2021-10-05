@@ -39,7 +39,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
       console.log(result)
       let resultData: any = result
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<historyData>(resultData)
+      this.dataSource = new MatTableDataSource<historyData>(resultData.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
