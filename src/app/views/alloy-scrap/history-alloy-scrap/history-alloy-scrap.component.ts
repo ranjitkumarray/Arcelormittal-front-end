@@ -38,11 +38,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //getting uploaded history of alloy scrap 
   getHistory() {
     this.loadingRouteConfig = true
-    let body={
-      "offset":0,
-      "limit":4
-  }
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history+"?offset="+0+"&limit="+4).subscribe(result => {
+    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + 0 + "&limit=" + 10).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.loadingRouteConfig = false
@@ -71,6 +67,6 @@ export class HistoryAlloyScrapComponent implements OnInit {
   viewDetails(rowData: any) {
     console.log(rowData)
     var encodedString = btoa(rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID);
-    this.router.navigate(['/alloy-scrap/history/fileDetails' + encodedString])
+    this.router.navigate(['/alloy-scrap/history/fileDetails/' + encodedString])
   }
 }
