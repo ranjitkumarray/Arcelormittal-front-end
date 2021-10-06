@@ -99,6 +99,24 @@ export class UploadAlloyScrapComponent implements OnInit {
   }
   // ==================== file change event ========================
   dropFiles(ev: any): any {
+    if (this.SelectedTab === "alloy_surcharge_billet") {
+      this.selectedFiles.alloy_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "alloy_surcharge_wire") {
+      this.selectedFiles.alloy_surcharge_wire = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "scrap_surcharge_billet") {
+      this.selectedFiles.scrap_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
     ev.preventDefault();
     this.fileEv = ev
     let data: any = ev.dataTransfer.items[0]
@@ -155,6 +173,24 @@ export class UploadAlloyScrapComponent implements OnInit {
   }
 
   onSelectFile(event: any) {
+    if (this.SelectedTab === "alloy_surcharge_billet") {
+      this.selectedFiles.alloy_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "alloy_surcharge_wire") {
+      this.selectedFiles.alloy_surcharge_wire = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
+    if (this.SelectedTab === "scrap_surcharge_billet") {
+      this.selectedFiles.scrap_surcharge_billet = {
+        file: "",
+        uploadCompleted: false
+      }
+    }
     this.fileEv = event
     console.log(event.target.files)
     if (event.target.files && event.target.files[0]) {
