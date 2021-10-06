@@ -108,7 +108,7 @@ export class FilesDetailedPreviewComponent implements OnInit {
       }
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error')
+      this.apiMethod.popupMessage('error','Error while fatching file details')
     })
   }
   applyFilter(event: Event, searchFrom: any) {

@@ -28,7 +28,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
   @ViewChild(MatSort) sort: any = MatSort;
   pageLength: any = 10;
   pageOffset: any = 0;
-  totalCount: any=0;
+  totalCount: any = 0;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -42,16 +42,16 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //getting uploaded history of alloy scrap 
   getHistory() {
     this.loadingRouteConfig = true
-    let searchString:any
-    if(this.searchValue){
-      searchString=this.searchValue
-    }else{
-      searchString="all"
+    let searchString: any
+    if (this.searchValue) {
+      searchString = this.searchValue
+    } else {
+      searchString = "all"
     }
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength+"&search_string="+searchString).subscribe(result => {
+    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
-      this.totalCount=resultData.totalCount
+      this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<historyData>(resultData.data)
       setTimeout(() => {
@@ -60,7 +60,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
       })
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error')
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
     })
   }
   //page change 
@@ -73,8 +73,8 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //filter 
   applyFilter() {
     const filterValue = this.searchValue;
-    this.pageOffset=0
-    this.pageLength=10
+    this.pageOffset = 0
+    this.pageLength = 10
     this.getHistory()
   }
   viewDetails(rowData: any) {

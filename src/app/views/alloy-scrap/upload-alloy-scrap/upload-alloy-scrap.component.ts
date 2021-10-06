@@ -99,7 +99,7 @@ export class UploadAlloyScrapComponent implements OnInit {
   }
   // ==================== file change event ========================
   dropFiles(ev: any): any {
-  
+
     ev.preventDefault();
     this.fileEv = ev
     let data: any = ev.dataTransfer.items[0]
@@ -201,21 +201,21 @@ export class UploadAlloyScrapComponent implements OnInit {
   deleteFile(file: any, tabName: any) {
 
     if (this.SelectedTab === "alloy_surcharge_billet") {
-      this.alloy_surcharge_billet=''
+      this.alloy_surcharge_billet = ''
       this.selectedFiles.alloy_surcharge_billet = {
         file: "",
         uploadCompleted: false
       }
     }
     if (this.SelectedTab === "alloy_surcharge_wire") {
-      this.alloy_surcharge_wire=''
+      this.alloy_surcharge_wire = ''
       this.selectedFiles.alloy_surcharge_wire = {
         file: "",
         uploadCompleted: false
       }
     }
     if (this.SelectedTab === "scrap_surcharge_billet") {
-      this.scrap_surcharge_billet=''
+      this.scrap_surcharge_billet = ''
       this.selectedFiles.scrap_surcharge_billet = {
         file: "",
         uploadCompleted: false
@@ -272,10 +272,10 @@ export class UploadAlloyScrapComponent implements OnInit {
           this.scrap_surcharge_billet.sort = this.sort;
         });
       }
-      this.apiMethod.popupMessage('success')
+      this.apiMethod.popupMessage('success', 'File data read successfully')
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error')
+      this.apiMethod.popupMessage('error', 'Error while reading uploaded file')
     })
   }
 
@@ -337,10 +337,10 @@ export class UploadAlloyScrapComponent implements OnInit {
     this.apiMethod.post_request(urlString, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success')
+      this.apiMethod.popupMessage('success', 'File validated successfully')
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error')
+      this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
     })
 
   }
