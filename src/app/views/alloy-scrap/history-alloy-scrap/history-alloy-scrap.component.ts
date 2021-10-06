@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export interface historyData {
   "Batch_ID": number,
   "username": string,
+  "condition_type":any, 
   "date_time": string,
   "filename": any
 }
@@ -18,7 +19,7 @@ export interface historyData {
 })
 export class HistoryAlloyScrapComponent implements OnInit {
   loadingRouteConfig: boolean = false
-  displayedColumns: string[] = ['Batch_ID', 'filename', 'username', 'date_time'];
+  displayedColumns: string[] = ['Batch_ID', 'filename', 'username','condition_type', 'date_time',"action"];
   dataSource: any;
   searchValue: any
   @ViewChild(MatPaginator) paginator: any = MatPaginator;

@@ -56,6 +56,9 @@
 .pointer{
   cursor: pointer;
 }
+tr.mat-header-row{
+  height: 35px !important;
+}
 // mat-icon-stepper selected color change
 .mat-step-header .mat-step-icon-selected,
 .mat-step-header .mat-step-icon-state-done,
