@@ -9,7 +9,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./files-detailed-preview.component.scss']
 })
 export class FilesDetailedPreviewComponent implements OnInit {
-  fileName: any;
+  fileDetails: any;
+  loadingRouteConfig: boolean = false
 
   constructor(
     private Route: ActivatedRoute,
@@ -20,11 +21,28 @@ export class FilesDetailedPreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.Route.paramMap.subscribe(params => {
-      this.fileName = params.get('fileName')
+      this.fileDetails = params.get('fileDetails')
     })
-    if (this.fileName) {
-      console.log(atob(this.fileName))
+    if (this.fileDetails) {
+      console.log(atob(this.fileDetails))
+      this.getDetails()
     }
   }
-
+  getDetails() {
+    let requiredData = this.fileDetails.split('&')
+    let body = {
+      filename: requiredData[0],
+      condition_type: requiredData[1],
+      Batch_ID: requiredData[2]
+    }
+    this.loadingRouteConfig = true
+    this.apiMethod.post_request(this.apiString.get_history_file_data, body).subscribe(result => {
+      console.log(result)
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('success')
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error')
+    })
+  }
 }

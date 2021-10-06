@@ -15,4 +15,5 @@ export class CitGlobalConstantService {
     scrap_validate: string = this.baseUrl + "Alloy_scrap_validate";
 
     alloy_scrap_history: string = this.baseUrl + "alloy_surcharge_history";
+    get_history_file_data: string = this.baseUrl + "getfile_data"
 }

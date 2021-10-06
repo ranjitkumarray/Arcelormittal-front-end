@@ -19,11 +19,11 @@ const routes: Routes = [
         path: 'history',
         children: [
           {
-            path:'',
+            path: '',
             component: HistoryAlloyScrapComponent,
           },
           {
-            path: "details/:fileName",
+            path: "fileDetails/:fileDetails",
             component: FilesDetailedPreviewComponent
           }
         ]
