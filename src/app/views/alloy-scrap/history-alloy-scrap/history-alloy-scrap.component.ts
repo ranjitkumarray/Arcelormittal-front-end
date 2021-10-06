@@ -51,7 +51,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
     this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength+"&search_string="+searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
-      this.totalCount=resultData.data.length
+      this.totalCount=resultData.totalCount
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<historyData>(resultData.data)
       setTimeout(() => {
