@@ -42,7 +42,13 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //getting uploaded history of alloy scrap 
   getHistory() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength).subscribe(result => {
+    let searchString:any
+    if(this.searchValue){
+      searchString=this.searchValue
+    }else{
+      searchString="all"
+    }
+    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength+"&search_string="+searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount=resultData.data.length
@@ -67,14 +73,9 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //filter 
   applyFilter() {
     const filterValue = this.searchValue;
-    if (this.dataSource && filterValue) {
-      this.loadingRouteConfig = true
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-      this.loadingRouteConfig = false
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
+    this.pageOffset=0
+    this.pageLength=10
+    this.getHistory()
   }
   viewDetails(rowData: any) {
     console.log(rowData)
