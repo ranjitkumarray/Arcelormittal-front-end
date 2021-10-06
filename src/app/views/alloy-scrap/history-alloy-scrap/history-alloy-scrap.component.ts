@@ -4,11 +4,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 export interface historyData {
   "Batch_ID": number,
   "username": string,
-  "condition_type":any, 
+  "condition_type": any,
   "date_time": string,
   "filename": any
 }
@@ -19,7 +20,7 @@ export interface historyData {
 })
 export class HistoryAlloyScrapComponent implements OnInit {
   loadingRouteConfig: boolean = false
-  displayedColumns: string[] = ['Batch_ID', 'filename', 'username','condition_type', 'date_time',"action"];
+  displayedColumns: string[] = ['Batch_ID', 'filename', 'username', 'condition_type', 'date_time', "action"];
   dataSource: any;
   searchValue: any
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
@@ -27,6 +28,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
+    private router: Router
   ) {
   }
 
@@ -61,5 +63,10 @@ export class HistoryAlloyScrapComponent implements OnInit {
         this.dataSource.paginator.firstPage();
       }
     }
+  }
+  viewDetails(rowData: any) {
+    console.log(rowData)
+    var encodedString = btoa(rowData.filename);
+    this.router.navigate(['/alloy-scrap/history/' + encodedString])
   }
 }
