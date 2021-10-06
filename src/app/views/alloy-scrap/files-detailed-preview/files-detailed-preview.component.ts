@@ -36,9 +36,11 @@ export class FilesDetailedPreviewComponent implements OnInit {
       Batch_ID: requiredData[2]
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.get_history_file_data, body).subscribe(result => {
+    this.apiMethod.get_request_Param(this.apiString.get_history_file_data, body).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
+      let tablename = Object.keys(result)
+      console.log(tablename)
       this.apiMethod.popupMessage('success')
     }, error => {
       this.loadingRouteConfig = false

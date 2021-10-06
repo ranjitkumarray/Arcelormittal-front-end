@@ -24,6 +24,11 @@ export class ApiService {
     patch_request(url: any, param: any) {
         return this.https.patch(url, param)
     }
+    get_request_Param(url: any, param: any) {
+        return this.https.get(url, {
+          params: param
+        })
+      }
     popupMessage(statusType: any) {
         if (statusType === 'success') {
             this._snackBar.open('Files are uploaded successfully', "", {
