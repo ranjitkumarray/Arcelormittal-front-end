@@ -35,7 +35,6 @@ export class FilesDetailedPreviewComponent implements OnInit {
       condition_type: requiredData[1],
       Batch_ID: requiredData[2]
     }
-    console.log(body, requiredData)
     this.loadingRouteConfig = true
     this.apiMethod.post_request(this.apiString.get_history_file_data, body).subscribe(result => {
       console.log(result)

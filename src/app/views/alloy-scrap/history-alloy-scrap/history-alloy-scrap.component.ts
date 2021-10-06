@@ -3,7 +3,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 
 export interface historyData {
@@ -23,8 +23,12 @@ export class HistoryAlloyScrapComponent implements OnInit {
   displayedColumns: string[] = ['Batch_ID', 'filename', 'username', 'condition_type', 'date_time', "action"];
   dataSource: any;
   searchValue: any
+  pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
+  pageLength: any = 10;
+  pageOffset: any = 0;
+  totalCount: any=0;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -38,9 +42,10 @@ export class HistoryAlloyScrapComponent implements OnInit {
   //getting uploaded history of alloy scrap 
   getHistory() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + 0 + "&limit=" + 10).subscribe(result => {
+    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength).subscribe(result => {
       console.log(result)
       let resultData: any = result
+      this.totalCount=resultData.data.length
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<historyData>(resultData.data)
       setTimeout(() => {
@@ -51,6 +56,13 @@ export class HistoryAlloyScrapComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error')
     })
+  }
+  //page change 
+  pageChangeCall(event: any) {
+    console.log(event)
+    this.pageOffset = event.pageIndex
+    this.pageLength = event.pageSize
+    this.getHistory()
   }
   //filter 
   applyFilter() {
@@ -66,10 +78,11 @@ export class HistoryAlloyScrapComponent implements OnInit {
   }
   viewDetails(rowData: any) {
     console.log(rowData)
-    let string=(rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID)
+    let string = (rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID)
     console.log(string)
     var encodedString = btoa(string);
-    console.log(string,encodedString)
+    console.log(string, encodedString)
     this.router.navigate(['/alloy-scrap/history/fileDetails/' + encodedString])
   }
+
 }
