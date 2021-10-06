@@ -29,7 +29,7 @@ export class FilesDetailedPreviewComponent implements OnInit {
     }
   }
   getDetails() {
-    let requiredData = this.fileDetails.split('&')
+    let requiredData = atob(this.fileDetails).split('&')
     let body = {
       filename: requiredData[0],
       condition_type: requiredData[1],

@@ -66,7 +66,10 @@ export class HistoryAlloyScrapComponent implements OnInit {
   }
   viewDetails(rowData: any) {
     console.log(rowData)
-    var encodedString = btoa(rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID);
+    let string=(rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID)
+    console.log(string)
+    var encodedString = btoa(string);
+    console.log(string,encodedString)
     this.router.navigate(['/alloy-scrap/history/fileDetails/' + encodedString])
   }
 }
