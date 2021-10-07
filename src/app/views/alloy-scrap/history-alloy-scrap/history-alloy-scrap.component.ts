@@ -5,14 +5,9 @@ import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { historyData } from '../alloy-scrap-interface.service';
 
-export interface historyData {
-  "Batch_ID": number,
-  "username": string,
-  "condition_type": any,
-  "date_time": string,
-  "filename": any
-}
+
 @Component({
   selector: 'app-history-alloy-scrap',
   templateUrl: './history-alloy-scrap.component.html',
