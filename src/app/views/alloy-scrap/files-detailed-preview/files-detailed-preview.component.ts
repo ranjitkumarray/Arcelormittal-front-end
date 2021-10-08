@@ -6,37 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { Location } from "@angular/common";
-export interface wireData {
-  'VKORG': any
-  'COND_TYPE': any
-  'DST_CH': any
-  'DIV': any
-  'Month_year': any
-  'Amount': any
-  'Customer_ID': any
-  'Internal_Grade': any
-}
+import { wireData, billetData, scrapData } from '../alloy-scrap-interface.service';
 
-export interface billetData {
-  'VKORG': any
-  'COND_TYPE': any
-  'DST_CH': any
-  'DIV': any
-  'Month_year': any
-  'Amount': any
-  'WARENEMPFAENGER_NR': any
-  'Materialnr': any
-  'dRUCKSPERRE': any
-}
-export interface scrapData {
-  'VKORG': any
-  'COND_TYPE': any
-  'DST_CH': any
-  'DIV': any
-  'Month_year': any
-  'Model': any
-  'Amount': any
-}
 @Component({
   selector: 'app-files-detailed-preview',
   templateUrl: './files-detailed-preview.component.html',

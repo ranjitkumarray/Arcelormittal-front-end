@@ -30,3 +30,10 @@ export interface wireData {
     'Model': any
     'Amount': any
   }
+  export interface historyData {
+    "Batch_ID": number,
+    "username": string,
+    "condition_type": any,
+    "date_time": string,
+    "filename": any
+  }
