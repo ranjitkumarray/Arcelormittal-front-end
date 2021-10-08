@@ -17,7 +17,7 @@ export interface wireData {
     'Month_year': any
     'Amount': any
     'WARENEMPFAENGER_NR': any
-    'Materialnr': any
+    'SEL_NR_MELDUNG': any
     'dRUCKSPERRE': any
   }
   
