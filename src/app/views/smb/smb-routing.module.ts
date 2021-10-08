@@ -1,8 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SidebarComponent } from 'src/app/common-use/sidebar/sidebar.component';
+import { AddBasePriceAdditionComponent } from './base-price/add-base-price-addition/add-base-price-addition.component';
+import { BasePriceAdditionListComponent } from './base-price/base-price-addition-list/base-price-addition-list.component';
+import { BulkUploadBasePriceAdditionComponent } from './base-price/bulk-upload-base-price-addition/bulk-upload-base-price-addition.component';
+import { EditBasePriceAdditionComponent } from './base-price/edit-base-price-addition/edit-base-price-addition.component';
+import { ViewBasePriceAdditionComponent } from './base-price/view-base-price-addition/view-base-price-addition.component';
 import { SmbComponent } from './smb.component';
 
-const routes: Routes = [{ path: '', component: SmbComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    component: SidebarComponent,
+    children: [
+      {
+        path: "base-price",
+        children: [
+          {
+            path: "list",
+            component: BasePriceAdditionListComponent
+          },
+          {
+            path: "add",
+            component: AddBasePriceAdditionComponent
+          },
+          {
+            path: 'edit',
+            component: EditBasePriceAdditionComponent
+          },
+          {
+            path: "bulk-upload",
+            component: BulkUploadBasePriceAdditionComponent
+          },
+          {
+            path: "view",
+            component: ViewBasePriceAdditionComponent
+          }
+        ]
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
