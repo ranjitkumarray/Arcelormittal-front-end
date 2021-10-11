@@ -29,6 +29,11 @@ export class ApiService {
             params: param
         })
     }
+    delete_request_Param(url: any, param: any) {
+        return this.https.delete(url, {
+            params: param
+        })
+    }
     popupMessage(statusType: any, message: any) {
         if (statusType === 'success') {
             this._snackBar.open(message, "", {

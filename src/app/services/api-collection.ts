@@ -17,5 +17,7 @@ export class CitGlobalConstantService {
     alloy_scrap_history: string = this.baseUrl + "alloy_surcharge_history";
     get_history_file_data: string = this.baseUrl + "getfile_data"
 
-    base_price_data: string = this.baseUrl + "Base_Price_Data"
+    base_price_data: string = this.baseUrl + "Base_Price_Data";
+    get_record_base_price: string = this.baseUrl + "get_record_baseprice"
+    delete_record: string = this.baseUrl + "delete_record"
 }

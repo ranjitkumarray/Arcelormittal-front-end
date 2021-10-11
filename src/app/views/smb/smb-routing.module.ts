@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from 'src/app/common-use/sidebar/sidebar.component';
-import { AddBasePriceAdditionComponent } from './base-price/add-base-price-addition/add-base-price-addition.component';
 import { BasePriceAdditionListComponent } from './base-price/base-price-addition-list/base-price-addition-list.component';
 import { BulkUploadBasePriceAdditionComponent } from './base-price/bulk-upload-base-price-addition/bulk-upload-base-price-addition.component';
 import { EditBasePriceAdditionComponent } from './base-price/edit-base-price-addition/edit-base-price-addition.component';
-import { ViewBasePriceAdditionComponent } from './base-price/view-base-price-addition/view-base-price-addition.component';
-import { SmbComponent } from './smb.component';
 
 const routes: Routes = [
   {
@@ -20,10 +17,7 @@ const routes: Routes = [
             path: "list",
             component: BasePriceAdditionListComponent
           },
-          {
-            path: "add",
-            component: AddBasePriceAdditionComponent
-          },
+          
           {
             path: 'edit',
             component: EditBasePriceAdditionComponent
@@ -32,10 +26,7 @@ const routes: Routes = [
             path: "bulk-upload",
             component: BulkUploadBasePriceAdditionComponent
           },
-          {
-            path: "view",
-            component: ViewBasePriceAdditionComponent
-          }
+         
         ]
       }
     ]

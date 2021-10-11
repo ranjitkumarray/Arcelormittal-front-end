@@ -7,6 +7,9 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { basePriceAddtionData } from '../../smb-interface.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { WarnPopupComponent } from '../warn-popup/warn-popup.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -14,6 +17,44 @@ import { basePriceAddtionData } from '../../smb-interface.service';
 })
 export class BasePriceAdditionListComponent implements OnInit {
   loadingRouteConfig: boolean = false
+  lastdata: any = [
+    {
+      Amount: "0",
+      BusinessCode: "*",
+      Currency: "'EUR'",
+      Document_Item_Currency: "*",
+      Market_Country: "IE",
+      Product_Division: "02",
+      Product_Level_02: "FL",
+      Username: "Administrator",
+      date_time: "10/10/2021 15:41:25",
+      id: 665,
+    },
+    {
+      Amount: "0",
+      BusinessCode: "*",
+      Currency: "'EUR'",
+      Document_Item_Currency: "*",
+      Market_Country: "IE",
+      Product_Division: "02",
+      Product_Level_02: "FL",
+      Username: "Administrator",
+      date_time: "10/10/2021 15:41:25",
+      id: 665,
+    },
+    {
+      Amount: "0",
+      BusinessCode: "*",
+      Currency: "'EUR'",
+      Document_Item_Currency: "*",
+      Market_Country: "IE",
+      Product_Division: "02",
+      Product_Level_02: "FL",
+      Username: "Administrator",
+      date_time: "10/10/2021 15:41:25",
+      id: 665,
+    }
+  ]
   displayedColumns: string[] = [
     'BusinessCode',
     'Market_Country',
@@ -34,7 +75,9 @@ export class BasePriceAdditionListComponent implements OnInit {
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    private popup: MatDialog
   ) {
   }
 
@@ -50,7 +93,7 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-       
+    // this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.lastdata)
     this.apiMethod.get_request(this.apiString.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -89,6 +132,21 @@ export class BasePriceAdditionListComponent implements OnInit {
     }
     if (viewOn === 'delete') {
       // this.router.navigate(['/smb/base-price/add'])
+      const dialogRef = this.popup.open(WarnPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            id: rowData.id,
+            url: this.apiString.get_record_base_price + "?id=" + rowData.id,
+            type: 'delete'
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The Delete dialog was closed', result);
+
+      })
 
     }
     console.log(rowData)

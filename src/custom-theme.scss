@@ -53,10 +53,10 @@
 .filter {
   padding: 10px 10px;
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
-tr.mat-header-row{
+tr.mat-header-row {
   height: 35px !important;
 }
 // mat-icon-stepper selected color change
@@ -110,10 +110,19 @@ tr.mat-header-row{
   color: #f05b31 !important;
 }
 
-.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary1{
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary1 {
   border-radius: 0px;
+  min-width: 100px;
 }
-tr.mat-row, tr.mat-footer-row{
+.mat-stroked-button:not(.mat-button-disabled) {
+  border-radius: 0px;
+  min-width: 100px;
+}
+tr.mat-row,
+tr.mat-footer-row {
   height: auto !important;
 }
 .demo-table {
