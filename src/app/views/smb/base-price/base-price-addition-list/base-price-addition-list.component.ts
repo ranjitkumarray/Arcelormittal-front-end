@@ -15,7 +15,7 @@ import { basePriceAddtionData } from '../../smb-interface.service';
 export class BasePriceAdditionListComponent implements OnInit {
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = [
-    'id',
+    'BusinessCode',
     'Market_Country',
     'Product_Division',
     'Product_Level_02',
