@@ -113,3 +113,6 @@ tr.mat-header-row{
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary1{
   border-radius: 0px;
 }
+tr.mat-row, tr.mat-footer-row{
+  height: auto !important;
+}
