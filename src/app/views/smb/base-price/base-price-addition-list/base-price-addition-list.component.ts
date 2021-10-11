@@ -14,17 +14,8 @@ import { basePriceAddtionData } from '../../smb-interface.service';
 })
 export class BasePriceAdditionListComponent implements OnInit {
   loadingRouteConfig: boolean = false
-  dummyData: any = [{
-    "Amount": "5",
-    "BusinessCode": "*",
-    "Currency": "'EUR'",
-    "Document_Item_Currency": "*",
-    "Market_Country": "AT",
-    "Product_Division": "01",
-    "Product_Level_02": "2"
-  }]
   displayedColumns: string[] = [
-    'BusinessCode',
+    'id',
     'Market_Country',
     'Product_Division',
     'Product_Level_02',
@@ -59,18 +50,17 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    // this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.dummyData)
-    setTimeout(() => {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    })
+       
     this.apiMethod.get_request(this.apiString.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<basePriceAddtionData>(resultData.data)
-
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching history')
