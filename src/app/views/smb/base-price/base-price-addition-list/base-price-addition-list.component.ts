@@ -59,17 +59,17 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.dummyData)
+    // this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.dummyData)
     setTimeout(() => {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request(this.apiString.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
-      // this.dataSource = new MatTableDataSource<basePriceAddtionData>(resultData.data)
+      this.dataSource = new MatTableDataSource<basePriceAddtionData>(resultData.data)
 
     }, error => {
       this.loadingRouteConfig = false
