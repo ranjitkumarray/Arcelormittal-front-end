@@ -73,18 +73,19 @@ table.mat-table {
     thead {
         background-color: $tableHeadBg;
         th {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: pre-wrap;
+            // text-overflow: ellipsis;
+            // overflow: hidden;
+            // white-space: pre-wrap;
             padding: 5px;
             font-size: 0.875rem;
             text-align: center;
             color: $tableHeadColor;
             font-family: "semi-bold";
-            word-break: break-all;
-            word-break: break-word;
+            // word-break: break-all;
+            // word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06);
             border-left: 1px solid rgba(0, 0, 0, 0.06);
+            width: 150px;
         }
     }
     tbody {
