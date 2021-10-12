@@ -10,6 +10,7 @@ import { basePriceAddtionData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WarnPopupComponent } from '../warn-popup/warn-popup.component';
+import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit-base-price-addition.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -93,7 +94,7 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    // this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.lastdata)
+    this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.lastdata)
     this.apiMethod.get_request(this.apiString.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -125,13 +126,25 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
   basePriceClick(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      this.router.navigate(['/smb/base-price/edit'])
+      // this.router.navigate(['/smb/base-price/edit'])
+      const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            id: rowData.id,
+            url: this.apiString.get_record_base_price + "?id=" + rowData.id,
+            type: 'delete'
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The Delete dialog was closed', result);
+        this.getBasePriceAddition()
+      })
     }
-    if (viewOn === 'view') {
-      this.router.navigate(['/smb/base-price/view'])
-    }
+
     if (viewOn === 'delete') {
-      // this.router.navigate(['/smb/base-price/add'])
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
@@ -145,7 +158,7 @@ export class BasePriceAdditionListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-
+        this.getBasePriceAddition()
       })
 
     }
@@ -155,5 +168,4 @@ export class BasePriceAdditionListComponent implements OnInit {
     var encodedString = btoa(string);
     console.log(string, encodedString)
   }
-
 }
