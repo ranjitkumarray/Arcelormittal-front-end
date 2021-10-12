@@ -42,13 +42,13 @@ export class EditBasePriceAdditionComponent implements OnInit {
       this.loadingRouteConfig = false
       let resultData: any = result
       this.editBasePriceAddition.patchValue({
-        Amount: resultData.record[0].Amount,
-        BusinessCode: resultData.record[0].BusinessCode,
-        Currency: resultData.record[0].Currency,
-        Document_Item_Currency: resultData.record[0].Document_Item_Currency,
-        Market_Country: resultData.record[0].Market_Country,
-        Product_Division: resultData.record[0].Product_Division,
-        Product_Level_02: resultData.record[0].Product_Level_02
+        Amount: resultData.record.Amount,
+        BusinessCode: resultData.record.BusinessCode,
+        Currency: resultData.record.Currency,
+        Document_Item_Currency: resultData.record.Document_Item_Currency,
+        Market_Country: resultData.record.Market_Country,
+        Product_Division: resultData.record.Product_Division,
+        Product_Level_02: resultData.record.Product_Level_02
       })
     }, error => {
       this.loadingRouteConfig = false
