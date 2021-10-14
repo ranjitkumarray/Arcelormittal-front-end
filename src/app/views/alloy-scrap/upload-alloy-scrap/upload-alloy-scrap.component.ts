@@ -209,10 +209,11 @@ export class UploadAlloyScrapComponent implements OnInit {
       if (uploadDataTo === "alloy_surcharge_billet") {
         this.alloy_surcharge_billet_data = resultData
         this.alloy_surcharge_billet = new MatTableDataSource<billetData>(JSON.parse(resultData.data))
+       
         setTimeout(() => {
           this.alloy_surcharge_billet.paginator = this.paginator;
           this.alloy_surcharge_billet.sort = this.sort;
-        });
+        },3000);
       } else if (uploadDataTo === "alloy_surcharge_wire") {
         this.alloy_surcharge_wire_data = resultData
         this.alloy_surcharge_wire = new MatTableDataSource<wireData>(JSON.parse(resultData.data))
