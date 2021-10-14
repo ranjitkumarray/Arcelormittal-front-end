@@ -16,7 +16,14 @@ import { Route, Router } from '@angular/router';
 export class BulkUploadBasePriceAdditionComponent implements OnInit {
 
   loading: boolean = false
-  uploadBasePriceAddition: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
+  uploadBasePriceAddition: string[] = [
+    'BusinessCode',
+    'Market_Country',
+    'Product_Division',
+    'Product_Level_02',
+    'Amount',
+    'Currency'
+  ];
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
   tab: any;
