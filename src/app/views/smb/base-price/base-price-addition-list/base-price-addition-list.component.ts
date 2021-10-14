@@ -70,7 +70,7 @@ export class BasePriceAdditionListComponent implements OnInit {
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
-  pageLength: any = 10;
+  pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
   constructor(
@@ -121,7 +121,7 @@ export class BasePriceAdditionListComponent implements OnInit {
   applyFilter() {
     const filterValue = this.searchValue;
     this.pageOffset = 0
-    this.pageLength = 10
+    this.pageLength = 500
     this.getBasePriceAddition()
   }
   basePriceClick(rowData: any, viewOn: any) {
