@@ -168,4 +168,7 @@ export class BasePriceAdditionListComponent implements OnInit {
     var encodedString = btoa(string);
     console.log(string, encodedString)
   }
+  downloadBasePriceAddition(){
+    window.open(this.apiString.base_price_download,"_blank")
+  }
 }

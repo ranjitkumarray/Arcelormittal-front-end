@@ -19,9 +19,10 @@ export class CitGlobalConstantService {
 
     //base price addition 
     base_price_data: string = this.baseUrl + "Base_Price_Data";
-    get_record_base_price: string = this.baseUrl + "get_record_baseprice"
-    delete_record: string = this.baseUrl + "delete_record_baseprice"
-    base_price_upload: string = this.baseUrl + "Base_Price_Upload"
+    get_record_base_price: string = this.baseUrl + "get_record_baseprice";
+    delete_record: string = this.baseUrl + "delete_record_baseprice";
+    base_price_upload: string = this.baseUrl + "Base_Price_Upload";
     base_price_validate: string = this.baseUrl + "Base_Price_validate";
-    update_record_base_price: string = this.baseUrl + "update_record_baseprice"
+    update_record_base_price: string = this.baseUrl + "update_record_baseprice";
+    base_price_download: string = this.baseUrl + "Base_price_download";
 }
