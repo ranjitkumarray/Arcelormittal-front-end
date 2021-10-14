@@ -7,7 +7,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { basePriceAddtionData } from '../../smb-interface.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Location } from "@angular/common";
+
 @Component({
   selector: 'app-bulk-upload-base-price-addition',
   templateUrl: './bulk-upload-base-price-addition.component.html',
@@ -41,7 +43,8 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
   }
 
@@ -181,5 +184,8 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
     })
+  }
+  back() {
+    this.location.back()
   }
 }

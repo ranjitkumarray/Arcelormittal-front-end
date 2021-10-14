@@ -17,7 +17,17 @@ export class UploadAlloyScrapComponent implements OnInit {
   loading: boolean = false
   displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
   displayedColumns_billet: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'WARENEMPFAENGER_NR', 'SEL_NR_MELDUNG', 'dRUCKSPERRE'];
-  displayedColumns_scrap: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Model', 'Amount']
+  displayedColumns_scrap: string[] = [
+    'VKORG',
+    'COND_TYPE',
+    'DST_CH',
+    'DIV',
+    'Month_year',
+    'Model',
+    'Amount',
+    "Monthly_Deviation",
+    "Product"]
+
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
   tab: any;
@@ -209,11 +219,11 @@ export class UploadAlloyScrapComponent implements OnInit {
       if (uploadDataTo === "alloy_surcharge_billet") {
         this.alloy_surcharge_billet_data = resultData
         this.alloy_surcharge_billet = new MatTableDataSource<billetData>(JSON.parse(resultData.data))
-       
+
         setTimeout(() => {
           this.alloy_surcharge_billet.paginator = this.paginator;
           this.alloy_surcharge_billet.sort = this.sort;
-        },3000);
+        }, 3000);
       } else if (uploadDataTo === "alloy_surcharge_wire") {
         this.alloy_surcharge_wire_data = resultData
         this.alloy_surcharge_wire = new MatTableDataSource<wireData>(JSON.parse(resultData.data))

@@ -18,7 +18,16 @@ export class FilesDetailedPreviewComponent implements OnInit {
   loadingRouteConfig: boolean = false
   displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
   displayedColumns_billet: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'WARENEMPFAENGER_NR', 'Materialnr', 'dRUCKSPERRE'];
-  displayedColumns_scrap: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Model', 'Amount']
+  displayedColumns_scrap: string[] = [
+    'VKORG',
+    'COND_TYPE',
+    'DST_CH',
+    'DIV',
+    'Month_year',
+    'Model',
+    'Amount',
+    "Monthly_Deviation",
+    "Product"]
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
   alloy_surcharge_billet: any;
@@ -29,7 +38,7 @@ export class FilesDetailedPreviewComponent implements OnInit {
     private router: Router,
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private location:Location
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -52,25 +61,25 @@ export class FilesDetailedPreviewComponent implements OnInit {
     this.apiMethod.get_request_Param(this.apiString.get_history_file_data, body).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
-      let resultData:any=result
+      let resultData: any = result
       let tablename = Object.keys(result)
       console.log(tablename)
-      if(tablename[0]==='table_wire'){
+      if (tablename[0] === 'table_wire') {
         this.alloy_surcharge_wire = new MatTableDataSource<wireData>((resultData.table_wire))
         setTimeout(() => {
           this.alloy_surcharge_wire.paginator = this.paginator;
           this.alloy_surcharge_wire.sort = this.sort;
         });
-        
+
       }
-      if(tablename[0]==='table_billet'){
+      if (tablename[0] === 'table_billet') {
         this.alloy_surcharge_billet = new MatTableDataSource<billetData>((resultData.table_billet))
         setTimeout(() => {
           this.alloy_surcharge_billet.paginator = this.paginator;
           this.alloy_surcharge_billet.sort = this.sort;
         });
       }
-      if(tablename[0]==='table_scrap'){
+      if (tablename[0] === 'table_scrap') {
         this.scrap_surcharge_billet = new MatTableDataSource<scrapData>((resultData.table_scrap))
         setTimeout(() => {
           this.scrap_surcharge_billet.paginator = this.paginator;
@@ -79,7 +88,7 @@ export class FilesDetailedPreviewComponent implements OnInit {
       }
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error','Error while fatching file details')
+      this.apiMethod.popupMessage('error', 'Error while fatching file details')
     })
   }
   applyFilter(event: Event, searchFrom: any) {
@@ -106,7 +115,7 @@ export class FilesDetailedPreviewComponent implements OnInit {
       }
     }
   }
-  back(){
+  back() {
     this.location.back()
   }
 }
