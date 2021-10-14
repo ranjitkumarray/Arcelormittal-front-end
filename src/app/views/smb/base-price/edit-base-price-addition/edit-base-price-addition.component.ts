@@ -30,7 +30,8 @@ export class EditBasePriceAdditionComponent implements OnInit {
       Document_Item_Currency: [''],
       Market_Country: [''],
       Product_Division: [''],
-      Product_Level_02: ['']
+      Product_Level_02: [''],
+      id_value: ['']
     })
     this.patchValue()
   }
@@ -48,11 +49,13 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Market_Country: resultData.record[0].Market_Country,
         Product_Division: resultData.record[0].Product_Division,
-        Product_Level_02: resultData.record[0].Product_Level_02
+        Product_Level_02: resultData.record[0].Product_Level_02,
+        id_value: this.data.id
       })
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching bace price addition')
+      this.closeModel()
     })
 
   }
@@ -62,6 +65,17 @@ export class EditBasePriceAdditionComponent implements OnInit {
   }
   editRecord() {
     console.group(this.editBasePriceAddition.value)
-    // this.apiMethod.put_request
+    this.loadingRouteConfig = true
+    this.apiMethod.post_request(this.apiString.update_record_base_price, this.editBasePriceAddition.value).subscribe(result => {
+      console.log(result)
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('success', ' Record successfully updated')
+      this.closeModel()
+    }, error => {
+      console.log(error)
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
+      // this.closeModel()
+    })
   }
 }

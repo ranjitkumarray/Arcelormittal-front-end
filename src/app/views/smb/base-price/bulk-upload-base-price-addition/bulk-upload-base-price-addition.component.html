@@ -1,1 +1,141 @@
-<p>bulk-upload-base-price-addition works!</p>
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
+<mat-card>
+    <!-- ========================file upload start here==========================  -->
+    <div>
+        <div class="row bg-w">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 col-12">
+                <div class="mtb-10">
+                    <div class="height-100">
+                        <div id="drag_zone" class="file-upload-wrapper" (drop)="dropFiles($event)"
+                            (dragover)='dragOverHandler($event)'>
+                            <div class="pointCenter">
+                                <div class="card-drag">
+                                    <span class="header">
+                                        you can drag & drop your file here .. <br>
+                                        OR
+                                    </span>
+                                </div>
+                                <div>
+                                    <button type="button" color="primary" mat-raised-button
+                                        [disabled]="selectedFiles.alloy_surcharge_wire.file!=''"
+                                        (click)="fileInput2.click()">
+                                        Choose file
+                                    </button>
+                                    <input hidden type='file' (change)="onSelectFile($event)" #fileInput2 id="file"
+                                        accept=".xls, .xlsx">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <mat-list>
+                                <mat-list-item *ngIf="selectedFiles.alloy_surcharge_wire.uploadCompleted">
+                                    <mat-icon mat-list-icon>note</mat-icon>
+                                    <div mat-line>{{selectedFiles.alloy_surcharge_wire.file?.fileName}}</div>
+
+                                    <div>
+                                        <button mat-icon-button color="primary" (click)="uploadFiles()">
+                                            <mat-icon>upload</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="warn"
+                                            (click)="deleteFile()">
+                                            <mat-icon>delete_forever</mat-icon>
+                                        </button>
+                                    </div>
+                                    <mat-divider></mat-divider>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========================file upload end ========================= -->
+    <div class="row" *ngIf="alloyBasePriceAddition && (selectedFiles.alloyBasePriceAddition.file)">
+        <!-- <div class="row"> -->
+        <div class="col-6">
+            <div class="text-left mt-10">
+                <button type="button" color="primary" mat-raised-button
+                    (click)="validateDataForm()">
+                    Validate Alloy Surcharge Wire
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="text-right mt-10">
+                <mat-form-field appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" #input>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="alloyBasePriceAddition && (selectedFiles.alloyBasePriceAddition.file)">
+        <div class="col-12">
+            <div class="my_offer_table_container">
+                <div class="text-center h-100">
+                    <div class="table-outer-container offer_table_container position-relative h-100">
+                        <div class="table-inner-container h-100">
+                            <table mat-table [dataSource]="alloyBasePriceAddition" class="custom_table order_table"
+                                matSort>
+
+                                <ng-container matColumnDef="VKORG">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> VKORG</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.VKORG}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="COND_TYPE">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> COND_TYPE</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.COND_TYPE}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="DST_CH">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> DST_CH </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.DST_CH}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="DIV">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> DIV</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.DIV}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Month_year">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Month_year</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Amount">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.Amount }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Customer_ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer_ID </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.Customer_ID}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Internal_Grade">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Internal_Grade </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.Internal_Grade}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="uploadBasePriceAddition"></tr>
+                                <tr mat-row *matRowDef="let row; columns: uploadBasePriceAddition;"></tr>
+
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[10, 30, 50, 100]" aria-label="Select page of users">
+                            </mat-paginator>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
