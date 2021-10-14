@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { basePriceAddtionData } from '../../smb-interface.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-bulk-upload-base-price-addition',
   templateUrl: './bulk-upload-base-price-addition.component.html',
@@ -22,7 +23,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
   table_data: any;
   data: any = { "inputaction": '' };
   alloyBasePriceAddition: any;
- 
+
   selectedFiles: any = { "alloyBasePriceAddition": { file: '', uploadCompleted: false } };
   loadingRouteConfig: boolean = false
   fileEv: any;
@@ -33,6 +34,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private _snackBar: MatSnackBar,
+    private router: Router
   ) {
   }
 
@@ -73,10 +75,10 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
           selectedFile: file,
         }
       }
-        this.selectedFiles.alloyBasePriceAddition = {
-          file: obj,
-          uploadCompleted: true
-       
+      this.selectedFiles.alloyBasePriceAddition = {
+        file: obj,
+        uploadCompleted: true
+
       }
     }
   }
@@ -100,9 +102,9 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
           fileName: file.name,
           selectedFile: file
         }
-          this.selectedFiles.alloyBasePriceAddition = {
-            file: obj,
-            uploadCompleted: true
+        this.selectedFiles.alloyBasePriceAddition = {
+          file: obj,
+          uploadCompleted: true
         }
         // this.selectedFiles.push(obj);
         reader.onload = (event: any) => {
@@ -117,11 +119,11 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
 
   deleteFile() {
 
-      this.alloyBasePriceAddition = ''
-      this.selectedFiles.alloyBasePriceAddition = {
-        file: "",
-        uploadCompleted: false
-      }
+    this.alloyBasePriceAddition = ''
+    this.selectedFiles.alloyBasePriceAddition = {
+      file: "",
+      uploadCompleted: false
+    }
     console.log(this.fileEv, "FILE EV ")
     // this.fileEv.target.value = "";
   }
@@ -129,7 +131,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
     const formData = new FormData();
     formData.append("filename", this.selectedFiles.alloyBasePriceAddition.file.selectedFile)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.scrap_upload, formData).subscribe((data) => {
+    this.apiMethod.post_request(this.apiString.base_price_upload, formData).subscribe((data) => {
       console.log(data)
       let resultData: any = data
       this.loadingRouteConfig = false
@@ -167,6 +169,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'File validated successfully')
+      this.router.navigate(['/smb/base-price/list'])
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while validating uploaded file')

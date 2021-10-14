@@ -21,7 +21,7 @@
                                 </div>
                                 <div>
                                     <button type="button" color="primary" mat-raised-button
-                                        [disabled]="selectedFiles.alloy_surcharge_wire.file!=''"
+                                        [disabled]="selectedFiles.alloyBasePriceAddition.file!=''"
                                         (click)="fileInput2.click()">
                                         Choose file
                                     </button>
@@ -32,9 +32,9 @@
                         </div>
                         <div>
                             <mat-list>
-                                <mat-list-item *ngIf="selectedFiles.alloy_surcharge_wire.uploadCompleted">
+                                <mat-list-item *ngIf="selectedFiles.alloyBasePriceAddition.uploadCompleted">
                                     <mat-icon mat-list-icon>note</mat-icon>
-                                    <div mat-line>{{selectedFiles.alloy_surcharge_wire.file?.fileName}}</div>
+                                    <div mat-line>{{selectedFiles.alloyBasePriceAddition.file?.fileName}}</div>
 
                                     <div>
                                         <button mat-icon-button color="primary" (click)="uploadFiles()">
