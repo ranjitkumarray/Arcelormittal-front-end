@@ -299,5 +299,279 @@ export const NavItems = [
         ]
 
     },
+    {
+        name: 'SMB-miniBar',
+        url: '',
+        active_img: '../../../assets/images/order.png',
+        inactive_img: '../../../assets/images/order 2.png',
+        tag: 'smb_mini_bar',
+        children: [
+            {
+                name: 'Base Price Addition',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Base_Price_Addition',
+                children: [
+                    {
+                        name: 'Price Addition List',
+                        url: '/smb-mini-bar/base-price/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_alloy_scrap_sub_menu',
 
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/base-price/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_alloy_scrap_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Incoterm Exceptions',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Incoterm_Exceptions',
+                children: [
+                    {
+                        name: 'Incoterm Exceptions List',
+                        url: '/smb-mini-bar/incoterm-exceptions/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/incoterm-exceptions/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Certificate',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Certificate',
+                children: [
+                    {
+                        name: 'Certificate List',
+                        url: '/smb-mini-bar/extra-certificate/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/extra-certificate/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Delivery Mill',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Delivery_Mill',
+                children: [
+                    {
+                        name: 'Delivery Mill List',
+                        url: '/smb-mini-bar/delivery-mill/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/delivery-mill/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Freight Parity',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Freight_Parity',
+                children: [
+                    {
+                        name: 'Freight Parity List',
+                        url: '/smb-mini-bar/freight-parity/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/freight-parity/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Grade',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Grade',
+                children: [
+                    {
+                        name: 'Grade List',
+                        url: '/smb-mini-bar/grade/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Grade_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/grade/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Grade_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Length Logistic',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Length_Logistic',
+                children: [
+                    {
+                        name: 'Length Logistic List',
+                        url: '/smb-mini-bar/length-logistic/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/length-logistic/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Length Production',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Length_Production',
+                children: [
+                    {
+                        name: 'Length Production List',
+                        url: '/smb-mini-bar/length-production/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/length-production/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Profile',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Profile',
+                children: [
+                    {
+                        name: 'Profile List',
+                        url: '/smb-mini-bar/profile/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Profile_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/profile/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Profile_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra Profile Iberia & Italy',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Profile_Iberia_and_Italy',
+                children: [
+                    {
+                        name: 'Profile Iberia & Italy List',
+                        url: '/smb-mini-bar/profile-lberia-italy/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/profile-lberia-italy/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra - Transport Mode',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_Extra_Transport_Mode',
+                children: [
+                    {
+                        name: 'Transport Mode List',
+                        url: '/smb-mini-bar/transport-mode/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
+
+                    },
+                    {
+                        name: 'upload History',
+                        url: '/smb-mini-bar/transport-mode/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
+
+                    }
+                ]
+
+            }
+
+        ]
+
+    }
 ]

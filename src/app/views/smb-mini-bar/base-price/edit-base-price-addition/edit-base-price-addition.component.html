@@ -1,0 +1,61 @@
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
+<div class="pd-card">
+    <form [formGroup]="editBasePriceAddition">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Business Code</mat-label>
+                    <input matInput type="text" formControlName="BusinessCode">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Currency</mat-label>
+                    <input matInput type="text" formControlName="Currency">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Document Item Currency</mat-label>
+                    <input matInput type="text" formControlName="Document_Item_Currency">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Market Country</mat-label>
+                    <input matInput type="text" formControlName="Market_Country">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Division</mat-label>
+                    <input matInput type="text" formControlName="Product_Division">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Level 02</mat-label>
+                    <input matInput type="text" formControlName="Product_Level_02">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="text" formControlName="Amount">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+    <div class=" text-right">
+        <button mat-stroked-button class="mr-10" (click)="closeModel()">
+            Close
+        </button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial (click)="editRecord()">
+            Update
+        </button>
+    </div>
+</div>
