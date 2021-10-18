@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavItems } from './sidebar';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,11 +11,12 @@ export class SidebarComponent implements OnInit {
   collapsed: boolean = false;
   isOpen: boolean = false;
   version: string = '';
-
+  navbarItem:any=NavItems
   constructor() { }
 
   ngOnInit(): void {
     this.version = "1";
+    console.log(this.navbarItem)
   }
 
   toggleCollapse() {

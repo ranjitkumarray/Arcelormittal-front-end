@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 import { basePriceAddtionData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { WarnPopupComponent } from '../warn-popup/warn-popup.component';
 import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit-base-price-addition.component';
+import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
