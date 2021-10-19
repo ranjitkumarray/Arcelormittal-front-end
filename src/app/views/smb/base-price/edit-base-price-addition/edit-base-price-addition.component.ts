@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -13,32 +14,61 @@ import { ApiService } from 'src/app/services/api.service';
 export class EditBasePriceAdditionComponent implements OnInit {
   loadingRouteConfig: boolean = false
   editBasePriceAddition: any = FormGroup
+  url: any;
+  apiStringURL: any;
   constructor(
     public dialogRef: MatDialogRef<EditBasePriceAdditionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private _snackBar: MatSnackBar,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log(event.url.split('/'));
+      this.url = event.url.split('/')
+      console.log(this.url)
+      if (this.url[1] === 'smb') {
+        this.apiStringURL = this.apiString.smb
+      } else {
+        this.apiStringURL = this.apiString.smb_mini_bar
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.editBasePriceAddition = this.fb.group({
-      Amount: [''],
-      BusinessCode: [''],
-      Currency: [''],
-      Document_Item_Currency: [''],
-      Market_Country: [''],
-      Product_Division: [''],
-      Product_Level_02: [''],
-      id_value: ['']
-    })
+    if (this.url[2] != 'mini-bar') {
+      this.editBasePriceAddition = this.fb.group({
+        Amount: [''],
+        BusinessCode: [''],
+        Currency: [''],
+        Document_Item_Currency: [''],
+        Market_Country: [''],
+        Product_Division: [''],
+        Product_Level_02: [''],
+        id_value: ['']
+      })
+    } else {
+      this.editBasePriceAddition = this.fb.group({
+        Amount: [''],
+        BusinessCode: [''],
+        Currency: [''],
+        Document_Item_Currency: [''],
+        Market_Country: [''],
+        Customer_Group: [''],
+        Market_Customer: [''],
+        Beam_Category: [''],
+        id_value: ['']
+      })
+    }
     this.patchValue()
   }
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiString.get_record_base_price, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.get_request_Param(this.apiStringURL.get_record_base_price, { id: this.data.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -48,10 +78,21 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Currency: resultData.record[0].Currency,
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Market_Country: resultData.record[0].Market_Country,
-        Product_Division: resultData.record[0].Product_Division,
-        Product_Level_02: resultData.record[0].Product_Level_02,
         id_value: this.data.id
       })
+      if (this.url[2] != 'mini-bar') {
+        this.editBasePriceAddition.patchValue({
+          Product_Division: resultData.record[0].Product_Division,
+          Product_Level_02: resultData.record[0].Product_Level_02,
+        })
+      } else {
+        this.editBasePriceAddition.patchValue({
+          Customer_Group: resultData.record[0].Customer_Group,
+          Market_Customer: resultData.record[0].Market_Customer,
+          Beam_Category: resultData.record[0].Beam_Category,
+
+        })
+      }
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching bace price addition')
@@ -66,7 +107,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
   editRecord() {
     console.group(this.editBasePriceAddition.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.update_record_base_price, this.editBasePriceAddition.value).subscribe(result => {
+    this.apiMethod.post_request(this.apiStringURL.update_record_base_price, this.editBasePriceAddition.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')

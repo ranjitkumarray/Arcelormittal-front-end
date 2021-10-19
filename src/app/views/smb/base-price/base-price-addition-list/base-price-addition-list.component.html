@@ -32,32 +32,50 @@
         <div class="col-12">
             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
-
                 <ng-container matColumnDef="BusinessCode">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Code </th>
                     <td mat-cell *matCellDef="let row"> {{row.BusinessCode}} </td>
                 </ng-container>
 
+                <div *ngIf="url[2]!='mini-bar'; else mini_bar">
+
+                    <ng-container matColumnDef="Product_Division">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Division </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Product_Level_02">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Level 02 </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
+                    </ng-container>
+
+                </div>
+
+                <ng-template #mini_bar>
+                    <ng-container matColumnDef="Customer_Group">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Group </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Customer_Group}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Market_Customer">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Market - Customer </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Market_Customer}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Beam_Category">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Beam Category </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
+                    </ng-container>
+                </ng-template>
 
                 <ng-container matColumnDef="Market_Country">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Market Country </th>
                     <td mat-cell *matCellDef="let row"> {{row.Market_Country}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="Product_Division">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Division </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
+                <ng-container matColumnDef="document_item_currency">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc Item Currency </th>
+                    <td mat-cell *matCellDef="let row"> {{row.document_item_currency}} </td>
                 </ng-container>
-
-                <ng-container matColumnDef="Product_Level_02">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Level 02 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
-                </ng-container>
-                <!--                                    
-                                    <ng-container matColumnDef="document_item_currency">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Document Item Currency </th>
-                                        <td mat-cell *matCellDef="let row"> {{row.date_time}} </td>
-                                    </ng-container> -->
 
                 <ng-container matColumnDef="Amount">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>

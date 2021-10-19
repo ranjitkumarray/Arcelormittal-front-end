@@ -7,8 +7,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { basePriceAddtionData } from '../../smb-interface.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Location } from "@angular/common";
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bulk-upload-base-price-addition',
@@ -18,14 +19,7 @@ import { Location } from "@angular/common";
 export class BulkUploadBasePriceAdditionComponent implements OnInit {
 
   loading: boolean = false
-  uploadBasePriceAddition: string[] = [
-    'BusinessCode',
-    'Market_Country',
-    'Product_Division',
-    'Product_Level_02',
-    'Amount',
-    'Currency'
-  ];
+  uploadBasePriceAddition: string[] = [];
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
   tab: any;
@@ -38,14 +32,47 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
   fileEv: any;
   SelectedTab: any;
   alloyBasePriceAddition_data: any;
+  url: any;
+  apiStringURL: any;
 
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private location: Location
+    private location: Location,
   ) {
+    router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log(event.url.split('/'));
+      this.url = event.url.split('/')
+      console.log(this.url)
+      if (this.url[2] != 'mini-bar') {
+        this.apiStringURL = this.apiString.smb
+        this.uploadBasePriceAddition = [
+          'BusinessCode',
+          'Market_Country',
+          'Product_Division',
+          'Product_Level_02',
+          'document_item_currency',
+          'Amount',
+          'Currency'
+        ]
+      } else {
+        this.apiStringURL = this.apiString.smb_mini_bar
+        this.uploadBasePriceAddition = [
+          'BusinessCode',
+          'Market_Country',
+          'Customer_Group',
+          'Market_Customer',
+          'Beam_Category',
+          'document_item_currency',
+          'Amount',
+          'Currency'
+        ]
+      }
+    });
   }
 
   ngOnInit() {
@@ -141,7 +168,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
     const formData = new FormData();
     formData.append("filename", this.selectedFiles.alloyBasePriceAddition.file.selectedFile)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.base_price_upload, formData).subscribe((data) => {
+    this.apiMethod.post_request(this.apiStringURL.base_price_upload, formData).subscribe((data) => {
       console.log(data)
       let resultData: any = data
       this.loadingRouteConfig = false
@@ -175,7 +202,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
       "filename": this.alloyBasePriceAddition_data.filename
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.base_price_validate, data).subscribe((result: any) => {
+    this.apiMethod.post_request(this.apiStringURL.base_price_validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'File validated successfully')

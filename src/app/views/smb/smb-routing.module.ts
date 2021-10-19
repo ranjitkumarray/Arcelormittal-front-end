@@ -40,8 +40,9 @@ const routes: Routes = [
     path: '',
     component: SidebarComponent,
     children: [
-      {
-        path: "base-price",
+      // excluding the other paths for brevity
+      ...['base-price', 'mini-bar/base-price'].map(path => ({
+        path,
         children: [
           {
             path: "list",
@@ -58,197 +59,218 @@ const routes: Routes = [
           },
 
         ]
-      },
-      {
-        path: "delivery-mill",
-        children: [
-          {
-            path: "list",
-            component: DeliveryMillListComponent
-          },
+      }))
+    ],
+    // children: [
+    //   {
+    //     path: "base-price",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: BasePriceAdditionListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: DeliveryMillEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: DeliveryMillUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: EditBasePriceAdditionComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: BulkUploadBasePriceAdditionComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "extra-certificate",
-        children: [
-          {
-            path: "list",
-            component: ExtraCertificateListComponent
-          },
-          {
-            path: 'edit',
-            component: ExtraCertificateEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: ExtraCertificateUploadComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "delivery-mill",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: DeliveryMillListComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "freight-parity",
-        children: [
-          {
-            path: "list",
-            component: FreightParityListComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: DeliveryMillEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: DeliveryMillUploadComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: FreightParityEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: FreightParityUploadComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "extra-certificate",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: ExtraCertificateListComponent
+    //       },
+    //       {
+    //         path: 'edit',
+    //         component: ExtraCertificateEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: ExtraCertificateUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "grade",
-        children: [
-          {
-            path: "list",
-            component: GradeListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "freight-parity",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: FreightParityListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: GradeEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: GradeUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: FreightParityEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: FreightParityUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "length-logistic",
-        children: [
-          {
-            path: "list",
-            component: LengthLogisticListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "grade",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: GradeListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: LengthLogisticEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: LengthLogisticUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: GradeEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: GradeUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "length-production",
-        children: [
-          {
-            path: "list",
-            component: LengthProductionListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "length-logistic",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: LengthLogisticListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: LengthProductionEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: LengthProductionUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: LengthLogisticEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: LengthLogisticUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "profile",
-        children: [
-          {
-            path: "list",
-            component: ProfileListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "length-production",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: LengthProductionListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: ProfileEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: ProfileUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: LengthProductionEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: LengthProductionUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "profile-lberia-italy",
-        children: [
-          {
-            path: "list",
-            component: ProfileLberiaItalyListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "profile",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: ProfileListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: ProfileLberiaItalyEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: ProfileLberiaItalyUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: ProfileEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: ProfileUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "transport-mode",
-        children: [
-          {
-            path: "list",
-            component: TransportModeListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "profile-lberia-italy",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: ProfileLberiaItalyListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: TransportModeEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: TransportModeUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: ProfileLberiaItalyEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: ProfileLberiaItalyUploadComponent
+    //       },
 
-        ]
-      },
-      {
-        path: "incoterm-exceptions",
-        children: [
-          {
-            path: "list",
-            component: IncotermExceptionsListComponent
-          },
+    //     ]
+    //   },
+    //   {
+    //     path: "transport-mode",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: TransportModeListComponent
+    //       },
 
-          {
-            path: 'edit',
-            component: IncotermExceptionsEditComponent
-          },
-          {
-            path: "bulk-upload",
-            component: IncotermExceptionsUploadComponent
-          },
+    //       {
+    //         path: 'edit',
+    //         component: TransportModeEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: TransportModeUploadComponent
+    //       },
 
-        ]
-      }
-    ]
+    //     ]
+    //   },
+    //   {
+    //     path: "incoterm-exceptions",
+    //     children: [
+    //       {
+    //         path: "list",
+    //         component: IncotermExceptionsListComponent
+    //       },
+
+    //       {
+    //         path: 'edit',
+    //         component: IncotermExceptionsEditComponent
+    //       },
+    //       {
+    //         path: "bulk-upload",
+    //         component: IncotermExceptionsUploadComponent
+    //       },
+
+    //     ]
+    //   }
+    // ]
   }
 ];
 

@@ -14,32 +14,14 @@
             </div>
             <div class="col-6">
                 <mat-form-field appearance="outline">
-                    <mat-label>Currency</mat-label>
-                    <input matInput type="text" formControlName="Currency">
-                </mat-form-field>
-            </div>
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Document Item Currency</mat-label>
-                    <input matInput type="text" formControlName="Document_Item_Currency">
-                </mat-form-field>
-            </div>
-            <div class="col-6">
-                <mat-form-field appearance="outline">
                     <mat-label>Market Country</mat-label>
                     <input matInput type="text" formControlName="Market_Country">
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field appearance="outline">
-                    <mat-label>Product Division</mat-label>
-                    <input matInput type="text" formControlName="Product_Division">
-                </mat-form-field>
-            </div>
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Level 02</mat-label>
-                    <input matInput type="text" formControlName="Product_Level_02">
+                    <mat-label>Currency</mat-label>
+                    <input matInput type="text" formControlName="Currency">
                 </mat-form-field>
             </div>
             <div class="col-6">
@@ -48,6 +30,49 @@
                     <input matInput type="text" formControlName="Amount">
                 </mat-form-field>
             </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Document Item Currency</mat-label>
+                    <input matInput type="text" formControlName="Document_Item_Currency">
+                </mat-form-field>
+            </div>
+            <div *ngIf="url[2]!='mini-bar'; else mini_bar">
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Product Division</mat-label>
+                        <input matInput type="text" formControlName="Product_Division">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Product Level 02</mat-label>
+                        <input matInput type="text" formControlName="Product_Level_02">
+                    </mat-form-field>
+                </div>
+            </div>
+            <ng-template #mini_bar>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Customer Group</mat-label>
+                        <input matInput type="text" formControlName="Customer_Group">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Market Customer</mat-label>
+                        <input matInput type="text" formControlName="Market_Customer">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Beam Category</mat-label>
+                        <input matInput type="text" formControlName="Beam_Category">
+                    </mat-form-field>
+                </div>
+
+            </ng-template>
+
+
         </div>
     </form>
     <div class=" text-right">

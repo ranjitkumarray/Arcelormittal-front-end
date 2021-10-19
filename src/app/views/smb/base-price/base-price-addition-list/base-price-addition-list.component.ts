@@ -5,12 +5,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { basePriceAddtionData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit-base-price-addition.component';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -56,15 +57,7 @@ export class BasePriceAdditionListComponent implements OnInit {
       id: 665,
     }
   ]
-  displayedColumns: string[] = [
-    'BusinessCode',
-    'Market_Country',
-    'Product_Division',
-    'Product_Level_02',
-    'Amount',
-    'Currency',
-    "action"
-  ];
+  displayedColumns: string[] = [];
   dataSource: any;
   searchValue: any
   pageEvent: any = PageEvent;
@@ -73,13 +66,49 @@ export class BasePriceAdditionListComponent implements OnInit {
   pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
+  url: any;
+  apiStringURL: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private popup: MatDialog
+    private popup: MatDialog,
+    private route: ActivatedRoute
   ) {
+    router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log(event.url.split('/'));
+      this.url = event.url.split('/')
+      console.log(this.url)
+      if (this.url[2] != 'mini-bar') {
+        this.apiStringURL = this.apiString.smb
+        this.displayedColumns = [
+          'BusinessCode',
+          'Market_Country',
+          'Product_Division',
+          'Product_Level_02',
+          'document_item_currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
+      } else {
+        this.apiStringURL = this.apiString.smb_mini_bar
+        this.displayedColumns = [
+          'BusinessCode',
+          'Market_Country',
+          'Customer_Group',
+          'Market_Customer',
+          'Beam_Category',
+          'document_item_currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -95,7 +124,7 @@ export class BasePriceAdditionListComponent implements OnInit {
       searchString = "all"
     }
     this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.lastdata)
-    this.apiMethod.get_request(this.apiString.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request(this.apiStringURL.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
@@ -134,12 +163,12 @@ export class BasePriceAdditionListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: rowData.id,
-            url: this.apiString.get_record_base_price + "?id=" + rowData.id,
-            type: 'delete'
+            url: this.apiStringURL.get_record_base_price + "?id=" + rowData.id,
+            type: this.url[2] === 'mini-bar' ? 'edit-min-bar' : 'edit'
           },
         });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The Delete dialog was closed', result);
+        console.log('The edit dialog was closed', result);
         this.getBasePriceAddition()
       })
     }
@@ -152,8 +181,9 @@ export class BasePriceAdditionListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: rowData.id,
-            url: this.apiString.get_record_base_price + "?id=" + rowData.id,
-            type: 'delete'
+            url: this.apiStringURL.get_record_base_price + "?id=" + rowData.id,
+            type: this.url[2] === 'mini-bar' ? 'delete-min-bar' : 'delete'
+
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -162,13 +192,8 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
 
     }
-    console.log(rowData)
-    let string = (rowData.filename + "&" + rowData.condition_type + "&" + rowData.Batch_ID)
-    console.log(string)
-    var encodedString = btoa(string);
-    console.log(string, encodedString)
   }
-  downloadBasePriceAddition(){
-    window.open(this.apiString.base_price_download,"_blank")
+  downloadBasePriceAddition() {
+    window.open(this.apiStringURL.base_price_download, "_blank")
   }
 }
