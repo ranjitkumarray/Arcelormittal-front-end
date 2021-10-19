@@ -24,22 +24,18 @@ export class EditBasePriceAdditionComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {
-    router.events.pipe(
-      filter((event: any) => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      console.log(event.url.split('/'));
-      this.url = event.url.split('/')
-      console.log(this.url)
-      if (this.url[1] === 'smb') {
+   
+      if (this.data.type != 'edit-min-bar') {
         this.apiStringURL = this.apiString.smb
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
       }
-    });
+   
   }
 
   ngOnInit(): void {
-    if (this.url[2] != 'mini-bar') {
+    console.log(this.url,this.data)
+    if (this.data.type != 'edit-min-bar') {
       this.editBasePriceAddition = this.fb.group({
         Amount: [''],
         BusinessCode: [''],
@@ -80,7 +76,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Market_Country: resultData.record[0].Market_Country,
         id_value: this.data.id
       })
-      if (this.url[2] != 'mini-bar') {
+      if (this.data.type != 'edit-min-bar') {
         this.editBasePriceAddition.patchValue({
           Product_Division: resultData.record[0].Product_Division,
           Product_Level_02: resultData.record[0].Product_Level_02,

@@ -34,13 +34,13 @@ export class CitGlobalConstantService {
         base_price_download: this.baseUrl + "Base_price_download",
     };
     smb_mini_bar: any = {
-        base_price_data: this.baseUrl + "Base_Price_Data",
-        get_record_base_price: this.baseUrl + "get_record_baseprice",
-        delete_record: this.baseUrl + "delete_record_baseprice",
-        base_price_upload: this.baseUrl + "Base_Price_Upload",
-        base_price_validate: this.baseUrl + "Base_Price_validate",
+        base_price_data: this.baseUrl + "base_price_data_minibar",
+        get_record_base_price: this.baseUrl + "get_record_baseprice_minibar",
+        delete_record: this.baseUrl + "delete_record_baseprice_minibar",
+        base_price_upload: this.baseUrl + "base_price_upload_minibar",
+        base_price_validate: this.baseUrl + "base_price_validate_baseprice_minibar",
         update_record_base_price: this.baseUrl + "update_record_baseprice",
-        base_price_download: this.baseUrl + "Base_price_download",
+        base_price_download: this.baseUrl + "base_price_download_minibar",
     };
 
 }

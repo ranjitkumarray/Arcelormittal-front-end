@@ -36,7 +36,7 @@
                     <input matInput type="text" formControlName="Document_Item_Currency">
                 </mat-form-field>
             </div>
-            <div *ngIf="url[2]!='mini-bar'; else mini_bar">
+            <div *ngIf="data.type != 'edit-min-bar'; else mini_bar">
                 <div class="col-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Product Division</mat-label>
