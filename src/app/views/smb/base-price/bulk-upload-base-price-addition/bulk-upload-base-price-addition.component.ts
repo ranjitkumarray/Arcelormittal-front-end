@@ -48,7 +48,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
       console.log(event.url.split('/'));
       this.url = event.url.split('/')
       console.log(this.url)
-      if (this.url[2] != 'mini-bar') {
+      if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
         this.uploadBasePriceAddition = [
           'BusinessCode',

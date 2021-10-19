@@ -3,6 +3,10 @@ export interface basePriceAddtionData {
     'Market_Country': any
     'Product_Division': any
     'Product_Level_02': any
+    'Customer_Group': any
+    'Market_Customer': any
+    'Beam_Category': any
+    'document_item_currency': any
     'Amount': any
     'Currency': any
     'action': any

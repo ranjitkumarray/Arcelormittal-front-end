@@ -39,238 +39,310 @@ const routes: Routes = [
   {
     path: '',
     component: SidebarComponent,
-    children: [
-      // excluding the other paths for brevity
-      ...['base-price', 'mini-bar/base-price'].map(path => ({
-        path,
-        children: [
-          {
-            path: "list",
-            component: BasePriceAdditionListComponent
-          },
-
-          {
-            path: 'edit',
-            component: EditBasePriceAdditionComponent
-          },
-          {
-            path: "bulk-upload",
-            component: BulkUploadBasePriceAdditionComponent
-          },
-
-        ]
-      }))
-    ],
     // children: [
+    //   // excluding the other paths for brevity
     //   {
-    //     path: "base-price",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: BasePriceAdditionListComponent
-    //       },
+    //     path: 'base-price',
+    //     children:
+    //       [
+    //         ...['', 'mini-bar'].map(path => ({
+    //           path,
+    //           children: [
+    //             {
+    //               path: "list",
+    //               component: BasePriceAdditionListComponent
+    //             },
 
-    //       {
-    //         path: 'edit',
-    //         component: EditBasePriceAdditionComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: BulkUploadBasePriceAdditionComponent
-    //       },
+    //             {
+    //               path: 'edit',
+    //               component: EditBasePriceAdditionComponent
+    //             },
+    //             {
+    //               path: "bulk-upload",
+    //               component: BulkUploadBasePriceAdditionComponent
+    //             },
 
-    //     ]
-    //   },
-    //   {
-    //     path: "delivery-mill",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: DeliveryMillListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: DeliveryMillEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: DeliveryMillUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "extra-certificate",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: ExtraCertificateListComponent
-    //       },
-    //       {
-    //         path: 'edit',
-    //         component: ExtraCertificateEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: ExtraCertificateUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "freight-parity",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: FreightParityListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: FreightParityEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: FreightParityUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "grade",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: GradeListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: GradeEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: GradeUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "length-logistic",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: LengthLogisticListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: LengthLogisticEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: LengthLogisticUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "length-production",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: LengthProductionListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: LengthProductionEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: LengthProductionUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "profile",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: ProfileListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: ProfileEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: ProfileUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "profile-lberia-italy",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: ProfileLberiaItalyListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: ProfileLberiaItalyEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: ProfileLberiaItalyUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "transport-mode",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: TransportModeListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: TransportModeEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: TransportModeUploadComponent
-    //       },
-
-    //     ]
-    //   },
-    //   {
-    //     path: "incoterm-exceptions",
-    //     children: [
-    //       {
-    //         path: "list",
-    //         component: IncotermExceptionsListComponent
-    //       },
-
-    //       {
-    //         path: 'edit',
-    //         component: IncotermExceptionsEditComponent
-    //       },
-    //       {
-    //         path: "bulk-upload",
-    //         component: IncotermExceptionsUploadComponent
-    //       },
-
-    //     ]
+    //           ]
+    //         }))
+    //       ]
     //   }
-    // ]
+    // ],
+    children: [
+      {
+        path: "base-price",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: BasePriceAdditionListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: EditBasePriceAdditionComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: BulkUploadBasePriceAdditionComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "delivery-mill",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: DeliveryMillListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: DeliveryMillEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: DeliveryMillUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "extra-certificate",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: ExtraCertificateListComponent
+                },
+                {
+                  path: 'edit',
+                  component: ExtraCertificateEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: ExtraCertificateUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "freight-parity",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: FreightParityListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: FreightParityEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: FreightParityUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "grade",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: GradeListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: GradeEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: GradeUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "length-logistic",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: LengthLogisticListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: LengthLogisticEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: LengthLogisticUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "length-production",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: LengthProductionListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: LengthProductionEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: LengthProductionUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "profile",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: ProfileListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: ProfileEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: ProfileUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "profile-lberia-italy",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: ProfileLberiaItalyListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: ProfileLberiaItalyEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: ProfileLberiaItalyUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "transport-mode",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: TransportModeListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: TransportModeEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: TransportModeUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      },
+      {
+        path: "incoterm-exceptions",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: IncotermExceptionsListComponent
+                },
+
+                {
+                  path: 'edit',
+                  component: IncotermExceptionsEditComponent
+                },
+                {
+                  path: "bulk-upload",
+                  component: IncotermExceptionsUploadComponent
+                },
+
+              ]
+            }))
+          ]
+      }
+    ]
   }
 ];
 

@@ -19,44 +19,6 @@ import { filter } from 'rxjs/operators';
 })
 export class BasePriceAdditionListComponent implements OnInit {
   loadingRouteConfig: boolean = false
-  lastdata: any = [
-    {
-      Amount: "0",
-      BusinessCode: "*",
-      Currency: "'EUR'",
-      Document_Item_Currency: "*",
-      Market_Country: "IE",
-      Product_Division: "02",
-      Product_Level_02: "FL",
-      Username: "Administrator",
-      date_time: "10/10/2021 15:41:25",
-      id: 665,
-    },
-    {
-      Amount: "0",
-      BusinessCode: "*",
-      Currency: "'EUR'",
-      Document_Item_Currency: "*",
-      Market_Country: "IE",
-      Product_Division: "02",
-      Product_Level_02: "FL",
-      Username: "Administrator",
-      date_time: "10/10/2021 15:41:25",
-      id: 665,
-    },
-    {
-      Amount: "0",
-      BusinessCode: "*",
-      Currency: "'EUR'",
-      Document_Item_Currency: "*",
-      Market_Country: "IE",
-      Product_Division: "02",
-      Product_Level_02: "FL",
-      Username: "Administrator",
-      date_time: "10/10/2021 15:41:25",
-      id: 665,
-    }
-  ]
   displayedColumns: string[] = [];
   dataSource: any;
   searchValue: any
@@ -82,31 +44,12 @@ export class BasePriceAdditionListComponent implements OnInit {
       console.log(event.url.split('/'));
       this.url = event.url.split('/')
       console.log(this.url)
-      if (this.url[2] != 'mini-bar') {
+      if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
-        this.displayedColumns = [
-          'BusinessCode',
-          'Market_Country',
-          'Product_Division',
-          'Product_Level_02',
-          'document_item_currency',
-          'Amount',
-          'Currency',
-          "action"
-        ]
+        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = [
-          'BusinessCode',
-          'Market_Country',
-          'Customer_Group',
-          'Market_Customer',
-          'Beam_Category',
-          'document_item_currency',
-          'Amount',
-          'Currency',
-          "action"
-        ]
+        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'document_item_currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -123,7 +66,6 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.lastdata)
     this.apiMethod.get_request(this.apiStringURL.base_price_data + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -155,7 +97,6 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
   basePriceClick(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      // this.router.navigate(['/smb/base-price/edit'])
       const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
         {
           panelClass: 'my-full-screen-dialog',
@@ -164,7 +105,7 @@ export class BasePriceAdditionListComponent implements OnInit {
           data: {
             id: rowData.id,
             url: this.apiStringURL.get_record_base_price + "?id=" + rowData.id,
-            type: this.url[2] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -182,7 +123,7 @@ export class BasePriceAdditionListComponent implements OnInit {
           data: {
             id: rowData.id,
             url: this.apiStringURL.get_record_base_price + "?id=" + rowData.id,
-            type: this.url[2] === 'mini-bar' ? 'delete-min-bar' : 'delete'
+            type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete'
 
           },
         });
@@ -191,6 +132,13 @@ export class BasePriceAdditionListComponent implements OnInit {
         this.getBasePriceAddition()
       })
 
+    }
+  }
+  uploadSmbBasePrice() {
+    if (this.url[3] != 'mini-bar') {
+      this.router.navigate(['/smb/base-price/bulk-upload'])
+    } else {
+      this.router.navigate(['/smb/base-price/mini-bar/bulk-upload'])
     }
   }
   downloadBasePriceAddition() {

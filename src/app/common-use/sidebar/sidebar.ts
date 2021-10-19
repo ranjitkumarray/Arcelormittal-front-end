@@ -315,14 +315,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Price Addition List',
-                        url: '/smb-mini-bar/base-price/list',
+                        url: '/smb/base-price/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_alloy_scrap_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/base-price/history',
+                        url: '/smb/base-price/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_alloy_scrap_sub_menu',
 
@@ -339,14 +339,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Incoterm Exceptions List',
-                        url: '/smb-mini-bar/incoterm-exceptions/list',
+                        url: '/smb/incoterm-exceptions/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/incoterm-exceptions/history',
+                        url: '/smb/incoterm-exceptions/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
 
@@ -363,14 +363,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Certificate List',
-                        url: '/smb-mini-bar/extra-certificate/list',
+                        url: '/smb/extra-certificate/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/extra-certificate/history',
+                        url: '/smb/extra-certificate/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
 
@@ -387,14 +387,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Delivery Mill List',
-                        url: '/smb-mini-bar/delivery-mill/list',
+                        url: '/smb/delivery-mill/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/delivery-mill/history',
+                        url: '/smb/delivery-mill/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
 
@@ -411,14 +411,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Freight Parity List',
-                        url: '/smb-mini-bar/freight-parity/list',
+                        url: '/smb/freight-parity/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/freight-parity/history',
+                        url: '/smb/freight-parity/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
 
@@ -435,14 +435,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Grade List',
-                        url: '/smb-mini-bar/grade/list',
+                        url: '/smb/grade/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Grade_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/grade/history',
+                        url: '/smb/grade/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Grade_sub_menu',
 
@@ -459,14 +459,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Length Logistic List',
-                        url: '/smb-mini-bar/length-logistic/list',
+                        url: '/smb/length-logistic/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/length-logistic/history',
+                        url: '/smb/length-logistic/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
 
@@ -483,14 +483,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Length Production List',
-                        url: '/smb-mini-bar/length-production/list',
+                        url: '/smb/length-production/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/length-production/history',
+                        url: '/smb/length-production/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
 
@@ -507,14 +507,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Profile List',
-                        url: '/smb-mini-bar/profile/list',
+                        url: '/smb/profile/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Profile_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/profile/history',
+                        url: '/smb/profile/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Profile_sub_menu',
 
@@ -531,14 +531,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Profile Iberia & Italy List',
-                        url: '/smb-mini-bar/profile-lberia-italy/list',
+                        url: '/smb/profile-lberia-italy/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/profile-lberia-italy/history',
+                        url: '/smb/profile-lberia-italy/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
 
@@ -555,14 +555,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Transport Mode List',
-                        url: '/smb-mini-bar/transport-mode/list',
+                        url: '/smb/transport-mode/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
 
                     },
                     {
                         name: 'upload History',
-                        url: '/smb-mini-bar/transport-mode/history',
+                        url: '/smb/transport-mode/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
 
