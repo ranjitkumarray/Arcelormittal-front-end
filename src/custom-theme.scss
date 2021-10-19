@@ -142,3 +142,10 @@ tr.mat-footer-row {
 .demo-row-is-clicked {
   font-weight: bold;
 }
+.mat-colomn-action {
+  text-align: center;
+}
+td.mat-cell:last-of-type{
+  text-align: center;
+  color: #f05b31;
+}

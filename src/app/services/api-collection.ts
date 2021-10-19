@@ -43,4 +43,24 @@ export class CitGlobalConstantService {
         base_price_download: this.baseUrl + "base_price_download_minibar",
     };
 
+     //base price addition 
+     incoterm_exceptions: any = {
+        incoterm_exceptions_list: this.baseUrl + "Base_Price_Data",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice",
+        incoterm_exceptions_upload: this.baseUrl + "Base_Price_Upload",
+        incoterm_exceptions_validate: this.baseUrl + "Base_Price_validate",
+        update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
+        incoterm_exceptions_download: this.baseUrl + "Base_price_download",
+    };
+    incoterm_exceptions_mini_bar: any = {
+        incoterm_exceptions_list: this.baseUrl + "base_price_data_minibar",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_minibar",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_minibar",
+        incoterm_exceptions_upload: this.baseUrl + "base_price_upload_minibar",
+        incoterm_exceptions_validate: this.baseUrl + "base_price_validate_baseprice_minibar",
+        update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
+        incoterm_exceptions_download: this.baseUrl + "base_price_download_minibar",
+    };
+
 }

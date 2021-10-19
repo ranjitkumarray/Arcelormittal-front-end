@@ -1,1 +1,75 @@
-<p>incoterm-exceptions-edit works!</p>
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
+<div class="pd-card">
+    <form [formGroup]="editIncotermExceptionsClick">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Incoterm1</mat-label>
+                    <input matInput type="text" formControlName="Incoterm1">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Market Country</mat-label>
+                    <input matInput type="text" formControlName="Market_Country">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Currency</mat-label>
+                    <input matInput type="text" formControlName="Currency">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="text" formControlName="Amount">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Document Item Currency</mat-label>
+                    <input matInput type="text" formControlName="Document_Item_Currency">
+                </mat-form-field>
+            </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Product Division</mat-label>
+                        <input matInput type="text" formControlName="Product_Division">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Delivering Mill</mat-label>
+                        <input matInput type="text" formControlName="Delivering_Mill">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Customer Group</mat-label>
+                        <input matInput type="text" formControlName="Customer_Group">
+                    </mat-form-field>
+                </div>
+               
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Beam Category</mat-label>
+                        <input matInput type="text" formControlName="Beam_Category">
+                    </mat-form-field>
+                </div>
+
+        </div>
+    </form>
+    <div class=" text-right">
+        <button mat-stroked-button class="mr-10" (click)="closeModel()">
+            Close
+        </button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial (click)="editRecord()">
+            Update
+        </button>
+    </div>
+</div>

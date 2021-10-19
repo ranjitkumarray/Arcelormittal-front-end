@@ -11,3 +11,16 @@ export interface basePriceAddtionData {
     'Currency': any
     'action': any
 }
+
+export interface incotermExceptionsData {
+    'Market_Country': any,
+    'Product_Division': any,
+    'Incoterm1': any,
+    'Customer_Group': any,
+    'Beam_Category': any,
+    'Delivering_Mill': any,
+    'Document_Item_Currency': any,
+    'Amount': any,
+    'Currency': any,
+    "action": any
+}
