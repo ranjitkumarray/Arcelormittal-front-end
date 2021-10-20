@@ -1,12 +1,12 @@
 <div class="sidebar" [class.sidebar_open]="isOpen">
     <button (click)="isOpen = !isOpen" class="sidebar_toggler">
-        <i class="fa fa-bars" aria-hidden="true" *ngIf="isOpen"></i>
+        <i class="fa fa-bars" *ngIf="isOpen"></i>
         <i class="fas fa-times" *ngIf="!isOpen"></i>
     </button>
     <div class="">
         <div class="container-fluid logo_outer">
             <a class="logo">
-                <img src="../../../assets/images/arcelorMittal_logo.png" />
+                <img src="../../../assets/images/arcelorMittal_logo.png"  alt="logo"/>
             </a>
         </div>
     </div>
@@ -22,8 +22,8 @@
                         <div class="sub_menu_con">
                             <div class=" items nav-link collapsed text-truncate" data-toggle="collapse"
                                 [attr.data-target]="'#' + item.tag">
-                                <img class="active_img" [src]="item.active_img " />
-                                <img class="inactive_img" [src]="item.inactive_img" />
+                                <img class="active_img" [src]="item.active_img " alt="icon" />
+                                <img class="inactive_img" [src]="item.inactive_img" alt="icon-inactive"/>
                                 <span class="d-none d-sm-inline">{{item.name}} </span>
                             </div>
                         </div>
@@ -35,8 +35,8 @@
                                             <div class="sub_menu_con">
                                                 <div class=" items nav-link collapsed text-truncate"
                                                     data-toggle="collapse" [attr.data-target]="'#'+sub_item1.tag">
-                                                    <img class="active_img" [src]="sub_item1.active_img " />
-                                                    <img class="inactive_img" [src]="sub_item1.inactive_img" />
+                                                    <img class="active_img" [src]="sub_item1.active_img " alt="icon" />
+                                                    <img class="inactive_img" [src]="sub_item1.inactive_img" alt="icon-inactive" />
                                                     <span class="d-none d-sm-inline">{{sub_item1?.name}} </span>
                                                 </div>
                                             </div>

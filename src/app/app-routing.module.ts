@@ -10,7 +10,6 @@ const routes: Routes = [
   },
   { path: 'alloy-scrap', loadChildren: () => import('./views/alloy-scrap/alloy-scrap.module').then(m => m.AlloyScrapModule) },
   { path: 'smb', loadChildren: () => import('./views/smb/smb.module').then(m => m.SmbModule) },
-  // { path: 'smb-mini-bar', loadChildren: () => import('./views/smb-mini-bar/smb-mini-bar.module').then(m => m.SmbMiniBarModule) },
   {
     path: '**',
     component: PageNotFoundComponent
