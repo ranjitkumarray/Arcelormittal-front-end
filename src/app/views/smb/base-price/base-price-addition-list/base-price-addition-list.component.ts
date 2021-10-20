@@ -123,8 +123,8 @@ export class BasePriceAdditionListComponent implements OnInit {
           data: {
             id: rowData.id,
             url: this.apiStringURL.get_record_base_price + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete'
-
+            type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
+            deleteURL: this.apiStringURL.delete_record
           },
         });
       dialogRef.afterClosed().subscribe(result => {

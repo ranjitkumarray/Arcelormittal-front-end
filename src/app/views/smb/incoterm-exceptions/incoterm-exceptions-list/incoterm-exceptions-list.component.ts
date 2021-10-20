@@ -123,7 +123,8 @@ export class IncotermExceptionsListComponent implements OnInit {
           data: {
             id: rowData.id,
             url: this.apiStringURL.get_incoterm_exceptions + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete'
+            type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
+            deleteURL: this.apiStringURL.delete_record
 
           },
         });
