@@ -45,22 +45,22 @@ export class CitGlobalConstantService {
 
     //incoterm exceptions 
     incoterm_exceptions: any = {
-        incoterm_exceptions_list: this.baseUrl + "Base_Price_Data",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice",
-        incoterm_exceptions_upload: this.baseUrl + "Base_Price_Upload",
-        incoterm_exceptions_validate: this.baseUrl + "Base_Price_validate",
+        incoterm_exceptions_list: this.baseUrl + "base_price_data_incoterm",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
+        incoterm_exceptions_upload: this.baseUrl + "base_price_Upload_baseprice_incoterm",
+        incoterm_exceptions_validate: this.baseUrl + "base_price_validate_baseprice_incoterm",
         update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
-        incoterm_exceptions_download: this.baseUrl + "Base_price_download",
+        incoterm_exceptions_download: this.baseUrl + "Base_price_download_incoterm",
     };
     incoterm_exceptions_mini_bar: any = {
-        incoterm_exceptions_list: this.baseUrl + "base_price_data_minibar",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_minibar",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_minibar",
-        incoterm_exceptions_upload: this.baseUrl + "base_price_upload_minibar",
-        incoterm_exceptions_validate: this.baseUrl + "base_price_validate_baseprice_minibar",
+        incoterm_exceptions_list: this.baseUrl + "base_price_data_incoterm",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
+        incoterm_exceptions_upload: this.baseUrl + "base_price_Upload_baseprice_incoterm",
+        incoterm_exceptions_validate: this.baseUrl + "base_price_validate_baseprice_incoterm",
         update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
-        incoterm_exceptions_download: this.baseUrl + "base_price_download_minibar",
+        incoterm_exceptions_download: this.baseUrl + "Base_price_download_incoterm",
     };
     //certificate 
     certificate: any = {
