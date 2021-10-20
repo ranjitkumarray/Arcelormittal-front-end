@@ -96,6 +96,8 @@ export class IncotermExceptionsListComponent implements OnInit {
     this.getIncotermExceptions()
   }
   incotermExceptionsClick(rowData: any, viewOn: any) {
+    console.log(rowData)
+    
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(IncotermExceptionsEditComponent,
         {
@@ -124,7 +126,7 @@ export class IncotermExceptionsListComponent implements OnInit {
             id: rowData.id,
             url: this.apiStringURL.get_incoterm_exceptions + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
-            deleteURL: this.apiStringURL.delete_record
+            deleteURL: this.apiStringURL.delete_incoterm_exceptions_record
 
           },
         });
