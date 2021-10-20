@@ -66,7 +66,7 @@ export class CitGlobalConstantService {
     certificate: any = {
         list: this.baseUrl + "Base_Price_Data",
         get: this.baseUrl + "get_record_baseprice",
-        delete_record: this.baseUrl + "delete_record_baseprice",
+        delete: this.baseUrl + "delete_record_baseprice",
         upload: this.baseUrl + "Base_Price_Upload",
         validate: this.baseUrl + "Base_Price_validate",
         update: this.baseUrl + "update_record_baseprice",
@@ -75,7 +75,7 @@ export class CitGlobalConstantService {
     certificate_mini_bar: any = {
         list: this.baseUrl + "Base_Price_Data",
         get: this.baseUrl + "get_record_baseprice",
-        delete_record: this.baseUrl + "delete_record_baseprice",
+        delete: this.baseUrl + "delete_record_baseprice",
         upload: this.baseUrl + "Base_Price_Upload",
         validate: this.baseUrl + "Base_Price_validate",
         update: this.baseUrl + "update_record_baseprice",
