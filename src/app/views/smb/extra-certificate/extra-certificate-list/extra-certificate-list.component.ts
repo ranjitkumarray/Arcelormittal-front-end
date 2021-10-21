@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { ExtraCertificateEditComponent } from '../extra-certificate-edit/extra-certificate-edit.component';
+import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-extra-certificate-list',
@@ -17,7 +18,19 @@ import { ExtraCertificateEditComponent } from '../extra-certificate-edit/extra-c
   styleUrls: ['./extra-certificate-list.component.scss']
 })
 export class ExtraCertificateListComponent implements OnInit {
-
+  data: any = [
+    {
+      'BusinessCode': 'test-1',
+      'Certificate': 'test-2',
+      'Grade_Category': 'test',
+      'Market_Country': 'test-3',
+      'Document_Item_Currency': 'test-4',
+      'Delivering_Mill': 'test-5',
+      'Amount': 'test-6',
+      'Currency': 'test-7',
+      "id_value": 3
+    }
+  ]
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = [];
   dataSource: any;
@@ -65,6 +78,8 @@ export class ExtraCertificateListComponent implements OnInit {
     } else {
       searchString = "all"
     }
+
+    this.dataSource = new MatTableDataSource<certificateData>(this.data)
     this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -95,15 +110,18 @@ export class ExtraCertificateListComponent implements OnInit {
   }
   actionClicked(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(ExtraCertificateEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "certificate",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {

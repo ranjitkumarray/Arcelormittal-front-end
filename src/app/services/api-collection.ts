@@ -101,7 +101,25 @@ export class CitGlobalConstantService {
         update: this.baseUrl + "update_record_baseprice",
         download: this.baseUrl + "base_price_download_minibar",
     };
-
+    //delivery_mill 
+    delivery_mill: any = {
+        list: this.baseUrl + "Base_Price_Data",
+        get: this.baseUrl + "get_record_baseprice",
+        delete: this.baseUrl + "delete_record_baseprice",
+        upload: this.baseUrl + "Base_Price_Upload",
+        validate: this.baseUrl + "Base_Price_validate",
+        update: this.baseUrl + "update_record_baseprice",
+        download: this.baseUrl + "Base_price_download",
+    };
+    delivery_mill_mini_bar: any = {
+        list: this.baseUrl + "base_price_data_minibar",
+        get: this.baseUrl + "get_record_baseprice_minibar",
+        delete: this.baseUrl + "delete_record_baseprice_minibar",
+        upload: this.baseUrl + "base_price_upload_minibar",
+        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
+        update: this.baseUrl + "update_record_baseprice",
+        download: this.baseUrl + "base_price_download_minibar",
+    };
     //grade 
     grade: any = {
         list: this.baseUrl + "base_price_data_minibar",
