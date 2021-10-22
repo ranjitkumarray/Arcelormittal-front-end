@@ -102,7 +102,7 @@
                     </div>
                     <div *ngIf="!(
                             (url[2]==='smb') || 
-                            (url[2]==='certificate') ||
+                            (url[2]==='extra-certificate') ||
                             (url[2]==='grade') ||
                             (url[2]==='transport-mode') 
                         )">
@@ -149,7 +149,7 @@
                     </ng-container>
 
                     <div *ngIf="(
-                            (url[2]==='certificate') ||
+                            (url[2]==='extra-certificate') ||
                             (url[2]==='grade') 
                             )">
                         <ng-container matColumnDef="Grade_Category">
@@ -206,10 +206,10 @@
                         </ng-container>
                     </div>
 
-                    <div *ngIf="(url[2]==='certificate')">
-                        <ng-container matColumnDef="certificate">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> certificate </th>
-                            <td mat-cell *matCellDef="let row"> {{row.certificate}} </td>
+                    <div *ngIf="(url[2]==='extra-certificate')">
+                        <ng-container matColumnDef="Certificate">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Certificate </th>
+                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
                         </ng-container>
                     </div>
 
@@ -261,7 +261,7 @@
                     </div>
 
                     <div *ngIf="(
-                            (url[2]==='certificate') ||
+                            (url[2]==='extra-certificate') ||
                             (url[2]==='grade') 
                             )">
                         <ng-container matColumnDef="Grade_Category">
@@ -292,7 +292,7 @@
 
                     <div *ngIf="(
                             (url[2]==='profile') ||
-                            (url[2]==='profile-lberia_italy')
+                            (url[2]==='profile-lberia-italy')
                             )">
                         <ng-container matColumnDef="Product_Level_05">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Level 05 </th>
@@ -338,10 +338,10 @@
                         </ng-container>
                     </div>
 
-                    <div *ngIf="(url[2]==='certificate') ">
-                        <ng-container matColumnDef="certificate">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> certificate </th>
-                            <td mat-cell *matCellDef="let row"> {{row.certificate}} </td>
+                    <div *ngIf="(url[2]==='extra-certificate') ">
+                        <ng-container matColumnDef="Certificate">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Certificate </th>
+                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
                         </ng-container>
                     </div>
 

@@ -46,7 +46,7 @@ export class DeliveryMillListComponent implements OnInit {
         this.apiStringURL = this.apiString.delivery_mill
         this.displayedColumns = [
           'BusinessCode',
-          'Beam Category',
+          'Beam_Category',
           'Market_Country',
           'Delivering_Mill',
           'Product_Division',

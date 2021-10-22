@@ -51,30 +51,30 @@ export class UploadValidateModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.smb_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency', "action"]
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.smb
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency', "action"]
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency']
         }
 
       } else if (this.url[2] === 'incoterm-exceptions') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.incoterm_exceptions
-          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
         }
 
       } else if (this.url[2] === 'extra-certificate') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.certificate_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+          this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.certificate
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
+          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency']
         }
 
       } else if (this.url[2] === 'freight-parity') {
@@ -132,7 +132,7 @@ export class UploadValidateModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering Mill', 'Product_Level 02', 'Product_Level 05', 'Document_Item_Currency', 'Market_Customer', 'Market_Customer_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Market_Customer', 'Market_Customer_Group', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.profile_lberia_italy
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency']
@@ -155,7 +155,7 @@ export class UploadValidateModalComponent implements OnInit {
           this.displayedColumns = ['Market_Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.delivery_mill
-          this.displayedColumns = ['BusinessCode', 'Beam Category', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Beam_Category', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
         }
 
       }

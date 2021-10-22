@@ -62,9 +62,9 @@ export class ProfileLberiaItalyListComponent implements OnInit {
           [
             'BusinessCode',
             'Market_Country',
-            'Delivering Mill',
-            'Product_Level 02',
-            'Product_Level 05',
+            'Delivering_Mill',
+            'Product_Level_02',
+            'Product_Level_05',
             'Document_Item_Currency',
             'Market_Customer',
             'Market_Customer_Group',
