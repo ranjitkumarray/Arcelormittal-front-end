@@ -10,7 +10,7 @@ import { profileData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
-import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
+import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-profile-list',
@@ -79,10 +79,10 @@ export class ProfileListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCertificate()
+    this.getProfile()
   }
   //getting uploaded history of alloy scrap 
-  getCertificate() {
+  getProfile() {
     this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
@@ -110,30 +110,33 @@ export class ProfileListComponent implements OnInit {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getCertificate()
+    this.getProfile()
   }
   //filter 
   applyFilter() {
     this.pageOffset = 0
     this.pageLength = 500
-    this.getCertificate()
+    this.getProfile()
   }
   actionClicked(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(ProfileEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "profile",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getCertificate()
+        this.getProfile()
       })
     }
 
@@ -153,15 +156,15 @@ export class ProfileListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getCertificate()
+        this.getProfile()
       })
     }
   }
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/extra-certificate/bulk-upload'])
+      this.router.navigate(['/smb/profile/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/extra-certificate/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/profile/mini-bar/bulk-upload'])
     }
   }
   downloadInXlFile() {

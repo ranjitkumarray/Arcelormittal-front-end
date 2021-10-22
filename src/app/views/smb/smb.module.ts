@@ -39,6 +39,7 @@ import { TransportModeEditComponent } from './transport-mode/transport-mode-edit
 import { IncotermExceptionsListComponent } from './incoterm-exceptions/incoterm-exceptions-list/incoterm-exceptions-list.component';
 import { IncotermExceptionsUploadComponent } from './incoterm-exceptions/incoterm-exceptions-upload/incoterm-exceptions-upload.component';
 import { IncotermExceptionsEditComponent } from './incoterm-exceptions/incoterm-exceptions-edit/incoterm-exceptions-edit.component';
+import { UploadValidateModalComponent } from './smb-popup-modal/upload-validate-modal/upload-validate-modal.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { IncotermExceptionsEditComponent } from './incoterm-exceptions/incoterm-
     IncotermExceptionsListComponent,
     IncotermExceptionsUploadComponent,
     IncotermExceptionsEditComponent,
+    UploadValidateModalComponent,
   ],
   imports: [
     CommonModule,

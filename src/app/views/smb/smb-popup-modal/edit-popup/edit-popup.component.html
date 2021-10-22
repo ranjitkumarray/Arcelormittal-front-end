@@ -43,13 +43,28 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6">
+                <div class="col-6" *ngIf="(
+                    (data?.fileName!='delivery_mill') ||
+                    (data?.fileName!='freight_parity') ||
+                    (data?.fileName!='profile_lberia_italy') ||
+                    (data?.fileName!='transport_mode') 
+                    )">
                     <mat-form-field appearance="outline">
                         <mat-label>Customer Group</mat-label>
                         <input matInput type="text" formControlName="Customer_Group">
                     </mat-form-field>
                 </div>
-
+                <div class="col-6" *ngIf="(
+                    (data?.fileName==='delivery_mill') ||
+                    (data?.fileName==='freight_parity') ||
+                    (data?.fileName==='profile_lberia_italy') ||
+                    (data?.fileName==='transport_mode') 
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Market Customer Group</mat-label>
+                        <input matInput type="text" formControlName="Market_Customer_Group">
+                    </mat-form-field>
+                </div>
                 <div class="col-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Market Customer</mat-label>
