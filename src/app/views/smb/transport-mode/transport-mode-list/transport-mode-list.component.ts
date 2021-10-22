@@ -9,7 +9,7 @@ import { transportModeData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
-import { TransportModeEditComponent } from '../transport-mode-edit/transport-mode-edit.component';
+import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-transport-mode-list',
@@ -43,7 +43,7 @@ export class TransportModeListComponent implements OnInit {
       this.url = event.url.split('/')
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.certificate
+        this.apiStringURL = this.apiString.transport_mode
         this.displayedColumns = [
           'Product_Division',
           'Market_Country',
@@ -54,7 +54,7 @@ export class TransportModeListComponent implements OnInit {
           'action'
         ]
       } else {
-        this.apiStringURL = this.apiString.certificate_mini_bar
+        this.apiStringURL = this.apiString.transport_mode_mini_bar
 
         this.displayedColumns = [
           'Product_Division',
@@ -72,10 +72,10 @@ export class TransportModeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCertificate()
+    this.getTransportMode()
   }
   //getting uploaded history of alloy scrap 
-  getCertificate() {
+  getTransportMode() {
     this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
@@ -103,30 +103,33 @@ export class TransportModeListComponent implements OnInit {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getCertificate()
+    this.getTransportMode()
   }
   //filter 
   applyFilter() {
     this.pageOffset = 0
     this.pageLength = 500
-    this.getCertificate()
+    this.getTransportMode()
   }
   actionClicked(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(TransportModeEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "transport_mode",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getCertificate()
+        this.getTransportMode()
       })
     }
 
@@ -146,15 +149,15 @@ export class TransportModeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getCertificate()
+        this.getTransportMode()
       })
     }
   }
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/extra-certificate/bulk-upload'])
+      this.router.navigate(['/smb/transport-mode/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/extra-certificate/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/transport-mode/mini-bar/bulk-upload'])
     }
   }
   downloadInXlFile() {

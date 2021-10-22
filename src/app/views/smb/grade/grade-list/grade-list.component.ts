@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { GradeEditComponent } from '../grade-edit/grade-edit.component';
+import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
 @Component({
   selector: 'app-grade-list',
   templateUrl: './grade-list.component.html',
@@ -72,10 +73,10 @@ export class GradeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCertificate()
+    this.getGrade()
   }
   //getting uploaded history of alloy scrap 
-  getCertificate() {
+  getGrade() {
     this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
@@ -103,33 +104,35 @@ export class GradeListComponent implements OnInit {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getCertificate()
+    this.getGrade()
   }
   //filter 
   applyFilter() {
     this.pageOffset = 0
     this.pageLength = 500
-    this.getCertificate()
+    this.getGrade()
   }
   actionClicked(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(GradeEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "grade",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getCertificate()
+        this.getGrade()
       })
     }
-
     if (viewOn === 'delete') {
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
@@ -146,15 +149,15 @@ export class GradeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getCertificate()
+        this.getGrade()
       })
     }
   }
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/extra-certificate/bulk-upload'])
+      this.router.navigate(['/smb/grade/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/extra-certificate/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/grade/mini-bar/bulk-upload'])
     }
   }
   downloadInXlFile() {
