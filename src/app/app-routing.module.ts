@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SidebarComponent } from './common-use/sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -12,7 +13,11 @@ const routes: Routes = [
   { path: 'smb', loadChildren: () => import('./views/smb/smb.module').then(m => m.SmbModule) },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: SidebarComponent,
+    children: [{
+      path: '',
+      component: PageNotFoundComponent
+    }]
   },
 ];
 

@@ -8,11 +8,11 @@
         <div class="row">
             <div *ngIf="this.data?.type === 'miniBar';else sample">
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName!='delivery_mill') || 
-                    (data?.fileName!='freight_parity') || 
-                    (data?.fileName!='length_logistic') ||
-                    (data?.fileName!='transport_mode') 
+                <div class="col-6" *ngIf="!(
+                    (data?.fileName==='delivery_mill') || 
+                    (data?.fileName==='freight_parity') || 
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
                         <mat-label>Business Code</mat-label>
@@ -20,11 +20,11 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName!='smb') || 
-                    (data?.fileName!='certificate') ||
-                    (data?.fileName!='grade') ||
-                    (data?.fileName!='transport_mode') 
+                <div class="col-6" *ngIf="!(
+                    (data?.fileName==='smb') || 
+                    (data?.fileName==='certificate') ||
+                    (data?.fileName==='grade') ||
+                    (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
                         <mat-label>Delivering Mill</mat-label>
@@ -35,7 +35,7 @@
                 <div class="col-6" *ngIf="(
                     (data?.fileName==='delivery_mill') ||
                     (data?.fileName==='freight_parity') ||
-                    (data?.fileName!='transport_mode') 
+                    (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
                         <mat-label>Product Division</mat-label>
@@ -43,11 +43,11 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName!='delivery_mill') ||
-                    (data?.fileName!='freight_parity') ||
-                    (data?.fileName!='profile_lberia_italy') ||
-                    (data?.fileName!='transport_mode') 
+                <div class="col-6" *ngIf="!(
+                    (data?.fileName==='delivery_mill') ||
+                    (data?.fileName==='freight_parity') ||
+                    (data?.fileName==='profile_lberia_italy') ||
+                    (data?.fileName==='transport_mode') 
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Customer Group</mat-label>
@@ -150,10 +150,10 @@
             <!-- ========================== simple design ================================= -->
 
             <ng-template #sample>
-                <div class="col-6" *ngIf="(
-                    (data?.fileName!='freight_parity') || 
-                    (data?.fileName!='length_logistic') ||
-                    (data?.fileName!='transport_mode') 
+                <div class="col-6" *ngIf="!(
+                    (data?.fileName==='freight_parity') || 
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
                         <mat-label>Business Code</mat-label>
@@ -161,10 +161,10 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName!='smb') || 
-                    (data?.fileName!='grade') ||
-                    (data?.fileName!='transport_mode') 
+                <div class="col-6" *ngIf="!(
+                    (data?.fileName==='smb') || 
+                    (data?.fileName==='grade') ||
+                    (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
                         <mat-label>Delivering Mill</mat-label>

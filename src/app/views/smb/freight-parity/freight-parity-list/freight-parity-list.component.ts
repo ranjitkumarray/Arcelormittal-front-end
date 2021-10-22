@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { FreightParityEditComponent } from '../freight-parity-edit/freight-parity-edit.component';
+import { rowData } from 'src/app/sample';
+import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-freight-parity-list',
@@ -17,7 +19,7 @@ import { FreightParityEditComponent } from '../freight-parity-edit/freight-parit
   styleUrls: ['./freight-parity-list.component.scss']
 })
 export class FreightParityListComponent implements OnInit {
-
+  data: any = rowData
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = [];
   dataSource: any;
@@ -84,6 +86,7 @@ export class FreightParityListComponent implements OnInit {
     } else {
       searchString = "all"
     }
+    this.dataSource = new MatTableDataSource<freightParityData>(this.data)
     this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -114,15 +117,18 @@ export class FreightParityListComponent implements OnInit {
   }
   freightParityClick(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(FreightParityEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "freight_parity",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -153,9 +159,9 @@ export class FreightParityListComponent implements OnInit {
   }
   uploadFreightParity() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/extra-freightParity/bulk-upload'])
+      this.router.navigate(['/smb/freight-parity/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/extra-freightParity/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/freight-parity/mini-bar/bulk-upload'])
     }
   }
   downloadFreightParity() {

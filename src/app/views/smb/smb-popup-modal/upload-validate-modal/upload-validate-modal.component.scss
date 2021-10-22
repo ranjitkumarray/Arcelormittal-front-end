@@ -1,0 +1,49 @@
+@import "../../../../../assets/color.scss";
+.no_data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+}
+
+a.offer_id_link {
+    &:hover {
+        color: $primary;
+    }
+    cursor: pointer;
+    color: $primary;
+}
+.mat-card {
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+//file upload css
+#drag_zone {
+    width: 100%;
+    min-height: 160px;
+    margin: auto;
+    padding: 8px;
+    text-align: center;
+    background-color: #f0f0f0;
+    // border: 2px dashed gray;
+    border-radius: 8px;
+    color: black;
+}
+.pointCenter {
+    padding: 35px 0;
+    border: 3px dashed #f05b31;
+    text-align: center;
+}
+
+//
+.test {
+    color: red;
+}
