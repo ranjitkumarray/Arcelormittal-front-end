@@ -27,9 +27,9 @@ export class IncotermExceptionsEditComponent implements OnInit {
   ) {
 
     if (this.data.type != 'edit-min-bar') {
-      this.apiStringURL = this.apiString.smb
+      this.apiStringURL = this.apiString.incoterm_exceptions
     } else {
-      this.apiStringURL = this.apiString.smb_mini_bar
+      this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
     }
 
   }
@@ -68,7 +68,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiStringURL.get_incoterm_exceptions, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -98,7 +98,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   editRecord() {
     console.group(this.editIncotermExceptionsClick.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.update_record_incoterm_exceptions, this.editIncotermExceptionsClick.value).subscribe(result => {
+    this.apiMethod.post_request(this.apiStringURL.update, this.editIncotermExceptionsClick.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')
