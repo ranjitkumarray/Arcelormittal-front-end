@@ -235,7 +235,7 @@ const routes: Routes = [
                 },
                 {
                   path: "bulk-upload",
-                  component: IncotermExceptionsUploadComponent
+                  component: UploadValidateModalComponent
                 },
 
               ]
