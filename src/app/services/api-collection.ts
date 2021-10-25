@@ -30,7 +30,7 @@ export class CitGlobalConstantService {
         delete_record: this.baseUrl + "delete_record_baseprice",
         base_price_upload: this.baseUrl + "Base_Price_Upload",
         base_price_validate: this.baseUrl + "Base_Price_validate",
-        update_record_base_price: this.baseUrl + "update_record_baseprice",
+        update_record_base_price: this.baseUrl + "add_record_baseprice",
         base_price_download: this.baseUrl + "Base_price_download",
     };
     smb_mini_bar: any = {
@@ -39,7 +39,7 @@ export class CitGlobalConstantService {
         delete_record: this.baseUrl + "delete_record_baseprice_minibar",
         base_price_upload: this.baseUrl + "base_price_upload_minibar",
         base_price_validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update_record_base_price: this.baseUrl + "update_record_baseprice",
+        update_record_base_price: this.baseUrl + "add_record_baseprice",
         base_price_download: this.baseUrl + "base_price_download_minibar",
     };
 
