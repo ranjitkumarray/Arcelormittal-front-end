@@ -142,42 +142,42 @@ export class CitGlobalConstantService {
 
     //length_logistic 
     length_logistic: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_length_logistic",
+        get: this.baseUrl + "get_record_length_logistic",
+        delete: this.baseUrl + "delete_record_length_logistic",
+        upload: this.baseUrl + "upload_length_logistic",
+        validate: this.baseUrl + "validate_length_logistic",
+        update: this.baseUrl + "add_record_length_logistic",
+        download: this.baseUrl + "download_length_logistic",
     };
     length_logistic_mini_bar: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_length_logistic_minibar",
+        get: this.baseUrl + "get_record_length_logistic_minibar",
+        delete: this.baseUrl + "delete_record_length_logistic_minibar",
+        upload: this.baseUrl + "upload_length_logistic_minibar",
+        validate: this.baseUrl + "validate_length_logistic_minibar",
+        update: this.baseUrl + "add_record_length_logistic_minibar",
+        download: this.baseUrl + "download_length_logistic_minibar",
     };
 
     //length_production 
     length_production: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_length_production",
+        get: this.baseUrl + "get_record_length_production",
+        delete: this.baseUrl + "delete_record_length_production",
+        upload: this.baseUrl + "upload_length_production",
+        validate: this.baseUrl + "validate_length_production",
+        update: this.baseUrl + "add_record_length_production",
+        download: this.baseUrl + "download_length_production",
     };
     length_production_mini_bar: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_length_production_minibar",
+        get: this.baseUrl + "get_record_length_production_minibar",
+        delete: this.baseUrl + "delete_record_length_production_minibar",
+        upload: this.baseUrl + "upload_length_production_minibar",
+        validate: this.baseUrl + "validate_length_production_minibar",
+        update: this.baseUrl + "add_record_length_production_minibar",
+        download: this.baseUrl + "download_length_production_minibar",
     };
 
     //profile 
@@ -222,21 +222,21 @@ export class CitGlobalConstantService {
 
     //transport_mode 
     transport_mode: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_transport",
+        get: this.baseUrl + "get_record_transport",
+        delete: this.baseUrl + "delete_record_transport",
+        upload: this.baseUrl + "upload_transport",
+        validate: this.baseUrl + "validate_transport",
+        update: this.baseUrl + "add_record_transport",
+        download: this.baseUrl + "download_transport",
     };
     transport_mode_mini_bar: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_transport_minibar",
+        get: this.baseUrl + "get_record_transport_minibar",
+        delete: this.baseUrl + "delete_record_transport_minibar",
+        upload: this.baseUrl + "upload_transport_minibar",
+        validate: this.baseUrl + "validate_transport_minibar",
+        update: this.baseUrl + "add_record_transport_minibar",
+        download: this.baseUrl + "download_transport_minibar",
     };
 }
