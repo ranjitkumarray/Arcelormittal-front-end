@@ -56,7 +56,7 @@ export class CitGlobalConstantService {
     certificate_mini_bar: any = {
         list: this.baseUrl + "data_extra_certificate_minibar",
         get: this.baseUrl + "get_record_extra_certificate_minibar",
-        delete: this.baseUrl + "delete_extra_certificate_minibar",
+        delete: this.baseUrl + "delete_record_extra_certificate_minibar",
         upload: this.baseUrl + "upload_extra_certificate_minibar",
         validate: this.baseUrl + "validate_extra_certificate_minibar",
         update: this.baseUrl + "add_record_extra_certificate_minibar",
