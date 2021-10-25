@@ -66,7 +66,7 @@ export class IncotermExceptionsListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.incoterm_exceptions_list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
@@ -106,7 +106,7 @@ export class IncotermExceptionsListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: rowData.id,
-            url: this.apiStringURL.get_incoterm_exceptions + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
           },
         });
@@ -124,9 +124,9 @@ export class IncotermExceptionsListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: rowData.id,
-            url: this.apiStringURL.get_incoterm_exceptions + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
-            deleteURL: this.apiStringURL.delete_incoterm_exceptions_record
+            deleteURL: this.apiStringURL.delete
 
           },
         });
@@ -145,6 +145,6 @@ export class IncotermExceptionsListComponent implements OnInit {
     }
   }
   downloadIncotermExceptions() {
-    window.open(this.apiStringURL.incoterm_exceptions_download, "_blank")
+    window.open(this.apiStringURL.download, "_blank")
   }
 }

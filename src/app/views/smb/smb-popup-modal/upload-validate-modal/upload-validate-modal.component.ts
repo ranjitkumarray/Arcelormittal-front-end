@@ -251,6 +251,7 @@ export class UploadValidateModalComponent implements OnInit {
     // this.fileEv.target.value = "";
   }
   uploadFiles() {
+    console.log("coming", this.selectedFiles)
     const formData = new FormData();
     formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile)
     this.loadingRouteConfig = true
@@ -283,6 +284,7 @@ export class UploadValidateModalComponent implements OnInit {
 
   //data validate
   validateDataForm() {
+    console.log(this.uploadValidateModal)
     let data: any = {
       "billet": this.uploadValidateModal_data.data,
       "filename": this.uploadValidateModal_data.filename
