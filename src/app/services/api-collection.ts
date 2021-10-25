@@ -203,41 +203,41 @@ export class CitGlobalConstantService {
 
     //profile_lberia_italy 
     profile_lberia_italy: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_extra_profile_Iberia",
+        get: this.baseUrl + "get_record_extra_profile_Iberia",
+        delete: this.baseUrl + "delete_record_extra_profile_Iberia",
+        upload: this.baseUrl + "upload_extra_profile_Iberia",
+        validate: this.baseUrl + "validate_extra_profile_Iberia",
+        update: this.baseUrl + "add_record_extra_profile_Iberia",
+        download: this.baseUrl + "download_extra_profile_Iberia",
     };
     profile_lberia_italy_mini_bar: any = {
-        list: this.baseUrl + "base_price_data_minibar",
-        get: this.baseUrl + "get_record_baseprice_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_minibar",
-        upload: this.baseUrl + "base_price_upload_minibar",
-        validate: this.baseUrl + "base_price_validate_baseprice_minibar",
-        update: this.baseUrl + "update_record_baseprice",
-        download: this.baseUrl + "base_price_download_minibar",
+        list: this.baseUrl + "data_extra_profile_Iberia_minibar",
+        get: this.baseUrl + "get_record_extra_profile_Iberia_minibar",
+        delete: this.baseUrl + "delete_record_extra_profile_Iberia_minibar",
+        upload: this.baseUrl + "upload_extra_profile_Iberia_minibar",
+        validate: this.baseUrl + "validate_extra_profile_Iberia_minibar",
+        update: this.baseUrl + "add_record_extra_profile_Iberia_minibar",
+        download: this.baseUrl + "download_extra_profile_Iberia_minibar",
     };
     //incoterm exceptions 
     incoterm_exceptions: any = {
-        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
-        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
-        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
-        update_record_incoterm_exceptions: this.baseUrl + "add_baseprice_incoterm",
-        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
+        list: this.baseUrl + "data_baseprice_incoterm",
+        get: this.baseUrl + "get_record_baseprice_incoterm",
+        delete: this.baseUrl + "delete_record_baseprice_incoterm",
+        upload: this.baseUrl + "upload_baseprice_incoterm",
+        validate: this.baseUrl + "validate_baseprice_incoterm",
+        update: this.baseUrl + "add_baseprice_incoterm",
+        download: this.baseUrl + "download_baseprice_incoterm",
     };
     incoterm_exceptions_mini_bar: any = {
-        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
-        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
-        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
-        update_record_incoterm_exceptions: this.baseUrl + "add_baseprice_incoterm",
-        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
+        list: this.baseUrl + "data_baseprice_incoterm",
+        get: this.baseUrl + "get_record_baseprice_incoterm",
+        delete: this.baseUrl + "delete_record_baseprice_incoterm",
+        upload: this.baseUrl + "upload_baseprice_incoterm",
+        validate: this.baseUrl + "validate_baseprice_incoterm",
+        update: this.baseUrl + "add_baseprice_incoterm",
+        download: this.baseUrl + "download_baseprice_incoterm",
     };
 
 }

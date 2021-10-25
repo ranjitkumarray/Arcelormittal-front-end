@@ -331,30 +331,6 @@ export const NavItems = [
 
             },
             {
-                name: 'Incoterm Exceptions',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Incoterm_Exceptions',
-                children: [
-                    {
-                        name: 'Incoterm Exceptions List',
-                        url: '/smb/incoterm-exceptions/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
-
-                    },
-                    {
-                        name: 'upload History',
-                        url: '/smb/incoterm-exceptions/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Incoterm_Exceptions_sub_menu',
-
-                    }
-                ]
-
-            },
-            {
                 name: 'Extra Certificate',
                 url: '',
                 active_img: '../../../assets/images/order.png',
