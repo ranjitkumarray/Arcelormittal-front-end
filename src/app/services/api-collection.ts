@@ -43,25 +43,6 @@ export class CitGlobalConstantService {
         base_price_download: this.baseUrl + "base_price_download_minibar",
     };
 
-    //incoterm exceptions 
-    incoterm_exceptions: any = {
-        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
-        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
-        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
-        update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
-        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
-    };
-    incoterm_exceptions_mini_bar: any = {
-        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
-        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
-        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
-        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
-        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
-        update_record_incoterm_exceptions: this.baseUrl + "update_record_baseprice",
-        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
-    };
     //certificate 
     certificate: any = {
         list: this.baseUrl + "data_extra_certificate",
@@ -69,7 +50,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete__record_extra_certificate",
         upload: this.baseUrl + "upload_extra_certificate",
         validate: this.baseUrl + "validate_extra_certificate",
-        update: this.baseUrl + "update_record_baseprice",
+        update: this.baseUrl + "add_extra_certificate",
         download: this.baseUrl + "download_extra_certificate",
     };
     certificate_mini_bar: any = {
@@ -78,7 +59,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_extra_certificate_minibar",
         upload: this.baseUrl + "upload_extra_certificate_minibar",
         validate: this.baseUrl + "validate_extra_certificate_minibar",
-        update: this.baseUrl + "update_record_baseprice",
+        update: this.baseUrl + "add_extra_certificate_minibar",
         download: this.baseUrl + "download_extra_certificate_minibar",
     };
 
@@ -89,7 +70,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_freight_parity",
         upload: this.baseUrl + "upload_freight_parity",
         validate: this.baseUrl + "validate_freight_parity",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_freight_parity",
         download: this.baseUrl + "download_freight_parity",
     };
     freight_parity_mini_bar: any = {
@@ -98,7 +79,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_freight_parity_minibar",
         upload: this.baseUrl + "upload_freight_parity_minibar",
         validate: this.baseUrl + "validate_freight_parity_minibar",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_freight_parity_minibar",
         download: this.baseUrl + "download_freight_parity_minibar",
     };
     //delivery_mill 
@@ -108,7 +89,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_delivery_mill",
         upload: this.baseUrl + "upload_delivery_mill",
         validate: this.baseUrl + "validate_delivery_mill",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_delivery_mill",
         download: this.baseUrl + "download_delivery_mill",
     };
     delivery_mill_mini_bar: any = {
@@ -117,7 +98,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_delivery_mill_minibar",
         upload: this.baseUrl + "upload_delivery_mill_minibar",
         validate: this.baseUrl + "validate_delivery_mill_minibar",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_delivery_mill_minibar",
         download: this.baseUrl + "download_delivery_mill_minibar",
     };
     //grade 
@@ -127,7 +108,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_grade",
         upload: this.baseUrl + "upload_extra_grade",
         validate: this.baseUrl + "validate_extra_grade",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_extra_grade",
         download: this.baseUrl + "download_freight_extra_grade",
     };
     grade_mini_bar: any = {
@@ -136,7 +117,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_grade_minibar",
         upload: this.baseUrl + "upload_extra_grade_minibar",
         validate: this.baseUrl + "validate_extra_grade_minibar",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_extra_grade_minibar",
         download: this.baseUrl + "download_extra_grade_minibar",
     };
 
@@ -180,6 +161,26 @@ export class CitGlobalConstantService {
         download: this.baseUrl + "download_length_production_minibar",
     };
 
+    //transport_mode 
+    transport_mode: any = {
+        list: this.baseUrl + "data_transport",
+        get: this.baseUrl + "get_record_transport",
+        delete: this.baseUrl + "delete_record_transport",
+        upload: this.baseUrl + "upload_transport",
+        validate: this.baseUrl + "validate_transport",
+        update: this.baseUrl + "add_record_transport",
+        download: this.baseUrl + "download_transport",
+    };
+    transport_mode_mini_bar: any = {
+        list: this.baseUrl + "data_transport_minibar",
+        get: this.baseUrl + "get_record_transport_minibar",
+        delete: this.baseUrl + "delete_record_transport_minibar",
+        upload: this.baseUrl + "upload_transport_minibar",
+        validate: this.baseUrl + "validate_transport_minibar",
+        update: this.baseUrl + "add_record_transport_minibar",
+        download: this.baseUrl + "download_transport_minibar",
+    };
+
     //profile 
     profile: any = {
         list: this.baseUrl + "data_extra_profile",
@@ -187,7 +188,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_profile",
         upload: this.baseUrl + "upload_extra_profile",
         validate: this.baseUrl + "validate_extra_profile",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_extra_profile",
         download: this.baseUrl + "download_extra_profile",
     };
     profile_mini_bar: any = {
@@ -196,7 +197,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_profile_minibar",
         upload: this.baseUrl + "upload_extra_profile_minibar",
         validate: this.baseUrl + "validate_extra_profile_minibar",
-        update: this.baseUrl + "",
+        update: this.baseUrl + "add_extra_profile_minibar",
         download: this.baseUrl + "download_extra_profile_minibar",
     };
 
@@ -219,24 +220,24 @@ export class CitGlobalConstantService {
         update: this.baseUrl + "update_record_baseprice",
         download: this.baseUrl + "base_price_download_minibar",
     };
+    //incoterm exceptions 
+    incoterm_exceptions: any = {
+        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
+        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
+        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
+        update_record_incoterm_exceptions: this.baseUrl + "add_baseprice_incoterm",
+        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
+    };
+    incoterm_exceptions_mini_bar: any = {
+        incoterm_exceptions_list: this.baseUrl + "data_baseprice_incoterm",
+        get_incoterm_exceptions: this.baseUrl + "get_record_baseprice_incoterm",
+        delete_incoterm_exceptions_record: this.baseUrl + "delete_record_baseprice_incoterm",
+        incoterm_exceptions_upload: this.baseUrl + "upload_baseprice_incoterm",
+        incoterm_exceptions_validate: this.baseUrl + "validate_baseprice_incoterm",
+        update_record_incoterm_exceptions: this.baseUrl + "add_baseprice_incoterm",
+        incoterm_exceptions_download: this.baseUrl + "download_baseprice_incoterm",
+    };
 
-    //transport_mode 
-    transport_mode: any = {
-        list: this.baseUrl + "data_transport",
-        get: this.baseUrl + "get_record_transport",
-        delete: this.baseUrl + "delete_record_transport",
-        upload: this.baseUrl + "upload_transport",
-        validate: this.baseUrl + "validate_transport",
-        update: this.baseUrl + "add_record_transport",
-        download: this.baseUrl + "download_transport",
-    };
-    transport_mode_mini_bar: any = {
-        list: this.baseUrl + "data_transport_minibar",
-        get: this.baseUrl + "get_record_transport_minibar",
-        delete: this.baseUrl + "delete_record_transport_minibar",
-        upload: this.baseUrl + "upload_transport_minibar",
-        validate: this.baseUrl + "validate_transport_minibar",
-        update: this.baseUrl + "add_record_transport_minibar",
-        download: this.baseUrl + "download_transport_minibar",
-    };
 }
