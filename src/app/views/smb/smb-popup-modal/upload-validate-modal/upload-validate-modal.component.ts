@@ -251,7 +251,10 @@ export class UploadValidateModalComponent implements OnInit {
     // this.fileEv.target.value = "";
   }
   uploadFiles() {
+    let data: any = { "data": [{ "Amount": "\"Amount\" - 60", "Beam_Category": 5, "Currency": "'EUR'", "Customer_Group": "GR-NABA", "Delivering_Mill": "DAB1", "Document_Item_Currency": "", "Incoterm1": "EXW", "Market_Country": "RS", "Product_Division": 1 }, { "Amount": "\"Amount\" - 60", "Beam_Category": 4, "Currency": "'EUR'", "Customer_Group": "GR-NABA", "Delivering_Mill": "DAB2", "Document_Item_Currency": "", "Incoterm1": "EXW", "Market_Country": "RS", "Product_Division": 1 }, { "Amount": "\"Amount\" - 60", "Beam_Category": 3, "Currency": "'EUR'", "Customer_Group": "GR-NABA", "Delivering_Mill": "DAB3", "Document_Item_Currency": "*", "Incoterm1": "EXW", "Market_Country": "RS", "Product_Division": 1 }] }
     const formData = new FormData();
+    this.uploadValidateModal = new MatTableDataSource<basePriceAddtionData>(data.data)
+
     formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile)
     this.loadingRouteConfig = true
     this.apiMethod.post_request(this.apiStringURL.upload, formData).subscribe((data) => {
