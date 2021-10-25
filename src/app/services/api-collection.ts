@@ -50,7 +50,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete__record_extra_certificate",
         upload: this.baseUrl + "upload_extra_certificate",
         validate: this.baseUrl + "validate_extra_certificate",
-        update: this.baseUrl + "add_extra_certificate",
+        update: this.baseUrl + "add_record_extra_certificate",
         download: this.baseUrl + "download_extra_certificate",
     };
     certificate_mini_bar: any = {
@@ -59,7 +59,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_extra_certificate_minibar",
         upload: this.baseUrl + "upload_extra_certificate_minibar",
         validate: this.baseUrl + "validate_extra_certificate_minibar",
-        update: this.baseUrl + "add_extra_certificate_minibar",
+        update: this.baseUrl + "add_record_extra_certificate_minibar",
         download: this.baseUrl + "download_extra_certificate_minibar",
     };
 
@@ -70,7 +70,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_freight_parity",
         upload: this.baseUrl + "upload_freight_parity",
         validate: this.baseUrl + "validate_freight_parity",
-        update: this.baseUrl + "add_freight_parity",
+        update: this.baseUrl + "add_record_freight_parity",
         download: this.baseUrl + "download_freight_parity",
     };
     freight_parity_mini_bar: any = {
@@ -79,7 +79,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_freight_parity_minibar",
         upload: this.baseUrl + "upload_freight_parity_minibar",
         validate: this.baseUrl + "validate_freight_parity_minibar",
-        update: this.baseUrl + "add_freight_parity_minibar",
+        update: this.baseUrl + "add_record_freight_parity_minibar",
         download: this.baseUrl + "download_freight_parity_minibar",
     };
     //delivery_mill 
@@ -89,7 +89,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_delivery_mill",
         upload: this.baseUrl + "upload_delivery_mill",
         validate: this.baseUrl + "validate_delivery_mill",
-        update: this.baseUrl + "add_delivery_mill",
+        update: this.baseUrl + "add_record_delivery_mill",
         download: this.baseUrl + "download_delivery_mill",
     };
     delivery_mill_mini_bar: any = {
@@ -98,7 +98,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_delivery_mill_minibar",
         upload: this.baseUrl + "upload_delivery_mill_minibar",
         validate: this.baseUrl + "validate_delivery_mill_minibar",
-        update: this.baseUrl + "add_delivery_mill_minibar",
+        update: this.baseUrl + "add_record_delivery_mill_minibar",
         download: this.baseUrl + "download_delivery_mill_minibar",
     };
     //grade 
@@ -108,7 +108,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_grade",
         upload: this.baseUrl + "upload_extra_grade",
         validate: this.baseUrl + "validate_extra_grade",
-        update: this.baseUrl + "add_extra_grade",
+        update: this.baseUrl + "add_record_extra_grade",
         download: this.baseUrl + "download_freight_extra_grade",
     };
     grade_mini_bar: any = {
@@ -117,7 +117,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_grade_minibar",
         upload: this.baseUrl + "upload_extra_grade_minibar",
         validate: this.baseUrl + "validate_extra_grade_minibar",
-        update: this.baseUrl + "add_extra_grade_minibar",
+        update: this.baseUrl + "add_record_extra_grade_minibar",
         download: this.baseUrl + "download_extra_grade_minibar",
     };
 
@@ -188,7 +188,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_profile",
         upload: this.baseUrl + "upload_extra_profile",
         validate: this.baseUrl + "validate_extra_profile",
-        update: this.baseUrl + "add_extra_profile",
+        update: this.baseUrl + "add_record_extra_profile",
         download: this.baseUrl + "download_extra_profile",
     };
     profile_mini_bar: any = {
@@ -197,7 +197,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_profile_minibar",
         upload: this.baseUrl + "upload_extra_profile_minibar",
         validate: this.baseUrl + "validate_extra_profile_minibar",
-        update: this.baseUrl + "add_extra_profile_minibar",
+        update: this.baseUrl + "add_record_extra_profile_minibar",
         download: this.baseUrl + "download_extra_profile_minibar",
     };
 
@@ -227,7 +227,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_baseprice_incoterm",
         upload: this.baseUrl + "upload_baseprice_incoterm",
         validate: this.baseUrl + "validate_baseprice_incoterm",
-        update: this.baseUrl + "add_baseprice_incoterm",
+        update: this.baseUrl + "add_record_baseprice_incoterm",
         download: this.baseUrl + "download_baseprice_incoterm",
     };
     incoterm_exceptions_mini_bar: any = {
@@ -236,7 +236,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_baseprice_incoterm",
         upload: this.baseUrl + "upload_baseprice_incoterm",
         validate: this.baseUrl + "validate_baseprice_incoterm",
-        update: this.baseUrl + "add_baseprice_incoterm",
+        update: this.baseUrl + "add_record_baseprice_incoterm",
         download: this.baseUrl + "download_baseprice_incoterm",
     };
 
