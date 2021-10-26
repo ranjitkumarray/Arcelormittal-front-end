@@ -218,8 +218,28 @@
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Zip Code Dest </th>
                                 <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
                             </ng-container>
-
                         </div>
+
+                        <div class="col-6" *ngIf="(
+                            (data?.fileName==='length_logistic') ||
+                            (data?.fileName==='length_production')
+                            )">
+                            <ng-container matColumnDef="Length_From">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Length From </th>
+                                <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                            </ng-container>
+                        </div>
+
+                        <div class="col-6" *ngIf="(
+                            (data?.fileName==='length_logistic') ||
+                            (data?.fileName==='length_production')
+                            )">
+                            <ng-container matColumnDef="Length_To">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Length To </th>
+                                <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                            </ng-container>
+                        </div>
+
                     </div>
 
                     <!-- =========================simple table ================================ -->
@@ -369,6 +389,25 @@
                             <ng-container matColumnDef="Incoterm1">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Incoterm1 </th>
                                 <td mat-cell *matCellDef="let row"> {{row.Incoterm1}} </td>
+                            </ng-container>
+                        </div>
+                        <div class="col-6" *ngIf="(
+                            (data?.fileName==='length_logistic') ||
+                            (data?.fileName==='length_production')
+                            )">
+                            <ng-container matColumnDef="Length_From">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Length From </th>
+                                <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                            </ng-container>
+                        </div>
+
+                        <div class="col-6" *ngIf="(
+                            (data?.fileName==='length_logistic') ||
+                            (data?.fileName==='length_production')
+                            )">
+                            <ng-container matColumnDef="Length_To">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Length To </th>
+                                <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
                             </ng-container>
                         </div>
                     </ng-template>

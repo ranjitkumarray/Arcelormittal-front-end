@@ -102,20 +102,20 @@ export class UploadValidateModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_logistic_mini_bar
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Transport_Mode', 'Document_Item_Currency', 'Market_Customer', 'Amount', 'Currency']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.length_logistic
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
         }
 
       } else if (this.url[2] === 'length-production') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_production_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Document_Item_Currency', 'Market_Customer', 'Customer_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Market_Customer', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency']
         } else {
           this.apiStringURL = this.apiString.length_production
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Document_Item_Currency', 'Country_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Country_Group', 'Amount', 'Currency']
         }
 
       } else if (this.url[2] === 'profile') {

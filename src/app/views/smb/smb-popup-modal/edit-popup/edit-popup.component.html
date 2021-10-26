@@ -144,6 +144,24 @@
                         <input matInput type="text" formControlName="Zip_Code_Dest">
                     </mat-form-field>
                 </div>
+                <div class="col-6" *ngIf="(
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='length_production')
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Length From</mat-label>
+                        <input matInput type="text" formControlName="Length_From">
+                    </mat-form-field>
+                </div>
+                <div class="col-6" *ngIf="(
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='length_production')
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Length To</mat-label>
+                        <input matInput type="text" formControlName="Length_To">
+                    </mat-form-field>
+                </div>
             </div>
             <!-- ========================== simple design ================================= -->
 
@@ -281,7 +299,24 @@
                         <input matInput type="text" formControlName="Beam_Category">
                     </mat-form-field>
                 </div>
-
+                <div class="col-6" *ngIf="(
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='length_production')
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Length From</mat-label>
+                        <input matInput type="text" formControlName="Length_From">
+                    </mat-form-field>
+                </div>
+                <div class="col-6" *ngIf="(
+                    (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='length_production')
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Length To</mat-label>
+                        <input matInput type="text" formControlName="Length_To">
+                    </mat-form-field>
+                </div>
             </ng-template>
 
             <!--=====================================simple design end ===============================  -->

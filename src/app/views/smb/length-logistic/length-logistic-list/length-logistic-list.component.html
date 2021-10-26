@@ -57,12 +57,20 @@
                     <td mat-cell *matCellDef="let row"> {{row.Length}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="Length_From">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Length From </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Length_To">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Length To </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                </ng-container>
 
                 <ng-container matColumnDef="Transport_Mode">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Transport Mode </th>
                     <td mat-cell *matCellDef="let row"> {{row.Transport_Mode}} </td>
                 </ng-container>
-
 
                 <ng-container matColumnDef="Document_Item_Currency">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc Item Currency </th>
