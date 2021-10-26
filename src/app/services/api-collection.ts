@@ -35,7 +35,7 @@ export class CitGlobalConstantService {
     };
     smb_mini_bar: any = {
         base_price_data: this.baseUrl + "data_baseprice_category_minibar",
-        get_record_base_price: this.baseUrl + "delete_record_baseprice_category_minibar",
+        get_record_base_price: this.baseUrl + "get_record_baseprice_category_minibar",
         delete_record: this.baseUrl + "delete_record_baseprice_category_minibar",
         base_price_upload: this.baseUrl + "upload_baseprice_category_minibar",
         base_price_validate: this.baseUrl + "validate_baseprice_category_minibar",
@@ -109,7 +109,7 @@ export class CitGlobalConstantService {
         upload: this.baseUrl + "upload_extra_grade",
         validate: this.baseUrl + "validate_extra_grade",
         update: this.baseUrl + "add_record_extra_grade",
-        download: this.baseUrl + "download_freight_extra_grade",
+        download: this.baseUrl + "download_extra_grade",
     };
     grade_mini_bar: any = {
         list: this.baseUrl + "data_extra_grade_minibar",
