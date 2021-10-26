@@ -69,7 +69,16 @@
         <div class="col-6">
             <div class="text-left mt-10">
                 <button type="button" color="primary" mat-raised-button (click)="validateDataForm()">
-                    Validate Alloy Surcharge Wire
+                    Validate
+                    <span *ngIf="this.url[2].split('-').length===1" style="text-transform: capitalize;">
+                        {{url[2].split('-')[0]}}
+                    </span>
+                    <span *ngIf="this.url[2].split('-').length===2" style="text-transform: capitalize;">
+                        {{url[2].split('-')[0] +' '+ url[2].split('-')[1]}}
+                    </span>
+                    <span *ngIf="this.url[2].split('-').length===3" style="text-transform: capitalize;">
+                        {{url[2].split('-')[0] +' '+ url[2].split('-')[1] +' '+ url[2].split('-')[2]}}
+                    </span>
                 </button>
             </div>
         </div>

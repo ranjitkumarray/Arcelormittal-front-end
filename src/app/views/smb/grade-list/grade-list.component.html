@@ -5,8 +5,11 @@
 </ng-container>
 <div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="text-left mt-10">
+                <button type="button" color="primary" class="mr-10" mat-raised-button (click)="actionClicked('','add')">
+                    Add Extra Grade
+                </button>
                 <button type="button" color="primary" class="mr-10" mat-raised-button (click)="uploadByXlFile()">
                     Upload Extra Grade
                 </button>
@@ -15,7 +18,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="text-right mt-10">
                 <mat-form-field appearance="outline">
                     <mat-label>Search</mat-label>

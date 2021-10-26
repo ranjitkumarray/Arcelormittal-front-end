@@ -17,9 +17,7 @@ import { LengthLogisticListComponent } from './length-logistic-list/length-logis
 import { LengthProductionListComponent } from './length-production-list/length-production-list.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileLberiaItalyListComponent } from './profile-lberia-italy-list/profile-lberia-italy-list.component';
-import { TransportModeListComponent } from './transport-mode/transport-mode-list/transport-mode-list.component';
-import { TransportModeUploadComponent } from './transport-mode/transport-mode-upload/transport-mode-upload.component';
-import { TransportModeEditComponent } from './transport-mode/transport-mode-edit/transport-mode-edit.component';
+import { TransportModeListComponent } from './transport-mode-list/transport-mode-list.component';
 import { IncotermExceptionsListComponent } from './incoterm-exceptions/incoterm-exceptions-list/incoterm-exceptions-list.component';
 import { IncotermExceptionsUploadComponent } from './incoterm-exceptions/incoterm-exceptions-upload/incoterm-exceptions-upload.component';
 import { IncotermExceptionsEditComponent } from './incoterm-exceptions/incoterm-exceptions-edit/incoterm-exceptions-edit.component';
@@ -44,8 +42,6 @@ import { AddPopupComponent } from './smb-modal/add-popup/add-popup.component';
     ProfileListComponent,
     ProfileLberiaItalyListComponent,
     TransportModeListComponent,
-    TransportModeUploadComponent,
-    TransportModeEditComponent,
     IncotermExceptionsListComponent,
     IncotermExceptionsUploadComponent,
     IncotermExceptionsEditComponent,

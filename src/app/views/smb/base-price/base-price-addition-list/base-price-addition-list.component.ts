@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit-base-price-addition.component';
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
+import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -96,6 +97,25 @@ export class BasePriceAdditionListComponent implements OnInit {
     this.getBasePriceAddition()
   }
   basePriceClick(rowData: any, viewOn: any) {
+    if (viewOn === 'add') {
+      const dialogRef = this.popup.open(AddPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            content: '',
+            addURL: this.apiStringURL.add,
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
+            fileName: "price_addition",
+            fieldValue: this.displayedColumns
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The edit dialog was closed', result);
+        this.getBasePriceAddition()
+      })
+    }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
         {

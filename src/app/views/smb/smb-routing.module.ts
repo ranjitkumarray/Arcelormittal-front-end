@@ -13,7 +13,7 @@ import { LengthProductionListComponent } from './length-production-list/length-p
 import { ProfileLberiaItalyListComponent } from './profile-lberia-italy-list/profile-lberia-italy-list.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/upload-validate-modal.component';
-import { TransportModeListComponent } from './transport-mode/transport-mode-list/transport-mode-list.component';
+import { TransportModeListComponent } from './transport-mode-list/transport-mode-list.component';
 
 const routes: Routes = [
   {

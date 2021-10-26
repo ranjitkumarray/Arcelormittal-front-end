@@ -5,8 +5,11 @@
 </ng-container>
 <div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="text-left mt-10">
+                <button type="button" color="primary" class="mr-10" mat-raised-button (click)="actionClicked('','add')">
+                    Add Delivery Mill
+                </button>
                 <button type="button" color="primary" class="mr-10" mat-raised-button (click)="uploadFreightParity()">
                     Upload Delivery Mill
                 </button>
@@ -15,7 +18,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="text-right mt-10">
                 <mat-form-field appearance="outline">
                     <mat-label>Search</mat-label>
@@ -95,8 +98,8 @@
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let row">
-                        <mat-icon class="mr-10" (click)="freightParityClick(row,'edit')">edit</mat-icon>
-                        <mat-icon class="mr-10" (click)="freightParityClick(row,'delete')">delete</mat-icon>
+                        <mat-icon class="mr-10" (click)="actionClicked(row,'edit')">edit</mat-icon>
+                        <mat-icon class="mr-10" (click)="actionClicked(row,'delete')">delete</mat-icon>
 
                     </td>
                 </ng-container>

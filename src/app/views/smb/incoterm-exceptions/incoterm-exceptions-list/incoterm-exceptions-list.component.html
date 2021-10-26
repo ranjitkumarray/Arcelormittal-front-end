@@ -5,8 +5,13 @@
 </ng-container>
 <div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="text-left mt-10">
+                <button type="button" color="primary" class="mr-10" mat-raised-button
+                    (click)="incotermExceptionsClick('','add')">
+                    Add Incoterm Exceptions
+                </button>
+
                 <button type="button" color="primary" class="mr-10" mat-raised-button
                     (click)="uploadIncotermExceptions()">
                     Upload Incoterm Exceptions
@@ -16,7 +21,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="text-right mt-10">
                 <mat-form-field appearance="outline">
                     <mat-label>Search</mat-label>
@@ -63,20 +68,20 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Delivering Mill </th>
                     <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
                 </ng-container>
-                    <ng-container matColumnDef="Document_Item_Currency">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc Item Cur</th>
-                        <td mat-cell *matCellDef="let row"> {{row.Document_Item_Currency}} </td>
-                    </ng-container>
+                <ng-container matColumnDef="Document_Item_Currency">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc Item Cur</th>
+                    <td mat-cell *matCellDef="let row"> {{row.Document_Item_Currency}} </td>
+                </ng-container>
 
-                    <ng-container matColumnDef="Amount">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
-                        <td mat-cell *matCellDef="let row"> {{row.Amount}} </td>
-                    </ng-container>
+                <ng-container matColumnDef="Amount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Amount}} </td>
+                </ng-container>
 
-                    <ng-container matColumnDef="Currency">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
-                        <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
-                    </ng-container>
+                <ng-container matColumnDef="Currency">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
+                </ng-container>
 
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>

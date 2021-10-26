@@ -26,7 +26,7 @@ export class AddPopupComponent implements OnInit {
     private router: Router
   ) {
 
-    if (this.data.fileName === 'smb') {
+    if (this.data.fileName === 'price_addition') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.smb_mini_bar : this.apiString.smb
     } else if (this.data.fileName === 'incoterm_exceptions') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.incoterm_exceptions_mini_bar : this.apiString.incoterm_exceptions
@@ -67,22 +67,28 @@ export class AddPopupComponent implements OnInit {
   }
   closeModel() {
     this.dialogRef.close()
-
   }
-  addRecord() {
-    delete this.updateRecord.value.action
-    console.group(this.updateRecord.value)
-    this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.data.updateURL, this.updateRecord.value).subscribe(result => {
-      console.log(result)
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', ' Record successfully Added.')
-      this.closeModel()
-    }, error => {
-      console.log(error)
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
-      // this.closeModel()
-    })
+
+  addRecord(): any {
+    console.log(this.data.addURL)
+    let formInputValue = Object.keys(this.updateRecord.value).some(k => !!this.updateRecord.value[k])
+    if (formInputValue === false) {
+      return false;
+    } else {
+      delete this.updateRecord.value.action
+      console.group(this.updateRecord.value)
+      this.loadingRouteConfig = true
+      this.apiMethod.post_request(this.data.addURL, this.updateRecord.value).subscribe(result => {
+        console.log(result)
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('success', ' Record successfully Added.')
+        this.closeModel()
+      }, error => {
+        console.log(error)
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
+        // this.closeModel()
+      })
+    }
   }
 }

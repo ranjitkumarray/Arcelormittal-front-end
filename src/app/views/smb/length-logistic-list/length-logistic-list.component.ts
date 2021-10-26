@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 
 @Component({
   selector: 'app-length-logistic-list',
@@ -119,6 +120,25 @@ export class LengthLogisticListComponent implements OnInit {
     this.getLengthLogistic()
   }
   actionClicked(rowData: any, viewOn: any) {
+    if (viewOn === 'add') {
+      const dialogRef = this.popup.open(AddPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            content: '',
+            addURL: this.apiStringURL.add,
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
+            fileName: "length_logistic",
+            fieldValue: this.displayedColumns
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The edit dialog was closed', result);
+        this.getLengthLogistic()
+      })
+    }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
         {

@@ -11,6 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/incoterm-exceptions-edit.component';
+import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
+import { rowData } from 'src/app/sample';
+import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
 
 @Component({
   selector: 'app-incoterm-exceptions-list',
@@ -19,7 +22,7 @@ import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/inc
 })
 export class IncotermExceptionsListComponent implements OnInit {
 
-
+  data: any = rowData
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = [];
   dataSource: any;
@@ -66,6 +69,7 @@ export class IncotermExceptionsListComponent implements OnInit {
     } else {
       searchString = "all"
     }
+    this.dataSource = new MatTableDataSource<incotermExceptionsData>(this.data)
     this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -97,7 +101,25 @@ export class IncotermExceptionsListComponent implements OnInit {
   }
   incotermExceptionsClick(rowData: any, viewOn: any) {
     console.log(rowData)
-    
+    if (viewOn === 'add') {
+      const dialogRef = this.popup.open(AddPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            content: '',
+            addURL: this.apiStringURL.add,
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
+            fileName: "incoterm_exceptions",
+            fieldValue: this.displayedColumns
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The edit dialog was closed', result);
+        this.getIncotermExceptions()
+      })
+    }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(IncotermExceptionsEditComponent,
         {
@@ -105,9 +127,12 @@ export class IncotermExceptionsListComponent implements OnInit {
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "incoterm_exceptions",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {

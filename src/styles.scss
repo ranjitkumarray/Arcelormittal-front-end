@@ -102,7 +102,6 @@ table.mat-table {
                 border-right: 1px solid rgba(0, 0, 0, 0.06);
                 border-left: 1px solid rgba(0, 0, 0, 0.06);
                 width: 165px;
-
             }
         }
     }
@@ -1224,6 +1223,8 @@ input:read-only {
 .mat-mini-fab.mat-primary1 {
     background: #f05b31;
     color: $white;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 // disabled input color
 html {

@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 
 @Component({
   selector: 'app-profile-list',
@@ -67,9 +68,9 @@ export class ProfileListComponent implements OnInit {
           'Product_Level_05',
           'Product_Level_02',
           'Delivering_Mill',
-          'Document_Item_Currency',
           'Customer_Group',
           'Market_Customer',
+          'Document_Item_Currency',
           'Amount',
           'Currency',
           'action'
@@ -119,6 +120,25 @@ export class ProfileListComponent implements OnInit {
     this.getProfile()
   }
   actionClicked(rowData: any, viewOn: any) {
+    if (viewOn === 'add') {
+      const dialogRef = this.popup.open(AddPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            content: '',
+            addURL: this.apiStringURL.add,
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
+            fileName: "profile",
+            fieldValue: this.displayedColumns
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The edit dialog was closed', result);
+        this.getProfile()
+      })
+    }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
         {

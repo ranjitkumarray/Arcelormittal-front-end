@@ -5,11 +5,12 @@ import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
-import { transportModeData } from '../../smb-interface.service';
+import { transportModeData } from '../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
+import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
-import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
+import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 
 @Component({
   selector: 'app-transport-mode-list',
@@ -112,6 +113,25 @@ export class TransportModeListComponent implements OnInit {
     this.getTransportMode()
   }
   actionClicked(rowData: any, viewOn: any) {
+    if (viewOn === 'add') {
+      const dialogRef = this.popup.open(AddPopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: {
+            content: '',
+            addURL: this.apiStringURL.add,
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
+            fileName: "transport_mode",
+            fieldValue: this.displayedColumns
+          },
+        });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The edit dialog was closed', result);
+        this.getTransportMode()
+      })
+    }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
         {

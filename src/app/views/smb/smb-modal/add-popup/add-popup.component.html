@@ -7,8 +7,7 @@
     <form [formGroup]="updateRecord">
         <div class="row">
             <div *ngIf="this.data?.type === 'miniBar';else sample">
-
-                <div class="col-6" *ngIf="!(
+                <div class="w-50" *ngIf="!(
                     (data?.fileName==='delivery_mill') || 
                     (data?.fileName==='freight_parity') || 
                     (data?.fileName==='length_logistic') ||
@@ -20,8 +19,8 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="!(
-                    (data?.fileName==='smb') || 
+                <div class="w-50" *ngIf="!(
+                    (data?.fileName==='price_addition') || 
                     (data?.fileName==='certificate') ||
                     (data?.fileName==='grade') ||
                     (data?.fileName==='transport_mode') 
@@ -32,7 +31,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='delivery_mill') ||
                     (data?.fileName==='freight_parity') ||
                     (data?.fileName==='transport_mode') 
@@ -43,18 +42,21 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="!(
-                    (data?.fileName==='delivery_mill') ||
-                    (data?.fileName==='freight_parity') ||
-                    (data?.fileName==='profile_lberia_italy') ||
-                    (data?.fileName==='transport_mode') 
+                <div class="w-50" *ngIf="(
+                    (data?.fileName==='certificate') ||
+                    (data?.fileName==='price_addition') ||
+                    (data?.fileName==='grade') ||
+                    (data?.fileName==='length-logistic') ||
+                    (data?.fileName==='length-production') ||
+                    (data?.fileName==='profile') 
+
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Customer Group</mat-label>
                         <input matInput type="text" formControlName="Customer_Group">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='delivery_mill') ||
                     (data?.fileName==='freight_parity') ||
                     (data?.fileName==='profile_lberia_italy') ||
@@ -65,14 +67,14 @@
                         <input matInput type="text" formControlName="Market_Customer_Group">
                     </mat-form-field>
                 </div>
-                <div class="col-6">
+                <div class="w-50">
                     <mat-form-field appearance="outline">
                         <mat-label>Market Customer</mat-label>
                         <input matInput type="text" formControlName="Market_Customer">
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='certificate') ||
                     (data?.fileName==='grade') 
                     )">
@@ -82,7 +84,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='profile') ||
                     (data?.fileName==='profile_lberia_italy')
                     )">
@@ -92,7 +94,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='profile') 
                     )">
                     <mat-form-field appearance="outline">
@@ -101,7 +103,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='profile') ||
                     (data?.fileName==='profile_lberia_italy')
                     )">
@@ -110,7 +112,7 @@
                         <input matInput type="text" formControlName="Product_Level_05">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='transport_mode')
                     )">
@@ -119,7 +121,7 @@
                         <input matInput type="text" formControlName="Transport_Mode">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -129,14 +131,14 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(data?.fileName==='certificate')">
+                <div class="w-50" *ngIf="(data?.fileName==='certificate')">
                     <mat-form-field appearance="outline">
                         <mat-label>Certificate</mat-label>
                         <input matInput type="text" formControlName="Certificate">
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='freight_parity') 
                     )">
                     <mat-form-field appearance="outline">
@@ -144,7 +146,7 @@
                         <input matInput type="text" formControlName="Zip_Code_Dest">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -153,7 +155,7 @@
                         <input matInput type="text" formControlName="Length_From">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -166,9 +168,10 @@
             <!-- ========================== simple design ================================= -->
 
             <ng-template #sample>
-                <div class="col-6" *ngIf="!(
+                <div class="w-50" *ngIf="!(
                     (data?.fileName==='freight_parity') || 
                     (data?.fileName==='length_logistic') ||
+                    (data?.fileName==='incoterm_exceptions') ||
                     (data?.fileName==='transport_mode') 
                 )">
                     <mat-form-field appearance="outline">
@@ -177,8 +180,8 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="!(
-                    (data?.fileName==='smb') || 
+                <div class="w-50" *ngIf="!(
+                    (data?.fileName==='price_addition') || 
                     (data?.fileName==='grade') ||
                     (data?.fileName==='transport_mode') 
                 )">
@@ -188,13 +191,14 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName==='smb') || 
+                <div class="w-50" *ngIf="(
+                    (data?.fileName==='price_addition') || 
                     (data?.fileName==='delivery_mill') ||
                     (data?.fileName==='freight_parity') ||
                     (data?.fileName==='profile') ||
                     (data?.fileName==='grade') ||
-                    (data?.fileName==='transport_mode') 
+                    (data?.fileName==='transport_mode') ||
+                    (data?.fileName==='incoterm_exceptions') 
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Product Division</mat-label>
@@ -202,7 +206,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='certificate') ||
                     (data?.fileName==='grade') 
                     )">
@@ -211,9 +215,14 @@
                         <input matInput type="text" formControlName="Grade_Category">
                     </mat-form-field>
                 </div>
-
-                <div class="col-6" *ngIf="(
-                    (data?.fileName==='smb') ||
+                <div class="w-50" *ngIf="(data?.fileName==='incoterm_exceptions')">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Customer Group</mat-label>
+                        <input matInput type="text" formControlName="Customer_Group">
+                    </mat-form-field>
+                </div>
+                <div class="w-50" *ngIf="(
+                    (data?.fileName==='price_addition') ||
                     (data?.fileName==='profile') ||
                     (data?.fileName==='profile_lberia_italy') 
                     )">
@@ -223,7 +232,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='profile') 
                     )">
                     <mat-form-field appearance="outline">
@@ -232,7 +241,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='profile') ||
                     (data?.fileName==='profile_lberia_italy')
                     )">
@@ -242,7 +251,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='transport_mode')
                     )">
@@ -252,7 +261,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -262,7 +271,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='grade') ||
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
@@ -273,7 +282,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='freight_parity') 
                     )">
                     <mat-form-field appearance="outline">
@@ -282,7 +291,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='certificate') 
                     )">
                     <mat-form-field appearance="outline">
@@ -291,15 +300,22 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-6" *ngIf="(
-                    (data?.fileName==='delivery_mill')
+                <div class="w-50" *ngIf="(
+                    (data?.fileName==='delivery_mill') ||
+                    (data?.fileName==='incoterm_exceptions')
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Beam Category</mat-label>
                         <input matInput type="text" formControlName="Beam_Category">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(data?.fileName==='incoterm_exceptions')">
+                    <mat-form-field appearance="outline">
+                        <mat-label>incoterm1</mat-label>
+                        <input matInput type="text" formControlName="Incoterm1">
+                    </mat-form-field>
+                </div>
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -308,7 +324,7 @@
                         <input matInput type="text" formControlName="Length_From">
                     </mat-form-field>
                 </div>
-                <div class="col-6" *ngIf="(
+                <div class="w-50" *ngIf="(
                     (data?.fileName==='length_logistic') ||
                     (data?.fileName==='length_production')
                     )">
@@ -322,32 +338,35 @@
             <!--=====================================simple design end ===============================  -->
 
             <!-- ====================================common for  all   =================================-->
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Document Item Currency</mat-label>
-                    <input matInput type="text" formControlName="Document_Item_Currency">
-                </mat-form-field>
-            </div>
+            <div>
 
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Market Country</mat-label>
-                    <input matInput type="text" formControlName="Market_Country">
-                </mat-form-field>
-            </div>
+                <div class="w-50">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Document Item Currency</mat-label>
+                        <input matInput type="text" formControlName="Document_Item_Currency">
+                    </mat-form-field>
+                </div>
 
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Currency</mat-label>
-                    <input matInput type="text" formControlName="Currency">
-                </mat-form-field>
-            </div>
+                <div class="w-50">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Market Country</mat-label>
+                        <input matInput type="text" formControlName="Market_Country">
+                    </mat-form-field>
+                </div>
 
-            <div class="col-6">
-                <mat-form-field appearance="outline">
-                    <mat-label>Amount</mat-label>
-                    <input matInput type="text" formControlName="Amount">
-                </mat-form-field>
+                <div class="w-50">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Currency</mat-label>
+                        <input matInput type="text" formControlName="Currency">
+                    </mat-form-field>
+                </div>
+
+                <div class="w-50">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Amount</mat-label>
+                        <input matInput type="text" formControlName="Amount">
+                    </mat-form-field>
+                </div>
             </div>
 
         </div>
@@ -356,8 +375,17 @@
         <button mat-stroked-button class="mr-10" (click)="closeModel()">
             Close
         </button>
-        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial (click)="addRecord()">
-            Update
+        <button mat-raised-button color="primary" (click)="addRecord()">
+            Add
+            <span *ngIf="data.fileName.split('_').length===1" style="text-transform: capitalize;">
+                {{data.fileName.split('_')[0]}}
+            </span>
+            <span *ngIf="data.fileName.split('_').length===2" style="text-transform: capitalize;">
+                {{data.fileName.split('_')[0] +' '+ data.fileName.split('_')[1]}}
+            </span>
+            <span *ngIf="data.fileName.split('_').length===3" style="text-transform: capitalize;">
+                {{data.fileName.split('_')[0] +' '+ data.fileName.split('_')[1] +' '+ data.fileName.split('_')[2]}}
+            </span>
         </button>
     </div>
 </div>
