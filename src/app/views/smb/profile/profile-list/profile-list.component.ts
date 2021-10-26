@@ -59,16 +59,16 @@ export class ProfileListComponent implements OnInit {
           'action'
         ]
       } else {
-        this.apiStringURL = this.apiString.profile
+        this.apiStringURL = this.apiString.profile_mini_bar
         this.displayedColumns = [
           'BusinessCode',
           'Market_Country',
           'Product_Level_04',
           'Product_Level_05',
           'Product_Level_02',
-          'Delivering Mill',
+          'Delivering_Mill',
           'Document_Item_Currency',
-          'Customer Group',
+          'Customer_Group',
           'Market_Customer',
           'Amount',
           'Currency',
