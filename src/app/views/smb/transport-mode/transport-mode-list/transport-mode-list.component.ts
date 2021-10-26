@@ -7,9 +7,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
 import { transportModeData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
+import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
-import { EditPopupComponent } from '../../smb-popup-modal/edit-popup/edit-popup.component';
+import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-transport-mode-list',

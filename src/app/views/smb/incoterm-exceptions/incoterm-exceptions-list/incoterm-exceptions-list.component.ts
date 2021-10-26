@@ -8,7 +8,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
 import { incotermExceptionsData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../../smb-popup-modal/warn-popup/warn-popup.component';
+import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/incoterm-exceptions-edit.component';
 

@@ -1,23 +1,23 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { basePriceAddtionData } from '../../smb-interface.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { lengthProductionData } from '../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit-base-price-addition.component';
-import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
+import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
+import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+
 @Component({
-  selector: 'app-base-price-addition-list',
-  templateUrl: './base-price-addition-list.component.html',
-  styleUrls: ['./base-price-addition-list.component.scss']
+  selector: 'app-length-production-list',
+  templateUrl: './length-production-list.component.html',
+  styleUrls: ['./length-production-list.component.scss']
 })
-export class BasePriceAdditionListComponent implements OnInit {
+export class LengthProductionListComponent implements OnInit {
+
   loadingRouteConfig: boolean = false
   displayedColumns: string[] = [];
   dataSource: any;
@@ -34,9 +34,7 @@ export class BasePriceAdditionListComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private router: Router,
-    private _snackBar: MatSnackBar,
     private popup: MatDialog,
-    private route: ActivatedRoute
   ) {
     router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
@@ -45,20 +43,46 @@ export class BasePriceAdditionListComponent implements OnInit {
       this.url = event.url.split('/')
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.smb
-        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency', "action"]
+        this.apiStringURL = this.apiString.length_production
+
+        this.displayedColumns = [
+          'BusinessCode',
+          'Market_Country',
+          'Delivering_Mill',
+          'Length', 
+          'Length_From', 
+          'Length_To',
+          'Document_Item_Currency',
+          'Country_Group',
+          'Amount',
+          'Currency',
+          'action'
+        ]
       } else {
-        this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'document_item_currency', 'Amount', 'Currency', "action"]
+        this.apiStringURL = this.apiString.length_production_mini_bar
+        this.displayedColumns = [
+          'BusinessCode',
+          'Market_Country',
+          'Delivering_Mill',
+          'Length', 
+          'Length_From', 
+          'Length_To',
+          'Document_Item_Currency',
+          'Market_Customer',
+          'Customer_Group',
+          'Amount',
+          'Currency',
+          'action'
+        ]
       }
     });
   }
 
   ngOnInit(): void {
-    this.getBasePriceAddition()
+    this.getLengthProduction()
   }
   //getting uploaded history of alloy scrap 
-  getBasePriceAddition() {
+  getLengthProduction() {
     this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
@@ -71,7 +95,7 @@ export class BasePriceAdditionListComponent implements OnInit {
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<basePriceAddtionData>(resultData.data)
+      this.dataSource = new MatTableDataSource<lengthProductionData>(resultData.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -86,31 +110,33 @@ export class BasePriceAdditionListComponent implements OnInit {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getBasePriceAddition()
+    this.getLengthProduction()
   }
   //filter 
   applyFilter() {
-    const filterValue = this.searchValue;
     this.pageOffset = 0
     this.pageLength = 500
-    this.getBasePriceAddition()
+    this.getLengthProduction()
   }
-  basePriceClick(rowData: any, viewOn: any) {
+  actionClicked(rowData: any, viewOn: any) {
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "length_production",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getBasePriceAddition()
+        this.getLengthProduction()
       })
     }
 
@@ -125,23 +151,23 @@ export class BasePriceAdditionListComponent implements OnInit {
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
+
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getBasePriceAddition()
+        this.getLengthProduction()
       })
-
     }
   }
-  uploadSmbBasePrice() {
+  uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/base-price/bulk-upload'])
+      this.router.navigate(['/smb/length-production/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/base-price/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/length-production/mini-bar/bulk-upload'])
     }
   }
-  downloadBasePriceAddition() {
+  downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
 }
