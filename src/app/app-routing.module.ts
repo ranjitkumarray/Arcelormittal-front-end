@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SidebarComponent } from './common-use/sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./views/my-task/my-task.module').then(m => m.MyTaskModule)
+    redirectTo: 'alloy-scrap/upload',
+    pathMatch: "full"
   },
-  { path: 'my-offer', loadChildren: () => import('./views/my-offer/my-offer.module').then(m => m.MyOfferModule) },
+  { path: 'alloy-scrap', loadChildren: () => import('./views/alloy-scrap/alloy-scrap.module').then(m => m.AlloyScrapModule) },
+  { path: 'smb', loadChildren: () => import('./views/smb/smb.module').then(m => m.SmbModule) },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: SidebarComponent,
+    children: [{
+      path: '',
+      component: PageNotFoundComponent
+    }]
   },
 ];
 

@@ -24,4 +24,32 @@ export class ApiService {
     patch_request(url: any, param: any) {
         return this.https.patch(url, param)
     }
+    get_request_Param(url: any, param: any) {
+        return this.https.get(url, {
+            params: param
+        })
+    }
+    delete_request_Param(url: any, param: any) {
+        return this.https.delete(url, {
+            params: param
+        })
+    }
+    popupMessage(statusType: any, message: any) {
+        if (statusType === 'success') {
+            this._snackBar.open(message, "", {
+                duration: 4000,
+                panelClass: ['success'],
+                horizontalPosition: 'end',
+                verticalPosition: 'bottom',
+            });
+        } else {
+            this._snackBar.open(message, "", {
+                duration: 4000,
+                panelClass: ['error'],
+                horizontalPosition: 'end',
+                verticalPosition: 'bottom',
+            });
+        }
+
+    }
 }
