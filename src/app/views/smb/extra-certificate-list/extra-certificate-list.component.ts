@@ -28,7 +28,7 @@ export class ExtraCertificateListComponent implements OnInit {
       'Delivering_Mill': 'test-5',
       'Amount': 'test-6',
       'Currency': 'test-7',
-      "id_value": 3
+      "id": 3
     }
   ]
   loadingRouteConfig: boolean = false

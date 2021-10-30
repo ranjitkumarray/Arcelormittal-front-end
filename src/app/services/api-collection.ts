@@ -44,7 +44,7 @@ export class CitGlobalConstantService {
     certificate: any = {
         list: this.baseUrl + "data_extra_certificate",
         get: this.baseUrl + "get_record_extra_certificate",
-        update: this.baseUrl + "add_record_extra_certificate",
+        update: this.baseUrl + "update_record_extra_certificate",
         delete: this.baseUrl + "delete__record_extra_certificate",
         upload: this.baseUrl + "upload_extra_certificate",
         validate: this.baseUrl + "validate_extra_certificate",
