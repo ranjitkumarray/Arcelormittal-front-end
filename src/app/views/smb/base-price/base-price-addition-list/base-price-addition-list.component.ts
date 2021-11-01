@@ -47,10 +47,10 @@ export class BasePriceAdditionListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
-        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['BusinessCode', 'Market_Country','Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['BusinessCode', 'Market_Country','Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }

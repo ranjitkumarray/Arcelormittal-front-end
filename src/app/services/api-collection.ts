@@ -134,7 +134,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_length_logistic",
         upload: this.baseUrl + "upload_length_logistic",
         validate: this.baseUrl + "validate_length_logistic",
-        update: this.baseUrl + "add_record_length_logistic",
+        update: this.baseUrl + "update_record_length_logistic",
         download: this.baseUrl + "download_length_logistic",
     };
     length_logistic_mini_bar: any = {
@@ -210,7 +210,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_extra_profile_minibar",
         upload: this.baseUrl + "upload_extra_profile_minibar",
         validate: this.baseUrl + "validate_extra_profile_minibar",
-        update: this.baseUrl + "update_extra_profile_minibar",
+        update: this.baseUrl + "update_record_extra_profile_minibar",
         download: this.baseUrl + "download_extra_profile_minibar",
     };
 
@@ -218,6 +218,7 @@ export class CitGlobalConstantService {
     profile_lberia_italy: any = {
         list: this.baseUrl + "data_extra_profile_Iberia",
         get: this.baseUrl + "get_record_extra_profile_Iberia",
+        add:this.baseUrl+"add_record_extra_profile_Iberia",
         delete: this.baseUrl + "delete_record_extra_profile_Iberia",
         upload: this.baseUrl + "upload_extra_profile_Iberia",
         validate: this.baseUrl + "validate_extra_profile_Iberia",
@@ -242,7 +243,7 @@ export class CitGlobalConstantService {
         delete: this.baseUrl + "delete_record_baseprice_incoterm",
         upload: this.baseUrl + "upload_baseprice_incoterm",
         validate: this.baseUrl + "validate_baseprice_incoterm",
-        update: this.baseUrl + "uppdate_record_baseprice_incoterm",
+        update: this.baseUrl + "update_record_baseprice_incoterm",
         download: this.baseUrl + "download_baseprice_incoterm",
     };
     incoterm_exceptions_mini_bar: any = {

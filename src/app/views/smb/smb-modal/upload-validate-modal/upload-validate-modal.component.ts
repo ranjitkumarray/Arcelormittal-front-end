@@ -122,7 +122,7 @@ export class UploadValidateModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering Mill', 'Customer Group', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency',]
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Customer_Group', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency',]
         } else {
           this.apiStringURL = this.apiString.profile
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']

@@ -58,7 +58,7 @@ export class AddPopupComponent implements OnInit {
     this.data.fieldValue.forEach((element: any, index: any) => {
       objects[element] = []
       if (index === this.data.fieldValue.length - 1) {
-        objects['id_value'] = []
+        objects['id'] = []
       }
     });
     console.log(objects)

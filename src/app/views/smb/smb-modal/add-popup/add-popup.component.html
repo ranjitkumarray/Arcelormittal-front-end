@@ -7,6 +7,11 @@
     <form [formGroup]="updateRecord">
         <div class="row">
             <div *ngIf="this.data?.type === 'miniBar';else sample">
+
+
+                
+
+
                 <div class="w-50" *ngIf="!(
                     (data?.fileName==='delivery_mill') || 
                     (data?.fileName==='freight_parity') || 
@@ -302,7 +307,7 @@
 
                 <div class="w-50" *ngIf="(
                     (data?.fileName==='delivery_mill') ||
-                    (data?.fileName==='incoterm_exceptions')
+                    (data?.fileName==='incoterm_exceptions') || (data?.filename=='price_addition')
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Beam Category</mat-label>
