@@ -8,7 +8,15 @@
         <div class="row">
             <div *ngIf="this.data?.type === 'miniBar';else sample">
 
-
+                <div class="w-50" *ngIf="(
+                    
+                    (data?.fileName==='price_addition') 
+                    )">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Beam Category</mat-label>
+                        <input matInput type="text" formControlName="Beam_Category">
+                    </mat-form-field>
+                </div>
                 
 
 
@@ -169,6 +177,8 @@
                         <input matInput type="text" formControlName="Length_To">
                     </mat-form-field>
                 </div>
+
+               
             </div>
             <!-- ========================== simple design ================================= -->
 
@@ -307,7 +317,7 @@
 
                 <div class="w-50" *ngIf="(
                     (data?.fileName==='delivery_mill') ||
-                    (data?.fileName==='incoterm_exceptions') || (data?.filename=='price_addition')
+                    (data?.fileName==='incoterm_exceptions') 
                     )">
                     <mat-form-field appearance="outline">
                         <mat-label>Beam Category</mat-label>

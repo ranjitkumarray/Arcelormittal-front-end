@@ -47,7 +47,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
         'Document_Item_Currency': [''],
         'Amount': [''],
         'Currency': [''],
-        'id_value': ['']
+        'id': ['']
       })
     } else {
       this.editIncotermExceptionsClick = this.fb.group({
@@ -60,7 +60,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
         'Document_Item_Currency': [''],
         'Amount': [''],
         'Currency': [''],
-        'id_value': ['']
+        'id': ['']
       })
     }
     this.patchValue()
@@ -68,7 +68,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.content.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -82,7 +82,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Amount: resultData.record[0].Amount,
         Currency: resultData.record[0].Currency,
-        id_value: this.data.id
+        id_value: this.data.content.id
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -98,7 +98,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   editRecord() {
     console.group(this.editIncotermExceptionsClick.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.update, this.editIncotermExceptionsClick.value).subscribe(result => {
+    this.apiMethod.post_request(this.apiStringURL.update+'?id='+this.data.content.id, this.editIncotermExceptionsClick.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')
