@@ -11,6 +11,8 @@ import { MaterialsModule } from './materials/materials.module';
 import { HeaderComponent } from './common-use/header/header.component';
 import { FooterComponent } from './common-use/footer/footer.component';
 import { SidebarComponent } from './common-use/sidebar/sidebar.component';
+
+
 const APP_CONTAINERS = [
   SidebarComponent
 ];
@@ -20,7 +22,8 @@ const APP_CONTAINERS = [
     PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    
   ],
   imports: [
     BrowserModule,

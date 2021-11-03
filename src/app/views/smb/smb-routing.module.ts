@@ -7,6 +7,7 @@ import { DeliveryMillListComponent } from './delivery-mill-list/delivery-mill-li
 import { ExtraCertificateListComponent } from './extra-certificate-list/extra-certificate-list.component';
 import { FreightParityListComponent } from './freight-parity-list/freight-parity-list.component';
 import { GradeListComponent } from './grade-list/grade-list.component';
+import { HistorySmbComponent } from './history-smb/history-smb.component';
 import { IncotermExceptionsListComponent } from './incoterm-exceptions/incoterm-exceptions-list/incoterm-exceptions-list.component';
 import { LengthLogisticListComponent } from './length-logistic-list/length-logistic-list.component';
 import { LengthProductionListComponent } from './length-production-list/length-production-list.component';
@@ -30,6 +31,18 @@ const routes: Routes = [
                 {
                   path: "list",
                   component: BasePriceAdditionListComponent
+                },{
+                  path: 'history',
+                  children: [
+                    {
+                      path: '',
+                      component: HistorySmbComponent,
+                    },
+                    {
+                      path: "fileDetails/:fileDetails",
+                      component: BasePriceAdditionListComponent
+                    }
+                  ]
                 },
                 {
                   path: "bulk-upload",
