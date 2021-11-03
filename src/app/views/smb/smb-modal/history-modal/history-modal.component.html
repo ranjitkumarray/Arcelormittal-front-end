@@ -1,4 +1,5 @@
 
+
 <div class=row>
     <div class="col-12">
         <div class="text-right mt-10">
@@ -10,9 +11,7 @@
         </div>
     </div>
 </div>
-
-<div *ngIf="uploadValidateModal && (selectedFiles.uploadValidateModal.file)">
-    <div class="row">
+ <div class="row">
         <div class="col-12">
             <table mat-table [dataSource]="uploadValidateModal" class="custom_table order_table" matSort>
                 <div *ngIf="url[3]==='mini-bar';else sample">
@@ -361,6 +360,6 @@
 
             </table>
         </div>
-        <!-- ========================== simple design ================================= -->
     </div>
-</div>
+        <!-- ========================== simple design ================================= -->
+

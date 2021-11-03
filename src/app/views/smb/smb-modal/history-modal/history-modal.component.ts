@@ -16,7 +16,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./history-modal.component.scss']
 })
 export class HistoryModalComponent implements OnInit {
-
+  
   loading: boolean = false
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
