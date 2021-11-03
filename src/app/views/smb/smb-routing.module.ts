@@ -12,6 +12,7 @@ import { LengthLogisticListComponent } from './length-logistic-list/length-logis
 import { LengthProductionListComponent } from './length-production-list/length-production-list.component';
 import { ProfileLberiaItalyListComponent } from './profile-lberia-italy-list/profile-lberia-italy-list.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
+import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.component';
 import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/upload-validate-modal.component';
 import { TransportModeListComponent } from './transport-mode-list/transport-mode-list.component';
 
@@ -35,7 +36,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: BulkUploadBasePriceAdditionComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -55,7 +59,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -76,7 +83,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -96,7 +106,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -116,7 +129,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -136,7 +152,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -156,7 +175,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -176,7 +198,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -196,7 +221,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -216,7 +244,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
@@ -236,7 +267,10 @@ const routes: Routes = [
                   path: "bulk-upload",
                   component: UploadValidateModalComponent
                 },
-
+                {
+                  path: "history",
+                  component: HistoryModalComponent
+                }
               ]
             }))
           ]
