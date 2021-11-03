@@ -5,6 +5,7 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'alloy_scrap',
+        type: "admin",
         children: [
             {
                 name: 'upload alloy & Scrap',
@@ -30,6 +31,7 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb',
+        type: 'admin',
         children: [
             {
                 name: 'Base Price Addition',
@@ -305,6 +307,7 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb_mini_bar',
+        type: "admin",
         children: [
             {
                 name: 'Base Price Addition',
@@ -549,5 +552,40 @@ export const NavItems = [
 
         ]
 
-    }
+    },
+    {
+        name: 'My Tasks',
+        url: '',
+        active_img: '../../../assets/images/order.png',
+        inactive_img: '../../../assets/images/order 2.png',
+        tag: 'My_Tasks',
+        type: "user",
+        children: [
+            {
+                name: 'Offer status / Pending approval',
+                url: '/management/offer-status',
+                icon: '',
+                tag: 'offer_status_sub_menu',
+            },
+            {
+                name: 'Order status & delay',
+                url: '/management/order-status',
+                icon: '',
+                tag: 'order_status_sub_menu',
+            },
+            {
+                name: 'Customer Volume & Over Booking',
+                url: '/management/customer-volume',
+                icon: '',
+                tag: 'customer_volume_sub_menu',
+            },
+            {
+                name: 'Missing Invoice Payments',
+                url: '/management/missing-invoice-payment',
+                icon: '',
+                tag: 'missing_invoice_payment_sub_menu',
+            },
+        ]
+
+    },
 ]
