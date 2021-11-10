@@ -3,17 +3,24 @@
 <div class=row>
     <div class="col-12">
         <div class="text-right mt-10">
-            <mat-form-field appearance="outline">
+            <!-- <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
                 <input matInput (keyup)="applyFilter($event)" #input>
                 <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field> -->
+
+            <mat-form-field appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter()">
+                <mat-icon matSuffix (click)="applyFilter()" class="pointer">search</mat-icon>
             </mat-form-field>
+
         </div>
     </div>
 </div>
  <div class="row">
         <div class="col-12">
-            <table mat-table [dataSource]="uploadValidateModal" class="custom_table order_table" matSort>
+            <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
                 <div *ngIf="url[3]==='mini-bar';else sample">
                     <div *ngIf="!(
                         (url[2]==='delivery-mill') || 
@@ -23,7 +30,7 @@
                         )">
                         <ng-container matColumnDef="BusinessCode">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Code </th>
-                            <td mat-cell *matCellDef="let row"> {{row.BusinessCode}} </td>
+                            <td mat-cell *matCellDef="let row of dataSource"> {{row.BusinessCode}} </td>
                         </ng-container>
                     </div>
                     <div *ngIf="!(
@@ -47,6 +54,8 @@
                             <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
                         </ng-container>
                     </div>
+
+
                     <div *ngIf="!(
                         (url[2]==='delivery-mill') ||
                         (url[2]==='freight_-arity') ||
@@ -165,8 +174,49 @@
                             <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
                         </ng-container>
                     </div>
+                    
+
+                    <div *ngIf="(url[2]==='smb')">
+                        <ng-container matColumnDef="Beam_Category">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> BeamCatagory</th>
+                            <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="(
+                        (url[2]==='length-logistic')
+                        )">
+                        <ng-container matColumnDef="Country_Group">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Country Group </th>
+                            <td mat-cell *matCellDef="let row"> {{row.Country_Group}} </td>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="(
+                        (url[2]==='length-logistic') ||
+                        (url[2]==='length-production')
+                        )">
+                        <ng-container matColumnDef="Length_From">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Length From </th>
+                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="(
+                        (url[2]==='length-logistic') ||
+                        (url[2]==='length-production')
+                        )">
+                        <ng-container matColumnDef="Length_To">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Length To </th>
+                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                        </ng-container>
+                    </div>
 
                 </div>
+
+                
+
+                
 
                 <!-- =========================simple table ================================ -->
                 <ng-template #sample>
@@ -193,7 +243,7 @@
                     </div>
                    
                     <div *ngIf="(
-                        (url[2]==='smb') || 
+                        (url[2]==='smb') ||
                         (url[2]==='delivery-mill') ||
                         (url[2]==='freight-parity') ||
                         (url[2]==='profile') ||
@@ -206,6 +256,7 @@
                             <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
                         </ng-container>
                     </div>
+
 
                     <div *ngIf="(
                         (url[2]==='extra-certificate') ||
@@ -351,15 +402,63 @@
                     <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
                 </ng-container>
 
+                <div *ngIf="(
+                        (url[2]==='freight-parity') ||
+                        (url[2]==='length-production')||
+                        (url[2]==='smb') ||
+                        (url[2]==='incoterm-exceptions') ||
+                        (url[2]==='extra-certificate') ||
+                        (url[2]==='grade') ||
+                        (url[2]==='transport-mode') ||
+                        (url[2]==='delivery-mill') ||
+                        (url[2]==='length-logistic') ||
+                        (url[2]==='profile') ||
+                        (url[2]==='profile-lberia-italy')
+                        )">
+                        <ng-container matColumnDef="updated_on">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated_On </th>
+                            <td mat-cell *matCellDef="let row"> {{row.updated_on}} </td>
+                        </ng-container>
+                 </div>
+            
+                 <div *ngIf="(
+                    (url[2]==='freight-parity') ||
+                    (url[2]==='length-production')||
+                    (url[2]==='smb') ||
+                    (url[2]==='incoterm-exceptions') ||
+                    (url[2]==='extra-certificate') ||
+                    (url[2]==='grade') ||
+                    (url[2]==='transport-mode') ||
+                    (url[2]==='delivery-mill') ||
+                    (url[2]==='length-logistic') ||
+                    (url[2]==='profile') ||
+                    (url[2]==='profile-lberia-italy')
+                    )">
+                    <ng-container matColumnDef="Username">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Username}} </td>
+                    </ng-container>
+             </div>
+        
+
                 <!--=====================================simple design end ===============================  -->
 
                 <!--========================== common rows ================================= -->
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr *ngFor="let data of dataSource;let i = index">dsdfsf</tr>
 
 
             </table>
+            <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200]" #paginators>
+            </mat-paginator> -->
+
+            <mat-paginator [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200]" #paginators
+                                (page)="pageEvent = pageChangeCall($event)">
+                            </mat-paginator>
         </div>
     </div>
         <!-- ========================== simple design ================================= -->
+
+
 

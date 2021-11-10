@@ -46,7 +46,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/base-price/history',
                         icon: 'fa fa-history',
                         tag: 'alloy_scrap_sub_menu',
@@ -70,7 +70,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/incoterm-exceptions/history',
                         icon: 'fa fa-history',
                         tag: 'Incoterm_Exceptions_sub_menu',
@@ -94,7 +94,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/extra-certificate/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Certificate_sub_menu',
@@ -118,7 +118,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/delivery-mill/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Delivery_Mill_sub_menu',
@@ -142,7 +142,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/freight-parity/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Freight_Parity_sub_menu',
@@ -166,7 +166,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/grade/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Grade_sub_menu',
@@ -190,7 +190,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/length-logistic/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Length_Logistic_sub_menu',
@@ -214,7 +214,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/length-production/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Length_Production_sub_menu',
@@ -238,7 +238,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/profile/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Profile_sub_menu',
@@ -262,7 +262,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/profile-lberia-italy/history',
                         icon: 'fa fa-history',
                         tag: 'Profile_Iberia_and_Italy_sub_menu',
@@ -286,7 +286,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/transport-mode/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Transport_Mode_sub_menu',
@@ -321,7 +321,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/base-price/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_alloy_scrap_sub_menu',
@@ -345,7 +345,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/extra-certificate/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
@@ -369,7 +369,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/delivery-mill/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
@@ -393,7 +393,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/freight-parity/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
@@ -417,7 +417,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/grade/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Grade_sub_menu',
@@ -441,7 +441,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/length-logistic/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
@@ -465,7 +465,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/length-production/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
@@ -489,7 +489,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/profile/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Profile_sub_menu',
@@ -513,7 +513,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/profile-lberia-italy/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
@@ -537,7 +537,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'upload History',
+                        name: 'History',
                         url: '/smb/transport-mode/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',

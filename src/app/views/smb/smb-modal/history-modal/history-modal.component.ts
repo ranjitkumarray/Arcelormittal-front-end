@@ -3,13 +3,16 @@ import { ApiService } from 'src/app/services/api.service';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { basePriceAddtionData } from '../../smb-interface.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from "@angular/common";
 import { filter } from 'rxjs/operators';
+//mine
+import { historyData } from 'src/app/views/alloy-scrap/alloy-scrap-interface.service';
+
 @Component({
   selector: 'app-history-modal',
   templateUrl: './history-modal.component.html',
@@ -34,6 +37,15 @@ export class HistoryModalComponent implements OnInit {
   url: any;
   apiStringURL: any;
 
+  //mine
+  searchValue:any;
+  pageOffset:any = 0;
+  pageLength : any = 10;
+  totalCount :any = 0;
+  dataSource : any;
+  pageEvent :any = PageEvent;
+
+
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -51,256 +63,235 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.smb_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category','Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.smb
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'document_item_currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'incoterm-exceptions') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.incoterm_exceptions
-          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'extra-certificate') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.certificate_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.certificate
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'freight-parity') {
         console.log("coming in  freight-parity")
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.freight_parity_mini_bar
-          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", "Market_Customer", "Market_Customer_Group"
-          ]
+          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", "Market_Customer", "Market_Customer_Group",'updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.freight_parity
-          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency",]
+          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency",'updated_on','Username']
         }
 
       } else if (this.url[2] === 'grade') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.grade_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Market_Customer', 'Customer_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Market_Customer', 'Customer_Group', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.grade
-          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Product_Division', 'Country_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Product_Division', 'Country_Group', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'length-logistic') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_logistic_mini_bar
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.length_logistic
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'length-production') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_production_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Market_Customer', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Market_Customer', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.length_production
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Country_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Country_Group', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'profile') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Customer_Group', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency',]
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Customer_Group', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.profile
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'profile-lberia-italy') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Market_Customer', 'Market_Customer_Group', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Market_Customer', 'Market_Customer_Group', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.profile_lberia_italy
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else if (this.url[2] === 'transport-mode') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.transport_mode_mini_bar
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Market_Customer_Group', 'Market_Customer', 'Amount', 'Currency']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Market_Customer_Group', 'Market_Customer', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.transport_mode
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       } else {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.delivery_mill_mini_bar
-          this.displayedColumns = ['Market_Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.delivery_mill
-          this.displayedColumns = ['BusinessCode', 'Beam_Category', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Beam_Category', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         }
 
       }
     });
   }
 
-  ngOnInit() {
-    this.data = { "inputaction": '' }
+  //mine
+  ngOnInit(): void {
+console.log(this.url[2])
+this.url[2] = this.url[2] == "base-price" ? "smb" : this.url[2];
+console.log(this.url[2])
+      this.getHistory()
   }
+  //getting uploaded history of smb
+  getHistory() {
+    console.log({apistring:this.apiStringURL})
+    this.loadingRouteConfig = true
+    let searchString: any
+    if (this.searchValue) {
+      searchString = this.searchValue
+    } else {
+      searchString = "all"
+    }
+    this.apiMethod.get_request(this.apiStringURL.history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+      console.log(result)
+      let resultData: any = result
+      this.totalCount = resultData.totalCount
+      this.loadingRouteConfig = false
+      this.dataSource = resultData.data
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
+    })
+  }
+
+  //page change 
+  pageChangeCall(event: any) {
+    console.log(event)
+    this.pageOffset = event.pageIndex
+    this.pageLength = event.pageSize
+    this.getHistory()
+  }
+  //filter 
+  applyFilter() {
+    const filterValue = this.searchValue;
+    this.pageOffset = 0
+    this.pageLength = 10
+    this.getHistory()
+  }
+  
+
+
 
 
   // ==================== file change event ========================
-  dropFiles(ev: any): any {
-    ev.preventDefault();
-    this.fileEv = ev
-    let data: any = ev.dataTransfer.items[0]
-    console.log(data)
-    if (data) {
-      console.log("coming inside")
+  // dropFiles(ev: any): any {
+  //   ev.preventDefault();
+  //   this.fileEv = ev
+  //   let data: any = ev.dataTransfer.items[0]
+  //   console.log(data)
+  //   if (data) {
+  //     console.log("coming inside")
       // If dropped items aren't files, reject them
-      const allowed_types = [
-        'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+    //   const allowed_types = [
+    //     'application/vnd.ms-excel',
+    //     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 
-      if (!_.includes(allowed_types, data.type)) {
-        let imageError: any = 'Only xlsx are allowed.';
-        this._snackBar.open(imageError, "", {
-          duration: 4000,
-          panelClass: ['error'],
-          horizontalPosition: 'end',
-          verticalPosition: 'bottom',
-        });
-        return false;
-      }
-      let obj: any
-      if (data.kind === 'file') {
-        let file = data.getAsFile();
-        obj = {
-          fileName: file.name,
-          selectedFile: file,
-        }
-      }
-      this.selectedFiles.uploadValidateModal = {
-        file: obj,
-        uploadCompleted: true
+    //   if (!_.includes(allowed_types, data.type)) {
+    //     let imageError: any = 'Only xlsx are allowed.';
+    //     this._snackBar.open(imageError, "", {
+    //       duration: 4000,
+    //       panelClass: ['error'],
+    //       horizontalPosition: 'end',
+    //       verticalPosition: 'bottom',
+    //     });
+    //     return false;
+    //   }
+    //   let obj: any
+    //   if (data.kind === 'file') {
+    //     let file = data.getAsFile();
+    //     obj = {
+    //       fileName: file.name,
+    //       selectedFile: file,
+    //     }
+    //   }
+    //   this.selectedFiles.uploadValidateModal = {
+    //     file: obj,
+    //     uploadCompleted: true
 
-      }
-    }
-  }
+    //   }
+    // }
+  // }
 
-  dragOverHandler(ev: any) {
-    ev.preventDefault();
-    ev.stopPropagation();
-  }
+  
 
-  onSelectFile(event: any) {
-    this.fileEv = event
-    console.log(event.target.files)
-    if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-        let file: any = event.target.files[i]
-        console.log(file)
+  
 
-        let obj: any = {
-          fileName: file.name,
-          selectedFile: file
-        }
-        this.selectedFiles.uploadValidateModal = {
-          file: obj,
-          uploadCompleted: true
-        }
-        // this.selectedFiles.push(obj);
-        reader.onload = (event: any) => {
-        }
-
-        reader.readAsDataURL(event.target.files[i]);
-        event.target.value = ''
-
-      }
-    }
-  }
-
-  deleteFile() {
-
-    this.uploadValidateModal = ''
-    this.selectedFiles.uploadValidateModal = {
-      file: "",
-      uploadCompleted: false
-    }
-    console.log(this.fileEv, "FILE EV ")
-    // this.fileEv.target.value = "";
-  }
-  uploadFiles() {
-    console.log("coming", this.selectedFiles)
-    const formData = new FormData();
-    formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile)
-    this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.upload, formData).subscribe((data) => {
-      console.log(data)
-      let resultData: any = data
-      this.loadingRouteConfig = false
-      this.uploadValidateModal_data = resultData
-      this.uploadValidateModal = new MatTableDataSource<basePriceAddtionData>(resultData.data)
-      setTimeout(() => {
-        this.uploadValidateModal.paginator = this.paginator;
-        this.uploadValidateModal.sort = this.sort;
-      });
-      this.apiMethod.popupMessage('success', 'File data read successfully')
-    }, error => {
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while reading uploaded file')
-    })
-  }
+  
+  
 
   //==========================end===================================
-  //filter 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.uploadValidateModal.filter = filterValue.trim().toLowerCase();
-    if (this.uploadValidateModal.paginator) {
-      this.uploadValidateModal.paginator.firstPage();
-    }
-  }
-
+  
   //data validate
-  validateDataForm() {
-    console.log(this.uploadValidateModal)
-    let data: any = {
-      "billet": this.uploadValidateModal_data.data,
-      "filename": this.uploadValidateModal_data.filename
-    }
-    this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.validate, data).subscribe((result: any) => {
-      console.log("success")
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', 'File validated successfully')
-      this.location.back()
-    }, error => {
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
-    })
-  }
-  back() {
-    this.location.back()
-  }
+  // validateDataForm() {
+  //   console.log(this.uploadValidateModal)
+  //   let data: any = {
+  //     "billet": this.uploadValidateModal_data.data,
+  //     "filename": this.uploadValidateModal_data.filename
+  //   }
+  //   this.loadingRouteConfig = true
+  //   this.apiMethod.post_request(this.apiStringURL.validate, data).subscribe((result: any) => {
+  //     console.log("success")
+  //     this.loadingRouteConfig = false
+  //     this.apiMethod.popupMessage('success', 'File validated successfully')
+  //     this.location.back()
+  //   }, error => {
+  //     this.loadingRouteConfig = false
+  //     this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
+  //   })
+  // }
+  // back() {
+  //   this.location.back()
+  // }
 }

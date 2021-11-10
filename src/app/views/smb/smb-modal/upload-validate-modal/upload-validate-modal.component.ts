@@ -164,6 +164,7 @@ export class UploadValidateModalComponent implements OnInit {
 
   ngOnInit() {
     this.data = { "inputaction": '' }
+    
   }
 
 
