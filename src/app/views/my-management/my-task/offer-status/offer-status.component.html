@@ -3,18 +3,18 @@
         <span class="signal"></span>
     </div>
 </ng-container>
-<form>
+<form [formGroup]="filterForm">
     <div class="row">
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search">
+                <input matInput placeholder="Search" formControlName="searchInput">
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
-                <mat-select>
+                <mat-select FormControlName="customer">
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -24,7 +24,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Pending With</mat-label>
-                <mat-select>
+                <mat-select FormControlName='pending_with'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -34,7 +34,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Status</mat-label>
-                <mat-select>
+                <mat-select FormControlName='status'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -44,7 +44,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Created</mat-label>
-                <mat-select>
+                <mat-select FormControlName='created'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -54,13 +54,13 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Odder ID</mat-label>
-                <input matInput placeholder="Odder ID">
+                <input matInput placeholder="Odder ID" FormControlName='order_id'>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
-                <input matInput placeholder="Cust Ref">
+                <input matInput placeholder="Cust Ref" FormControlName='customer_ref'>
             </mat-form-field>
         </div>
     </div>

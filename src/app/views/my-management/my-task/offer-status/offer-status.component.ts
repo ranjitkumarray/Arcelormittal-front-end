@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -32,14 +33,24 @@ export class OfferStatusComponent implements OnInit {
   @ViewChild(MatSort) sort: any = MatSort;
   dataSource: any;
   loadingRouteConfig: boolean = false;
-
+  filterForm: any = FormGroup
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.getOfferStatus()
+    this.filterForm = this.fb.group({
+      searchInput: [''],
+      customer: [''],
+      pending_with: [''],
+      status: [''],
+      created: [''],
+      order_id: [''],
+      customer_ref: ['']
+    })
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
