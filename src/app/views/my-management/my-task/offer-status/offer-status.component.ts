@@ -41,20 +41,28 @@ export class OfferStatusComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOfferStatus()
     this.filterForm = this.fb.group({
-      searchInput: [''],
+      search_string: [''],
       customer: [''],
       pending_with: [''],
       status: [''],
       created: [''],
-      order_id: [''],
+      offerid: [''],
       customer_ref: ['']
     })
+    this.getOfferStatus()
+
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.myTask.offerStatus).subscribe((result: any) => {
+    let body = this.filterForm.value
+    Object.keys(body).forEach(key => {
+      if (body[key] === "") {
+        body[key] = 'all';
+      }
+    });
+    console.log(body)
+    this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
       this.loadingRouteConfig = true
       this.dataSource = new MatTableDataSource<offerStatus>(JSON.parse(result.data))
       setTimeout(() => {

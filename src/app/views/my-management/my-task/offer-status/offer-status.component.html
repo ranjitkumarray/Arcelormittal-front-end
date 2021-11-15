@@ -8,7 +8,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search" formControlName="searchInput">
+                <input matInput placeholder="Search" formControlName="search_string">
             </mat-form-field>
         </div>
         <div class="col-3">
@@ -53,8 +53,8 @@
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
-                <mat-label>Odder ID</mat-label>
-                <input matInput placeholder="Odder ID" FormControlName='order_id'>
+                <mat-label>Offer ID</mat-label>
+                <input matInput placeholder="Offer ID" FormControlName='offerid'>
             </mat-form-field>
         </div>
         <div class="col-3">
@@ -75,7 +75,7 @@
 
                             <ng-container matColumnDef="offer_id">
                                 <th mat-header-cell *matHeaderCellDef> Offer ID </th>
-                                <td mat-cell *matCellDef="let element"> {{element?.VKORG}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element?.offerid}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="customer_name">
@@ -86,7 +86,7 @@
 
                             <ng-container matColumnDef="DIV">
                                 <th mat-header-cell *matHeaderCellDef> DIV</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.DIV}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element?.division}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="deliver_mill">
@@ -96,7 +96,7 @@
 
                             <ng-container matColumnDef="incoterm">
                                 <th mat-header-cell *matHeaderCellDef> Incoterm</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element?.incotermcode}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="cust_ref">

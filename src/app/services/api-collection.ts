@@ -257,7 +257,7 @@ export class CitGlobalConstantService {
         download: this.baseUrl + "download_baseprice_incoterm",
     };
     myTask: any = {
-        offerStatus: this.baseUrl + "",
+        offerStatus: this.baseUrl + "taskbar1_data",
         orderStatus: this.baseUrl + "",
         customerVolume: this.baseUrl + "",
         missingInvoicePayment: this.baseUrl + ""
