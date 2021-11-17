@@ -67,9 +67,10 @@ export class OfferStatusComponent implements OnInit {
     console.log(body)
     // this.resultdata = this.offer
     this.resultdata = []
+    // this.dataSource=""
     this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
-      this.resultdata = this.offer
+      this.resultdata = result
       this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
