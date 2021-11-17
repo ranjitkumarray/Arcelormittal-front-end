@@ -64,7 +64,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module":"default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module","views-alloy-scrap-alloy-scrap-module":"views-alloy-scrap-alloy-scrap-module","views-smb-smb-module":"views-smb-smb-module"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module":"default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module","views-alloy-scrap-alloy-scrap-module":"views-alloy-scrap-alloy-scrap-module","views-smb-smb-module":"views-smb-smb-module","views-my-management-my-management-module":"views-my-management-my-management-module"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

@@ -2733,6 +2733,33 @@ LengthLogisticListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_8__["
 
 /***/ }),
 
+/***/ "BVUW":
+/*!******************************************************************************!*\
+  !*** ./src/app/views/smb/smb-modal/history-modal/history-modal.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: HistoryModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoryModalComponent", function() { return HistoryModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class HistoryModalComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+HistoryModalComponent.ɵfac = function HistoryModalComponent_Factory(t) { return new (t || HistoryModalComponent)(); };
+HistoryModalComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HistoryModalComponent, selectors: [["app-history-modal"]], decls: 2, vars: 0, template: function HistoryModalComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "history-modal works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJoaXN0b3J5LW1vZGFsLmNvbXBvbmVudC5zY3NzIn0= */"] });
+
+
+/***/ }),
+
 /***/ "CI15":
 /*!*****************************************!*\
   !*** ./src/app/views/smb/smb.module.ts ***!
@@ -2766,7 +2793,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _incoterm_exceptions_incoterm_exceptions_edit_incoterm_exceptions_edit_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./incoterm-exceptions/incoterm-exceptions-edit/incoterm-exceptions-edit.component */ "866B");
 /* harmony import */ var _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./smb-modal/upload-validate-modal/upload-validate-modal.component */ "phQT");
 /* harmony import */ var _smb_modal_add_popup_add_popup_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./smb-modal/add-popup/add-popup.component */ "Mfj6");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./smb-modal/history-modal/history-modal.component */ "BVUW");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -2794,13 +2823,13 @@ __webpack_require__.r(__webpack_exports__);
 class SmbModule {
 }
 SmbModule.ɵfac = function SmbModule_Factory(t) { return new (t || SmbModule)(); };
-SmbModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵdefineNgModule"]({ type: SmbModule });
-SmbModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵdefineInjector"]({ imports: [[
+SmbModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵdefineNgModule"]({ type: SmbModule });
+SmbModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵdefineInjector"]({ imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
             _smb_routing_module__WEBPACK_IMPORTED_MODULE_1__["SmbRoutingModule"],
             src_app_materials_materials_module__WEBPACK_IMPORTED_MODULE_6__["MaterialsModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵsetNgModuleScope"](SmbModule, { declarations: [_smb_component__WEBPACK_IMPORTED_MODULE_2__["SmbComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵsetNgModuleScope"](SmbModule, { declarations: [_smb_component__WEBPACK_IMPORTED_MODULE_2__["SmbComponent"],
         _base_price_base_price_addition_list_base_price_addition_list_component__WEBPACK_IMPORTED_MODULE_3__["BasePriceAdditionListComponent"],
         _base_price_edit_base_price_addition_edit_base_price_addition_component__WEBPACK_IMPORTED_MODULE_4__["EditBasePriceAdditionComponent"],
         _base_price_bulk_upload_base_price_addition_bulk_upload_base_price_addition_component__WEBPACK_IMPORTED_MODULE_5__["BulkUploadBasePriceAdditionComponent"],
@@ -2819,7 +2848,8 @@ SmbModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵdefineInjecto
         _incoterm_exceptions_incoterm_exceptions_upload_incoterm_exceptions_upload_component__WEBPACK_IMPORTED_MODULE_19__["IncotermExceptionsUploadComponent"],
         _incoterm_exceptions_incoterm_exceptions_edit_incoterm_exceptions_edit_component__WEBPACK_IMPORTED_MODULE_20__["IncotermExceptionsEditComponent"],
         _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_21__["UploadValidateModalComponent"],
-        _smb_modal_add_popup_add_popup_component__WEBPACK_IMPORTED_MODULE_22__["AddPopupComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+        _smb_modal_add_popup_add_popup_component__WEBPACK_IMPORTED_MODULE_22__["AddPopupComponent"],
+        _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_23__["HistoryModalComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
         _smb_routing_module__WEBPACK_IMPORTED_MODULE_1__["SmbRoutingModule"],
         src_app_materials_materials_module__WEBPACK_IMPORTED_MODULE_6__["MaterialsModule"]] }); })();
 
@@ -9304,9 +9334,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _length_production_list_length_production_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./length-production-list/length-production-list.component */ "B6DA");
 /* harmony import */ var _profile_lberia_italy_list_profile_lberia_italy_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./profile-lberia-italy-list/profile-lberia-italy-list.component */ "btQv");
 /* harmony import */ var _profile_list_profile_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./profile-list/profile-list.component */ "iuHE");
-/* harmony import */ var _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./smb-modal/upload-validate-modal/upload-validate-modal.component */ "phQT");
-/* harmony import */ var _transport_mode_list_transport_mode_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./transport-mode-list/transport-mode-list.component */ "uBS1");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./smb-modal/history-modal/history-modal.component */ "BVUW");
+/* harmony import */ var _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./smb-modal/upload-validate-modal/upload-validate-modal.component */ "phQT");
+/* harmony import */ var _transport_mode_list_transport_mode_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./transport-mode-list/transport-mode-list.component */ "uBS1");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -9343,6 +9375,10 @@ const routes = [
                                 path: "bulk-upload",
                                 component: _base_price_bulk_upload_base_price_addition_bulk_upload_base_price_addition_component__WEBPACK_IMPORTED_MODULE_3__["BulkUploadBasePriceAdditionComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9359,8 +9395,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9377,8 +9417,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9395,8 +9439,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9413,8 +9461,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9431,8 +9483,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9449,8 +9505,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9467,8 +9527,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9485,8 +9549,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9499,12 +9567,16 @@ const routes = [
                         children: [
                             {
                                 path: "list",
-                                component: _transport_mode_list_transport_mode_list_component__WEBPACK_IMPORTED_MODULE_14__["TransportModeListComponent"]
+                                component: _transport_mode_list_transport_mode_list_component__WEBPACK_IMPORTED_MODULE_15__["TransportModeListComponent"]
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9521,8 +9593,12 @@ const routes = [
                             },
                             {
                                 path: "bulk-upload",
-                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_13__["UploadValidateModalComponent"]
+                                component: _smb_modal_upload_validate_modal_upload_validate_modal_component__WEBPACK_IMPORTED_MODULE_14__["UploadValidateModalComponent"]
                             },
+                            {
+                                path: "history",
+                                component: _smb_modal_history_modal_history_modal_component__WEBPACK_IMPORTED_MODULE_13__["HistoryModalComponent"]
+                            }
                         ]
                     }))
                 ]
@@ -9533,9 +9609,9 @@ const routes = [
 class SmbRoutingModule {
 }
 SmbRoutingModule.ɵfac = function SmbRoutingModule_Factory(t) { return new (t || SmbRoutingModule)(); };
-SmbRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵdefineNgModule"]({ type: SmbRoutingModule });
-SmbRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵsetNgModuleScope"](SmbRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+SmbRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵdefineNgModule"]({ type: SmbRoutingModule });
+SmbRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵsetNgModuleScope"](SmbRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),

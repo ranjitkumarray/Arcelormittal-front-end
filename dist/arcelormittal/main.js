@@ -60,7 +60,10 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    domain: "http://127.0.0.1:5000/"
+    // local host domain 
+    // domain:"http://127.0.0.1:5000/"
+    // dev domain 
+    domain: "http://18.159.253.5:5000/"
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -456,6 +459,12 @@ class CitGlobalConstantService {
             update: this.baseUrl + "update_record_baseprice_incoterm",
             download: this.baseUrl + "download_baseprice_incoterm",
         };
+        this.myTask = {
+            offerStatus: this.baseUrl + "taskbar1_data",
+            orderStatus: this.baseUrl + "",
+            customerVolume: this.baseUrl + "",
+            missingInvoicePayment: this.baseUrl + ""
+        };
     }
 }
 CitGlobalConstantService.ɵfac = function CitGlobalConstantService_Factory(t) { return new (t || CitGlobalConstantService)(); };
@@ -481,6 +490,7 @@ const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'alloy_scrap',
+        type: "admin",
         children: [
             {
                 name: 'upload alloy & Scrap',
@@ -502,6 +512,7 @@ const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb',
+        type: 'admin',
         children: [
             {
                 name: 'Base Price Addition',
@@ -742,6 +753,7 @@ const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb_mini_bar',
+        type: "admin",
         children: [
             {
                 name: 'Base Price Addition',
@@ -954,7 +966,41 @@ const NavItems = [
                 ]
             }
         ]
-    }
+    },
+    {
+        name: 'My Tasks',
+        url: '',
+        active_img: '../../../assets/images/order.png',
+        inactive_img: '../../../assets/images/order 2.png',
+        tag: 'My_Tasks',
+        type: "user",
+        children: [
+            {
+                name: 'Offer status / Pending approval',
+                url: '/management/offer-status',
+                icon: '',
+                tag: 'offer_status_sub_menu',
+            },
+            {
+                name: 'Order status & delay',
+                url: '/management/order-status',
+                icon: '',
+                tag: 'order_status_sub_menu',
+            },
+            {
+                name: 'Customer Volume & Over Booking',
+                url: '/management/customer-volume',
+                icon: '',
+                tag: 'customer_volume_sub_menu',
+            },
+            {
+                name: 'Missing Invoice Payments',
+                url: '/management/missing-invoice-payment',
+                icon: '',
+                tag: 'missing_invoice_payment_sub_menu',
+            },
+        ]
+    },
 ];
 
 
@@ -1260,24 +1306,20 @@ const _c0 = function () { return ["active"]; };
 function SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "i", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "span", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const sub_item2_r11 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item2_r11.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](5, _c0));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item2_r11.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](3, _c0));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](sub_item2_r11.icon);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", sub_item2_r11 == null ? null : sub_item2_r11.name, " ");
 } }
 function SidebarComponent_span_11_span_1_span_9_span_1_span_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template, 5, 6, "li", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template, 4, 4, "li", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2).$implicit;
@@ -1331,10 +1373,7 @@ function SidebarComponent_span_11_span_1_span_9_span_2_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "ul", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "li", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "i", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -1346,16 +1385,14 @@ function SidebarComponent_span_11_span_1_span_9_span_2_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", item_r4.tag);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item1_r6.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](6, _c0));
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](sub_item1_r6 == null ? null : sub_item1_r6.icon);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item1_r6.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](4, _c0));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", sub_item1_r6.name, " ");
 } }
 function SidebarComponent_span_11_span_1_span_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_Template, 13, 7, "span", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, SidebarComponent_span_11_span_1_span_9_span_2_Template, 8, 7, "span", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, SidebarComponent_span_11_span_1_span_9_span_2_Template, 6, 5, "span", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const sub_item1_r6 = ctx.$implicit;
@@ -1405,11 +1442,20 @@ function SidebarComponent_span_11_Template(rf, ctx) { if (rf & 1) {
 } }
 class SidebarComponent {
     constructor() {
+        this.navLink = _sidebar__WEBPACK_IMPORTED_MODULE_0__["NavItems"];
         this.showFiller = false;
         this.collapsed = false;
         this.isOpen = false;
         this.version = '';
-        this.navbarItem = _sidebar__WEBPACK_IMPORTED_MODULE_0__["NavItems"];
+        this.user = 'user';
+        this.navbarItem = [];
+        if (this.user === 'admin') {
+            this.navbarItem = this.navLink.filter((x) => x.type === 'admin');
+        }
+        else {
+            this.navbarItem = this.navLink.filter((x) => x.type === 'user');
+        }
+        console.log(this.navbarItem, "Nav Item");
     }
     ngOnInit() {
         this.version = "1";
@@ -1427,7 +1473,7 @@ class SidebarComponent {
     }
 }
 SidebarComponent.ɵfac = function SidebarComponent_Factory(t) { return new (t || SidebarComponent)(); };
-SidebarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: SidebarComponent, selectors: [["app-sidebar"]], decls: 17, vars: 7, consts: [[1, "sidebar"], [1, "sidebar_toggler", 3, "click"], ["class", "fa fa-bars", 4, "ngIf"], ["class", "fas fa-times", 4, "ngIf"], [1, ""], [1, "container-fluid", "logo_outer"], [1, "logo"], ["src", "../../../assets/images/arcelorMittal_logo.png", "alt", "logo"], [1, "content"], [1, "line"], [1, "nav", "flex-column", "flex-nowrap", "overflow-hidden"], [4, "ngIf"], [1, "main_container_content"], [2, "margin-top", "65px"], [1, "fa", "fa-bars"], [1, "fas", "fa-times"], [4, "ngFor", "ngForOf"], [1, "nav-item"], [1, "sub_menu_con"], ["data-toggle", "collapse", 1, "items", "nav-link", "collapsed", "text-truncate"], ["alt", "icon", 1, "active_img", 3, "src"], ["alt", "icon-inactive", 1, "inactive_img", 3, "src"], [1, "d-none", "d-sm-inline"], ["aria-expanded", "false", 1, "collapse", 3, "id"], [1, "flex-column", "pl-2", "nav"], ["class", "nav-item", 4, "ngFor", "ngForOf"], [1, "sub", "items", 3, "routerLink", "routerLinkActive"], [1, "sub_hyphen"], ["aria-hidden", "true"]], template: function SidebarComponent_Template(rf, ctx) { if (rf & 1) {
+SidebarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: SidebarComponent, selectors: [["app-sidebar"]], decls: 17, vars: 7, consts: [[1, "sidebar"], [1, "sidebar_toggler", 3, "click"], ["class", "fa fa-bars", 4, "ngIf"], ["class", "fas fa-times", 4, "ngIf"], [1, ""], [1, "container-fluid", "logo_outer"], [1, "logo"], ["src", "../../../assets/images/arcelorMittal_logo.png", "alt", "logo"], [1, "content"], [1, "line"], [1, "nav", "flex-column", "flex-nowrap", "overflow-hidden"], [4, "ngIf"], [1, "main_container_content"], [2, "margin-top", "65px"], [1, "fa", "fa-bars"], [1, "fas", "fa-times"], [4, "ngFor", "ngForOf"], [1, "nav-item"], [1, "sub_menu_con"], ["data-toggle", "collapse", 1, "items", "nav-link", "collapsed", "text-truncate"], ["alt", "icon", 1, "active_img", 3, "src"], ["alt", "icon-inactive", 1, "inactive_img", 3, "src"], [1, "d-none", "d-sm-inline"], ["aria-expanded", "false", 1, "collapse", 3, "id"], [1, "flex-column", "pl-2", "nav"], ["class", "nav-item", 4, "ngFor", "ngForOf"], [1, "sub", "items", 3, "routerLink", "routerLinkActive"], [1, "sub_hyphen"]], template: function SidebarComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "button", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SidebarComponent_Template_button_click_1_listener() { return ctx.isOpen = !ctx.isOpen; });
@@ -1523,6 +1569,7 @@ const routes = [
     },
     { path: 'alloy-scrap', loadChildren: () => Promise.all(/*! import() | views-alloy-scrap-alloy-scrap-module */[__webpack_require__.e("default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module"), __webpack_require__.e("views-alloy-scrap-alloy-scrap-module")]).then(__webpack_require__.bind(null, /*! ./views/alloy-scrap/alloy-scrap.module */ "ghUo")).then(m => m.AlloyScrapModule) },
     { path: 'smb', loadChildren: () => Promise.all(/*! import() | views-smb-smb-module */[__webpack_require__.e("default~views-alloy-scrap-alloy-scrap-module~views-smb-smb-module"), __webpack_require__.e("views-smb-smb-module")]).then(__webpack_require__.bind(null, /*! ./views/smb/smb.module */ "CI15")).then(m => m.SmbModule) },
+    { path: 'management', loadChildren: () => __webpack_require__.e(/*! import() | views-my-management-my-management-module */ "views-my-management-my-management-module").then(__webpack_require__.bind(null, /*! ./views/my-management/my-management.module */ "F6Jo")).then(m => m.MyManagementModule) },
     {
         path: '**',
         component: _common_use_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_1__["SidebarComponent"],
@@ -1542,7 +1589,7 @@ AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineI
                 onSameUrlNavigation: 'reload',
                 scrollOffset: [0, 64],
                 initialNavigation: 'enabled',
-                useHash: true
+                useHash: false
             })], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
