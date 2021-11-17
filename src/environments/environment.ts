@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  domain:"http://127.0.0.1:5000/"
+  // local host domain 
+  // domain:"http://127.0.0.1:5000/"
+  // dev domain 
+  domain: "http://127.0.0.1:5000/"
 };
 
 /*
