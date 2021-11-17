@@ -14,7 +14,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
-                <mat-select FormControlName="customer" (selectionChange)="getOfferStatus()">
+                <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
                     <mat-option *ngFor="let customer of resultdata?.customer_name" [value]="customer">
                         {{customer}}
                     </mat-option>
@@ -25,7 +25,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Pending With</mat-label>
-                <mat-select FormControlName='pending_with' (selectionChange)="getOfferStatus()">
+                <mat-select formControlName='pending_with' (selectionChange)="getOfferStatus()">
                     <mat-option *ngFor="let pending of resultdata?.pending_with" [value]="pending">
                         {{pending}}
                     </mat-option>
@@ -36,7 +36,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Status</mat-label>
-                <mat-select FormControlName='status' (selectionChange)="getOfferStatus()">
+                <mat-select formControlName='status' (selectionChange)="getOfferStatus()">
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -46,7 +46,7 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Created</mat-label>
-                <mat-select FormControlName='created' (selectionChange)="getOfferStatus()">
+                <mat-select formControlName='created' (selectionChange)="getOfferStatus()">
                     <mat-option *ngFor="let createdAt of resultdata?.created" [value]="createdAt">
                         {{createdAt}}
                     </mat-option>
@@ -57,13 +57,13 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Offer ID</mat-label>
-                <input matInput placeholder="Offer ID" FormControlName='offerid' (keyup)="getOfferStatus()">
+                <input matInput placeholder="Offer ID" formControlName='offerid' (keyup)="getOfferStatus()">
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
-                <input matInput placeholder="Cust Ref" FormControlName='customer_ref' (keyup)="getOfferStatus()">
+                <input matInput placeholder="Cust Ref" formControlName='customer_ref' (keyup)="getOfferStatus()">
             </mat-form-field>
         </div>
     </div>
