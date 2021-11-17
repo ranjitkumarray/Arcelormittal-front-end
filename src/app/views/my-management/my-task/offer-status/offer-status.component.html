@@ -8,33 +8,35 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search" formControlName="search_string">
+                <input matInput placeholder="Search" formControlName="search_string" (keyup)="getOfferStatus()">
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
-                <mat-select FormControlName="customer">
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select FormControlName="customer" (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let customer of resultdata?.customer_name" [value]="customer">
+                        {{customer}}
+                    </mat-option>
+
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Pending With</mat-label>
-                <mat-select FormControlName='pending_with'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select FormControlName='pending_with' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let pending of resultdata?.pending_with" [value]="pending">
+                        {{pending}}
+                    </mat-option>
+
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Status</mat-label>
-                <mat-select FormControlName='status'>
+                <mat-select FormControlName='status' (selectionChange)="getOfferStatus()">
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -44,23 +46,24 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Created</mat-label>
-                <mat-select FormControlName='created'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select FormControlName='created' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let createdAt of resultdata?.created" [value]="createdAt">
+                        {{createdAt}}
+                    </mat-option>
+
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Offer ID</mat-label>
-                <input matInput placeholder="Offer ID" FormControlName='offerid'>
+                <input matInput placeholder="Offer ID" FormControlName='offerid' (keyup)="getOfferStatus()">
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
-                <input matInput placeholder="Cust Ref" FormControlName='customer_ref'>
+                <input matInput placeholder="Cust Ref" FormControlName='customer_ref' (keyup)="getOfferStatus()">
             </mat-form-field>
         </div>
     </div>
@@ -91,7 +94,7 @@
 
                             <ng-container matColumnDef="deliver_mill">
                                 <th mat-header-cell *matHeaderCellDef>Deliver Mill</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.PLAINTEXT}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element?.planttext}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="incoterm">
@@ -101,7 +104,7 @@
 
                             <ng-container matColumnDef="cust_ref">
                                 <th mat-header-cell *matHeaderCellDef> Cust ref</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.Model}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element?.rfqreference}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="status">

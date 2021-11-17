@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { offerStatus } from '../../managment-interface.serviec';
+import { offer } from './dummydata';
 
 @Component({
   selector: 'app-offer-status',
@@ -13,6 +14,7 @@ import { offerStatus } from '../../managment-interface.serviec';
   styleUrls: ['./offer-status.component.scss']
 })
 export class OfferStatusComponent implements OnInit {
+  offer: any = offer
   displayedColumns: string[] = [
     'offer_id',
     'customer_name',
@@ -34,6 +36,7 @@ export class OfferStatusComponent implements OnInit {
   dataSource: any;
   loadingRouteConfig: boolean = false;
   filterForm: any = FormGroup
+  resultdata: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -62,9 +65,12 @@ export class OfferStatusComponent implements OnInit {
       }
     });
     console.log(body)
+    // this.resultdata = this.offer
+
     this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
       this.loadingRouteConfig = true
-      this.dataSource = new MatTableDataSource<offerStatus>(JSON.parse(result.data))
+      this.resultdata = result
+      this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
