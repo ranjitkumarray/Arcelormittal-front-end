@@ -68,19 +68,22 @@ export class OfferStatusComponent implements OnInit {
     // this.resultdata = this.offer
     this.resultdata = []
     // this.dataSource=""
-    this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
-      this.loadingRouteConfig = false
-      this.resultdata = result
-      this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+    setTimeout(() => {
+      this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
+        this.loadingRouteConfig = false
+        this.resultdata = result
+        this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
 
-      }, 3000);
+        }, 1000);
 
-    }, error => {
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while getting offer status')
-    })
+      }, error => {
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('error', 'Error while getting offer status')
+      })
+    }, 1000);
+
   }
 }

@@ -8,7 +8,9 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search" formControlName="search_string" (keyup)="getOfferStatus()">
+                <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
+                <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
+
             </mat-form-field>
         </div>
         <div class="col-3">
@@ -58,13 +60,15 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Offer ID</mat-label>
-                <input matInput placeholder="Offer ID" formControlName='offerid' (keyup)="getOfferStatus()">
+                <input matInput placeholder="Offer ID" formControlName='offerid' (keyup.enter)="getOfferStatus()">
+                <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
-                <input matInput placeholder="Cust Ref" formControlName='customer_ref' (keyup)="getOfferStatus()">
+                <input matInput placeholder="Cust Ref" formControlName='customer_ref'  (keyup.enter)="getOfferStatus()">
+                <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
     </div>
