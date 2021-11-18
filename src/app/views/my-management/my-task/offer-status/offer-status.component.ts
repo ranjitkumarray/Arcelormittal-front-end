@@ -68,6 +68,8 @@ export class OfferStatusComponent implements OnInit {
     // this.resultdata = this.offer
     this.resultdata = []
     // this.dataSource=""
+    setTimeout(() => { 
+      
     this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
       this.resultdata = result
@@ -82,5 +84,7 @@ export class OfferStatusComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
+  }, 1000);
   }
+
 }
