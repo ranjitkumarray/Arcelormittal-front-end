@@ -41,9 +41,7 @@ export class OfferStatusComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private fb: FormBuilder
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
@@ -53,6 +51,10 @@ export class OfferStatusComponent implements OnInit {
       offerid: [''],
       customer_ref: ['']
     })
+  }
+
+  ngOnInit(): void {
+
     this.getOfferStatus()
 
   }
@@ -86,4 +88,5 @@ export class OfferStatusComponent implements OnInit {
     }, 1000);
 
   }
+
 }
