@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavItems } from './sidebar';
 
 @Component({
@@ -14,9 +15,10 @@ export class SidebarComponent implements OnInit {
   version: string = '';
   user: any = 'user'
   navbarItem: any = []
-  constructor() {
+  constructor(private router: Router) {
 
     if (this.user === 'admin') {
+      this.router.navigate(['/management/offer-status'])
       this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin')
     } else {
       this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
