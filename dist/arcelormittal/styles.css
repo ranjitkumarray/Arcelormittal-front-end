@@ -263,7 +263,7 @@ table.mat-table thead th {
   word-break: break-word;
   border-right: 1px solid rgba(0, 0, 0, 0.06);
   border-left: 1px solid rgba(0, 0, 0, 0.06);
-  width: 165px;
+  min-width: 65px;
 }
 table.mat-table tbody tr {
   cursor: pointer;
@@ -278,7 +278,7 @@ table.mat-table tbody tr td {
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.06);
   border-left: 1px solid rgba(0, 0, 0, 0.06);
-  width: 165px;
+  min-width: 65px;
 }
 .custom_table {
   width: 100%;
@@ -455,6 +455,8 @@ table.mat-table tbody tr td {
 }
 .text-center {
   text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .success {
   background: #0b7702;
