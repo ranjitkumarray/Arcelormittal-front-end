@@ -15,14 +15,14 @@ import { offer } from './dummydata';
 })
 export class OfferStatusComponent implements OnInit {
   offer: any = offer
+  isShown: boolean = false; // hidden by default
+
   displayedColumns: string[] = [
     'offer_id',
     'customer_name',
     'DIV',
     'deliver_mill',
-    'incoterm',
     'cust_ref',
-    'status',
     'created',
     'valid_till',
     'pending_with',
@@ -54,9 +54,7 @@ export class OfferStatusComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.getOfferStatus()
-
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
@@ -88,5 +86,7 @@ export class OfferStatusComponent implements OnInit {
     }, 1000);
 
   }
-
+  toggleShow() {
+    this.isShown = !this.isShown;
+  }
 }

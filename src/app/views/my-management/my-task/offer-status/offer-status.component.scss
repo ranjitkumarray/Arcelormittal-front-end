@@ -1,3 +1,5 @@
+@import "../../../../../assets/color.scss";
+
 .mat-form-field {
     width: 100%;
 }
@@ -20,7 +22,267 @@
 ::ng-deep .mat-form-field-infix {
     border-top: 0.4375em solid transparent;
 }
-::ng-deep .mat-paginator-page-size-select .mat-form-field-infix{
+::ng-deep .mat-paginator-page-size-select .mat-form-field-infix {
     padding: 0em 0em 1em 0em !important;
+}
+.expand_filter {
+    border: 1px solid $primaryOrange;
+    background-color: transparent;
+    padding: 2px 8px;
+    color: $primaryOrange;
+    border-radius: 4px;
+    outline: none;
+    height: 30px;
+    i {
+        font-size: 21px;
+        position: relative;
+        top: 2px;
+    }
+}
+.expand_filter_active {
+    color: $white;
+    background-color: $primaryOrange;
+}
+.my_offer_table_container {
+    height: calc(100% - 70px);
+}
+.expanded_container {
+    background-color: $primaryBg;
+    box-shadow: 0px 0px 6px 0px $headerShadow;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 4px;
+}
+.expand_flex {
+    display: flex;
+    align-items: center;
+    .flex_0_0_85 {
+        flex: 0 0 85px;
+        color: $primaryOrange;
+        font-family: "semi-bold";
+    }
+    .expand_select_flex {
+        flex: 1 1 100px;
+        width: 100px;
+        border-left: 1px solid $inputBorder;
+        padding: 0px 10px 0.25rem 10px;
+        min-height: 36px;
+        display: flex;
+        align-items: flex-end;
+        > input {
+            width: 100%;
+            border: 1px solid #d7dfe8 !important;
+            outline: none;
+            box-shadow: none;
+            border-radius: 4px !important;
+            padding: 5px 10px !important;
+            font-size: 0.875rem;
+        }
+        > span {
+            color: $labelColor;
+        }
+    }
+    .expand_select_flex:last-child {
+        padding-right: 0;
+    }
+}
+.expand_flex_min_64 {
+    min-height: 64px !important;
+}
+.clear_filter {
+    background-color: $white;
+    color: $primaryOrange;
+    border: 1px solid $primaryOrange;
+    padding: 4px 3px;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: none;
+    min-width: 70px;
+    flex: 0 0 calc(45% - 0.2rem);
+}
+.advanced_filter {
+    background-color: $primaryOrange;
+    color: $white;
+    border: 1px solid $primaryOrange;
+    padding: 4px 3px;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: none;
+    min-width: 90px;
+    flex: 0 0 calc(55% - 0.2rem);
+}
+.offer_count {
+    color: $offerCount;
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+.btn_switch_inactive {
+    border: 1px solid $primaryOrange;
+    background-color: $white;
+    color: $labelColor;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 13px;
+}
+.btn_switch_active {
+    border: 1px solid $primaryOrange;
+    background-color: $primaryOrange;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 13px;
+}
+.new_btn {
+    background-color: $primaryOrange;
+    color: $white;
+    padding: 4px 10px;
+    min-width: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid $primaryOrange;
+    border-radius: 4px;
+    height: 30px;
+    i {
+        margin-right: 5px;
+    }
+}
+.export_btn {
+    background-color: $primaryOrange;
+    color: $white;
+    padding: 4px 10px;
+    min-width: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid $primaryOrange;
+    border-radius: 4px;
+    height: 30px;
+    text-decoration: none;
+}
+.black_loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.flex_0_0_488 {
+    flex: 0 0 488px;
+}
+.flex_0_0_340 {
+    flex: 0 0 340px;
+}
+.divisionCode_text {
+    font-size: 20px;
+    color: $black;
+}
+.filter-icon {
+    border-radius: 0% !important;
+    background: $primaryOrange;
+    width: 30px;
+    height: 32px;
+    line-height: 30px;
+    color: $white;
+}
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 1.25em 0;
+}
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0.34375em;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: -0.25em !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black;
+}
+::ng-deep .mat-form-field-infix {
+    border-top: 0px !important;
+}
+.stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    // margin-bottom: 20px;
+}
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
 
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
+.stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 11px;
+    left: -50%;
+    z-index: 2;
+}
+
+.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 11px;
+    left: 50%;
+    z-index: 2;
+}
+
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+}
+
+.stepper-item.active {
+    font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: $primaryOrange;
+    color: $white;
+}
+
+.stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid $primaryOrange;
+    width: 100%;
+    top: 11px;
+    left: 50%;
+    z-index: 3;
+}
+
+.stepper-item:first-child::before {
+    content: none;
+}
+.stepper-item:last-child::after {
+    content: none;
+}
+::ng-deep.mat-column-pending_with {
+    width: 150px !important;
 }

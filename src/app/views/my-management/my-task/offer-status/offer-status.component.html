@@ -5,7 +5,8 @@
 </ng-container>
 <form [formGroup]="filterForm">
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
+
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
                 <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
@@ -13,7 +14,23 @@
 
             </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-8 text-right">
+            <button mat-icon-button class="filter-icon" (click)="toggleShow()">
+                <i class="fa fa-filter"></i>
+            </button>
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Customer</mat-label>
+                <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let customer of resultdata?.customer_name" [value]="customer">
+                        {{customer}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field> -->
+        </div>
+    </div>
+    <div class="row" *ngIf="isShown">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
                 <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
@@ -23,8 +40,17 @@
 
                 </mat-select>
             </mat-form-field>
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName='status' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let status of resultdata?.status" [value]="status">
+                        {{status}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field> -->
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Pending With</mat-label>
                 <mat-select formControlName='pending_with' (selectionChange)="getOfferStatus()">
@@ -35,18 +61,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-3">
-            <mat-form-field appearance="outline">
-                <mat-label>Status</mat-label>
-                <mat-select formControlName='status' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let status of resultdata?.status" [value]="status">
-                        {{status}}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-3">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Created</mat-label>
                 <mat-select formControlName='created' (selectionChange)="getOfferStatus()">
@@ -57,17 +72,17 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Offer ID</mat-label>
                 <input matInput placeholder="Offer ID" formControlName='offerid' (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
-                <input matInput placeholder="Cust Ref" formControlName='customer_ref'  (keyup.enter)="getOfferStatus()">
+                <input matInput placeholder="Cust Ref" formControlName='customer_ref' (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
@@ -75,85 +90,137 @@
 </form>
 <div class="row">
     <div class="col-12">
-        <div class="my_offer_table_container">
-            <div class="text-center h-100">
-                <div class="table-outer-container offer_table_container position-relative h-100">
-                    <div class="table-inner-container h-100">
-                        <table mat-table [dataSource]="dataSource" class="custom_table order_table">
+        <div class="text-center">
 
-                            <ng-container matColumnDef="offer_id">
-                                <th mat-header-cell *matHeaderCellDef> Offer ID </th>
-                                <td mat-cell *matCellDef="let element"> {{element?.offerid}} </td>
-                            </ng-container>
+            <div class="my_offer_table_container">
+                <div class="text-center h-100">
+                    <div class="table-outer-container offer_table_container mat-elevation-z8 position-relative h-100">
+                        <div class="table-inner-container h-100">
+                            <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
-                            <ng-container matColumnDef="customer_name">
-                                <th mat-header-cell *matHeaderCellDef> Customer Name </th>
-                                <td mat-cell *matCellDef="let element"> {{element?.accountname}} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="offer_id">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer ID </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.offerid}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="customer_name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.accountname}} </td>
+                                </ng-container>
 
 
-                            <ng-container matColumnDef="DIV">
-                                <th mat-header-cell *matHeaderCellDef> DIV</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.division}} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="DIV">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> DIV</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.division}} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="deliver_mill">
-                                <th mat-header-cell *matHeaderCellDef>Deliver Mill</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.planttext}} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="deliver_mill">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Deliver Mill</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.planttext}} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="incoterm">
-                                <th mat-header-cell *matHeaderCellDef> Incoterm</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.incotermcode}} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="cust_ref">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cust ref</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.rfqreference}} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="cust_ref">
-                                <th mat-header-cell *matHeaderCellDef> Cust ref</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.rfqreference}} </td>
-                            </ng-container>
 
-                            <ng-container matColumnDef="status">
-                                <th mat-header-cell *matHeaderCellDef> Status</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.offerstatustext }}
-                                </td>
-                            </ng-container>
+                                <ng-container matColumnDef="created">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.creationdatetime }} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="created">
-                                <th mat-header-cell *matHeaderCellDef> Created</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.creationdatetime }} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="valid_till">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Valid Till</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.closedate }} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="valid_till">
-                                <th mat-header-cell *matHeaderCellDef> Valid Till</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.closedate }} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="pending_with">
+                                    <th mat-header-cell *matHeaderCellDef> Pending With</th>
+                                    <td mat-cell *matCellDef="let element;let i=index;">
+                                        <div class="stepper-wrapper" *ngIf="element?.offerid===1">
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">1</div>
+                                                <!-- <div class="step-name">First</div> -->
+                                            </div>
+                                            <div class="stepper-item active">
+                                                <div class="step-counter">2</div>
+                                                <!-- <div class="step-name">Second</div> -->
+                                            </div>
+                                            <div class="stepper-item ">
+                                                <div class="step-counter">3</div>
+                                                <!-- <div class="step-name">Third</div> -->
+                                            </div>
+                                        </div>
+                                        <div class="stepper-wrapper" *ngIf="element?.offerid===2">
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">1</div>
+                                                <!-- <div class="step-name">First</div> -->
+                                            </div>
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">2</div>
+                                                <!-- <div class="step-name">Second</div> -->
+                                            </div>
+                                            <div class="stepper-item active">
+                                                <div class="step-counter">3</div>
+                                                <!-- <div class="step-name">Third</div> -->
+                                            </div>
+                                        </div>
+                                        <div class="stepper-wrapper" *ngIf="element?.offerid===3">
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">1</div>
+                                                <!-- <div class="step-name">First</div> -->
+                                            </div>
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">2</div>
+                                                <!-- <div class="step-name">Second</div> -->
+                                            </div>
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">3</div>
+                                                <!-- <div class="step-name">Third</div> -->
+                                            </div>
+                                        </div>
+                                        <div class="stepper-wrapper"
+                                            *ngIf="(element?.offerid!=1 && element?.offerid!=2 && element?.offerid!=3)">
+                                            <div class="stepper-item completed">
+                                                <div class="step-counter">1</div>
+                                                <!-- <div class="step-name">First</div> -->
+                                            </div>
+                                            <div class="stepper-item active">
+                                                <div class="step-counter">2</div>
+                                                <!-- <div class="step-name">Second</div> -->
+                                            </div>
+                                            <div class="stepper-item ">
+                                                <div class="step-counter">3</div>
+                                                <!-- <div class="step-name">Third</div> -->
+                                            </div>
+                                        </div>
+                                    </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="pending_with">
-                                <th mat-header-cell *matHeaderCellDef> Pending With</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.pgl_validator }} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="created_By">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.creationuser }} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="created_By">
-                                <th mat-header-cell *matHeaderCellDef> Created By</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.creationuser }} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="volume">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.tons }} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="volume">
-                                <th mat-header-cell *matHeaderCellDef> Volume</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.tons }} </td>
-                            </ng-container>
+                                <ng-container matColumnDef="items">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Items</th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.items }} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="items">
-                                <th mat-header-cell *matHeaderCellDef> Items</th>
-                                <td mat-cell *matCellDef="let element"> {{element?.items }} </td>
-                            </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users"
+                                appearance="outline">
+                            </mat-paginator>
 
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>
-                        <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users" appearance="outline">
-                        </mat-paginator>
-
+                        </div>
                     </div>
                 </div>
             </div>
