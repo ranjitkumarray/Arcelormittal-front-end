@@ -3,44 +3,63 @@
         <span class="signal"></span>
     </div>
 </ng-container>
-<form >
+<form>
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3 ">
+            <mat-label>Group Code:</mat-label>
+        </div>
+        <div class="col-md-9">
             <mat-form-field appearance="outline">
                 <mat-label>Group Code</mat-label>
-                <input matInput placeholder="Search" formControlName="searchInput">
+                <input matInput formControlName="groupCode">
             </mat-form-field>
         </div>
-        <div class="col-3">
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <mat-label>Group Description:</mat-label>
+        </div>
+        <div class="col-md-9">
             <mat-form-field appearance="outline">
                 <mat-label>Group Description</mat-label>
-                <input matInput placeholder="Search" formControlName="searchInput">
+                <input matInput formControlName="groupDescription">
             </mat-form-field>
         </div>
-        <div class="col-3">
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <mat-label>Group Access:</mat-label>
+        </div>
+        <div class="col-md-9">
             <mat-form-field appearance="outline">
                 <mat-label>Group Access</mat-label>
-                <mat-select FormControlName="Customer">
+                <mat-select FormControlName="groupAccess">
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
-        
     </div>
-</form>
-<div class="row">
-    <div class="col-12">
-        <div class="my_offer_table_container">
-            <div class="text-center h-100">
-                <div class="table-outer-container offer_table_container position-relative h-100">
-                    <div class="table-inner-container h-100">
-                        
 
+
+</form>
+<form>
+    <div class="row">
+        <div class="col-12">
+            <div class="my_offer_table_container">
+                <div class="text-center h-100">
+                    <div class="table-outer-container offer_table_container position-relative h-100">
+                        <div class="table-inner-container h-100">
+
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

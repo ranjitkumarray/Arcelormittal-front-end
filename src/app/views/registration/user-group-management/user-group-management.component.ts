@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-group-management.component.scss']
 })
 export class UserGroupManagementComponent implements OnInit {
-
+  loadingRouteConfig: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
