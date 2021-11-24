@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CitGlobalConstantService } from 'src/app/services/api-collection';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-user-group-management',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserGroupManagementComponent implements OnInit {
   loadingRouteConfig: boolean = false;
-  constructor() { }
+  constructor(
+    private apiString:CitGlobalConstantService,
+    private apiMethod:ApiService
+  ) {
+    
+   }
 
   ngOnInit(): void {
   }
