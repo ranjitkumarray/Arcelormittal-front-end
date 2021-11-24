@@ -12,3 +12,15 @@ export interface offerStatus {
     'items':any
 
 }
+export interface pendingInvoiceStatus {
+    'Customer_Number':any,
+    'Customer_Name':any,
+    'Sales_Order_Number':any,
+    'Invoice_Number':any,
+    'Invoice_Posting_Date':any,
+    'Item_Numbar':any,
+    'Amount':any,
+    'Invoice_Ageing':any,
+    'Invoice_Ageing_bucket':any,
+
+}

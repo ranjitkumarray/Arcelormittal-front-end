@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-import { offerStatus } from '../../managment-interface.serviec';
+import { pendingInvoiceStatus } from '../../managment-interface.serviec';
 
 @Component({
   selector: 'app-missing-invoice-payments',
@@ -37,7 +37,6 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOfferStatus()
     this.filterForm = this.fb.group({
       searchInput: [''],
       Customer: [''],
@@ -46,17 +45,18 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       Invoice_Ageing_Bucket: [''],
 
     })
+    this.getOfferStatus()
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.myTask.offerStatus).subscribe((result: any) => {
-      this.loadingRouteConfig = true
-      this.dataSource = new MatTableDataSource<offerStatus>(JSON.parse(result.data))
+    this.apiMethod.get_request(this.apiString.myTask.missingInvoicePayment).subscribe((result: any) => {
+      this.loadingRouteConfig = false
+      this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(result.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
 
-      }, 3000);
+      }, 1000);
 
     }, error => {
       this.loadingRouteConfig = false
