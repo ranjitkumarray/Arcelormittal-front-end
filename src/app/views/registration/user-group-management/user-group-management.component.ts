@@ -11,12 +11,19 @@ export class UserGroupManagementComponent implements OnInit {
   loadingRouteConfig: boolean = false;
   groupAccess:any;
   filterForm:any;
+  h:any;
   resultdata = [
     {groupAccess:'aaa'},
     {groupAccess:'bbb'},
     {groupAccess:'ccc'}
 
   ];
+  get(v:any){
+    console.log(v)
+    this.h=v
+    
+
+  }
   constructor(
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService
