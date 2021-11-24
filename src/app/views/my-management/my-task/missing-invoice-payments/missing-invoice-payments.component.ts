@@ -30,6 +30,7 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   dataSource: any;
   loadingRouteConfig: boolean = false;
   filterForm: any = FormGroup
+  isShown: boolean=false;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -62,5 +63,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
+  }
+  toggleShow() {
+    this.isShown = !this.isShown;
   }
 }

@@ -18,15 +18,7 @@
             <button mat-icon-button class="filter-icon" (click)="toggleShow()">
                 <i class="fa fa-filter"></i>
             </button>
-            <!-- <mat-form-field appearance="outline">
-                <mat-label>Customer</mat-label>
-                <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let customer of resultdata?.customer_name" [value]="customer">
-                        {{customer}}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field> -->
+            
         </div>
     </div>
     <div class="row" *ngIf="isShown">
@@ -40,15 +32,7 @@
 
                 </mat-select>
             </mat-form-field>
-            <!-- <mat-form-field appearance="outline">
-                <mat-label>Status</mat-label>
-                <mat-select formControlName='status' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let status of resultdata?.status" [value]="status">
-                        {{status}}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field> -->
+            
         </div>
         <div class="col-4">
             <mat-form-field appearance="outline">
@@ -91,7 +75,6 @@
 <div class="row">
     <div class="col-12">
         <div class="text-center">
-
             <div class="my_offer_table_container">
                 <div class="text-center h-100">
                     <div class="table-outer-container offer_table_container mat-elevation-z8 position-relative h-100">
