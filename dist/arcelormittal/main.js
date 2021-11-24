@@ -467,7 +467,7 @@ class CitGlobalConstantService {
             offerStatus: this.baseUrl + "taskbar1_data",
             orderStatus: this.baseUrl + "",
             customerVolume: this.baseUrl + "",
-            missingInvoicePayment: this.baseUrl + ""
+            missingInvoicePayment: this.baseUrl + "invoice_payments"
         };
     }
 }

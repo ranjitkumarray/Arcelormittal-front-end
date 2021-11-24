@@ -123,7 +123,7 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            <mat-paginator [pageSizeOptions]="[10, 30, 50, 100]" aria-label="Select page of users">
+                            <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users">
                             </mat-paginator>
                         </div>
                     </div>
