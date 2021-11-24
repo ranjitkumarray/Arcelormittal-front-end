@@ -37,8 +37,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Group Access</mat-label>
                 <mat-select FormControlName="groupAccess">
-                    <mat-option *ngFor="let groupAccess of resultdata?.groupAccess_name"[value]="groupAccess">
-                       {{groupAccess}}
+                    <mat-option *ngFor="let item of resultdata"[value]="groupAccess">
+                       {{item.groupAccess}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

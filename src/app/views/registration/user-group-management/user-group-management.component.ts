@@ -9,6 +9,14 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UserGroupManagementComponent implements OnInit {
   loadingRouteConfig: boolean = false;
+  groupAccess:any;
+  filterForm:any;
+  resultdata = [
+    {groupAccess:'aaa'},
+    {groupAccess:'bbb'},
+    {groupAccess:'ccc'}
+
+  ];
   constructor(
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService
@@ -18,5 +26,32 @@ export class UserGroupManagementComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // getOfferStatus() {
+  //   this.loadingRouteConfig = true
+  //   let body = this.filterForm.value
+  //   Object.keys(body).forEach(key => {
+  //     if (body[key] === "") {
+  //       body[key] = 'all';
+  //     }
+  //   });
+  //   console.log(body)
+    // this.resultdata = this.offer
+    
+    // this.dataSource=""
+  //   setTimeout(() => {
+  //     this.apiMethod.get_request(this.apiString.apiname).subscribe((result: any) => {
+  //       this.loadingRouteConfig = false
+  //       this.resultdata = result
+       
+      
 
+  //     }, error => {
+  //       this.loadingRouteConfig = false
+  //       this.apiMethod.popupMessage('error', 'Error while getting offer status')
+  //     })
+  //   }, 1000);
+
+  //}
+  
 }
+
