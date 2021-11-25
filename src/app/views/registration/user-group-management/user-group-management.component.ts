@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-
 @Component({
   selector: 'app-user-group-management',
   templateUrl: './user-group-management.component.html',
@@ -11,19 +10,20 @@ export class UserGroupManagementComponent implements OnInit {
   loadingRouteConfig: boolean = false;
   groupAccess:any;
   filterForm:any;
-  h:any;
+  selected :any;
+  
+
+  
+  del(){
+    delete(this.selected)
+  }
   resultdata = [
     {groupAccess:'aaa'},
     {groupAccess:'bbb'},
     {groupAccess:'ccc'}
 
   ];
-  get(v:any){
-    console.log(v)
-    this.h=v
-    
-
-  }
+  
   constructor(
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService
