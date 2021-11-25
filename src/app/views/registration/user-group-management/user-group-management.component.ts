@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-import { MatDialog } from  '@angular/material/dialog';
+// import { MatDialog } from  '@angular/material/dialog';
 
 // import {
 //   MatSnackBar,
@@ -37,7 +37,7 @@ export class UserGroupManagementComponent implements OnInit {
   constructor(
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService,
-    private  dialogRef : MatDialog
+    // private  dialogRef : MatDialog
     // private _snackBar: MatSnackBar
   ) {}
     // openSnackBar() {
@@ -48,9 +48,9 @@ export class UserGroupManagementComponent implements OnInit {
     //   });
     
     // }
-    openDialog(){
-      this.dialogRef.open(this.selected);
-    }
+    // openDialog(){
+    //   this.dialogRef.open(this.selected);
+    // }
 
   ngOnInit(): void {
   }

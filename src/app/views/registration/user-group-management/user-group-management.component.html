@@ -4,74 +4,59 @@
     </div>
 </ng-container>
 <form>
-    <div class="row">
-        <div class="col-md-3 ">
-            <mat-label>Group Code:</mat-label>
-        </div>
-        <div class="col-md-9">
-            <mat-form-field appearance="outline">
-                <mat-label>Group Code</mat-label>
-                <input matInput formControlName="groupCode">
-            </mat-form-field>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <mat-label>Group Code:</mat-label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field appearance="outline">
+                    <mat-label>Group Code</mat-label>
+                    <input matInput formControlName="groupCode">
+                </mat-form-field>
+            </div>
+
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <mat-label>Group Description:</mat-label>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-label>Group Description:</mat-label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field appearance="outline">
+                    <mat-label>Group Description</mat-label>
+                    <input matInput formControlName="groupDescription">
+                </mat-form-field>
+            </div>
         </div>
-        <div class="col-md-9">
-            <mat-form-field appearance="outline">
-                <mat-label>Group Description</mat-label>
-                <input matInput formControlName="groupDescription">
-            </mat-form-field>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <mat-label>Group Access:</mat-label>
-        </div>
-        <div class="col-md-9">
-            <mat-form-field appearance="outline">
-                <mat-label>Group Access</mat-label>
-                <mat-select [(value)]="selected" ngModel>
-                    <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess" (click)="openDialog()">
-                        {{item.groupAccess}}
+        <div class="row">
+            <div class="col-md-3">
+                <mat-label>Group Access:</mat-label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field appearance="outline">
+                    <mat-label>Group Access</mat-label>
+                    <mat-select [(value)]="selected">
+                        <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess">
+                            {{item.groupAccess}}
 
-                    </mat-option>
-                </mat-select>
+                        </mat-option>
+                    </mat-select>
 
-            </mat-form-field>
-            <div>
-                <!-- <div class='row'>
+                </mat-form-field>
+                <div>
+                    <div class='row'>
                         <input matInput value={{selected}}>
-                        <mat-icon (click)=del()>clear</mat-icon>   -->
-                <!-- </div> -->
-                <!-- <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
+                        <mat-icon (click)=del()>clear</mat-icon>
+                    </div>
+                    <!-- <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
                     open
                   </button> -->
-            </div>
-        </div>
-
-    </div>
-
-
-</form>
-<form>
-    <div class="row">
-        <div class="col-12">
-            <div class="my_offer_table_container">
-                <div class="text-center h-100">
-                    <div class="table-outer-container offer_table_container position-relative h-100">
-                        <div class="table-inner-container h-100">
-
-
-                        </div>
-                    </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 </form>
