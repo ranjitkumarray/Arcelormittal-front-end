@@ -49,7 +49,7 @@ export class OfferStatusComponent implements OnInit {
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
-      pending_with: [''],
+      // pending_with: [''],
       status: [''],
       created: [''],
       offerid: [''],

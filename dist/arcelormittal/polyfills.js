@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ranjitray/new-ui/external-project/arcelormittal/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\Arcelormittal-front-end\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
