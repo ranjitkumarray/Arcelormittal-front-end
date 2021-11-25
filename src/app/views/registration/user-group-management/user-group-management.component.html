@@ -37,7 +37,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Group Access</mat-label>
                 <mat-select [(value)]="selected" ngModel>
-                    <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess">
+                    <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess" (click)="openDialog()">
                         {{item.groupAccess}}
 
                     </mat-option>
@@ -45,10 +45,13 @@
 
             </mat-form-field>
             <div>
-                <div class='row'>
+                <!-- <div class='row'>
                         <input matInput value={{selected}}>
-                        <mat-icon (click)=del()>clear</mat-icon>  
-                </div>
+                        <mat-icon (click)=del()>clear</mat-icon>   -->
+                <!-- </div> -->
+                <!-- <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
+                    open
+                  </button> -->
             </div>
         </div>
 

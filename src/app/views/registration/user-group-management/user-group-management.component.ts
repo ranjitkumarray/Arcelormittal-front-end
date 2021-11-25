@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
+import { MatDialog } from  '@angular/material/dialog';
+
+// import {
+//   MatSnackBar,
+//   MatSnackBarHorizontalPosition,
+//   MatSnackBarVerticalPosition,
+// } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-user-group-management',
   templateUrl: './user-group-management.component.html',
@@ -12,6 +20,8 @@ export class UserGroupManagementComponent implements OnInit {
   filterForm:any;
   selected :any;
   
+  // horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  // verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   
   del(){
@@ -26,10 +36,21 @@ export class UserGroupManagementComponent implements OnInit {
   
   constructor(
     private apiString:CitGlobalConstantService,
-    private apiMethod:ApiService
-  ) {
+    private apiMethod:ApiService,
+    private  dialogRef : MatDialog
+    // private _snackBar: MatSnackBar
+  ) {}
+    // openSnackBar() {
+    //   this._snackBar.open(this.selected,'hi', {
+    //     horizontalPosition: this.horizontalPosition,
+    //     verticalPosition: this.verticalPosition,
+        
+    //   });
     
-   }
+    // }
+    openDialog(){
+      this.dialogRef.open(this.selected);
+    }
 
   ngOnInit(): void {
   }
