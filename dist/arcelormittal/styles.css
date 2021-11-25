@@ -267,7 +267,7 @@ table.mat-table thead th {
 }
 table.mat-table tbody tr {
   cursor: pointer;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
 }
 table.mat-table tbody tr td {
   padding: 5px 5px;
@@ -333,14 +333,13 @@ table.mat-table tbody tr td {
   border-left: 1px solid;
   border-top: 1px solid;
   border-color: #dddddd !important;
-  background-color: #45494e;
   min-height: 35px;
 }
 .mat-header-row .mat-header-cell {
   padding: 0 10px;
   border-right: 1px solid;
   border-color: #dddddd !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   font-size: 0.875rem;
 }
 .mat-row {
@@ -1339,6 +1338,40 @@ html body .yellowInput {
 }
 .mat-form-field-infix {
   border-top: 0px !important;
+}
+.breadCrumbBlue {
+  font-size: 14px;
+  color: grey !important;
+  text-transform: capitalize;
+  font-family: "regular";
+}
+.breadCrumb {
+  font-size: 14px;
+  color: #1d4498 !important;
+  text-transform: capitalize;
+  font-family: "regular";
+  cursor: pointer;
+}
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 0px 14px 0px !important;
+  margin-bottom: 1rem !important;
+  list-style: none;
+  border-bottom: 1px solid lightgray !important;
+  background: white !important;
+}
+.addArrow:not(:last-child) .addArroww::after {
+  content: ">";
+  color: #F47D30;
+  display: inline-block;
+  width: 10px;
+}
+.breadCrumbBlue:hover {
+  color: #000;
+}
+.breadCrumb:hover {
+  color: #000;
 }
 @charset "UTF-8";
 /*!
