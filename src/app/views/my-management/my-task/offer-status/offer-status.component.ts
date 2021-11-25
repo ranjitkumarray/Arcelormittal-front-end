@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { offerStatus } from '../../managment-interface.serviec';
@@ -18,16 +19,16 @@ export class OfferStatusComponent implements OnInit {
   isShown: boolean = false; // hidden by default
 
   displayedColumns: string[] = [
-    'offer_id',
-    'customer_name',
-    'DIV',
-    'deliver_mill',
-    'cust_ref',
-    'created',
-    'valid_till',
+    'offerid',
+    'accountname',
+    'division',
+    'planttext',
+    'rfqreference',
+    'creationdatetime',
+    'closedate',
     'pending_with',
-    'created_By',
-    'volume',
+    'creationuser',
+    'tons',
     'items'
 
   ];
@@ -37,10 +38,13 @@ export class OfferStatusComponent implements OnInit {
   loadingRouteConfig: boolean = false;
   filterForm: any = FormGroup
   resultdata: any;
+  breadCrumblocationsList: any = []
+
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router:Router
   ) {
     this.filterForm = this.fb.group({
       search_string: [''],
@@ -55,6 +59,8 @@ export class OfferStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOfferStatus()
+    this.updateBreadCrumb()
+
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
@@ -88,5 +94,28 @@ export class OfferStatusComponent implements OnInit {
   }
   toggleShow() {
     this.isShown = !this.isShown;
+  }
+  updateBreadCrumb() {
+    this.breadCrumblocationsList = [
+      {
+        'locationName': 'My Task',
+        'link': '/management/offer-status',
+        'currentPage': false
+      },
+      {
+        'locationName': 'Offer Status',
+        'link': '/management/offer-status',
+        'currentPage': true
+      }
+    ];
+
+    window.scrollTo(0, 0);
+    console.log("breadCrumblocationsList", this.breadCrumblocationsList);
+  }
+  redirect(link: any) {
+    console.log(link);
+    if (link != undefined && link != '') {
+      this.router.navigateByUrl(link);
+    }
   }
 }

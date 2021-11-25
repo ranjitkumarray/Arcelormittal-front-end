@@ -3,6 +3,21 @@
         <span class="signal"></span>
     </div>
 </ng-container>
+<div *ngIf="breadCrumblocationsList" class="breadcrumb">
+    <div class="row pd-10 bg-w">
+        <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
+
+            <font *ngFor="let data of breadCrumblocationsList" class="addArrow">
+
+                <a role="button"
+                    [ngClass]="{'breadCrumbBlue addArroww': data?.currentPage === true, 'breadCrumb addArroww':data?.currentPage === false }"
+                    (click)="redirect(data.link)">
+                    {{data.locationName}}
+                </a>
+            </font>
+        </div>
+    </div>
+</div>
 <form [formGroup]="filterForm">
     <div class="row">
         <div class="col-4">
@@ -81,39 +96,39 @@
                         <div class="table-inner-container h-100">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
-                                <ng-container matColumnDef="offer_id">
+                                <ng-container matColumnDef="offerid">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer ID </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.offerid}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="customer_name">
+                                <ng-container matColumnDef="accountname">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.accountname}} </td>
                                 </ng-container>
 
 
-                                <ng-container matColumnDef="DIV">
+                                <ng-container matColumnDef="division">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> DIV</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.division}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="deliver_mill">
+                                <ng-container matColumnDef="planttext">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Deliver Mill</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.planttext}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="cust_ref">
+                                <ng-container matColumnDef="rfqreference">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Cust ref</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.rfqreference}} </td>
                                 </ng-container>
 
 
-                                <ng-container matColumnDef="created">
+                                <ng-container matColumnDef="creationdatetime">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Created</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.creationdatetime }} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="valid_till">
+                                <ng-container matColumnDef="closedate">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Valid Till</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.closedate }} </td>
                                 </ng-container>
@@ -181,12 +196,12 @@
                                     </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="created_By">
+                                <ng-container matColumnDef="creationuser">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.creationuser }} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="volume">
+                                <ng-container matColumnDef="tons">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.tons }} </td>
                                 </ng-container>

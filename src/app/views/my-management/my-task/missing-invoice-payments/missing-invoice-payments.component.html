@@ -3,6 +3,21 @@
         <span class="signal"></span>
     </div>
 </ng-container>
+<div *ngIf="breadCrumblocationsList" class="breadcrumb">
+    <div class="row pd-10 bg-w">
+        <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
+
+            <font *ngFor="let data of breadCrumblocationsList" class="addArrow">
+
+                <a role="button"
+                    [ngClass]="{'breadCrumbBlue addArroww': data?.currentPage === true, 'breadCrumb addArroww':data?.currentPage === false }"
+                    (click)="redirect(data.link)">
+                    {{data.locationName}}
+                </a>
+            </font>
+        </div>
+    </div>
+</div>
 <form [formGroup]="filterForm">
     <div class="row">
         <div class="col-4">
@@ -73,49 +88,49 @@
                         <div class="table-inner-container h-100">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
-                                <ng-container matColumnDef="Customer_Number">
-                                    <th mat-header-cell *matHeaderCellDef> Customer Number </th>
+                                <ng-container matColumnDef="customer_number">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Number </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.customer_number}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Customer_Name">
-                                    <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+                                <ng-container matColumnDef="customer_name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.customer_name}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Sales_Order_Number">
-                                    <th mat-header-cell *matHeaderCellDef> Sales Order Number</th>
+                                <ng-container matColumnDef="sales_order_number">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sales Order Number</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.sales_order_number}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Invoice_Number">
-                                    <th mat-header-cell *matHeaderCellDef>Invoice Number</th>
+                                <ng-container matColumnDef="invoice_number">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Number</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_number}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Invoice_Posting_Date">
-                                    <th mat-header-cell *matHeaderCellDef> Invoice Posting Date</th>
+                                <ng-container matColumnDef="invoice_posting_date">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Posting Date</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_posting_date}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Item_Numbar">
-                                    <th mat-header-cell *matHeaderCellDef> Item Numbar</th>
+                                <ng-container matColumnDef="item_number">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Item Numbar</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.item_number}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Amount">
-                                    <th mat-header-cell *matHeaderCellDef> Amount</th>
+                                <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.amount }}
                                     </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Invoice_Ageing">
-                                    <th mat-header-cell *matHeaderCellDef> Invoice Ageing</th>
+                                <ng-container matColumnDef="invoice_aging">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Ageing</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_aging }} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Invoice_Ageing_bucket">
-                                    <th mat-header-cell *matHeaderCellDef> Invoice Ageing Bucket</th>
+                                <ng-container matColumnDef="invoice_aging_bucket">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Ageing Bucket</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_aging_bucket }} </td>
                                 </ng-container>
 
