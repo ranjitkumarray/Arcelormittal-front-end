@@ -256,5 +256,7 @@ export class CitGlobalConstantService {
         update: this.baseUrl + "update_record_baseprice_incoterm",
         download: this.baseUrl + "download_baseprice_incoterm",
     };
-
+    registration:any={
+    usergroupmanagement:this.baseUrl + "",
+    }
 }
