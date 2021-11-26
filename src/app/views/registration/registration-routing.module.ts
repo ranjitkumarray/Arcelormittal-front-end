@@ -15,11 +15,7 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
       },
-      {
-        path: 'reset',
-        component: ResetComponent,
-      },
-
+      
       {
         path:'user-management',
         component:UserManagementComponent
