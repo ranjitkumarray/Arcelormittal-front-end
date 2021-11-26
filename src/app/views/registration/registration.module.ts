@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserGroupManagementComponent } from './user-group-management/user-group-management.component';
 import { FormsModule } from '@angular/forms';
+import { ResetComponent } from './login/reset/reset.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     
     LoginComponent,
     UserManagementComponent,
-    UserGroupManagementComponent
+    UserGroupManagementComponent,
+    ResetComponent
   ],
   imports: [
     CommonModule,

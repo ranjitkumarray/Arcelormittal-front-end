@@ -49,8 +49,8 @@
             
                 <div *ngIf='selected; else sample'>
 
-                    <mat-form-field class="example-form-field" appearance="fill">
-                        <input matInput type="text" value={{selected}}>
+                    <mat-form-field class="example-form-field">
+                        <input matInput type="text" value={{selected}} readonly="readonly">
                         <button matSuffix mat-icon-button aria-label="Clear" (click)="del()">
                           <mat-icon>close</mat-icon>
                         </button>

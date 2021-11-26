@@ -22,26 +22,9 @@
         <button mat-raised-button color="warn">Login</button>
       </div>
       <div class='bottom'>
-        <a href=''>Reset Password</a>
+        <a routerLink='reset'>Reset Password</a>
       </div>
 
     </form>
   </div>
 </ng-container>
-
-
-<div>
-  <select [(ngModel)]="selectedOption">
-    <option *ngFor="let item of options">
-      {{item.name}}
-    </option>
-  </select>
-  <div class='row'>
-    <!-- <p>selected option : {{selectedOption}}</p> -->
-  </div>
-</div>
-
-<div class='row'>
-  <input type="text" value={{selectedOption}}>
-  <mat-icon (click)='del()'>clear</mat-icon>
-</div>

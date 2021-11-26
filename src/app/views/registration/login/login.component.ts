@@ -13,14 +13,7 @@ export class LoginComponent implements OnInit {
     {name:'sayeesh',value : 1},
     {name : 'vinayak',value : 2}
   ]
-  print(){
-    this.printedOption=this.selectedOption;
-  }
-
-  del(){
-    delete(this.selectedOption)
-  }
-
+  
   constructor() { }
 
   ngOnInit(): void {

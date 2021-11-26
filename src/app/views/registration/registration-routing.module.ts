@@ -4,6 +4,7 @@ import { SidebarComponent } from 'src/app/common-use/sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserGroupManagementComponent } from './user-group-management/user-group-management.component';
+import { ResetComponent } from './login/reset/reset.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,13 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
       },
+      {
+        path: 'reset',
+        component: ResetComponent,
+      },
+
       {
         path:'user-management',
         component:UserManagementComponent
