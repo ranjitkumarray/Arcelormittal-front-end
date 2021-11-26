@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -33,6 +33,11 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   filterForm: any = FormGroup
   isShown: boolean = false;
   breadCrumblocationsList: any = []
+  resultdata: any = [];
+  pageEvent: any = PageEvent;
+  totalCount: any;
+  customerNameList: any=[];
+  invoicePostingDateList: any=[];
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -42,21 +47,38 @@ export class MissingInvoicePaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterForm = this.fb.group({
-      searchInput: [''],
-      Customer: [''],
-      Invoice_Ageing: [''],
-      Invoice_Posting_Date: [''],
-      Invoice_Ageing_Bucket: [''],
-
+      search_string: [''],
+      customer: [''],
+      invoice_ageing: [''],
+      invoice_posting_date: [''],
+      invoice_ageing_bucket: [''],
+      offset: ['0'],
+      limit: ['100']
     })
     this.getOfferStatus()
     this.updateBreadCrumb()
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.myTask.missingInvoicePayment).subscribe((result: any) => {
+    let body = this.filterForm.value
+    Object.keys(body).forEach(key => {
+      if (body[key] === 'limit' || body[key] === 'offset') {
+      } else {
+        if (body[key] === "") {
+          body[key] = 'all';
+        }
+      }
+    });
+    console.log(body)
+    // this.resultdata = this.offer
+    this.resultdata = []
+    this.apiMethod.get_request_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(result.data)
+      this.resultdata = result
+      this.totalCount=result.Count
+      this.customerNameList=this.resultdata.customer_name
+      this.invoicePostingDateList=this.resultdata.invoice_posting_date
+      this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(this.resultdata.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -67,6 +89,14 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
+  }
+  pageChangeCall(event: any) {
+    console.log(event)
+    this.filterForm.patchValue({
+      offset: event.pageIndex,
+      limit: event.pageSize
+    })
+    this.getOfferStatus()
   }
   toggleShow() {
     this.isShown = !this.isShown;

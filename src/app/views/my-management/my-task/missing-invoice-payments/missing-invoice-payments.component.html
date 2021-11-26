@@ -24,9 +24,8 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search" formControlName="search_string">
-                <mat-icon matSuffix class="pointer">search</mat-icon>
-
+                <input matInput placeholder="Search" formControlName="search_string"(keyup.enter)="getOfferStatus()">
+                <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
         <div class="col-8 text-right">
@@ -40,17 +39,17 @@
         <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
-                <mat-select formControlName="Customer">
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let cust of customerNameList" [value]="cust">
+                        {{cust}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing</mat-label>
-                <mat-select formControlName='Invoice_Ageing'>
+                <mat-select formControlName='invoice_ageing'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -60,17 +59,18 @@
         <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Posting Date</mat-label>
-                <mat-select formControlName='Invoice_Posting_Date'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select formControlName='invoice_posting_date' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let invPostDate of invoicePostingDateList" [value]="invPostDate">
+                        {{invPostDate}}
+                    </mat-option>
+
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing Bucket</mat-label>
-                <mat-select formControlName='Invoice_Ageing_Bucket'>
+                <mat-select formControlName='invoice_ageing_bucket'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
@@ -138,7 +138,9 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users">
+                            <mat-paginator [length]="totalCount" [pageSize]="100"
+                                [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
+                                (page)="pageEvent = pageChangeCall($event)">
                             </mat-paginator>
                         </div>
                     </div>
