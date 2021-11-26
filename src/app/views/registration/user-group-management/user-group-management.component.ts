@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-// import { MatDialog } from  '@angular/material/dialog';
+import { MatDialog } from  '@angular/material/dialog';
 
-// import {
-//   MatSnackBar,
-//   MatSnackBarHorizontalPosition,
-//   MatSnackBarVerticalPosition,
-// } from '@angular/material/snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-group-management',
@@ -19,13 +19,17 @@ export class UserGroupManagementComponent implements OnInit {
   groupAccess:any;
   filterForm:any;
   selected :any;
-  
-  // horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  // verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  condition=true
+  value = 'Clear me';
+
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   
   del(){
     delete(this.selected)
+    
   }
   resultdata = [
     {groupAccess:'aaa'},
@@ -37,22 +41,21 @@ export class UserGroupManagementComponent implements OnInit {
   constructor(
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService,
-    // private  dialogRef : MatDialog
-    // private _snackBar: MatSnackBar
+    private  dialogRef : MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
-    // openSnackBar() {
-    //   this._snackBar.open(this.selected,'hi', {
-    //     horizontalPosition: this.horizontalPosition,
-    //     verticalPosition: this.verticalPosition,
-        
-    //   });
-    
-    // }
-    // openDialog(){
-    //   this.dialogRef.open(this.selected);
-    // }
+  openSnackBar() {
+    this._snackBar.open(this.selected, 'Splash', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+    check(){
+      this.condition=true;
+    }
 
   ngOnInit(): void {
+    
   }
   // getOfferStatus() {
   //   this.loadingRouteConfig = true

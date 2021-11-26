@@ -6,10 +6,10 @@
 <form>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 ">
+            <div class="col-md-2 text-right">
                 <mat-label>Group Code:</mat-label>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10 text-left mt-10">
                 <mat-form-field appearance="outline">
                     <mat-label>Group Code</mat-label>
                     <input matInput formControlName="groupCode">
@@ -19,10 +19,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2 text-right">
                 <mat-label>Group Description:</mat-label>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10 text-left">
                 <mat-form-field appearance="outline">
                     <mat-label>Group Description</mat-label>
                     <input matInput formControlName="groupDescription">
@@ -31,13 +31,13 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2 text-right">
                 <mat-label>Group Access:</mat-label>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10 text-left">
                 <mat-form-field appearance="outline">
                     <mat-label>Group Access</mat-label>
-                    <mat-select [(value)]="selected">
+                    <mat-select [(value)]="selected" (change)='check()'>
                         <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess">
                             {{item.groupAccess}}
 
@@ -45,18 +45,28 @@
                     </mat-select>
 
                 </mat-form-field>
-                <div>
-                    <div class='row'>
-                        <input matInput value={{selected}}>
-                        <mat-icon (click)=del()>clear</mat-icon>
-                    </div>
-                    <!-- <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
-                    open
-                  </button> -->
+
+            
+                <div *ngIf='selected; else sample'>
+
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <input matInput type="text" value={{selected}}>
+                        <button matSuffix mat-icon-button aria-label="Clear" (click)="del()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </mat-form-field>
                 </div>
+
+                <ng-template #sample>
+                    
+                </ng-template>
             </div>
 
         </div>
 
     </div>
 </form>
+
+
+  
+  
