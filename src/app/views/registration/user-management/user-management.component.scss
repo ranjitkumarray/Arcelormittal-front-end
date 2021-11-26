@@ -1,3 +1,4 @@
+//loginpage
 .outside{
     margin-top:0%;
     margin-left:20%;
@@ -20,4 +21,28 @@ margin-top:1%;
 .ng-untouched.ng-pristine.ng-valid{
     padding-top:2%;
     padding-bottom:2%;
+}
+
+//user-group-management
+mat-form-field {
+    width: 70%;
+  }
+.row{
+  align-items: baseline;
+}
+mat-label {
+  display: inline-block;
+  width:100px;
+  text-align: left;
+}
+.example-form-field{
+  padding:none;
+  margin: none;
+  width:50%;
+}
+.outer{
+  margin-top:0% !important;
+  margin-left: 20%;
+  margin-right: 15%;
+  // box-shadow: 5px 10px 20px #888888;
 }
