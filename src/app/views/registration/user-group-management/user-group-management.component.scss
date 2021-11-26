@@ -1,6 +1,22 @@
 mat-form-field {
-    width: 50%;
+    width: 70%;
   }
 .row{
   align-items: baseline;
+}
+mat-label {
+  display: inline-block;
+  width:100px;
+  text-align: left;
+}
+.example-form-field{
+  padding:none;
+  margin: none;
+  width:50%;
+}
+.outer{
+  margin-top:0% !important;
+  margin-left: 20%;
+  margin-right: 15%;
+  // box-shadow: 5px 10px 20px #888888;
 }

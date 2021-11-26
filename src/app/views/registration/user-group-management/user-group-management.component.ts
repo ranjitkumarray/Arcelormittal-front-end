@@ -3,11 +3,11 @@ import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from  '@angular/material/dialog';
 
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+// import {
+//   MatSnackBar,
+//   MatSnackBarHorizontalPosition,
+//   MatSnackBarVerticalPosition,
+// } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-group-management',
@@ -20,11 +20,11 @@ export class UserGroupManagementComponent implements OnInit {
   filterForm:any;
   selected :any;
   condition=true
-  value = 'Clear me';
+  // value = 'Clear me';
 
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  // horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  // verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   
   del(){
@@ -42,14 +42,14 @@ export class UserGroupManagementComponent implements OnInit {
     private apiString:CitGlobalConstantService,
     private apiMethod:ApiService,
     private  dialogRef : MatDialog,
-    private _snackBar: MatSnackBar
+    // private _snackBar: MatSnackBar
   ) {}
-  openSnackBar() {
-    this._snackBar.open(this.selected, 'Splash', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
+  // openSnackBar() {
+  //   this._snackBar.open(this.selected, 'Splash', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //   });
+  // }
     check(){
       this.condition=true;
     }
