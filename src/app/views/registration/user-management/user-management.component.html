@@ -1,1 +1,71 @@
-<p>user-management works!</p>
+<mat-tab-group >
+    <mat-tab label="Login-Page">
+        <ng-container>
+            <div class="outside" >
+              <form #login='ngForm' (submit)="output(login.value)">
+              
+                <div class="form-group">
+                  <label class="col-md-12">Email :</label>
+                  <div class="col-md-12">
+                    <input #name type="text" class="form-control" ngModel name='name' placeholder="Email">
+                  </div>
+                </div>
+          
+          
+                <div class="form-group">
+                  <label class="col-md-12">Password :</label>
+                  <div class="col-md-12">
+                    <input #pass type="password" class="form-control" ngModel name='pass' placeholder="Password">
+                  </div>
+                </div>
+          
+          
+                <div class='bottom'>
+                  <button mat-raised-button color="warn">Login</button>
+                </div>
+                <div class='bottom'>
+                  <a href=''>Reset Password</a>
+                </div>
+          
+              </form>
+            </div>
+          </ng-container>
+          
+        <mat-tab label="User-Management">
+            <form>  
+            
+                    
+                    <div class='row'>
+                        <div class='col-6'>
+                            <label>Group</label>
+                        </div>
+                        <div class='col-6'>
+                            <input matInput placeholder="Placeholder">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </div>
+                        
+                    
+                    </div>
+                      
+                    
+                  
+                <!-- <p>
+                    <div class="row">
+                        <div class="col-md-2 text-right">
+                            <mat-label>Group Code:</mat-label>
+                        </div>
+                        <div class="col-md-10 text-left mt-10">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Group Code</mat-label>
+                                <input matInput formControlName="groupCode">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </p>
+                     -->
+                    
+                    
+            
+            </form>
+        </mat-tab>            
+           
