@@ -15,6 +15,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 const APP_CONTAINERS = [
   SidebarComponent
 ];
+
 @NgModule({
   declarations: [
     AppComponent,

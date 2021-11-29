@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -39,6 +40,7 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   customerNameList: any = [];
   invoicePostingDateList: any = [];
   minDate: any
+  public dob: string = '1973-10-10T00:00:00';
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -47,6 +49,7 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const pipe = new DatePipe('en-US');
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
@@ -62,20 +65,20 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
-    let body = this.filterForm.value
+    const pipe = new DatePipe('en-US');
     if (this.filterForm.value.invoice_posting_date_from) {
       this.minDate = this.filterForm.value.invoice_posting_date_from
     }
-    Object.keys(body).forEach(key => {
-      if (body[key] === 'limit' || body[key] === 'offset') {
-      } else {
-        if (body[key] === "") {
-          body[key] = 'all';
-        }
-      }
-    });
-    console.log(body)
-    // this.resultdata = this.offer
+    let body = {
+      search_string: this.filterForm.value.search_string ? this.filterForm.value.search_string : 'all',
+      customer: this.filterForm.value.customer ? this.filterForm.value.customer : 'all',
+      invoice_ageing: this.filterForm.value.invoice_ageing ? this.filterForm.value.invoice_ageing : 'all',
+      invoice_posting_date_from: this.filterForm.value.invoice_posting_date_from ? pipe.transform(this.filterForm.value.invoice_posting_date_from, 'yyyy-MM-dd') : 'all',
+      invoice_posting_date_to: this.filterForm.value.invoice_posting_date_to ? pipe.transform(this.filterForm.value.invoice_posting_date_to, 'yyyy-MM-dd') : 'all',
+      invoice_ageing_bucket: this.filterForm.value.invoice_ageing_bucket ? this.filterForm.value.invoice_ageing_bucket : 'all',
+      offset: this.filterForm.value.offset,
+      limit: this.filterForm.value.limit
+    }
     this.resultdata = []
     this.apiMethod.get_request_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
