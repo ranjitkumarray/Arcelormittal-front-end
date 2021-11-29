@@ -68,7 +68,7 @@
         </div>
         <div class="col-4">
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Offer valid From</mat-label>
+                <mat-label>Invoice Posting From</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="invoice_posting_date_from"
                     (dateChange)="getOfferStatus()" autocomplete="off" readonly>
                 <mat-datepicker-toggle matSuffix [for]="picker">
@@ -79,7 +79,7 @@
         </div>
         <div class="col-4">
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Invoice Posting to Date</mat-label>
+                <mat-label>Invoice Posting to</mat-label>
                 <input matInput [matDatepicker]="picker2" formControlName="invoice_posting_date_to"
                     (dateChange)="getOfferStatus()" autocomplete="off" readonly [min]="minDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2">
