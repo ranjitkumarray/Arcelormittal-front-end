@@ -1,93 +1,93 @@
-<mat-tab-group>
-    <mat-tab label="Login-Page">
-        <ng-container>
-            <div class="outside  mt-10" >
-              <form #login='ngForm' (submit)="output(login.value)">
-              
-                <div class="form-group">
-                  <label class="col-md-12">Email :</label>
-                  <div class="col-md-12">
-                    <input #name type="text" class="form-control" ngModel name='name' placeholder="Email">
-                  </div>
-                </div>
-          
-          
-                <div class="form-group">
-                  <label class="col-md-12">Password :</label>
-                  <div class="col-md-12">
-                    <input #pass type="password" class="form-control" ngModel name='pass' placeholder="Password">
-                  </div>
-                </div>
-          
-          
-                <div class='bottom'>
-                  <button mat-raised-button color="warn">Login</button>
-                </div>
-                <div class='bottom'>
-                  <a href=''>Reset Password</a>
-                </div>
-          
-              </form>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Login-Page">
+    <ng-container>
+      <div class="outside  mt-10">
+        <form #login='ngForm' (submit)="output(login.value)">
+
+          <div class="form-group">
+            <label class="col-md-12">Email :</label>
+            <div class="col-md-12">
+              <input #name type="text" class="form-control" ngModel name='name' placeholder="Email">
             </div>
-          </ng-container>
-          
-        <mat-tab label="User-Management">
-          <form >
-            <div class='outer'>
-                <div class="row">
-                    <div class="col-md-3 text-left">
-                        <mat-label>Group Code:</mat-label>
-                    </div>
-                    <div class="col-md-9 text-left mt-10 ">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Group Code</mat-label>
-                            <input matInput >
-                        </mat-form-field>
-                    </div>
-                    
-                </div>
-        
-                <div class="row">
-                    <div class="col-md-3 text-left">
-                        <mat-label>Group Description:</mat-label>
-                    </div>
-                    <div class="col-md-9 text-left">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Group Description</mat-label>
-                            <input matInput 
-                            >
-                        </mat-form-field>
-                    </div>
-                </div>
-        
-                <div class="row">
-                    <div class="col-md-3 text-left">
-                        <mat-label>Group Access:</mat-label>
-                    </div>
-                    <div class="col-md-9 text-left">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Group Access</mat-label>
-                            <mat-select [(value)]="selected" (change)='check()'>
-                                <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess">
-                                    {{item.groupAccess}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-        
-                        <div *ngIf='selected; else sample'>
-                            <mat-form-field class="example-form-field " appearance="outline">
-                                <input matInput type="text" value={{selected}} readonly="readonly">
-                                <button matSuffix mat-icon-button aria-label="Clear" (click)="del()">
-                                  <mat-icon>close</mat-icon>
-                                </button>
-                            </mat-form-field>
-                        </div>
-        
-                        <ng-template #sample>
-                        </ng-template>
-                    </div>
-                </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-md-12">Password :</label>
+            <div class="col-md-12">
+              <input #pass type="password" class="form-control" ngModel name='pass' placeholder="Password">
             </div>
+          </div>
+
+
+          <div class='bottom'>
+            <button mat-raised-button color="warn">Login</button>
+          </div>
+          <div class='bottom'>
+            <a href=''>Reset Password</a>
+          </div>
+
         </form>
-        </mat-tab>            
-           
+      </div>
+    </ng-container>
+  </mat-tab>
+
+  <mat-tab label="User-Management">
+    <form>
+      <div class='outer'>
+        <div class="row">
+          <div class="col-md-3 text-left">
+            <mat-label>Group Code:</mat-label>
+          </div>
+          <div class="col-md-9 text-left mt-10 ">
+            <mat-form-field appearance="outline">
+              <mat-label>Group Code</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 text-left">
+            <mat-label>Group Description:</mat-label>
+          </div>
+          <div class="col-md-9 text-left">
+            <mat-form-field appearance="outline">
+              <mat-label>Group Description</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 text-left">
+            <mat-label>Group Access:</mat-label>
+          </div>
+          <div class="col-md-9 text-left">
+            <mat-form-field appearance="outline">
+              <mat-label>Group Access</mat-label>
+              <mat-select [(value)]="selected" (change)='check()'>
+                <mat-option *ngFor="let item of resultdata" [value]="item.groupAccess">
+                  {{item.groupAccess}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div *ngIf='selected; else sample'>
+              <mat-form-field class="example-form-field " appearance="outline">
+                <input matInput type="text" value={{selected}} readonly="readonly">
+                <button matSuffix mat-icon-button aria-label="Clear" (click)="del()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+
+            <ng-template #sample>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+</mat-tab-group>
