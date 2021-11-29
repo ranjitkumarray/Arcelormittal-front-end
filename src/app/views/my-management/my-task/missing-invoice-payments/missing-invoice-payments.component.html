@@ -24,7 +24,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput placeholder="Search" formControlName="search_string"(keyup.enter)="getOfferStatus()">
+                <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
@@ -58,17 +58,6 @@
         </div>
         <div class="col-4">
             <mat-form-field appearance="outline">
-                <mat-label>Invoice Posting Date</mat-label>
-                <mat-select formControlName='invoice_posting_date' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let invPostDate of invoicePostingDateList" [value]="invPostDate">
-                        {{invPostDate}}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-4">
-            <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing Bucket</mat-label>
                 <mat-select formControlName='invoice_ageing_bucket'>
                     <mat-option value="1">Option 1</mat-option>
@@ -77,6 +66,29 @@
                 </mat-select>
             </mat-form-field>
         </div>
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Offer valid From</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="invoice_posting_date_from"
+                    (dateChange)="getOfferStatus()" autocomplete="off" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Invoice Posting to Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="invoice_posting_date_to"
+                    (dateChange)="getOfferStatus()" autocomplete="off" readonly [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+
     </div>
 </form>
 <div class="row">

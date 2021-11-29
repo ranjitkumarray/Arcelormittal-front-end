@@ -20,20 +20,19 @@
 </div>
 <form [formGroup]="filterForm">
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
 
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
                 <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
-
             </mat-form-field>
         </div>
-        <div class="col-8 text-right">
+        <div class="col-9 text-right">
             <button mat-icon-button class="filter-icon" (click)="toggleShow()">
                 <i class="fa fa-filter"></i>
             </button>
-            
+
         </div>
     </div>
     <div class="row" *ngIf="isShown">
@@ -47,7 +46,7 @@
 
                 </mat-select>
             </mat-form-field>
-            
+
         </div>
         <!-- <div class="col-4">
             <mat-form-field appearance="outline">
@@ -65,7 +64,7 @@
                 <mat-label>Created</mat-label>
                 <mat-select formControlName='created' (selectionChange)="getOfferStatus()">
                     <mat-option *ngFor="let createdAt of resultdata?.created" [value]="createdAt">
-                        {{createdAt}}
+                        {{createdAt | date:'YYYY-MM-dd HH:MM:ss'}}
                     </mat-option>
 
                 </mat-select>
@@ -214,10 +213,13 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users"
+                            <!-- <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users"
                                 appearance="outline">
+                            </mat-paginator> -->
+                            <mat-paginator [length]="totalCount" [pageSize]="100"
+                                [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
+                                (page)="pageEvent = pageChangeCall($event)">
                             </mat-paginator>
-
                         </div>
                     </div>
                 </div>

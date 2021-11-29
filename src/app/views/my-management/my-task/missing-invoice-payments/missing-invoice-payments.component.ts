@@ -36,8 +36,9 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   resultdata: any = [];
   pageEvent: any = PageEvent;
   totalCount: any;
-  customerNameList: any=[];
-  invoicePostingDateList: any=[];
+  customerNameList: any = [];
+  invoicePostingDateList: any = [];
+  minDate: any
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -50,7 +51,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       search_string: [''],
       customer: [''],
       invoice_ageing: [''],
-      invoice_posting_date: [''],
+      invoice_posting_date_from: [''],
+      invoice_posting_date_to: [''],
       invoice_ageing_bucket: [''],
       offset: ['0'],
       limit: ['100']
@@ -61,6 +63,9 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   getOfferStatus() {
     this.loadingRouteConfig = true
     let body = this.filterForm.value
+    if (this.filterForm.value.invoice_posting_date_from) {
+      this.minDate = this.filterForm.value.invoice_posting_date_from
+    }
     Object.keys(body).forEach(key => {
       if (body[key] === 'limit' || body[key] === 'offset') {
       } else {
@@ -75,9 +80,9 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     this.apiMethod.get_request_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
       this.resultdata = result
-      this.totalCount=result.Count
-      this.customerNameList=this.resultdata.customer_name
-      this.invoicePostingDateList=this.resultdata.invoice_posting_date
+      this.totalCount = result.Count
+      this.customerNameList = this.resultdata.customer_name
+      this.invoicePostingDateList = this.resultdata.invoice_posting_date
       this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(this.resultdata.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;

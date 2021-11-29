@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -39,6 +39,8 @@ export class OfferStatusComponent implements OnInit {
   filterForm: any = FormGroup
   resultdata: any;
   breadCrumblocationsList: any = []
+  pageEvent: any = PageEvent;
+  totalCount: any;
 
   constructor(
     private apiString: CitGlobalConstantService,
@@ -53,7 +55,9 @@ export class OfferStatusComponent implements OnInit {
       status: [''],
       created: [''],
       offerid: [''],
-      customer_ref: ['']
+      customer_ref: [''],
+      // offset: ['0'],
+      // limit: ['100']
     })
   }
 
@@ -66,8 +70,11 @@ export class OfferStatusComponent implements OnInit {
     this.loadingRouteConfig = true
     let body = this.filterForm.value
     Object.keys(body).forEach(key => {
-      if (body[key] === "") {
-        body[key] = 'all';
+      if (body[key] === 'limit' || body[key] === 'offset') {
+      } else {
+        if (body[key] === "") {
+          body[key] = 'all';
+        }
       }
     });
     console.log(body)
@@ -77,7 +84,8 @@ export class OfferStatusComponent implements OnInit {
     setTimeout(() => {
       this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
         this.loadingRouteConfig = false
-        this.resultdata = result
+        this.resultdata = result     
+         this.totalCount=result.Count
         this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
@@ -94,6 +102,14 @@ export class OfferStatusComponent implements OnInit {
   }
   toggleShow() {
     this.isShown = !this.isShown;
+  }
+  pageChangeCall(event: any) {
+    console.log(event)
+    this.filterForm.patchValue({
+      offset: event.pageIndex,
+      limit: event.pageSize
+    })
+    this.getOfferStatus()
   }
   updateBreadCrumb() {
     this.breadCrumblocationsList = [

@@ -228,8 +228,9 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #ccc;
+    background: red;
     margin-bottom: 6px;
+    color: $white;
 }
 
 .stepper-item.active {
@@ -237,14 +238,14 @@
 }
 
 .stepper-item.completed .step-counter {
-    background-color: $primaryOrange;
+    background-color: $approve;
     color: $white;
 }
 
 .stepper-item.completed::after {
     position: absolute;
     content: "";
-    border-bottom: 2px solid $primaryOrange;
+    border-bottom: 2px solid $approve;
     width: 100%;
     top: 11px;
     left: 50%;
