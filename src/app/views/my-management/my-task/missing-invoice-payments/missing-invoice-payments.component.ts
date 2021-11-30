@@ -40,7 +40,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   customerNameList: any = [];
   invoicePostingDateList: any = [];
   minDate: any
-  public dob: string = '1973-10-10T00:00:00';
+  invoiceAgingList: any = [];
+  invoiceAgingBucketDataList: any = [];
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -49,7 +50,6 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const pipe = new DatePipe('en-US');
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
@@ -86,6 +86,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       this.totalCount = result.Count
       this.customerNameList = this.resultdata.customer_name
       this.invoicePostingDateList = this.resultdata.invoice_posting_date
+      this.invoiceAgingList = (this.resultdata.invoice_aging)
+      this.invoiceAgingBucketDataList = (this.resultdata.invoice_aging_bucket_data)
       this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(this.resultdata.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
