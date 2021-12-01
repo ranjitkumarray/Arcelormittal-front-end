@@ -80,7 +80,6 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   getResultData() {
     this.loadingRouteConfig = true
     const pipe = new DatePipe('en-US');
-
     let body = {
       search_string: this.filterForm.value.search_string ? this.filterForm.value.search_string : 'all',
       customer: this.filterForm.value.customer ? this.filterForm.value.customer : 'all',
