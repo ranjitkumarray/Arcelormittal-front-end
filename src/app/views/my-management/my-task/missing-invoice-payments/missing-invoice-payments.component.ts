@@ -64,11 +64,23 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     this.updateBreadCrumb()
   }
   getOfferStatus() {
-    this.loadingRouteConfig = true
-    const pipe = new DatePipe('en-US');
     if (this.filterForm.value.invoice_posting_date_from) {
       this.minDate = this.filterForm.value.invoice_posting_date_from
     }
+    if (this.filterForm.value.invoice_posting_date_from || this.filterForm.value.invoice_posting_date_to) {
+      if (this.filterForm.value.invoice_posting_date_from && this.filterForm.value.invoice_posting_date_to) {
+        this.getResultData()
+      } else {
+        return
+      }
+    } else {
+      this.getResultData()
+    }
+  }
+  getResultData() {
+    this.loadingRouteConfig = true
+    const pipe = new DatePipe('en-US');
+
     let body = {
       search_string: this.filterForm.value.search_string ? this.filterForm.value.search_string : 'all',
       customer: this.filterForm.value.customer ? this.filterForm.value.customer : 'all',
