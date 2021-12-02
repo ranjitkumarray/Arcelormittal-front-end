@@ -24,6 +24,7 @@
     "bootstrap": "^5.1.1",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

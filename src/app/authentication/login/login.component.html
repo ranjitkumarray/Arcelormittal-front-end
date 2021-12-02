@@ -1,7 +1,7 @@
-
-  <div class="row">
+<div>
+  <mat-card >
     <form [formGroup]="login">
-      <div class=" col-md-4 text-center ">
+      <div>
         <mat-label>Email:</mat-label>
         <mat-form-field appearance="outline">
           <input matInput type="text" formControlName="email">
@@ -9,7 +9,7 @@
         </mat-form-field>
       </div>
 
-      <div class=" col-md-4 text-center">
+      <div>
         <mat-label>Password:</mat-label>
         <mat-form-field appearance="outline">
           <input matInput type="password" formControlName="password">
@@ -17,8 +17,9 @@
         </mat-form-field>
 
       </div>
-      <div class=" col-md-4 text-center">
+      <div>
         <button mat-stroked-button (click)="loginSubmit(login.value)" [disabled]="login.invalid">Submit</button>
       </div>
     </form>
-  </div>
+  </mat-card>
+</div>
