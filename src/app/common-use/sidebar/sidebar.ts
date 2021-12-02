@@ -1,4 +1,5 @@
 export const NavItems = [
+
     {
         name: 'Registration',
         url: '',
