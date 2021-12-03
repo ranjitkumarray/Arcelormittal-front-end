@@ -1,25 +1,15 @@
-// .wrapper{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100vh;
 
-// }
-button.disable{
-    background-color: gray;
-   cursor:not-allowed;
+.mat-card {
+  max-width: 600px;
+  margin: 2em auto;
+  text-align: center;
+  max-height: 600px;
 }
-// .block{
-//     width: 320px;
-//     display: flex;
-//     height: 350px;
-// }
-// form{
-//     display: flex;
-//     justify-content: center;
-//     flex-direction: column;
-//     align-items: center;
-// }
+
+
+.full-width{
+  width:80%;
+}
 mat-label {
     display: inline-block;
     width:100px;
