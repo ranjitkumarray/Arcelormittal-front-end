@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { loginmodal } from './login.modal';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,10 +8,8 @@ import { loginmodal } from './login.modal';
 })
 export class LoginComponent implements OnInit {
 login:any=FormGroup;
-user:loginmodal=new loginmodal();
 hide=true;
-email:any;
-password:any;
+
 
  
   
@@ -19,11 +17,11 @@ password:any;
 
   ngOnInit(): void {
     this.login=this.fb.group({
-     'email':[this.user.email,[
+     'email':['',[
       Validators.required,
       Validators.email
      ]],
-     'password':[this.user.password,[
+     'password':['',[
       Validators.required
      ]]
     })
