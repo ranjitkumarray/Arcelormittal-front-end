@@ -8,7 +8,6 @@
 .mat-column-offer_id {
     width: 60px !important;
 }
-.mat-column-offer_id,
 .mat-column-volume,
 .mat-column-incoterm {
     width: 90px !important;
@@ -76,7 +75,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: red;
+    background: $deleteBtn;
     margin-bottom: 6px;
     color: $white;
 }
@@ -107,5 +106,5 @@
     content: none;
 }
 ::ng-deep.mat-column-pending_with {
-    width: 150px !important;
+    width: 220px !important;
 }

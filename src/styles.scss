@@ -129,6 +129,7 @@ table.mat-table {
             word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
             border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+            min-width: 65px;
         }
     }
     tbody {
@@ -148,6 +149,7 @@ table.mat-table {
                 color: black;
                 border-right: 1px solid rgba(0, 0, 0, 0.06);
                 border-left: 1px solid rgba(0, 0, 0, 0.06);
+                min-width: 65px;
             }
         }
     }
@@ -169,6 +171,7 @@ table.mat-table {
         border-color: $tableBorder !important;
         color: $black !important;
         font-size: 0.875rem;
+        min-width: 65px;
     }
 }
 .mat-row {
@@ -188,7 +191,10 @@ table.mat-table {
         border-right: 1px solid;
         border-color: $tableBorder !important;
         font-size: 0.875rem;
+        min-width: 65px;
     }
+
+
     .mat-column-expandedDetail {
         overflow: visible;
     }

@@ -3,6 +3,7 @@
         <span class="signal"></span>
     </div>
 </ng-container>
+
 <div *ngIf="breadCrumblocationsList" class="breadcrumb">
     <div class="row pd-10 bg-w">
         <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
@@ -90,9 +91,9 @@
     <div class="col-12">
         <div class="text-center">
             <div class="my_offer_table_container">
-                <div class="text-center h-100">
-                    <div class="table-outer-container offer_table_container mat-elevation-z8 position-relative h-100">
-                        <div class="table-inner-container h-100">
+                <div class="text-center ">
+                    <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
+                        <div class="table-inner-container hc">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
                                 <ng-container matColumnDef="offerid">
@@ -135,59 +136,18 @@
                                 <ng-container matColumnDef="pending_with">
                                     <th mat-header-cell *matHeaderCellDef> Pending With</th>
                                     <td mat-cell *matCellDef="let element;let i=index;">
-                                        <div class="stepper-wrapper" *ngIf="element?.offerid===1">
+                                        <div class="stepper-wrapper">
                                             <div class="stepper-item completed">
-                                                <div class="step-counter">1</div>
+                                                <div class="step-counter" >
+                                                   1
+                                                </div>
                                                 <!-- <div class="step-name">First</div> -->
                                             </div>
-                                            <div class="stepper-item active">
+                                            <div class="stepper-item active" (click)="openMail()">
                                                 <div class="step-counter">2</div>
                                                 <!-- <div class="step-name">Second</div> -->
                                             </div>
-                                            <div class="stepper-item ">
-                                                <div class="step-counter">3</div>
-                                                <!-- <div class="step-name">Third</div> -->
-                                            </div>
-                                        </div>
-                                        <div class="stepper-wrapper" *ngIf="element?.offerid===2">
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">1</div>
-                                                <!-- <div class="step-name">First</div> -->
-                                            </div>
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">2</div>
-                                                <!-- <div class="step-name">Second</div> -->
-                                            </div>
-                                            <div class="stepper-item active">
-                                                <div class="step-counter">3</div>
-                                                <!-- <div class="step-name">Third</div> -->
-                                            </div>
-                                        </div>
-                                        <div class="stepper-wrapper" *ngIf="element?.offerid===3">
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">1</div>
-                                                <!-- <div class="step-name">First</div> -->
-                                            </div>
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">2</div>
-                                                <!-- <div class="step-name">Second</div> -->
-                                            </div>
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">3</div>
-                                                <!-- <div class="step-name">Third</div> -->
-                                            </div>
-                                        </div>
-                                        <div class="stepper-wrapper"
-                                            *ngIf="(element?.offerid!=1 && element?.offerid!=2 && element?.offerid!=3)">
-                                            <div class="stepper-item completed">
-                                                <div class="step-counter">1</div>
-                                                <!-- <div class="step-name">First</div> -->
-                                            </div>
-                                            <div class="stepper-item active">
-                                                <div class="step-counter">2</div>
-                                                <!-- <div class="step-name">Second</div> -->
-                                            </div>
-                                            <div class="stepper-item ">
+                                            <div class="stepper-item " (click)="openMail()">
                                                 <div class="step-counter">3</div>
                                                 <!-- <div class="step-name">Third</div> -->
                                             </div>
@@ -213,15 +173,13 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            <!-- <mat-paginator [pageSizeOptions]="[100, 300, 500, 1000]" aria-label="Select page of users"
-                                appearance="outline">
-                            </mat-paginator> -->
-                            <mat-paginator [length]="totalCount" [pageSize]="100"
-                                [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
-                                (page)="pageEvent = pageChangeCall($event)">
-                            </mat-paginator>
                         </div>
+                        <mat-paginator [length]="totalCount" [pageSize]="100"
+                            [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
+                            (page)="pageEvent = pageChangeCall($event)">
+                        </mat-paginator>
                     </div>
+
                 </div>
             </div>
         </div>

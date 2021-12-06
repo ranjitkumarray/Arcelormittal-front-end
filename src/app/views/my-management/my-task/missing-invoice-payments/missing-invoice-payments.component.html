@@ -92,9 +92,9 @@
     <div class="col-12">
         <div class="text-center">
             <div class="my_offer_table_container">
-                <div class="text-center h-100">
-                    <div class="table-outer-container offer_table_container mat-elevation-z8 position-relative h-100">
-                        <div class="table-inner-container h-100">
+                <div class="text-center ">
+                    <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
+                        <div class="table-inner-container hc">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
 
                                 <ng-container matColumnDef="customer_number">
@@ -147,11 +147,12 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            <mat-paginator [length]="totalCount" [pageSize]="100"
-                                [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
-                                (page)="pageEvent = pageChangeCall($event)">
-                            </mat-paginator>
+
                         </div>
+                        <mat-paginator [length]="totalCount" [pageSize]="100"
+                            [pageSizeOptions]="[100,250,500,1000,1500,2000]" #paginators
+                            (page)="pageEvent = pageChangeCall($event)">
+                        </mat-paginator>
                     </div>
                 </div>
             </div>

@@ -134,4 +134,7 @@ export class OfferStatusComponent implements OnInit {
       this.router.navigateByUrl(link);
     }
   }
+  openMail(){
+    window.location.href=("mailto:ranjitkumarray25@outlook.com?subject=Level Validation &body=") 
+  }
 }
