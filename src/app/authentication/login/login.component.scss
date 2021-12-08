@@ -1,20 +1,42 @@
 
 .mat-card {
-  max-width: 600px;
-  margin: 6em auto;
-  text-align: center;
-  max-height: 600px;
+   display: block;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 8%;
+   width:45%;
+   margin-bottom: auto;
+  border-radius: 2%;
 }
 
-
 .full-width{
-  width:80%;
+  display: block;
+  width: 100%;
 }
 mat-label {
     display: inline-block;
-    width:100px;
-    text-align: left;
+    margin-right: 100%;
+    text-align: start !important;
+    font-weight:7%;
+    font-size:medium;
   }
   img{
+    display: block;
+    margin-left :auto;
+    margin-right: auto;
     margin-bottom: 5%;
   }
+  
+  .main-div {
+    height: 100 vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .main-div{
+   background-color: #ABC4E4;
+ }
+ body{
+  background-color: #ABC4E4;
+}
