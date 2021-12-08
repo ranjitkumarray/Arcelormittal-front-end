@@ -258,7 +258,7 @@ export class CitGlobalConstantService {
     };
     myTask: any = {
         offerStatus: this.baseUrl + "taskbar1_data",
-        orderStatus: this.baseUrl + "",
+        orderStatus: this.baseUrl + "order_status_delay",
         customerVolume: this.baseUrl + "",
         missingInvoicePayment: this.baseUrl + "invoice_payments"
     }
