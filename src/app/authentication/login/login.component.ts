@@ -1,6 +1,5 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { EmailValidator, FormBuilder, FormControl, FormGroup, FormGroupName, RequiredValidator, Validators } from '@angular/forms';
-
+import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ApiService } from 'src/app/services/api.service';
 
