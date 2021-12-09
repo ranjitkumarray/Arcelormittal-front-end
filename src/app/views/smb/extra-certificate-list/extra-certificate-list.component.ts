@@ -67,7 +67,9 @@ export class ExtraCertificateListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCertificate()
+    // this.getCertificate()
+    this.dataSource = new MatTableDataSource<certificateData>(this.data)
+
   }
   //getting uploaded history of alloy scrap 
   getCertificate() {
@@ -115,6 +117,7 @@ export class ExtraCertificateListComponent implements OnInit {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
+          maxWidth: '40vw',
           data: {
             content: '',
             addURL: this.apiStringURL.add,

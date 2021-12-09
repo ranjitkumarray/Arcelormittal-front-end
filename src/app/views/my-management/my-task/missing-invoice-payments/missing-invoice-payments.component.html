@@ -21,14 +21,13 @@
 <form [formGroup]="filterForm">
     <div class="row">
         <div class="col-4">
-
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
                 <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="col-8 text-right">
+        <div class="col-8 text-right filter">
             <button mat-icon-button class="filter-icon" (click)="toggleShow()">
                 <i class="fa fa-filter"></i>
             </button>
@@ -96,7 +95,6 @@
                     <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
                         <div class="table-inner-container hc">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
-
                                 <ng-container matColumnDef="customer_number">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Number </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.customer_number}} </td>
