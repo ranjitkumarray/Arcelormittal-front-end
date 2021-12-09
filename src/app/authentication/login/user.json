@@ -25,5 +25,14 @@
       "address":"shi,shii",
       "usertype":"yzx",
       "accessstoken":"bbc"
+  },
+  {
+    "name":"ram",
+    "email":"ram@gmail.com",
+    "password":"ram123",
+    "phonenumber":9876547823,
+    "address":"ray,kashi",
+    "usertype":"edc",
+    "accessstoken":"wqa"
   }
   ]
