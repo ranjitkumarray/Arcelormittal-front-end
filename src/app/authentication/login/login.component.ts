@@ -51,19 +51,23 @@ export class LoginComponent implements OnInit {
     })
   }
   
-
+  a:any
   loginSubmit(form: FormGroup) {
     // console.log(this.login)
     for(let i in this.Users){
       if(this.login.value.email==this.Users[i].email && this.login.value.password==this.Users[i].password){
-        this.apimethod.popupMessage('success','Good')
+        
+        this.a=true
         // this.router.navigate(['/alloy-scrap/history/fileDetails/'])
 
        
        }
-       else if(this.login.value.email!=this.Users[i].email && this.login.value.password!=this.Users[i].password) {
+       else  {
         this.apimethod.popupMessage('error','Bad')
-        console.log(this.Users[i].email)
+    }
+    if(this.a==true){
+      this.apimethod.popupMessage('success','Good')
+      this.router.navigate(['/alloy-scrap/history/fileDetails/'])
     }
 
     
