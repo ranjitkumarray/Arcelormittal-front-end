@@ -301,5 +301,7 @@ export class CitGlobalConstantService {
 
         
     };
-
+    registration:any={
+    usergroupmanagement:this.baseUrl + "",
+    }
 }
