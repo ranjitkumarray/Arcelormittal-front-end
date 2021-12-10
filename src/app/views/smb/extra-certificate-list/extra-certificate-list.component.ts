@@ -61,7 +61,7 @@ export class ExtraCertificateListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['sequence_id','BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }
