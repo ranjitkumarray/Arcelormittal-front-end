@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   loginData: any;
   Users = user;
   a: any;
+  emailPattern = "^[a-z0-9._%+-]+@['gmail']+\.[com]{2,4}$";
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
     private router: Router) {
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
     this.login = this.fb.group({
       'email': ['', [
         Validators.required,
-        Validators.email
+        Validators.email,
+        Validators.pattern(this.emailPattern)
       ]],
       'password': ['', [
         Validators.required,
@@ -51,46 +53,66 @@ export class LoginComponent implements OnInit {
   loginSubmit(form: FormGroup) {
     console.log(this.login)
     if (this.login.status == "VALID") {
-      
-
-      for (let i in this.Users) {
-        if (this.login.value.email == this.Users[i].email && this.login.value.password == this.Users[i].password) {
-
-          this.a = true
-          // this.router.navigate(['/alloy-scrap/history/fileDetails/'])
+      let loginData = this.login.value
+      this.Users.forEach((element: any) => {
+        let elmt = {
+          email: element.email,
+          password: element.password
         }
-        else{
-          this.apimethod.popupMessage('error','wrong,Enter again!!')
+        console.log('elmt',elmt)
+        if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
+          console.log(element, "success")
+          localStorage.setItem('userDetails',JSON.stringify(element))
+          this.router.navigate(['/alloy-scrap/upload/'])
         }
-      }
-        }
-        else {
-          this.apimethod.popupMessage('error','Invalid Details')
-        }  
-        
-        console.log(this.login.status)
-      
-      
-
+      });
 
       // for (let i in this.Users) {
+      //   var loginDetail = this.login.value;
+      //   this.Users.forEach((element: any, index: any) => {
+
+      //     if (loginDetail.email === element[index].email && loginDetail.password === element[index].password) {
+      //       console.log('success')
+      //     }
+
+      //   });
       //   if (this.login.value.email == this.Users[i].email && this.login.value.password == this.Users[i].password) {
 
       //     this.a = true
-      //     // this.router.navigate(['/alloy-scrap/history/fileDetails/'])
-
+      //     this.router.navigate(['/alloy-scrap/upload/'])
       //   }
       //   else {
-      //     this.apimethod.popupMessage('error', 'Somthing went worng!!')
+      //     this.apimethod.popupMessage('error', 'wrong,Enter again!!')
       //   }
-      if (this.a == true) {
-        this.apimethod.popupMessage('success', 'Login Successfull!!')
-        this.router.navigate(['/alloy-scrap/upload/'])
-      }
+      // }
+    }
+    else {
+      this.apimethod.popupMessage('error', 'Invalid Details')
+    }
+
+    console.log(this.login.status)
 
 
 
-    
+
+    // for (let i in this.Users) {
+    //   if (this.login.value.email == this.Users[i].email && this.login.value.password == this.Users[i].password) {
+
+    //     this.a = true
+    //     // this.router.navigate(['/alloy-scrap/history/fileDetails/'])
+
+    //   }
+    //   else {
+    //     this.apimethod.popupMessage('error', 'Somthing went worng!!')
+    //   }
+    if (this.a == true) {
+      this.apimethod.popupMessage('success', 'Login Successfull!!')
+      // this.router.navigate(['/alloy-scrap/upload/'])
+    }
+
+
+
+
 
     // console.log(this.Users[0].email)
     // console.log(this.login)

@@ -1,38 +1,38 @@
-
-[{
-    "name":"vinay",
-    "email":"vinay@gmail.com",
-    "password":"vinay123",
-    "phonenumber":9482037989,
-    "address":"yana,kumta",
-    "usertype":"xyz",
-    "accessstoken":"aba"
+[
+  {
+    "name": "vinay",
+    "email": "vinay@gmail.com",
+    "password": "vinay123",
+    "phonenumber": 9482037989,
+    "address": "yana,kumta",
+    "usertype": "xyz",
+    "accessstoken": "aba"
   },
   {
-    "name":"say",
-    "email":"say@gmail.com",
-    "password":"say123",
-    "phonenumber":6366237989,
-    "address":"sidd,sidd",
-    "usertype":"zyx",
-    "accessstoken":"bba"
+    "name": "say",
+    "email": "say@gmail.com",
+    "password": "say123",
+    "phonenumber": 6366237989,
+    "address": "sidd,sidd",
+    "usertype": "zyx",
+    "accessstoken": "bba"
   },
   {
-      "name":"yat",
-      "email":"yat@gmail.com",
-      "password":"yat123",
-      "phonenumber":9876547823,
-      "address":"shi,shii",
-      "usertype":"yzx",
-      "accessstoken":"bbc"
+    "name": "yat",
+    "email": "yat@gmail.com",
+    "password": "yat123",
+    "phonenumber": 9876547823,
+    "address": "shi,shii",
+    "usertype": "yzx",
+    "accessstoken": "bbc"
   },
   {
-    "name":"ram",
-    "email":"ram@gmail.com",
-    "password":"ram123",
-    "phonenumber":9876547823,
-    "address":"ray,kashi",
-    "usertype":"edc",
-    "accessstoken":"wqa"
+    "name": "ram",
+    "email": "ram@gmail.com",
+    "password": "ram123",
+    "phonenumber": 9876547823,
+    "address": "ray,kashi",
+    "usertype": "edc",
+    "accessstoken": "wqa"
   }
-  ]
+]
