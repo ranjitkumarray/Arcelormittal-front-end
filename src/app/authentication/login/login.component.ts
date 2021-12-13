@@ -1,7 +1,8 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { range } from 'lodash';
+import { range, replace } from 'lodash';
+import { element } from 'protractor';
 
 import { ApiService } from 'src/app/services/api.service';
 import user from './user.json';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
     private router: Router) {
-    console.log(this.Users)
+    
+    // console.log(this.Users)
   }
 
 
@@ -51,19 +53,23 @@ export class LoginComponent implements OnInit {
         }
         // console.log('elmt', elmt)
         if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
+          
           this.apimethod.popupMessage('success','Login Success')
-          localStorage.setItem('userDetails', JSON.stringify(element))
           this.router.navigate(['/alloy-scrap/upload/'])
+
+          element.password='###'
+          localStorage.setItem('userDetails', JSON.stringify(element))
+          
+          
         }
+       
         
       });
-
     }
     else {
       this.apimethod.popupMessage('error', 'Invalid Details')
+    
     }
-     
-    console.log(this.login.status)
 
   }
 

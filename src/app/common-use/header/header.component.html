@@ -5,7 +5,7 @@
             
         <p>One integrated Platform
             <button class="name" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
-                {{f_Letter | uppercase}}
+                {{json.name[0] | uppercase}}
             </button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
                 <button mat-menu-item><mat-icon>account_circle</mat-icon>{{json.email}}</button>
