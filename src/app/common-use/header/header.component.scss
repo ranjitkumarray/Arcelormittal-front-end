@@ -28,19 +28,17 @@
     }
 }
 
-// .name{
-//     font-weight: 400;
-//     font-size: x-large;
+.name{
+    font-weight: 500;
+    font-size: x-large;
    
-// }
-mat-icon-button{
-    float: right;
 }
-.mat-menu-content.ng-tns-c45-0{
-    padding:40px;
+
+// .mat-menu-content.ng-tns-c45-0{
+//     padding:40px;
 // .login_header {
 //     // background-color: $white !important;
-}
+// }
 .logo{
     font-size: 20px;
     font-family: 'medium';
@@ -58,6 +56,10 @@ mat-icon-button{
         object-fit: contain;
     }
 }
+button{
+    float:right;
+    
+}
 .logo_text {
     position: absolute;
     left: 0;
@@ -72,6 +74,7 @@ mat-icon-button{
     color: $white;
     padding: 0 300px;
     text-transform: uppercase;
+    
 }
 .main_container {
     height: calc(100vh - 60px);
