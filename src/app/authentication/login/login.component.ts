@@ -4,17 +4,7 @@ import { Router } from '@angular/router';
 import { range } from 'lodash';
 
 import { ApiService } from 'src/app/services/api.service';
-import user from './user.json'
-
-interface USERS {
-  name: string,
-  email: string,
-  password: string,
-  phonenumber: number,
-  address: string,
-  usertype: string,
-  accessstoken: string
-}
+import user from './user.json';
 
 @Component({
   selector: 'app-login',
@@ -61,20 +51,18 @@ export class LoginComponent implements OnInit {
         }
         // console.log('elmt', elmt)
         if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
-          console.log(element, "success")
+          this.apimethod.popupMessage('success','Login Success')
           localStorage.setItem('userDetails', JSON.stringify(element))
-          // this.router.navigate(['/alloy-scrap/upload/'])
+          this.router.navigate(['/alloy-scrap/upload/'])
         }
-        else{
-          this.apimethod.popupMessage('error','Error in Login!!')
-        }
+        
       });
 
     }
     else {
       this.apimethod.popupMessage('error', 'Invalid Details')
     }
-
+     
     console.log(this.login.status)
 
   }

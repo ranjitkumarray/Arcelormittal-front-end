@@ -2,6 +2,16 @@
 <mat-toolbar class="header">
 
     <div class="navhead">
-        <p>One integrated Platform</p>
+            
+        <p>One integrated Platform
+            <button class="name" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
+                {{f_Letter | uppercase}}
+            </button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                <button mat-menu-item><mat-icon>account_circle</mat-icon>{{json.email}}</button>
+                <button mat-menu-item (click)="logOut()"><mat-icon>power_settings_new</mat-icon>LogOut</button>
+            </mat-menu>
     </div>
 </mat-toolbar>
+
+
