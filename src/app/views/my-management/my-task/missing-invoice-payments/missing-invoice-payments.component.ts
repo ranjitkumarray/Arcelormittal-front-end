@@ -40,8 +40,9 @@ export class MissingInvoicePaymentsComponent implements OnInit {
   customerNameList: any = [];
   invoicePostingDateList: any = [];
   minDate: any
-  invoiceAgingList: any = [];
   invoiceAgingBucketDataList: any = [];
+  invoiceAgingToList: any;
+  invoiceAgingFromList: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -53,7 +54,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
-      invoice_ageing: [''],
+      invoice_ageing_from: [''],
+      invoice_ageing_to: [''],
       invoice_posting_date_from: [''],
       invoice_posting_date_to: [''],
       invoice_ageing_bucket: [''],
@@ -69,6 +71,13 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     }
     if (this.filterForm.value.invoice_posting_date_from || this.filterForm.value.invoice_posting_date_to) {
       if (this.filterForm.value.invoice_posting_date_from && this.filterForm.value.invoice_posting_date_to) {
+        this.getResultData()
+      } else {
+        return
+      }
+    }
+    if (this.filterForm.value.invoice_ageing_from || this.filterForm.value.invoice_ageing_to) {
+      if (this.filterForm.value.invoice_ageing_from && this.filterForm.value.invoice_ageing_to) {
         this.getResultData()
       } else {
         return
@@ -97,7 +106,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       this.totalCount = result.Count
       this.customerNameList = this.resultdata.customer_name
       this.invoicePostingDateList = this.resultdata.invoice_posting_date
-      this.invoiceAgingList = (this.resultdata.invoice_aging)
+      this.invoiceAgingFromList = (this.resultdata.invoice_aging_from)
+      this.invoiceAgingToList = (this.resultdata.invoice_aging_to)
       this.invoiceAgingBucketDataList = (this.resultdata.invoice_aging_bucket_data)
       this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(this.resultdata.data)
       setTimeout(() => {
@@ -119,9 +129,7 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     })
     this.getOfferStatus()
   }
-  toggleShow() {
-    this.isShown = !this.isShown;
-  }
+
   updateBreadCrumb() {
     this.breadCrumblocationsList = [
       {

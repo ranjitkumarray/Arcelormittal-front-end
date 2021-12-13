@@ -28,7 +28,7 @@
             </mat-form-field>
         </div>
         <div class="col-8 text-right filter">
-            <button mat-icon-button class="filter-icon" (click)="toggleShow()">
+            <button mat-icon-button class="filter-icon" (click)="isShown = !isShown">
                 <i class="fa fa-filter"></i>
             </button>
 
@@ -47,9 +47,17 @@
         </div>
         <div class="col-4">
             <mat-form-field appearance="outline">
-                <mat-label>Invoice Ageing</mat-label>
-                <mat-select formControlName='invoice_ageing' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let ageing of invoiceAgingList" [value]="ageing">{{ageing}}</mat-option>
+                <mat-label>Invoice Ageing From</mat-label>
+                <mat-select formControlName='invoice_ageing_from' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let ageing of invoiceAgingFromList" [value]="ageing">{{ageing}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Invoice Ageing To</mat-label>
+                <mat-select formControlName='invoice_ageing_to' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let ageing of invoiceAgingToList" [value]="ageing">{{ageing}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
