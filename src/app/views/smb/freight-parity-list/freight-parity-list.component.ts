@@ -59,6 +59,7 @@ export class FreightParityListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.freight_parity_mini_bar
         this.displayedColumns = [
+          'sequence_id',
           "Delivering_Mill",
           "Market_Country",
           "Zip_Code_Dest",

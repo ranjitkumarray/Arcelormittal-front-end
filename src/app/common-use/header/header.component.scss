@@ -1,21 +1,31 @@
-.navhead {
-    text-align: center;
-    width: 100%;
-}
 
-.mat-toolbar {
-    background: rgb(248, 171, 28);
-}
-.header {
-    box-shadow: 0px 0px 6px 0px #f05b31;
-    padding: 0px;
-    background: #f05b31;
+@import '../../../assets/color.scss';
+.custom_header {
+    background-color: $primaryOrange;
+    position: relative;
+    z-index: 999;
+    box-shadow: 0px 1px 2px 0px $headerShadow;
     height: 60px;
-    left: 0px;
-    right: 0;
-    position: fixed;
-    z-index: 1000;
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .profile_img {
+        color: $primaryOrange;
+        background-color: $white;
+        width: 30px;
+        height: 30px;
+        border-radius: 5000px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+        font-family: 'semi-bold';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-nav {
+        z-index: 999;
+    }
 }
 
 .name{
@@ -29,4 +39,69 @@ button{
 }
 .mat-menu-content.ng-tns-c45-0{
     padding:40px;
+.login_header {
+    // background-color: $white !important;
+}
+.logo{
+    font-size: 20px;
+    font-family: 'medium';
+    color: $primary;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-left: 10px;
+    justify-content: center;
+    img {
+        max-width: 100%;
+        max-height: 50px;
+        object-fit: contain;
+    }
+}
+.logo_text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: 'bold';
+    color: $white;
+    padding: 0 300px;
+    text-transform: uppercase;
+}
+.main_container {
+    height: calc(100vh - 60px);
+    overflow: auto;
+}
+// .custom_footer {
+//     background-color: $bgWhite;
+//     color: $primary;
+//     padding: 10px 15px 0px 15px;
+//     font-size: 20px;
+//     width: calc(100% - 250px);
+//     float: right;
+//     cursor: default;
+//     font-family: 'medium';
+//     box-shadow: 0px -1px 2px 0px $headerShadow;
+//     .copy_right {
+//         text-align: right;
+//         opacity: 0.74;
+//         padding-bottom: 2px;
+//         font-size: 12px;
+//         font-family: 'regular';
+//     }
+// }
+// .custom_footer_login {
+//     width: 100% !important;
+// }
+
+.version {
+    color: white;
+    margin: 5px;
+}
 }

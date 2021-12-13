@@ -62,6 +62,7 @@ export class LengthLogisticListComponent implements OnInit {
         this.apiStringURL = this.apiString.length_logistic_mini_bar
 
         this.displayedColumns = [
+          'sequence_id',
           'Customer_Group',
           'Market_Country',
           'Delivering_Mill',

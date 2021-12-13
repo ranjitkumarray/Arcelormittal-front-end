@@ -48,7 +48,7 @@
                                                             <div class="sub items" [routerLink]="sub_item2.url"
                                                                 [routerLinkActive]="['active']">
                                                                 <span class="sub_hyphen">
-                                                                    <i [class]="sub_item2.icon" aria-hidden="true"></i>
+                                                                    <!-- <i [class]="sub_item2.icon" aria-hidden="true"></i> -->
                                                                 </span>
                                                                 {{sub_item2?.name}}
                                                             </div>
@@ -66,8 +66,8 @@
                                         <li class="nav-item">
                                             <div class="sub items" [routerLink]="sub_item1.url"
                                                 [routerLinkActive]="['active']">
-                                                <span class="sub_hyphen"><i [class]="sub_item1?.icon"
-                                                        aria-hidden="true"></i></span>
+                                                <!-- <span class="sub_hyphen"><i [class]="sub_item1?.icon"
+                                                        aria-hidden="true"></i></span> -->
                                                 {{sub_item1.name}}
                                             </div>
                                         </li>
@@ -85,7 +85,7 @@
 </div>
 <div class="main_container_content" [class.main_container_content_toggled]="isOpen">
     <app-header></app-header>
-    <div style="margin-top: 65px;"></div>
+    <div style="margin-top: 10px;"></div>
 
     <router-outlet></router-outlet>
     <!-- <app-footer></app-footer> -->

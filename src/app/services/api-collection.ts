@@ -4,7 +4,7 @@ import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class CitGlobalConstantService {
-    
+
     baseUrl: string = environment.domain;
     alloy_wire_upload: string = this.baseUrl + "Alloy_wire_upload";
     alloy_wire_validate: string = this.baseUrl + "Alloy_wire_validate";
@@ -33,7 +33,7 @@ export class CitGlobalConstantService {
         list: this.baseUrl + "data_baseprice_category_minibar",
         get: this.baseUrl + "get_record_baseprice_category_minibar",
         add: this.baseUrl + "add_record_baseprice_category_minibar",
-        delete: this.baseUrl + "delete_record_baseprice_category_minibar",    
+        delete: this.baseUrl + "delete_record_baseprice_category_minibar",
         upload: this.baseUrl + "upload_baseprice_category_minibar",
         validate: this.baseUrl + "validate_baseprice_category_minibar",
         update: this.baseUrl + "update_record_baseprice_category_minibar",
@@ -218,7 +218,7 @@ export class CitGlobalConstantService {
     profile_lberia_italy: any = {
         list: this.baseUrl + "data_extra_profile_Iberia",
         get: this.baseUrl + "get_record_extra_profile_Iberia",
-        add:this.baseUrl+"add_record_extra_profile_Iberia",
+        add: this.baseUrl + "add_record_extra_profile_Iberia",
         delete: this.baseUrl + "delete_record_extra_profile_Iberia",
         upload: this.baseUrl + "upload_extra_profile_Iberia",
         validate: this.baseUrl + "validate_extra_profile_Iberia",
@@ -258,5 +258,11 @@ export class CitGlobalConstantService {
     };
     registration:any={
     usergroupmanagement:this.baseUrl + "",
+    }
+    myTask: any = {
+        offerStatus: this.baseUrl + "taskbar1_data",
+        orderStatus: this.baseUrl + "order_status_delay",
+        customerVolume: this.baseUrl + "",
+        missingInvoicePayment: this.baseUrl + "invoice_payments"
     }
 }
