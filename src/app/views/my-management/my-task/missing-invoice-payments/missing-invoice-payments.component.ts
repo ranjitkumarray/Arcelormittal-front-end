@@ -92,7 +92,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
     let body = {
       search_string: this.filterForm.value.search_string ? this.filterForm.value.search_string : 'all',
       customer: this.filterForm.value.customer ? this.filterForm.value.customer : 'all',
-      invoice_ageing: this.filterForm.value.invoice_ageing ? this.filterForm.value.invoice_ageing : 'all',
+      invoice_ageing_from: this.filterForm.value.invoice_ageing_from ? this.filterForm.value.invoice_ageing_from : 'all',
+      invoice_ageing_to: this.filterForm.value.invoice_ageing_to ? this.filterForm.value.invoice_ageing_to : 'all',
       invoice_posting_date_from: this.filterForm.value.invoice_posting_date_from ? pipe.transform(this.filterForm.value.invoice_posting_date_from, 'yyyy-MM-dd') : 'all',
       invoice_posting_date_to: this.filterForm.value.invoice_posting_date_to ? pipe.transform(this.filterForm.value.invoice_posting_date_to, 'yyyy-MM-dd') : 'all',
       invoice_ageing_bucket: this.filterForm.value.invoice_ageing_bucket ? this.filterForm.value.invoice_ageing_bucket : 'all',
