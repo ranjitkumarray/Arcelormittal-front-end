@@ -31,7 +31,8 @@
 .name{
     font-weight: 500;
     font-size: x-large;
-   float: right !important;;
+   
+   
 }
 
 // .mat-menu-content.ng-tns-c45-0{
@@ -56,10 +57,7 @@
         object-fit: contain;
     }
 }
-button{
-    
-    
-}
+
 .logo_text {
     position: absolute;
     left: 0;
@@ -80,6 +78,24 @@ button{
     height: calc(100vh - 60px);
     overflow: auto;
 }
+.button_text{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-family: bold;
+    color: $white;
+    padding-left:85%;
+    text-transform: uppercase;
+    
+}
+
+    // position: relative;
 // .custom_footer {
 //     background-color: $bgWhite;
 //     color: $primary;

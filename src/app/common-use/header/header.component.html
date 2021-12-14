@@ -1,12 +1,14 @@
 <nav class="custom_header">
     <div class="logo_text">
         One integrated Platform
-     
+     </div>
+     <div class="button_text">
         <button mat-icon-button class="name" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
-            {{json.name[0] | uppercase}}
+            {{json.email[0] | uppercase}}
             
         </button>
-        <span >{{json.name}}</span>
+        
+        <span style="padding-left: 10px;">{{json.name}}</span>
         <mat-menu #beforeMenu="matMenu" xPosition="before">
             <button mat-menu-item>
                 <mat-icon>account_circle</mat-icon>{{json.email}}

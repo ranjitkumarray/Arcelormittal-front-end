@@ -34,5 +34,16 @@
     "address": "ray,kashi",
     "usertype": "client",
     "accessstoken": "wqa"
-  }
+  },
+  
+    {
+      "name": "Zebracle",
+      "email": "nebra@gmail.com",
+      "password": "zebra123",
+      "phonenumber": 9876547823,
+      "address": "ray,kashi",
+      "usertype": "client",
+      "accessstoken": "wqa"
+    }
+  
 ]
