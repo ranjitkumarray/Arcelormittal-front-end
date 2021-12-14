@@ -29,6 +29,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.version = "1";
     console.log(this.navbarItem)
+  
   }
 
   toggleCollapse() {

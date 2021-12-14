@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         // console.log('elmt', elmt)
         if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
           
-          this.apimethod.popupMessage('success','Login Success')
+          this.apimethod.popupMessage('success','Login Successfuly!!')
           this.router.navigate(['/alloy-scrap/upload/'])
 
           element.password='###'
