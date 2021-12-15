@@ -1,5 +1,31 @@
 export const NavItems = [
     {
+        name: 'Management',
+        url: '',
+        active_img: '../../../assets/images/report 2.png',
+        inactive_img: '../../../assets/images/report 2.png',
+        tag: 'management',
+        type: "admin",
+        children: [
+            {
+                name: 'user',
+                url: '/user/management',
+                icon: 'fa fa-user',
+                tag: 'management_sub_menu',
+
+
+            },
+            {
+                name: 'User Group',
+                url: '/user/group-management',
+                icon: 'fa fa-users',
+                tag: 'management_sub_menu',
+
+            }
+        ]
+
+    },
+    {
         name: 'Alloy & Scrap',
         url: '',
         active_img: '../../../assets/images/order.png',
