@@ -87,12 +87,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    font-family: bold;
+    font-size: 10px;
+    font-variant: small-caps;
     color: $white;
     padding-left:85%;
     text-transform: uppercase;
-    
 }
 
     // position: relative;
@@ -124,5 +123,9 @@
 }
 .mat-fab:not([class*=mat-elevation-z]), .mat-mini-fab:not([class*=mat-elevation-z]) {
      box-shadow: none;
+     font-size: medium;
+     color:black;
+     background-color: white;
+
 }
 // }

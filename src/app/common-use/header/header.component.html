@@ -2,23 +2,7 @@
     <div class="logo_text">
         One integrated Platform
     </div>
-    <!-- <div class="button_text">
-        <button mat-icon-button class="name" mat-mini-fab  [matMenuTriggerFor]="beforeMenu">
-            {{json.name[0] | uppercase}}
-            
-        </button>
-        
-        <span style="padding-left: 10px;">{{json.name}}</span>
-        <mat-menu #beforeMenu="matMenu" xPosition="before">
-            <button mat-menu-item>
-                <mat-icon>account_circle</mat-icon>{{json.email}}
-            </button>
-            <button mat-menu-item (click)="logOut()">
-                <mat-icon>power_settings_new</mat-icon>LogOut
-            </button>
-        </mat-menu>
-        
-    </div> -->
+    
     <ul class="nav navbar-nav pr-3">
         <a class="d-flex align-items-center color_white text-decoration-none">
             <!-- <span class="profile_img">{{userLogo}}</span>
@@ -26,10 +10,9 @@
             <div class="button_text">
                 <button mat-icon-button class="name" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
                     {{json.name[0] | uppercase}}
-
                 </button>
-
-                <span style="padding-left: 10px;">{{json.name}}</span>
+                <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white">{{json.name | uppercase}}</button>
+                
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <button mat-menu-item>
                         <mat-icon>account_circle</mat-icon>{{json.email}}
