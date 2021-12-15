@@ -14,9 +14,9 @@
                 <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white">{{json.name | uppercase}}</button>
                 
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
-                    <button mat-menu-item>
+                    <!-- <button mat-menu-item>
                         <mat-icon>account_circle</mat-icon>{{json.email}}
-                    </button>
+                    </button> -->
                     <button mat-menu-item (click)="logOut()">
                         <mat-icon>power_settings_new</mat-icon>LogOut
                     </button>
