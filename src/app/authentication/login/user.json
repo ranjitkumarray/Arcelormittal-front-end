@@ -14,7 +14,7 @@
     "password": "say123",
     "phonenumber": 6366237989,
     "address": "sidd,sidd",
-    "usertype": "client",
+    "usertype": "user",
     "accessstoken": "bba"
   },
   {
@@ -32,7 +32,7 @@
     "password": "ram123",
     "phonenumber": 9876547823,
     "address": "ray,kashi",
-    "usertype": "client",
+    "usertype": "user",
     "accessstoken": "wqa"
   },
   
@@ -42,7 +42,7 @@
       "password": "zebra123",
       "phonenumber": 9876547823,
       "address": "ray,kashi",
-      "usertype": "client",
+      "usertype": "user",
       "accessstoken": "wqa"
     }
   
