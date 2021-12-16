@@ -26,6 +26,8 @@ export class SidebarComponent implements OnInit {
       this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin' || x.type === 'user')
       
     } else {
+      this.router.navigate(['/management/offer-status/'])
+
       this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
     }
     // console.log(this.navbarItem, "Nav Item")
