@@ -1,12 +1,11 @@
 @import '../../../assets/color.scss';
 .mat-card {
    display: block;
-   text-align: center;
+  text-align: center;
    margin-left: auto;
    margin-right: auto;
-   margin-top: 8%;
-   width:35%;
-   margin-bottom: auto;
+   margin-top:8%;
+   width:33%;
    border-radius: 3%;
   
 }
@@ -32,15 +31,16 @@ mat-label {
     margin-bottom: 4%;
   }
   
-  .container {
-    height: 100 vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
- }
+//   .container {
+//     height: 100 vh;
+//     display: flex;
+//     justify-content:center;
+//     align-items: center;
+//  }
 //  .main-div{
 //    background-color: #ABC4E4;
 //  }
  body{
   background-color: #ABC4E4;
+  
 }

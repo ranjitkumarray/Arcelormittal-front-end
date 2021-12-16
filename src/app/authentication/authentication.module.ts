@@ -6,7 +6,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    MaterialsModule
+    MaterialsModule,
+    MatStepperModule
   ]
 })
 export class AuthenticationModule { }

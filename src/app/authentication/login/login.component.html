@@ -1,5 +1,5 @@
 <body>
-  <div class="container">
+  <div class="row">
     <mat-card>
       <form [formGroup]="login" (submit)="loginSubmit(login.value)">
         <div class="container-fluid logo_outer">
@@ -13,7 +13,6 @@
             <mat-label>Email:</mat-label>
             <mat-form-field class="full-width w-100" appearance="outline">
               <input matInput type="text" formControlName="email">
-              <!-- [(ngModel)]="value" -->
             </mat-form-field>
           </div>
 
@@ -24,15 +23,14 @@
               <mat-icon type="button" matSuffix (click)="hide=!hide">
                 {{hide?'visibility_off':'visibility'}}
               </mat-icon>
-              <!-- [(ngModel)]="value" -->
             </mat-form-field>
           </div>
 
-          <div>
+          <div class="col-md-12 text-center">
             <button mat-raised-button class='mr-10' color='primary'>Login</button>
           </div>
 
-          <a [routerLink]="['../forgot-password']">Forgot Password</a>
+          <a [routerLink]="['../forgot-password']" class="text-center">Forgot Password</a>
         </div>
       </form>
     </mat-card>
