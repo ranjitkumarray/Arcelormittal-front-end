@@ -8,7 +8,7 @@
             <!-- <span class="profile_img">{{userLogo}}</span>
             {{userName}} -->
             <div class="button_text">
-                <button mat-icon-button class="name" e-avatar e-avatar-medium e-avatar-circle [matMenuTriggerFor]="beforeMenu">
+                <button class="myFab" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
                     {{json.name[0] | uppercase}}
                 </button>
                 <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white">{{json.name | uppercase}}</button>

@@ -28,19 +28,23 @@
     }
 }
 
-.name{
+.myFab {
     box-shadow: none;
     font-size:medium ;
     color:black;
     background-color: white;
-  
+     width: 32px;
+     height: 32px;
+     line-height: 14px;
+     
+
+     &::ng-deep .mat-button-wrapper{
+         line-height: 14px;
+         padding: 0;
+
+    }
 }
 
-// .mat-menu-content.ng-tns-c45-0{
-//     padding:40px;
-// .login_header {
-//     // background-color: $white !important;
-// }
 .logo{
     font-size: 20px;
     font-family: 'medium';
@@ -95,38 +99,7 @@
     text-transform: uppercase;
 }
 
-    // position: relative;
-// .custom_footer {
-//     background-color: $bgWhite;
-//     color: $primary;
-//     padding: 10px 15px 0px 15px;
-//     font-size: 20px;
-//     width: calc(100% - 250px);
-//     float: right;
-//     cursor: default;
-//     font-family: 'medium';
-//     box-shadow: 0px -1px 2px 0px $headerShadow;
-//     .copy_right {
-//         text-align: right;
-//         opacity: 0.74;
-//         padding-bottom: 2px;
-//         font-size: 12px;
-//         font-family: 'regular';
-//     }
-// }
-// .custom_footer_login {
-//     width: 100% !important;
-// }
-
 .version {
     color: white;
     margin: 5px;
 }
-// .e-avatar .e-avatar-xlarge .e-avatar-circle {
-//      box-shadow: none;
-//     //  font-size: ;
-//      color:black;
-//      background-color: white;
-
-// }
-// }
