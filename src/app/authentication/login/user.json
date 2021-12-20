@@ -1,0 +1,49 @@
+[
+  {
+    "name": "vinay",
+    "email": "vinay@gmail.com",
+    "password": "vinay123",
+    "phonenumber": 9482037989,
+    "address": "yana,kumta",
+    "usertype": "Admin",
+    "accessstoken": "aba"
+  },
+  {
+    "name": "say",
+    "email": "say@gmail.com",
+    "password": "say123",
+    "phonenumber": 6366237989,
+    "address": "sidd,sidd",
+    "usertype": "user",
+    "accessstoken": "bba"
+  },
+  {
+    "name": "yat",
+    "email": "yat@gmail.com",
+    "password": "yat123",
+    "phonenumber": 9876547823,
+    "address": "shi,shii",
+    "usertype": "Admin",
+    "accessstoken": "bbc"
+  },
+  {
+    "name": "ram",
+    "email": "ram@gmail.com",
+    "password": "ram123",
+    "phonenumber": 9876547823,
+    "address": "ray,kashi",
+    "usertype": "user",
+    "accessstoken": "wqa"
+  },
+  
+    {
+      "name": "Zebracle",
+      "email": "nebra@gmail.com",
+      "password": "zebra123",
+      "phonenumber": 9876547823,
+      "address": "ray,kashi",
+      "usertype": "user",
+      "accessstoken": "wqa"
+    }
+  
+]

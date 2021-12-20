@@ -1,12 +1,28 @@
-
-<nav class="custom_header" >  
-    <div class="logo_text">    
+<nav class="custom_header">
+    <div class="logo_text">
         One integrated Platform
     </div>
-    <ul class="nav navbar-nav pr-3" >
+    
+    <ul class="nav navbar-nav pr-3">
         <a class="d-flex align-items-center color_white text-decoration-none">
             <!-- <span class="profile_img">{{userLogo}}</span>
             {{userName}} -->
+            <div class="button_text">
+                <button class="myFab" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
+                    {{json.name[0] | uppercase}}
+                </button>
+                <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white">{{json.name | uppercase}}</button>
+                
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                    <!-- <button mat-menu-item>
+                        <mat-icon>account_circle</mat-icon>{{json.email}}
+                    </button> -->
+                    <button mat-menu-item (click)="logOut()">
+                        <mat-icon>power_settings_new</mat-icon>LogOut
+                    </button>
+                </mat-menu>
+
+            </div>
         </a>
-    </ul> 
+    </ul>
 </nav>
