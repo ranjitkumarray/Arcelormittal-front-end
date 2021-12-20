@@ -65,7 +65,7 @@
                 <mat-label>Created</mat-label>
                 <mat-select formControlName='created' (selectionChange)="getOfferStatus()">
                     <mat-option *ngFor="let createdAt of resultdata?.created" [value]="createdAt">
-                        {{createdAt | date:'YYYY-MM-dd HH:MM:ss'}}
+                        {{createdAt }}
                     </mat-option>
 
                 </mat-select>
