@@ -1,35 +1,5 @@
 export const NavItems = [
-
-    {
-        name: 'Registration',
-        url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'registration',
-        children: [
-            {
-                name: 'login',
-                url: '/registration/login',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
-
-            },
-            {
-                name: 'user-management',
-                url: '/registration/user-management',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
-
-            },
-            {
-                name: 'user-group-management',
-                url: '/registration/user-group-management',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
-            }
-        ]
-
-    },
+       
     {
         name: 'Management',
         url: '',
