@@ -39,6 +39,14 @@ export class LoginComponent implements OnInit {
 
       ]]
     })
+
+    //Authentication
+    if(localStorage.getItem('userDetails') ){
+      this.router.navigate(['/alloy-scrap/upload'])
+    }
+    else {
+      this.router.navigate(['/auth/login'])
+    }
   }
 
 
@@ -51,7 +59,7 @@ export class LoginComponent implements OnInit {
           email: element.email,
           password: element.password
         }
-        // console.log('elmt', elmt)
+        //  console.log('elmt', elmt)
         if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
           
           this.apimethod.popupMessage('success','Login Successfuly!!')
