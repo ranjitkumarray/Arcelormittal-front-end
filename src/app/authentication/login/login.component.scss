@@ -7,7 +7,7 @@
    margin-top:8%;
    width:33%;
    border-radius: 3%;
-  
+   height:60%;
 }
 
 .full-width{
@@ -40,12 +40,8 @@ mat-label {
 //  .main-div{
 //    background-color: #ABC4E4;
 //  }
- body{
+ .output{
   background-color: #ABC4E4;
+  height: 100%;
   
 }
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end,
-    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
-        border-width: 1px !important;
-        color: #e0e0e0;
-    }
