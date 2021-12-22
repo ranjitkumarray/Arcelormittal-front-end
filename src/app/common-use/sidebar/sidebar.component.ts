@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router) {
     this.navbarItem = this.navLink
     if (this.userDeatails.usertype === 'Admin') {
-      this.router.navigate(['/alloy-scrap/upload/'])
+      //  this.router.navigate(['/alloy-scrap/upload/'])
       this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin' || x.type === 'user')
       
     } else {
