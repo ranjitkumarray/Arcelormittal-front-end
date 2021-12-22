@@ -23,7 +23,7 @@ export class GroupUserComponent implements OnInit {
   ngOnInit() {
     this.updateBreadCrumb()
     this.groupUserForm = this._formBuilder.group({
-      group_code: ['', Validators.required],
+      group_code: ['GC001', Validators.required],
       group_description: ['', Validators.required],
       menu: ['', Validators.required],
       sub_menu: ['', Validators.required]

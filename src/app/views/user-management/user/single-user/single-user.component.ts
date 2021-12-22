@@ -13,13 +13,13 @@ export class SingleUserComponent implements OnInit {
   isLinear = false;
   firstFormGroup: any = FormGroup;
   secondFormGroup: any = FormGroup;
-  breadCrumblocationsList:any=[]
-  loadingRouteConfig:boolean=false
+  breadCrumblocationsList: any = []
+  loadingRouteConfig: boolean = false
 
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private router:Router,
+    private router: Router,
     private _formBuilder: FormBuilder) { }
   ngOnInit() {
     this.updateBreadCrumb()
@@ -27,7 +27,11 @@ export class SingleUserComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       first_name: ['', Validators.required],
       middle_name: [''],
-      last_name: ['', Validators.required]
+      last_name: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      phone_no: ['', Validators.required],
+      address: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       user_group: ['', Validators.required]
@@ -55,5 +59,8 @@ export class SingleUserComponent implements OnInit {
     if (link != undefined && link != '') {
       this.router.navigateByUrl(link);
     }
+  }
+  submit() {
+    console.log(this.firstFormGroup.value, this.secondFormGroup.value)
   }
 }

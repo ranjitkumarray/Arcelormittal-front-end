@@ -308,3 +308,13 @@ td.mat-cell:last-of-type {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header, .mat-vertical-stepper-header{
+  padding: 10px 24px !important;
+}
+.regular{
+  font-family: 'regular';
+}
+
+.s-bold{
+  font-family: 'semi-bold';
+}
