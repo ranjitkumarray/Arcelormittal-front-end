@@ -1,8 +1,9 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { range, replace } from 'lodash';
+import { flatMap, range, replace } from 'lodash';
 import { element } from 'protractor';
+import { CitGlobalConstantService } from 'src/app/services/api-collection';
 
 import { ApiService } from 'src/app/services/api.service';
 import user from './user.json';
@@ -19,10 +20,12 @@ export class LoginComponent implements OnInit {
   Users = user;
   a: any;
   emailPattern = "^[a-z0-9._%+-]+@['gmail']+\.[com]{2,4}$";
+  loading: boolean = false;
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
+    private apiString: CitGlobalConstantService,
     private router: Router) {
-    
+
     // console.log(this.Users)
   }
 
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
     })
 
     //Authentication
-    if(localStorage.getItem('userDetails') ){
+    if (localStorage.getItem('userDetails')) {
       this.router.navigate(['/alloy-scrap/upload'])
     }
     else {
@@ -50,35 +53,27 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginSubmit(form: FormGroup) {
-
+  loginSubmit() {
     if (this.login.status == "VALID") {
       let loginData = this.login.value
-      this.Users.forEach((element: any) => {
-        let elmt = {
-          email: element.email,
-          password: element.password
-        }
-        //  console.log('elmt', elmt)
-        if (JSON.stringify(loginData) === JSON.stringify(elmt)) {
-          
-          this.apimethod.popupMessage('success','Login Successfuly!!')
-          this.router.navigate(['/alloy-scrap/upload/'])
+      let body = {
+        username: loginData.email,
+        password: loginData.password
+      }
+      this.loading = true
+      this.apimethod.post_request(this.apiString.userAccess.login, body).subscribe(result => {
+        this.loading = false
+        this.apimethod.popupMessage('success', 'Login Successfuly!!')
+        this.router.navigate(['/alloy-scrap/upload/'])
+        localStorage.setItem('userDetails', JSON.stringify(result))
 
-          element.password='###'
-          localStorage.setItem('userDetails', JSON.stringify(element))
-          
-          
-        }
-      
-        
-      });
-    }
-    else {
-      this.apimethod.popupMessage('error', 'Invalid Details')
-    
-    }
+      }, error => {
+        this.loading = false
+        this.apimethod.popupMessage('error', 'Invalid Details')
 
+
+      })
+    }
   }
-
 }
+
