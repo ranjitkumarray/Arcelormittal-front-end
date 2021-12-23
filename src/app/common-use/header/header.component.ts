@@ -20,13 +20,17 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.UserDetails = localStorage.getItem(("userDetails"))
+
     this.json = JSON.parse(this.UserDetails)
-    this.f_Letter = this.json.name[0]
+    console.log(this.json)
+    this.f_Letter=this.json.user.first_name
+    
   }
 
   logOut(){
     this.router.navigate(['/auth/login'])
     localStorage.clear();
+    
     // console.log(this.lgn.Users)
   }
   

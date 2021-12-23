@@ -61,11 +61,12 @@ export class LoginComponent implements OnInit {
         password: loginData.password
       }
       this.loading = true
-      this.apimethod.post_request(this.apiString.userAccess.login, body).subscribe(result => {
+      this.apimethod.get_request_Param(this.apiString.userAccess.login, body).subscribe(result => {
         this.loading = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
         this.router.navigate(['/alloy-scrap/upload/'])
         localStorage.setItem('userDetails', JSON.stringify(result))
+      
 
       }, error => {
         this.loading = false
