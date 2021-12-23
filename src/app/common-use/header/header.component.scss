@@ -103,6 +103,13 @@
     color: white;
     margin: 5px;
 }
+::ng-deep{
+    .mat-menu-panel.ng-trigger.ng-trigger-transformMenu.ng-tns-c43-0.mat-menu-before.mat-menu-below.ng-star-inserted.mat-elevation-z4{
+      margin-top:20px;
+    }
+    }
+
+
 
 // ::ng-deep {mat-menu-item {
 //     max-width: 600px !important;
