@@ -1,0 +1,125 @@
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
+<div>
+    <div class="row">
+        <div class="col-8">
+            <div class="text-left mt-10">
+                <button type="button" color="primary" class="mr-10" mat-raised-button (click)="actionClicked('','add')">
+                    Add Extra Freight Parity
+                </button>
+                <button type="button" color="primary" class="mr-10" mat-raised-button (click)="uploadFreightParity()">
+                    Upload Extra Freight Parity
+                </button>
+                <button type="button" color="primary" mat-raised-button (click)="downloadFreightParity()">
+                    Download Extra Freight Parity
+                </button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="text-right mt-10">
+                <mat-form-field appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter()">
+                    <mat-icon matSuffix (click)="applyFilter()" class="pointer">search</mat-icon>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <div class="my_offer_table_container">
+                    <div class="text-center ">
+                        <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
+                            <div class="table-inner-container hc">
+                                <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
+
+                                    <ng-container matColumnDef="Product_Division">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Division </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Delivering_Mill">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Delivering Mill </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
+                                    </ng-container>
+
+                                    <div *ngIf="url[3]==='mini-bar'">
+                                        
+                                        <ng-container matColumnDef="sequence_id">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sequence ID </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.sequence_id}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="Market_Customer">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Customer </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Market_Customer}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="Market_Customer_Group">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Customer Group
+                                            </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Market_Customer_Group}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <ng-container matColumnDef="Zip_Code_Dest">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Zip Code (Dest) </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Market_Country">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Market Country </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Market_Country}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Document_Item_Currency">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc Item Currency </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Document_Item_Currency}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Amount">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Amount}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Currency">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <mat-icon class="mr-10" (click)="actionClicked(row,'edit')">edit</mat-icon>
+                                            <mat-icon class="mr-10" (click)="actionClicked(row,'delete')">delete
+                                            </mat-icon>
+
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No Record Found !
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <mat-paginator [length]="totalCount" [pageSize]="500"
+                                [pageSizeOptions]="[500,1000,1500,2000]" #paginators
+                                (page)="pageEvent = pageChangeCall($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

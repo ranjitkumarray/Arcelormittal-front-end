@@ -1,0 +1,96 @@
+<div class="sidebar" [class.sidebar_open]="isOpen">
+    <button (click)="isOpen = !isOpen" class="sidebar_toggler">
+        <i class="fa fa-bars" *ngIf="isOpen"></i>
+        <i class="fas fa-times" *ngIf="!isOpen"></i>
+    </button>
+    <div class="">
+        <div class="container-fluid logo_outer">
+            <a class="logo">
+                <img src="../../../assets/images/arcelorMittal_logo.png" alt="logo" />
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="line"></div>
+        <ul class="nav flex-column flex-nowrap overflow-hidden">
+            <!-- test for multiple Side bar at a time  -->
+            <span *ngIf="navbarItem.length>0">
+                <span *ngFor="let item of navbarItem">
+                    <div class="line"></div>
+                    <li class="nav-item">
+                        <div class="sub_menu_con">
+                            <div class=" items nav-link collapsed text-truncate" data-toggle="collapse"
+                                [attr.data-target]="'#' + item.tag">
+                                <img class="active_img" [src]="item.active_img " alt="icon" />
+                                <img class="inactive_img" [src]="item.inactive_img" alt="icon-inactive" />
+                                <span class="d-none d-sm-inline">{{item.name}} </span>
+                            </div>
+                        </div>
+                        <span *ngFor="let sub_item1 of item.children">
+                            <span *ngIf="sub_item1.children && item.children">
+                                <div class="collapse" [id]="item.tag" aria-expanded="false">
+                                    <ul class="flex-column pl-2 nav">
+                                        <li class="nav-item">
+                                            <div class="sub_menu_con">
+                                                <div class=" items nav-link collapsed text-truncate"
+                                                    data-toggle="collapse" [attr.data-target]="'#'+sub_item1.tag">
+                                                    <img class="active_img" [src]="sub_item1.active_img " alt="icon" />
+                                                    <img class="inactive_img" [src]="sub_item1.inactive_img"
+                                                        alt="icon-inactive" />
+                                                    <span class="d-none d-sm-inline">{{sub_item1?.name}} </span>
+                                                </div>
+                                            </div>
+                                            <div class="collapse" [id]="sub_item1.tag" aria-expanded="false">
+                                                <ul class="flex-column pl-2 nav">
+                                                    <span *ngIf="sub_item1.children">
+                                                        <li class="nav-item"
+                                                            *ngFor="let sub_item2 of sub_item1.children">
+                                                            <div class="sub items" [routerLink]="sub_item2.url"
+                                                                [routerLinkActive]="['active']">
+                                                                <span class="sub_hyphen">
+                                                                    <!-- <i [class]="sub_item2.icon" aria-hidden="true"></i> -->
+                                                                </span>
+                                                                {{sub_item2?.name}}
+                                                            </div>
+                                                        </li>
+                                                    </span>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
+                            <span *ngIf="!sub_item1.children ">
+                                <div class="collapse" [id]="item.tag" aria-expanded="false">
+                                    <ul class="flex-column pl-2 nav">
+                                        <li class="nav-item">
+                                            <div class="sub items" [routerLink]="sub_item1.url"
+                                                [routerLinkActive]="['active']">
+                                                <!-- <span class="sub_hyphen"><i [class]="sub_item1?.icon"
+                                                        aria-hidden="true"></i></span> -->
+                                                {{sub_item1.name}}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+                </span>
+            </span>
+            <!-- end  -->
+            <div class="line"></div>
+        </ul>
+    </div>
+</div>
+<div class="main_container_content" [class.main_container_content_toggled]="isOpen">
+    <app-header></app-header>
+    <div>
+        <div style="margin-top: 10px;"></div>
+
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- <app-footer></app-footer> -->
+</div>
