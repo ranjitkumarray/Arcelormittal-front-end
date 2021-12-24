@@ -41,10 +41,9 @@
                 <div class="col-12">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Menu</mat-label>
-                        <mat-select formControlName="menu" required multiple>
-                            <mat-option value="2">Manaement</mat-option>
-                            <mat-option value="1">Alloy & Scrap</mat-option>
-                            <mat-option value="3">SMB</mat-option>
+                        <mat-select formControlName="menu" required multiple (selectionChange)="getSubMenu()">
+                            <mat-option *ngFor='let menu of menuItem' [value]="menu?.menuid">{{menu?.menudescription}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -52,8 +51,8 @@
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Sub -Menu</mat-label>
                         <mat-select formControlName="sub_menu" required multiple>
-                            <mat-option value="1">User </mat-option>
-                            <mat-option value="2">User Group</mat-option>
+                            <mat-option *ngFor="let subMenu of subMenuList" [value]="subMenu?.SubMenuID">
+                                {{subMenu?.SubMenuDescription}} </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
