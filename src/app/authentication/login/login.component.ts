@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit {
 
 
   loginSubmit() {
-    if (this.login.status == "VALID") {
+    // if (this.login.status == "VALID") {
+      if(true){
       let loginData = this.login.value
       let body = {
         username: loginData.email,
@@ -65,7 +66,9 @@ export class LoginComponent implements OnInit {
         this.loading = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
         this.router.navigate(['/alloy-scrap/upload/'])
+        
         localStorage.setItem('userDetails', JSON.stringify(result))
+        
       
 
       }, error => {

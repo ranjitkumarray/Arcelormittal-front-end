@@ -36,6 +36,8 @@ export class SingleUserComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       user_group: ['', Validators.required]
     });
+
+
   }
   updateBreadCrumb() {
     this.breadCrumblocationsList = [
@@ -61,6 +63,38 @@ export class SingleUserComponent implements OnInit {
     }
   }
   submit() {
-    console.log(this.firstFormGroup.value, this.secondFormGroup.value)
+    // console.log(this.firstFormGroup.value, this.secondFormGroup.value)
+
+    let f_group = this.firstFormGroup.value;
+    let s_group = this.secondFormGroup.value;
+    let body = [
+      {
+      first_name : f_group.first_name,
+      middle_name : f_group.middle_name,
+      last_name : f_group.last_name,
+      username : f_group.username,
+      email  : f_group.email,
+      phone_no : f_group.phone_no,
+      address : f_group.address
+    },
+    {
+      user_group : s_group.user_group
+      }
+  ]
+    
+    this.apiMethod.post_request('http://127.0.0.1:5000/mm',body).subscribe(result=>{
+    // this.apiMethod.get_request_Param('http://127.0.0.1:5000/mm',body).subscribe(result=>{
+      this.loadingRouteConfig = false;
+      this.router.navigate(['/user/group-management'])
+      this.apiMethod.popupMessage('success','Thanks For Updating')
+    },
+    error=>{
+      console.log('failed')
+      this.apiMethod.popupMessage('error','Try Again')
+    }
+    )
+    console.log(typeof(body))
   }
+
+ 
 }
