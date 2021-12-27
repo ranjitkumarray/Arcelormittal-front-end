@@ -268,4 +268,8 @@ export class CitGlobalConstantService {
     userAccess: any = {
         login: this.baseUrl + "login",
     }
+    management : any = {
+        single_user : this.baseUrl + "management"
+    }
+
 }

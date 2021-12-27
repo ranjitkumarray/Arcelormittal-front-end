@@ -82,10 +82,10 @@ export class SingleUserComponent implements OnInit {
       }
   ]
     
-    this.apiMethod.post_request('http://127.0.0.1:5000/mm',body).subscribe(result=>{
-    // this.apiMethod.get_request_Param('http://127.0.0.1:5000/mm',body).subscribe(result=>{
+    // this.apiMethod.post_request('http://127.0.0.1:5000/management',body).subscribe(result=>{
+      
+     this.apiMethod.get_request_Param(this.apiString.userAccess.management,body).subscribe(result=>{
       this.loadingRouteConfig = false;
-      this.router.navigate(['/user/group-management'])
       this.apiMethod.popupMessage('success','Thanks For Updating')
     },
     error=>{
