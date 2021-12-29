@@ -61,6 +61,11 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
   //getting uploaded history of alloy scrap 
   getBasePriceAddition() {
+    this.apiMethod.get_request_header(this.apiString.newEndPoint.smb).subscribe(result=>{
+      console.log(result)
+    },error=>{
+      console.log(error)
+    })
     this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {

@@ -269,4 +269,8 @@ export class CitGlobalConstantService {
         login: this.baseUrl + "login",
         group_management_data: this.baseUrl + "group_management_data"
     }
+
+    newEndPoint:any={
+        smb:this.baseUrl+"smb/"
+    }
 }
