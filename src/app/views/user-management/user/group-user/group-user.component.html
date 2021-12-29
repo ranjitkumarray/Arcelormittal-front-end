@@ -51,14 +51,14 @@
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Sub -Menu</mat-label>
                         <mat-select formControlName="sub_menu" required multiple>
-                            <mat-option *ngFor="let subMenu of subMenuList" [value]="subMenu?.SubMenuID">
+                            <mat-option *ngFor="let subMenu of subMenuList" [value]="subMenu">
                                 {{subMenu?.SubMenuDescription}} </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="col-12">
                     <div class="text-right">
-                        <button type="button" color="primary" mat-raised-button (Click)="submit()">
+                        <button type="button" color="primary" mat-raised-button (click)="submit()">
                             Submit
                         </button>
                     </div>
