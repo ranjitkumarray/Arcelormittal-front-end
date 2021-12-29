@@ -21,16 +21,16 @@ export class SidebarComponent implements OnInit {
 
   constructor(private router: Router) {
     this.navbarItem = this.navLink
-    if (this.userDeatails.usertype === 'Admin') {
-      //  this.router.navigate(['/alloy-scrap/upload/'])
-      this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin' || x.type === 'user')
+    // if (this.userDeatails.usertype === 'Admin') {
+    //   //  this.router.navigate(['/alloy-scrap/upload/'])
+    //   this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin' || x.type === 'user')
       
-    } else {
-      this.router.navigate(['/management/offer-status/'])
+    // } else {
+    //   this.router.navigate(['/management/offer-status/'])
 
-      this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
-    }
-    // console.log(this.navbarItem, "Nav Item")
+    //   this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
+    // }
+    console.log(this.navbarItem, "Nav Item")
     console.log(this.userDeatails.usertype)
   }
 
