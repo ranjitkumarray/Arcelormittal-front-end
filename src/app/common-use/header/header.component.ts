@@ -22,8 +22,9 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.UserDetails = localStorage.getItem(("userDetails"))
 
     this.json = JSON.parse(this.UserDetails)
-    console.log(this.json)
-    this.f_Letter=this.json.user.first_name
+    console.log(this.json.user)
+    this.f_Letter=this.json.user.user_name
+    
     
   }
 
