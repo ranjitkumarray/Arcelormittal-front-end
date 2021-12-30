@@ -13,20 +13,14 @@ export class HeaderComponent implements OnInit, DoCheck {
   isLoggedIn: boolean = localStorage.getItem('user') ? true : false;
 
   UserDetails:any;
-  json:any;
-  f_Letter:any
+  f_name:any
 
   constructor( private router: Router) { }
 
   ngOnInit(): void {
     this.UserDetails = localStorage.getItem(("userDetails"))
-
-    this.json = JSON.parse(this.UserDetails)
-    console.log(this.json.user)
-    this.f_Letter=this.json.user.user_name
-    
-    
-  }
+    this.f_name = JSON.parse(this.UserDetails).user.user_name[0]
+ }
 
   logOut(){
     this.router.navigate(['/auth/login'])
@@ -36,8 +30,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   
   profile(){
-    
-    console.log(this.f_Letter)
     
   }
   

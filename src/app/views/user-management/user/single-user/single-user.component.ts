@@ -63,37 +63,8 @@ export class SingleUserComponent implements OnInit {
     }
   }
   submit() {
-    // console.log(this.firstFormGroup.value, this.secondFormGroup.value)
-
-    let f_group = this.firstFormGroup.value;
-    let s_group = this.secondFormGroup.value;
-    let body = [
-      {
-      first_name : f_group.first_name,
-      middle_name : f_group.middle_name,
-      last_name : f_group.last_name,
-      username : f_group.username,
-      email  : f_group.email,
-      phone_no : f_group.phone_no,
-      address : f_group.address
-    },
-    {
-      user_group : s_group.user_group
-      }
-  ]
+    console.log(this.firstFormGroup.value, this.secondFormGroup.value)
     
-    // this.apiMethod.post_request('http://127.0.0.1:5000/management',body).subscribe(result=>{
-      
-     this.apiMethod.get_request_Param(this.apiString.userAccess.management,body).subscribe(result=>{
-      this.loadingRouteConfig = false;
-      this.apiMethod.popupMessage('success','Thanks For Updating')
-    },
-    error=>{
-      console.log('failed')
-      this.apiMethod.popupMessage('error','Try Again')
-    }
-    )
-    console.log(typeof(body))
   }
 
  

@@ -34,6 +34,7 @@ export class GroupUserComponent implements OnInit {
   }
   getRequiredDetails() {
     this.loadingRouteConfig = true
+   
     this.apiMethod.get_request(this.apiString.userAccess.group_management_data).subscribe((result: any) => {
       console.log(result)
       this.loadingRouteConfig = false
@@ -47,13 +48,16 @@ export class GroupUserComponent implements OnInit {
     })
   }
   getSubMenu() {
-    let param: any
+    console.log(this.groupUserForm.value)
+    let param: any=''
     if (this.groupUserForm.value.menu.length > 0) {
-      this.groupUserForm.menu.forEach((element: any) => {
-        param += "&" + element
-      });
+      let body={
+        "menu_id":this.groupUserForm.value.menu
+      }
+     
+      //console.log(body)
       this.loadingRouteConfig = true
-      this.apiMethod.get_request(this.apiString.userAccess.group_management_data + '?' + param).subscribe((result:any) => {
+      this.apiMethod.post_request(this.apiString.userAccess.group_management_data ,body).subscribe((result:any) => {
         console.log(result)
         this.loadingRouteConfig = false
         this.subMenuList=result.sub_menu_items
@@ -64,7 +68,16 @@ export class GroupUserComponent implements OnInit {
     }
   }
   submit() {
+    console.log("test")
+    this.loadingRouteConfig = true
     console.log(this.groupUserForm.value)
+    this.apiMethod.post_request(this.apiString.userAccess.group_management_insert, this.groupUserForm.value).subscribe(result => {
+      console.log(result)
+      this.loadingRouteConfig = false
+    }, error => {
+      this.loadingRouteConfig = false
+      console.log(error)
+    })
   }
   updateBreadCrumb() {
     this.breadCrumblocationsList = [

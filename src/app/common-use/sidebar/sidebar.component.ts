@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
 
     //   this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
     // }
-    // console.log(this.navbarItem, "Nav Item")
+    console.log(this.navbarItem, "Nav Item")
     console.log(this.userDeatails.usertype)
   }
 
