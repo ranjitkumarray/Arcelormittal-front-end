@@ -274,9 +274,14 @@ export class CitGlobalConstantService {
         single_user : this.baseUrl + "management"
     };
 
+    //mine
     single_user : any = {
         valid_user : this.baseUrl + "valid_user",
         insert_values : this.baseUrl + "insert_values"
+    };
+
+    group_user : any = {
+        user_access : this.baseUrl + "user_access"
     }
 
 }

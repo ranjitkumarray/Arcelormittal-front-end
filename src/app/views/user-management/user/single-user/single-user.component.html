@@ -79,7 +79,7 @@
 
                         <div class="col-12">
                             <div class="text-right">
-                                <button type="button" color="primary" mat-raised-button matStepperNext (click)="insert_values()">
+                                <button type="button" color="primary" mat-raised-button matStepperNext (click)="user_group()">
                                     Next
                                 </button>
                             </div>
@@ -97,9 +97,8 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>User Group</mat-label>
                                 <mat-select formControlName="user_group" required>
-                                    <mat-option value="1">Option 1</mat-option>
-                                    <mat-option value="2">Option 2</mat-option>
-                                    <mat-option value="3">Option 3</mat-option>
+                                    <mat-option *ngFor="let group_name of user_group_name"> {{group_name}} </mat-option>
+                                    
                                 </mat-select>
                             </mat-form-field>
 

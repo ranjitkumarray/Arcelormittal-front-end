@@ -16,6 +16,9 @@ export class SingleUserComponent implements OnInit {
   breadCrumblocationsList: any = []
   loadingRouteConfig: boolean = false
 
+  //user-group
+  user_group_name : any;
+
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -81,7 +84,12 @@ export class SingleUserComponent implements OnInit {
     console.log('hiii',data)
    })
   }
-  
+  user_group(){
+    this.apiMethod.get_request(this.apiString.group_user.user_access).subscribe(data=>{
+      console.log('User_group : ',data)
+      this.user_group_name = data
+    })
+  }
   submit() {
     // console.log(this.firstFormGroup.value, this.secondFormGroup.value)
     
