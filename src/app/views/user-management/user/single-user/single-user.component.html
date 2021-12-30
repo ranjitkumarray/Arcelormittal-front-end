@@ -48,7 +48,7 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Username</mat-label>
                                 <input matInput placeholder="Username" formControlName="username" required
-                                  (keyup.enter)="demographic()">
+                                  (keyup.enter)="valid_user()">
                             </mat-form-field>
                         </div>
                         <div class="col-12">
@@ -79,7 +79,7 @@
 
                         <div class="col-12">
                             <div class="text-right">
-                                <button type="button" color="primary" mat-raised-button matStepperNext>
+                                <button type="button" color="primary" mat-raised-button matStepperNext (click)="insert_values()">
                                     Next
                                 </button>
                             </div>

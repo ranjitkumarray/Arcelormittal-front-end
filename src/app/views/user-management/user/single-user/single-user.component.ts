@@ -63,14 +63,25 @@ export class SingleUserComponent implements OnInit {
     }
   }
 
-  demographic(){
+  // Demographic
+  valid_user(){
+    let body =  this.firstFormGroup.value
+    
+    this.apiMethod.post_request(this.apiString.single_user.valid_user,body).subscribe(data=>{
+      console.log(data)
+    })
+    console.log(body)
+  }
+
+  insert_values(){
     let body = {
       first_group : this.firstFormGroup.value
    }
-   this.apiMethod.get_request_Param(this.apiString.userAccess.inser_values, body).subscribe(data=>{
+   this.apiMethod.post_request(this.apiString.single_user.insert_values, body).subscribe(data=>{
     console.log('hiii',data)
    })
   }
+  
   submit() {
     // console.log(this.firstFormGroup.value, this.secondFormGroup.value)
     
