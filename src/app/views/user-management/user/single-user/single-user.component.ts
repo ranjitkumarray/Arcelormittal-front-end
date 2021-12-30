@@ -62,8 +62,17 @@ export class SingleUserComponent implements OnInit {
       this.router.navigateByUrl(link);
     }
   }
+
+  demographic(){
+    let body = {
+      first_group : this.firstFormGroup.value
+   }
+   this.apiMethod.get_request_Param(this.apiString.userAccess.inser_values, body).subscribe(data=>{
+    console.log('hiii',data)
+   })
+  }
   submit() {
-    console.log(this.firstFormGroup.value, this.secondFormGroup.value)
+    // console.log(this.firstFormGroup.value, this.secondFormGroup.value)
     
   }
 
