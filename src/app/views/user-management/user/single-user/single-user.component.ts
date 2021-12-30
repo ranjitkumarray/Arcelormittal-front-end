@@ -62,5 +62,6 @@ export class SingleUserComponent implements OnInit {
   }
   submit() {
     console.log(this.firstFormGroup.value, this.secondFormGroup.value)
+    
   }
 }

@@ -9,9 +9,9 @@
             {{userName}} -->
             <div class="button_text">
                 <button class="myFab" mat-mini-fab [matMenuTriggerFor]="beforeMenu">
-                    {{json.name[0] | uppercase}}
+                    {{f_name | uppercase}}
                 </button>
-                <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white">{{json.name | uppercase}}</button>
+                <!-- <button mat-menu class="dropdown-toggle" [matMenuTriggerFor]="beforeMenu" style="padding-left:10px;border:none;background-color:transparent;color:white"> </button> -->
                 
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <!-- <button mat-menu-item>
