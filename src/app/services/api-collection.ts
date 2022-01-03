@@ -268,20 +268,10 @@ export class CitGlobalConstantService {
     userAccess: any = {
         login: this.baseUrl + "login",
         group_management_data: this.baseUrl + "group_management_data",
-        
-    }
-    management : any = {
-        single_user : this.baseUrl + "management"
-    };
-
-    //mine
-    single_user : any = {
-        valid_user : this.baseUrl + "valid_user",
-        insert_values : this.baseUrl + "insert_values"
-    };
-
-    group_user : any = {
-        user_access : this.baseUrl + "user_access"
+        email_availability_check: this.baseUrl + "existEmail",
+        user_availability_check: this.baseUrl + "existUsername",
+        add_single_user_management: this.baseUrl + "insert_values",
+        user_access: this.baseUrl + "user_access"
     }
 
 }
