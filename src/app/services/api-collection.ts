@@ -267,6 +267,11 @@ export class CitGlobalConstantService {
     };
     userAccess: any = {
         login: this.baseUrl + "login",
-        group_management_data: this.baseUrl + "group_management_data"
+        group_management_data: this.baseUrl + "group_management_data",
+        email_availability_check: this.baseUrl + "existEmail",
+        user_availability_check: this.baseUrl + "existUsername",
+        add_single_user_management: this.baseUrl + "insert_values",
+        user_access: this.baseUrl + "user_access"
     }
+
 }
