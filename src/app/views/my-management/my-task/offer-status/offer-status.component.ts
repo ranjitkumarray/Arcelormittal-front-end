@@ -82,7 +82,7 @@ export class OfferStatusComponent implements OnInit {
     this.resultdata = []
     // this.dataSource=""
     setTimeout(() => {
-      this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
+      this.apiMethod.get_request_header_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
         this.loadingRouteConfig = false
         this.resultdata = result     
          this.totalCount=result.Count

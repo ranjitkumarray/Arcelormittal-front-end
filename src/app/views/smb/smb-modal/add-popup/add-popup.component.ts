@@ -78,7 +78,7 @@ export class AddPopupComponent implements OnInit {
       delete this.updateRecord.value.action
       console.group(this.updateRecord.value)
       this.loadingRouteConfig = true
-      this.apiMethod.post_request(this.data.addURL, this.updateRecord.value).subscribe(result => {
+      this.apiMethod.post_request_header(this.data.addURL, this.updateRecord.value).subscribe(result => {
         console.log(result)
         this.loadingRouteConfig = false
         this.apiMethod.popupMessage('success', ' Record successfully Added.')

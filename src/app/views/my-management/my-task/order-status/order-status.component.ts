@@ -67,7 +67,7 @@ export class OrderStatusComponent implements OnInit {
     console.log(body)
     // this.resultdata = this.offer
     this.resultdata = []
-    this.apiMethod.get_request(this.apiString.myTask.orderStatus).subscribe((result: any) => {
+    this.apiMethod.get_request_header(this.apiString.myTask.orderStatus).subscribe((result: any) => {
       this.loadingRouteConfig = false
       this.resultdata = result
       this.totalCount = result.Count

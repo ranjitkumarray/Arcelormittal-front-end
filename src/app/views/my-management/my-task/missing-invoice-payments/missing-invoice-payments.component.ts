@@ -101,7 +101,7 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       limit: this.filterForm.value.limit
     }
     this.resultdata = []
-    this.apiMethod.get_request_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
+    this.apiMethod.get_request_header_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
       this.resultdata = result
       this.totalCount = result.Count

@@ -46,7 +46,7 @@ export class SingleUserComponent implements OnInit {
   }
   getUserAccess() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.userAccess.user_access).subscribe((result: any) => {
+    this.apiMethod.get_request_header(this.apiString.userAccess.user_access).subscribe((result: any) => {
       this.loadingRouteConfig = false
       console.log(result)
       this.accessList = result.data
@@ -59,7 +59,7 @@ export class SingleUserComponent implements OnInit {
     // if (type === 'username') {
     console.log("Coming")
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiString.userAccess.user_availability_check, { username: this.firstFormGroup.value.username }).subscribe((result: any) => {
+    this.apiMethod.get_request_header_Param(this.apiString.userAccess.user_availability_check, { username: this.firstFormGroup.value.username }).subscribe((result: any) => {
       console.log(result)
       this.loadingRouteConfig = false
       if (type === 'username') {
@@ -109,7 +109,7 @@ export class SingleUserComponent implements OnInit {
       "address": this.firstFormGroup.value.address
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiString.userAccess.add_single_user_management, body).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiString.userAccess.add_single_user_management, body).subscribe(result => {
       this.loadingRouteConfig = false
       this._snackBar.open("Successfully added User Group", "", {
         duration: 4000,

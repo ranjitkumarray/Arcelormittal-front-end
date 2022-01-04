@@ -69,7 +69,7 @@ export class BasePriceAdditionListComponent implements OnInit {
       searchString = "all"
     }
     this.resultData=[]
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       this.resultData=result
       this.totalCount = this.resultData.totalCount
