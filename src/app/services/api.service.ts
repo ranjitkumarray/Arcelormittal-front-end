@@ -7,38 +7,45 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
     baseURI: string = environment.domain;
     selectedIndex: any = '';
+    token: any = '';
     constructor(
         private https: HttpClient,
         private _snackBar: MatSnackBar,
 
-    ) { }
+    ) {
+        let localData: any = localStorage.getItem('userDetails')
+        if (localData) {
+            this.token = JSON.parse(localData).token
+
+        }
+    }
     get_request(url: any) {
         return this.https.get(url);
     }
     get_request_header(url: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
         return this.https.get(url, {
             headers: headers
         })
     }
     post_request_header(url: any, param: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
         return this.https.post(url, param, {
             headers: headers
         })
     }
     put_request_header(url: any, param: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
         return this.https.put(url, param, {
             headers: headers
         })
     }
     patch_request_header(url: any, param: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
 
         return this.https.patch(url, param, {
             headers: headers
@@ -51,7 +58,7 @@ export class ApiService {
     }
     get_request_header_Param(url: any, param: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
         return this.https.get(url, {
             params: param,
             headers: headers
@@ -59,7 +66,7 @@ export class ApiService {
     }
     delete_request_header_Param(url: any, param: any) {
         let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', "0cP$mb");
+        headers = headers.append('x-access-token', this.token);
         return this.https.delete(url, {
             params: param,
             headers: headers

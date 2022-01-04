@@ -27,7 +27,7 @@ export class SingleUserComponent implements OnInit {
     private _formBuilder: FormBuilder) { }
   ngOnInit() {
     this.updateBreadCrumb()
-    let EMAIL_REGEXP = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+    let EMAIL_REGEXP = '^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
     this.firstFormGroup = this._formBuilder.group({
       first_name: ['', Validators.required],

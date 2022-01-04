@@ -1,3 +1,8 @@
+<ng-container *ngIf="loadingRouteConfig">
+  <div class="loading-overlay is-active">
+    <span class="signal"></span>
+  </div>
+</ng-container>
 <div class="row output">
   <mat-card>
     <form [formGroup]="login" (submit)="loginSubmit()">
@@ -9,14 +14,14 @@
 
       <div class="row">
         <div class="col-md-12">
-          <mat-label>Email:</mat-label>
+          <mat-label>Username/Email ID<sup>*</sup></mat-label>
           <mat-form-field class="full-width w-100" appearance="outline">
             <input matInput type="text" formControlName="email">
           </mat-form-field>
         </div>
 
         <div class="col-md-12">
-          <mat-label>Password:</mat-label>
+          <mat-label>Password <sup>*</sup></mat-label>
           <mat-form-field class="full-width w-100" appearance="outline">
             <input matInput [type]="hide ? 'password':'text'" formControlName="password">
             <mat-icon type="button" matSuffix (click)="hide=!hide">
@@ -24,12 +29,13 @@
             </mat-icon>
           </mat-form-field>
         </div>
-        
+        <div class="col-md-12 text-right">
+          <a [routerLink]="['../forgot-password']" class="text-center">Forgot Password</a>
+        </div>
         <div class="col-md-12 text-center">
           <button mat-raised-button class='mr-10' color='primary'>Login</button>
         </div>
 
-        <a [routerLink]="['../forgot-password']" class="text-center">Forgot Password</a>
       </div>
     </form>
   </mat-card>
