@@ -35,7 +35,7 @@ export class GroupUserComponent implements OnInit {
   getRequiredDetails() {
     this.loadingRouteConfig = true
    
-    this.apiMethod.get_request(this.apiString.userAccess.group_management_data).subscribe((result: any) => {
+    this.apiMethod.get_request_header(this.apiString.userAccess.group_management_data).subscribe((result: any) => {
       console.log(result)
       this.loadingRouteConfig = false
       this.groupUserForm.patchValue({
@@ -57,7 +57,7 @@ export class GroupUserComponent implements OnInit {
      
       //console.log(body)
       this.loadingRouteConfig = true
-      this.apiMethod.post_request(this.apiString.userAccess.group_management_data ,body).subscribe((result:any) => {
+      this.apiMethod.post_request_header(this.apiString.userAccess.group_management_data ,body).subscribe((result:any) => {
         console.log(result)
         this.loadingRouteConfig = false
         this.subMenuList=result.sub_menu_items
@@ -71,7 +71,7 @@ export class GroupUserComponent implements OnInit {
     console.log("test")
     this.loadingRouteConfig = true
     console.log(this.groupUserForm.value)
-    this.apiMethod.post_request(this.apiString.userAccess.group_management_insert, this.groupUserForm.value).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiString.userAccess.group_management_insert, this.groupUserForm.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
     }, error => {

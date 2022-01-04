@@ -88,7 +88,7 @@ export class FreightParityListComponent implements OnInit {
       searchString = "all"
     }
     this.dataSource = new MatTableDataSource<freightParityData>(this.data)
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

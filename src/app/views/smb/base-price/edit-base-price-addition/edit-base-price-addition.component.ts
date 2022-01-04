@@ -65,7 +65,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.get_request_header_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -105,7 +105,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
   editRecord() {
     console.group(this.editBasePriceAddition.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.update, this.editBasePriceAddition.value).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiStringURL.update, this.editBasePriceAddition.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')

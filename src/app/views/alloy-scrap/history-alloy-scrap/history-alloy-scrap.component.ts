@@ -43,7 +43,7 @@ export class HistoryAlloyScrapComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiString.alloy_scrap_history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

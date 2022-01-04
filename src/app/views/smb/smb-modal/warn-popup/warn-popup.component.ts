@@ -29,7 +29,7 @@ export class WarnPopupComponent implements OnInit {
   deleteRecord() {
     this.loadingRouteConfig = true
     console.log(this.data,this.data.deleteURL)
-    this.apiMethod.delete_request_Param(this.data.deleteURL, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.delete_request_header_Param(this.data.deleteURL, { id: this.data.id }).subscribe((result) => {
       this.loadingRouteConfig = false
       this.dialogRef.close()
       this.apiMethod.popupMessage('success', 'Record deleted successfully')
