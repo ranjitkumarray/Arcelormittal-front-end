@@ -18,7 +18,7 @@ export class OrderStatusComponent implements OnInit {
     "confirmed_delivery_date",
     "customer_reference",
     "delivering_plant",
-    "delv_week",
+    // "delv_week",
     "order_status",
     "quantity",
     "sales_doc_item_number",
