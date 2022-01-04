@@ -152,7 +152,7 @@ export class IncotermExceptionsUploadComponent implements OnInit {
     const formData = new FormData();
     formData.append("filename", this.selectedFiles.incoterm_exceptions.file.selectedFile)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.incoterm_exceptions_upload, formData).subscribe((data) => {
+    this.apiMethod.post_request_header(this.apiStringURL.incoterm_exceptions_upload, formData).subscribe((data) => {
       console.log(data)
       let resultData: any = data
       this.loadingRouteConfig = false
@@ -186,7 +186,7 @@ export class IncotermExceptionsUploadComponent implements OnInit {
       "filename": this.incoterm_exceptions_data.filename
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.incoterm_exceptions_validate, data).subscribe((result: any) => {
+    this.apiMethod.post_request_header(this.apiStringURL.incoterm_exceptions_validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'File validated successfully')

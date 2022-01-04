@@ -212,7 +212,7 @@ export class UploadAlloyScrapComponent implements OnInit {
       urlString = this.apiString.scrap_upload
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(urlString, formData).subscribe((data) => {
+    this.apiMethod.post_request_header(urlString, formData).subscribe((data) => {
       console.log(data)
       let resultData: any = data
       this.loadingRouteConfig = false
@@ -295,7 +295,7 @@ export class UploadAlloyScrapComponent implements OnInit {
       }
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(urlString, data).subscribe((result: any) => {
+    this.apiMethod.post_request_header(urlString, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'File validated successfully')

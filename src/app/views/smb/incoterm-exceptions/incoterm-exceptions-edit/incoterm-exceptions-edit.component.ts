@@ -68,7 +68,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.content.id }).subscribe((result) => {
+    this.apiMethod.get_request_header_Param(this.apiStringURL.get, { id: this.data.content.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -98,7 +98,7 @@ export class IncotermExceptionsEditComponent implements OnInit {
   editRecord() {
     console.group(this.editIncotermExceptionsClick.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.update+'?id='+this.data.content.id, this.editIncotermExceptionsClick.value).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiStringURL.update+'?id='+this.data.content.id, this.editIncotermExceptionsClick.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')

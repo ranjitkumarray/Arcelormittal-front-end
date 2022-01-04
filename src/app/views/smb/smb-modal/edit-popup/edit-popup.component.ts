@@ -56,7 +56,7 @@ export class EditPopupComponent implements OnInit {
     console.log(this.url, this.data)
     // this.data.fieldValue.push('sequence_id')
 
-    this.apiMethod.get_request(this.data.url).subscribe(result => {
+    this.apiMethod.get_request_header(this.data.url).subscribe(result => {
       console.log(result)
     })
     var objects: any = {};
@@ -85,7 +85,7 @@ export class EditPopupComponent implements OnInit {
     delete this.updateRecord.value.action
     console.group(this.updateRecord.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.data.updateURL, this.updateRecord.value).subscribe(result => {
+    this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')

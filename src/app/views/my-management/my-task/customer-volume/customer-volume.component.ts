@@ -44,7 +44,7 @@ export class CustomerVolumeComponent implements OnInit {
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
-    this.apiMethod.get_request(this.apiString.myTask.offerStatus).subscribe((result: any) => {
+    this.apiMethod.get_request_header(this.apiString.myTask.offerStatus).subscribe((result: any) => {
       this.loadingRouteConfig = true
       this.dataSource = new MatTableDataSource<offerStatus>(JSON.parse(result.data))
       setTimeout(() => {
