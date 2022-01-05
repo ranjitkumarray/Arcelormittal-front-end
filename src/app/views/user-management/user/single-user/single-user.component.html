@@ -48,7 +48,7 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Username</mat-label>
                                 <input matInput placeholder="Username" formControlName="username" required
-                                    (keyup.enter)="validationCheck('username')">
+                                    (focusout)="validationCheck('username')">
                                 <mat-icon matSuffix *ngIf="firstFormGroup?.controls['username']?.errors?.incorrect"
                                     style="color:red">
                                     circle_o</mat-icon>
@@ -58,7 +58,7 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Email</mat-label>
                                 <input matInput placeholder="Email" formControlName="email" required
-                                    (keyup.enter)="validationCheck('email')">
+                                    (focusout)="validationCheck('email')">
                                 <mat-icon matSuffix *ngIf="firstFormGroup?.controls['email']?.errors?.incorrect"
                                     style="color:red">
                                     circle_o</mat-icon>

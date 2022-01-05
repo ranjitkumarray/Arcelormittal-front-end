@@ -61,15 +61,15 @@ export class SingleUserComponent implements OnInit {
     let data: any = ''
     if (type === 'username') {
       this.api = this.apiString.userAccess.user_availability_check
-      data = this.firstFormGroup.value.username
+      data = {username : this.firstFormGroup.value.username}
     } else {
       this.api = this.apiString.userAccess.email_availability_check
-      data = this.firstFormGroup.value.email
+      data = {email : this.firstFormGroup.value.email}
 
     }
     console.log("Coming")
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_header_Param(this.api, { username: data }).subscribe((result: any) => {
+    this.apiMethod.get_request_header_Param(this.api, data).subscribe((result: any) => {
       console.log(result)
       this.loadingRouteConfig = false
       if (type === 'username') {
@@ -86,7 +86,7 @@ export class SingleUserComponent implements OnInit {
         }
       }
       if (type === 'email') {
-        if (result.status === 'Exist Email') {
+        if (result.status === 'Exist-Email') {
           this.firstFormGroup.controls['email'].setErrors({ 'incorrect': true });
           this._snackBar.open("Email Already Existing", "", {
             duration: 4000,
