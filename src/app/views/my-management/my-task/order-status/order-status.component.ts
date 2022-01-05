@@ -44,7 +44,6 @@ export class OrderStatusComponent implements OnInit {
     this.filterForm = this.fb.group({
       search_string: [''],
       Order_Status: [''],
-      Sold_To: [''],
       Ship_To: [''],
       Sales_Doc_Number: [''],
       Sold_To: [''],
@@ -58,14 +57,14 @@ export class OrderStatusComponent implements OnInit {
     this.loadingRouteConfig = true
     let body = this.filterForm.value
     Object.keys(body).forEach(key => {
-      // if (body[key] === 'limit' || body[key] === 'offset') {
-      // } else {
+      if (body[key] === 'limit' || body[key] === 'offset') {
+      } else {
       
         if (body[key] === "") {
           body[key] = this.filterForm.value;
         }
         console.log()
-      // }
+      }
     });
     console.log()
     // this.resultdata = this.offer
