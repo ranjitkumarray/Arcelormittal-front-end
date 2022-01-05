@@ -46,7 +46,7 @@ export class OrderStatusComponent implements OnInit {
       Order_Status: [''],
       Ship_To: [''],
       Sales_Doc_Number: [''],
-      DELV_WEEK: [''],
+      Sold_To: [''],
       limit: [100],
       offset: [0]
     })
@@ -67,7 +67,7 @@ export class OrderStatusComponent implements OnInit {
     console.log(body)
     // this.resultdata = this.offer
     this.resultdata = []
-    this.apiMethod.get_request_header(this.apiString.myTask.orderStatus).subscribe((result: any) => {
+    this.apiMethod.get_request_header_Param(this.apiString.myTask.orderStatus, body).subscribe((result: any) => {
       this.loadingRouteConfig = false
       this.resultdata = result
       this.totalCount = result.Count

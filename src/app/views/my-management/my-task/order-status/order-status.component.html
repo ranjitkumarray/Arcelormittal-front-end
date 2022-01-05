@@ -24,30 +24,30 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Order Status</mat-label>
-                <mat-select FormControlName="Order_Status">
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select formControlName="Order_Status" (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let order of resultdata?.oder_status" [value]="order">
+                        {{order}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Sold To</mat-label>
-                <mat-select FormControlName='Sold_To'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select formControlName='Sold_To' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let sold of resultdata?.sold_to" [value]="sold">
+                        {{sold}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Ship To</mat-label>
-                <mat-select FormControlName='Ship_To'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select formControlName='Ship_To' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let ship of resultdata?.ship_to" [value]="ship">
+                        {{ship}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -55,13 +55,13 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Sales Doc Number</mat-label>
-                <input matInput placeholder="Odder ID" FormControlName='Sales_Doc_Number'>
+                <input matInput placeholder="Odder ID" formControlName='Sales_Doc_Number'>
             </mat-form-field>
         </div>
         <div class="col-3">
             <!-- <mat-form-field appearance="outline">
                 <mat-label>DELV_WEEK</mat-label>
-                <mat-select FormControlName='DELV_WEEK'>
+                <mat-select formControlName='DELV_WEEK'>
                     <mat-option value="1">Option 1</mat-option>
                     <mat-option value="2">Option 2</mat-option>
                     <mat-option value="3">Option 3</mat-option>
