@@ -34,10 +34,9 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Sold To</mat-label>
-                <mat-select FormControlName='Sold_To'>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select FormControlName='Sold_To' (selectionChange)="getOfferStatus()">
+                    <mat-option *ngFor="let soldTo of resultdata?.sold_to" [value]="soldTo"> {{soldTo}}</mat-option>
+                    
                 </mat-select>
             </mat-form-field>
         </div>

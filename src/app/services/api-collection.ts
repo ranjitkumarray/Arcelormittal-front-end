@@ -267,6 +267,7 @@ export class CitGlobalConstantService {
     };
     userAccess: any = {
         login: this.baseUrl + "login",
+        forgot_password: this.baseUrl + "forgot_passowrd",
         group_management_data: this.baseUrl + "group_management_data",
         email_availability_check: this.baseUrl + "existEmail",
         user_availability_check: this.baseUrl + "existUsername",
