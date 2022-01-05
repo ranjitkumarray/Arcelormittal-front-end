@@ -26,47 +26,27 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.login = this.fb.group({
-      'email': ['', [
-        Validators.required
-      ]],
-      'password': ['', [
-        Validators.required,
-
-      ]]
+      'username': ['', Validators.required],
+      'password': ['', Validators.required]
     })
-
-    //Authentication
-    if (localStorage.getItem('userDetails')) {
-      this.router.navigate(['/alloy-scrap/upload'])
-    }
-    else {
-      this.router.navigate(['/auth/login'])
-    }
   }
 
 
   loginSubmit() {
     if (this.login.status == "VALID") {
-      let loginData = this.login.value
-      let body = {
-        username: loginData.email,
-        password: loginData.password
-      }
       this.loadingRouteConfig = true
-      this.apimethod.get_request_Param(this.apiString.userAccess.login, body).subscribe(result => {
+      this.apimethod.get_request_Param(this.apiString.userAccess.login, this.login.value).subscribe(result => {
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
+        localStorage.setItem('arc-userDetails', JSON.stringify(result))
         this.router.navigate(['/alloy-scrap/upload/'])
-        localStorage.setItem('userDetails', JSON.stringify(result))
-
       }, error => {
+        console.log(error)
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('error', 'Invalid Details')
-
-
       })
     } else {
-      this.apimethod.popupMessage('error', 'Invalid Details')
+      this.apimethod.popupMessage('error', 'Fill all required details')
     }
   }
 }

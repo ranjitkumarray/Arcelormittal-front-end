@@ -9,7 +9,7 @@ export const NavItems = [
         type: "admin",
         children: [
             {
-                name: 'user',
+                name: 'User',
                 url: '/user/management',
                 icon: 'fa fa-user',
                 tag: 'management_sub_menu',

@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   user: any = 'user'
   navbarItem: any = []
 
-  details:any =localStorage.getItem(("userDetails"))
+  details:any =localStorage.getItem(("arc-userDetails"))
   userDeatails =JSON.parse(this.details)
 
   constructor(private router: Router) {

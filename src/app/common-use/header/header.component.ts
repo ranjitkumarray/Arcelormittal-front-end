@@ -12,26 +12,26 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit, DoCheck {
   isLoggedIn: boolean = localStorage.getItem('user') ? true : false;
 
-  UserDetails:any;
-  f_name:any
+  UserDetails: any;
+  f_name: any
 
-  constructor( private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.UserDetails = localStorage.getItem(("userDetails"))
+    this.UserDetails = localStorage.getItem("arc-userDetails")
     this.f_name = JSON.parse(this.UserDetails).user.user_name[0]
- }
+  }
 
-  logOut(){
+  logOut() {
     this.router.navigate(['/auth/login'])
     localStorage.clear();
     // console.log(this.lgn.Users)
   }
-  
-  profile(){
-    
+
+  profile() {
+
   }
-  
+
   ngDoCheck(): void {
     this.isLoggedIn = localStorage.getItem('user') ? true : false;
   }
