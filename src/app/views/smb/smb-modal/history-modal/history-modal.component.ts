@@ -5,14 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { basePriceAddtionData } from '../../smb-interface.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from "@angular/common";
 import { filter } from 'rxjs/operators';
-//mine
-import { historyData } from 'src/app/views/alloy-scrap/alloy-scrap-interface.service';
-
 @Component({
   selector: 'app-history-modal',
   templateUrl: './history-modal.component.html',
