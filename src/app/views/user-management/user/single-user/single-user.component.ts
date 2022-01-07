@@ -18,6 +18,7 @@ export class SingleUserComponent implements OnInit {
   loadingRouteConfig: boolean = false
   accessList: any;
   stepper: any;
+  api:any;
 
   constructor(
     private apiString: CitGlobalConstantService,
@@ -56,16 +57,19 @@ export class SingleUserComponent implements OnInit {
     })
   }
   validationCheck(type: any) {
+    console.log(type)
     let data: any = ''
     if (type === 'username') {
-      data = this.firstFormGroup.value.username
+      this.api = this.apiString.userAccess.user_availability_check
+      data = {username : this.firstFormGroup.value.username}
     } else {
-      data = this.firstFormGroup.value.email
+      this.api = this.apiString.userAccess.email_availability_check
+      data = {email : this.firstFormGroup.value.email}
 
     }
     console.log("Coming")
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_header_Param(this.apiString.userAccess.user_availability_check, { username: data }).subscribe((result: any) => {
+    this.apiMethod.get_request_header_Param(this.api, data).subscribe((result: any) => {
       console.log(result)
       this.loadingRouteConfig = false
       if (type === 'username') {
@@ -82,7 +86,7 @@ export class SingleUserComponent implements OnInit {
         }
       }
       if (type === 'email') {
-        if (result.status === 'Exist Email') {
+        if (result.status === 'Exist-Email') {
           this.firstFormGroup.controls['email'].setErrors({ 'incorrect': true });
           this._snackBar.open("Email Already Existing", "", {
             duration: 4000,
@@ -100,7 +104,7 @@ export class SingleUserComponent implements OnInit {
     })
     console.log("Coming", this.firstFormGroup)
 
-    // }
+    
   }
   submit() {
     console.log(this.firstFormGroup.value, this.secondFormGroup.value)
