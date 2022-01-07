@@ -62,6 +62,7 @@ export class LengthLogisticListComponent implements OnInit {
         this.apiStringURL = this.apiString.length_logistic_mini_bar
 
         this.displayedColumns = [
+          'sequence_id',
           'Customer_Group',
           'Market_Country',
           'Delivering_Mill',
@@ -91,7 +92,7 @@ export class LengthLogisticListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

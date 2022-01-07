@@ -58,6 +58,7 @@ export class GradeListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.grade_mini_bar
         this.displayedColumns = [
+          'sequence_id',
           'BusinessCode',
           'Grade_Category',
           'Market_Country',
@@ -84,7 +85,7 @@ export class GradeListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

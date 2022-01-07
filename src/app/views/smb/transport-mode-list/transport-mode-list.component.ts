@@ -58,6 +58,7 @@ export class TransportModeListComponent implements OnInit {
         this.apiStringURL = this.apiString.transport_mode_mini_bar
 
         this.displayedColumns = [
+          'sequence_id',
           'Product_Division',
           'Market_Country',
           'Transport_Mode',
@@ -84,7 +85,7 @@ export class TransportModeListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

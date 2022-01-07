@@ -1,43 +1,51 @@
-
+@import "../../../assets/color.scss";
 .mat-card {
-   display: block;
-   text-align: center;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 8%;
-   width:45%;
-   margin-bottom: auto;
-  border-radius: 2%;
-  
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8%;
+  width: 33%;
+  border-radius: 3%;
+  // height: 60%;
+  margin-bottom: auto;
 }
 
-.full-width{
+.full-width {
   display: block;
-  width: 100%;
+  // width: 100%;
 }
+
 mat-label {
-    display: inline-block;
-    margin-right: 100%;
-    text-align: start !important;
-    font-weight:7%;
-    font-size:medium;
+  float: left;
+  padding-bottom: 8px;
+  font-family: 'regular';
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4%;
+}
+
+//   .container {
+//     height: 100 vh;
+//     display: flex;
+//     justify-content:center;
+//     align-items: center;
+//  }
+//  .main-div{
+//    background-color: #ABC4E4;
+//  }
+.output {
+  background-color: #abc4e4;
+  height: 100%;
+  a{
+    text-decoration: none;
+    font-family: 'regular';
+    text-align: right;
   }
-  img{
-    display: block;
-    margin-left :auto;
-    margin-right: auto;
-    margin-bottom: 4%;
+  sup{
+    color: red;
   }
-  
-  .main-div {
-    height: 100 vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
- .main-div{
-   background-color: #ABC4E4;
- }
- body{
-  background-color: #ABC4E4;
 }

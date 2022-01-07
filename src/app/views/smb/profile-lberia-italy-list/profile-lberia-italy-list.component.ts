@@ -60,7 +60,7 @@ export class ProfileLberiaItalyListComponent implements OnInit {
         this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
 
         this.displayedColumns =
-          [
+          ['sequence_id',
             'BusinessCode',
             'Market_Country',
             'Delivering_Mill',
@@ -89,7 +89,7 @@ export class ProfileLberiaItalyListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

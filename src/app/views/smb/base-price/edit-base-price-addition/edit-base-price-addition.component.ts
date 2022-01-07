@@ -56,7 +56,8 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Customer_Group: [''],
         Market_Customer: [''],
         Beam_Category: [''],
-        id_value: ['']
+        id_value: [''],
+        sequence_id:[]
       })
     }
     this.patchValue()
@@ -64,7 +65,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
   patchValue() {
     console.log(this.data)
     this.loadingRouteConfig = true
-    this.apiMethod.get_request_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
+    this.apiMethod.get_request_header_Param(this.apiStringURL.get, { id: this.data.id }).subscribe((result) => {
       console.log(result)
       this.loadingRouteConfig = false
       let resultData: any = result
@@ -75,6 +76,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Market_Country: resultData.record[0].Market_Country,
         id_value: this.data.id
+
       })
       if (this.data.type != 'edit-min-bar') {
         this.editBasePriceAddition.patchValue({
@@ -86,7 +88,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
           Customer_Group: resultData.record[0].Customer_Group,
           Market_Customer: resultData.record[0].Market_Customer,
           Beam_Category: resultData.record[0].Beam_Category,
-
+          sequence_id:resultData.record[0].sequence_id
         })
       }
     }, error => {
@@ -103,7 +105,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
   editRecord() {
     console.group(this.editBasePriceAddition.value)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.update, this.editBasePriceAddition.value).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiStringURL.update, this.editBasePriceAddition.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', ' Record successfully updated')

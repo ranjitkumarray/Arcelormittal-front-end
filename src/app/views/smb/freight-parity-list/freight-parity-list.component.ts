@@ -59,6 +59,7 @@ export class FreightParityListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.freight_parity_mini_bar
         this.displayedColumns = [
+          'sequence_id',
           "Delivering_Mill",
           "Market_Country",
           "Zip_Code_Dest",
@@ -87,7 +88,7 @@ export class FreightParityListComponent implements OnInit {
       searchString = "all"
     }
     this.dataSource = new MatTableDataSource<freightParityData>(this.data)
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

@@ -1,31 +1,27 @@
 export const NavItems = [
-
+       
     {
-        name: 'Registration',
+        name: 'Management',
         url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'registration',
+        active_img: '../../../assets/images/report 2.png',
+        inactive_img: '../../../assets/images/report 2.png',
+        tag: 'management',
+        type: "admin",
         children: [
             {
-                name: 'login',
-                url: '/registration/login',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
+                name: 'User',
+                url: '/user/management',
+                icon: 'fa fa-user',
+                tag: 'management_sub_menu',
+
 
             },
             {
-                name: 'user-management',
-                url: '/registration/user-management',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
+                name: 'User Group',
+                url: '/user/group-management',
+                icon: 'fa fa-users',
+                tag: 'management_sub_menu',
 
-            },
-            {
-                name: 'user-group-management',
-                url: '/registration/user-group-management',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
             }
         ]
 
@@ -36,9 +32,10 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'alloy_scrap',
+        type: "admin",
         children: [
             {
-                name: 'upload alloy & Scrap',
+                name: 'Upload Alloy & Scrap',
                 url: '/alloy-scrap/upload',
                 icon: 'fa fa-file',
                 tag: 'alloy_scrap_sub_menu',
@@ -61,6 +58,7 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb',
+        type: 'admin',
         children: [
             {
                 name: 'Base Price Addition',
@@ -77,7 +75,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/base-price/history',
                         icon: 'fa fa-history',
                         tag: 'alloy_scrap_sub_menu',
@@ -101,7 +99,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/incoterm-exceptions/history',
                         icon: 'fa fa-history',
                         tag: 'Incoterm_Exceptions_sub_menu',
@@ -125,7 +123,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/extra-certificate/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Certificate_sub_menu',
@@ -149,7 +147,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/delivery-mill/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Delivery_Mill_sub_menu',
@@ -173,7 +171,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/freight-parity/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Freight_Parity_sub_menu',
@@ -197,7 +195,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/grade/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Grade_sub_menu',
@@ -221,7 +219,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/length-logistic/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Length_Logistic_sub_menu',
@@ -245,7 +243,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/length-production/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Length_Production_sub_menu',
@@ -269,7 +267,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/profile/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Profile_sub_menu',
@@ -293,7 +291,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/profile-lberia-italy/history',
                         icon: 'fa fa-history',
                         tag: 'Profile_Iberia_and_Italy_sub_menu',
@@ -317,7 +315,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/transport-mode/history',
                         icon: 'fa fa-history',
                         tag: 'Extra_Transport_Mode_sub_menu',
@@ -336,6 +334,7 @@ export const NavItems = [
         active_img: '../../../assets/images/order.png',
         inactive_img: '../../../assets/images/order 2.png',
         tag: 'smb_mini_bar',
+        type: "admin",
         children: [
             {
                 name: 'Base Price Addition',
@@ -352,7 +351,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/base-price/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_alloy_scrap_sub_menu',
@@ -376,7 +375,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/extra-certificate/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
@@ -400,7 +399,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/delivery-mill/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
@@ -424,7 +423,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/freight-parity/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
@@ -448,7 +447,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/grade/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Grade_sub_menu',
@@ -472,7 +471,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/length-logistic/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
@@ -496,7 +495,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/length-production/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
@@ -520,7 +519,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/profile/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Profile_sub_menu',
@@ -544,7 +543,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/profile-lberia-italy/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
@@ -568,7 +567,7 @@ export const NavItems = [
 
                     },
                     {
-                        name: 'History',
+                        name: 'Upload History',
                         url: '/smb/transport-mode/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
@@ -580,5 +579,40 @@ export const NavItems = [
 
         ]
 
-    }
+    },
+    {
+        name: 'My Tasks',
+        url: '',
+        active_img: '../../../assets/images/order.png',
+        inactive_img: '../../../assets/images/order 2.png',
+        tag: 'My_Tasks',
+        type: "user",
+        children: [
+            {
+                name: 'Offer status / Pending Approval',
+                url: '/management/offer-status',
+                icon: '',
+                tag: 'offer_status_sub_menu',
+            },
+            {
+                name: 'Order Status & Delay',
+                url: '/management/order-status',
+                icon: '',
+                tag: 'order_status_sub_menu',
+            },
+            {
+                name: 'Customer Volume & Over Booking',
+                url: '/management/customer-volume',
+                icon: '',
+                tag: 'customer_volume_sub_menu',
+            },
+            {
+                name: 'Missing Invoice Payments',
+                url: '/management/missing-invoice-payment',
+                icon: '',
+                tag: 'missing_invoice_payment_sub_menu',
+            },
+        ]
+
+    },
 ]

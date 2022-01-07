@@ -5,7 +5,7 @@
     "password": "vinay123",
     "phonenumber": 9482037989,
     "address": "yana,kumta",
-    "usertype": "xyz",
+    "usertype": "Admin",
     "accessstoken": "aba"
   },
   {
@@ -14,7 +14,7 @@
     "password": "say123",
     "phonenumber": 6366237989,
     "address": "sidd,sidd",
-    "usertype": "zyx",
+    "usertype": "user",
     "accessstoken": "bba"
   },
   {
@@ -23,7 +23,7 @@
     "password": "yat123",
     "phonenumber": 9876547823,
     "address": "shi,shii",
-    "usertype": "yzx",
+    "usertype": "Admin",
     "accessstoken": "bbc"
   },
   {
@@ -32,7 +32,18 @@
     "password": "ram123",
     "phonenumber": 9876547823,
     "address": "ray,kashi",
-    "usertype": "edc",
+    "usertype": "user",
     "accessstoken": "wqa"
-  }
+  },
+  
+    {
+      "name": "Zebracle",
+      "email": "nebra@gmail.com",
+      "password": "zebra123",
+      "phonenumber": 9876547823,
+      "address": "ray,kashi",
+      "usertype": "user",
+      "accessstoken": "wqa"
+    }
+  
 ]

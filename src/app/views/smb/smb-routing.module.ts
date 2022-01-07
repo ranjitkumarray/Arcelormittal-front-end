@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from 'src/app/common-use/sidebar/sidebar.component';
+import { AuthGuardService } from 'src/app/services/authGard.service';
 import { BasePriceAdditionListComponent } from './base-price/base-price-addition-list/base-price-addition-list.component';
 import { BulkUploadBasePriceAdditionComponent } from './base-price/bulk-upload-base-price-addition/bulk-upload-base-price-addition.component';
 import { DeliveryMillListComponent } from './delivery-mill-list/delivery-mill-list.component';
@@ -30,15 +31,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: BasePriceAdditionListComponent
+                  component: BasePriceAdditionListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: BulkUploadBasePriceAdditionComponent
+                  component: BulkUploadBasePriceAdditionComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -53,15 +57,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: DeliveryMillListComponent
+                  component: DeliveryMillListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -76,16 +83,19 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: ExtraCertificateListComponent
+                  component: ExtraCertificateListComponent,
+                  canActivate: [AuthGuardService]
                 },
 
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -100,15 +110,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: FreightParityListComponent
+                  component: FreightParityListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -123,15 +136,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: GradeListComponent
+                  component: GradeListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -146,15 +162,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: LengthLogisticListComponent
+                  component: LengthLogisticListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -169,15 +188,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: LengthProductionListComponent
+                  component: LengthProductionListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -192,15 +214,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: ProfileListComponent
+                  component: ProfileListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -215,15 +240,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: ProfileLberiaItalyListComponent
+                  component: ProfileLberiaItalyListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -238,15 +266,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: TransportModeListComponent
+                  component: TransportModeListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))
@@ -261,15 +292,18 @@ const routes: Routes = [
               children: [
                 {
                   path: "list",
-                  component: IncotermExceptionsListComponent
+                  component: IncotermExceptionsListComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "bulk-upload",
-                  component: UploadValidateModalComponent
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
                 },
                 {
                   path: "history",
-                  component: HistoryModalComponent
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
                 }
               ]
             }))

@@ -256,7 +256,7 @@ export class UploadValidateModalComponent implements OnInit {
     const formData = new FormData();
     formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.upload, formData).subscribe((data) => {
+    this.apiMethod.post_request_header(this.apiStringURL.upload, formData).subscribe((data) => {
       console.log(data)
       let resultData: any = data
       this.loadingRouteConfig = false
@@ -291,7 +291,7 @@ export class UploadValidateModalComponent implements OnInit {
       "filename": this.uploadValidateModal_data.filename
     }
     this.loadingRouteConfig = true
-    this.apiMethod.post_request(this.apiStringURL.validate, data).subscribe((result: any) => {
+    this.apiMethod.post_request_header(this.apiStringURL.validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'File validated successfully')

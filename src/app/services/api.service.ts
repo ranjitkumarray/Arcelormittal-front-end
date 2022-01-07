@@ -7,31 +7,69 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
     baseURI: string = environment.domain;
     selectedIndex: any = '';
+    token: any = '';
     constructor(
         private https: HttpClient,
         private _snackBar: MatSnackBar,
 
-    ) { }
+    ) {
+        let localData: any = localStorage.getItem('arc-userDetails')
+        if (localData) {
+            this.token = JSON.parse(localData).token
+
+        }
+    }
     get_request(url: any) {
         return this.https.get(url);
     }
-    post_request(url: any, param: any) {
-        return this.https.post(url, param)
+    get_request_header(url: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
+        return this.https.get(url, {
+            headers: headers
+        })
     }
-    put_request(url: any, param: any) {
-        return this.https.put(url, param)
+    post_request_header(url: any, param: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
+        return this.https.post(url, param, {
+            headers: headers
+        })
     }
-    patch_request(url: any, param: any) {
-        return this.https.patch(url, param)
+    put_request_header(url: any, param: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
+        return this.https.put(url, param, {
+            headers: headers
+        })
+    }
+    patch_request_header(url: any, param: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
+
+        return this.https.patch(url, param, {
+            headers: headers
+        })
     }
     get_request_Param(url: any, param: any) {
         return this.https.get(url, {
             params: param
         })
     }
-    delete_request_Param(url: any, param: any) {
+    get_request_header_Param(url: any, param: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
+        return this.https.get(url, {
+            params: param,
+            headers: headers
+        })
+    }
+    delete_request_header_Param(url: any, param: any) {
+        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.append('x-access-token', this.token);
         return this.https.delete(url, {
-            params: param
+            params: param,
+            headers: headers
         })
     }
     popupMessage(statusType: any, message: any) {

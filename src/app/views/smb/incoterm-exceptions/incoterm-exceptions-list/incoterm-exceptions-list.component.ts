@@ -52,7 +52,7 @@ export class IncotermExceptionsListComponent implements OnInit {
         this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-        this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['Sequence_id','Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -70,7 +70,7 @@ export class IncotermExceptionsListComponent implements OnInit {
       searchString = "all"
     }
     this.dataSource = new MatTableDataSource<incotermExceptionsData>(this.data)
-    this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount

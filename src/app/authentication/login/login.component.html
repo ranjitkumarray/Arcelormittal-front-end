@@ -1,39 +1,42 @@
-<body>
-  <div class="main-div">
-
-<mat-card>
-  <div class="container-fluid logo_outer">
-    <a class="logo">
-      <img src="../../../assets/images/arcelorMittal_logo.png" alt="logo" />
-    </a>
+<ng-container *ngIf="loadingRouteConfig">
+  <div class="loading-overlay is-active">
+    <span class="signal"></span>
   </div>
-  <mat-card-content>
-    <form [formGroup]="login" (submit)="loginSubmit(login.value)">
-      <div class='email-input'>
-        <mat-label>Email:</mat-label>
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput type="text" formControlName="email" >
-          <!-- [(ngModel)]="value" -->
-        </mat-form-field>
+</ng-container>
+<div class="row output">
+  <mat-card>
+    <form [formGroup]="login" (submit)="loginSubmit()">
+      <div class="container-fluid logo_outer">
+        <a class="logo">
+          <img src="../../../assets/images/arcelorMittal_logo.png" alt="logo" />
+        </a>
       </div>
 
-      <div>
-        <mat-label>Password:</mat-label>
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput [type]="hide ? 'password':'text'" formControlName="password" >
-          <mat-icon type="button" matSuffix (click)="hide=!hide">
-            {{hide?'visibility_off':'visibility'}}
-          </mat-icon>
-          <!-- [(ngModel)]="value" -->
-        </mat-form-field>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-label>Username/Email ID<sup>*</sup></mat-label>
+          <mat-form-field class="full-width w-100" appearance="outline">
+            <input matInput type="text" formControlName="username">
+          </mat-form-field>
+        </div>
 
-      </div>
-      <div>
-        <button mat-raised-button class='mr-10' color='primary'>Login</button>
+        <div class="col-md-12">
+          <mat-label>Password <sup>*</sup></mat-label>
+          <mat-form-field class="full-width w-100" appearance="outline">
+            <input matInput [type]="hide ? 'password':'text'" formControlName="password">
+            <mat-icon type="button" matSuffix (click)="hide=!hide">
+              {{hide?'visibility_off':'visibility'}}
+            </mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 text-right">
+          <a [routerLink]="['../forgot-password']" class="text-center">Forgot Password</a>
+        </div>
+        <div class="col-md-12 text-center">
+          <button mat-raised-button class='mr-10' color='primary'>Login</button>
+        </div>
+
       </div>
     </form>
-  </mat-card-content>
-</mat-card>
-
+  </mat-card>
 </div>
-</body>
