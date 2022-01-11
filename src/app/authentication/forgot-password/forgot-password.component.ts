@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ForgotPasswordComponent implements OnInit {
   loadingRouteConfig: boolean = false;
   checking: boolean = false;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,4}$";
   ForgotPassword: any = FormGroup;
   resultData: any;
   constructor(private _formbuilder: FormBuilder,
@@ -23,14 +24,14 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.ForgotPassword = this._formbuilder.group({
-      'email': ['', [Validators.required]]
+      'email': ['', Validators.pattern(this.emailPattern)]
     })
   }
 
   forgotPassword() {
     let param = { email: this.ForgotPassword.value.email }
     console.log(param)
-    if (this.ForgotPassword.status == "VALID") {
+    if (this.ForgotPassword.status === "VALID") {
       this.loadingRouteConfig = true;
       this.checking = true;
       this.apiMethod.get_request_header_Param(this.apiString.userAccess.forgot_password, param).subscribe(result => {
@@ -43,15 +44,12 @@ export class ForgotPasswordComponent implements OnInit {
         else {
           this.apiMethod.popupMessage('error', this.resultData.status)
         }
-
       })
     }
     else {
       this.checking = false;
-      this.apiMethod.popupMessage('error', this.resultData.status)
+      this.apiMethod.popupMessage('error', 'Please Enter valid Email')
     }
-
   }
-
 }
 
