@@ -102,8 +102,6 @@
     color: white;
     margin: 5px;
 }
-
-// ::ng-deep {mat-menu-item {
-//     max-width: 600px !important;
-// }
-//   }
+::ng-deep .mat-elevation-z4{
+    margin-top:13px
+}
