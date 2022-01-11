@@ -55,7 +55,8 @@
         <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Sales Doc Number</mat-label>
-                <input matInput placeholder="Odder ID" formControlName='Sales_Doc_Number'>
+                <input matInput placeholder="Odder ID" formControlName='Sales_Doc_Number' (keyup.enter)="getOfferStatus()">
+                <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
         <div class="col-3">
@@ -116,10 +117,10 @@
                                     </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="delv_week">
+                                <!-- <ng-container matColumnDef="delv_week">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> DELV WEEK</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.delv_week }} </td>
-                                </ng-container>
+                                </ng-container> -->
 
                                 <ng-container matColumnDef="quantity">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> QTY</th>
