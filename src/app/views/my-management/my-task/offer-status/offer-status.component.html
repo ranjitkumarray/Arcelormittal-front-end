@@ -94,42 +94,42 @@
                 <div class="text-center ">
                     <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
                         <div class="table-inner-container hc">
-                            <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
+                            <table mat-table [dataSource]="dataSource" class="custom_table order_table" >
 
                                 <ng-container matColumnDef="offerid">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer ID </th>
+                                    <th mat-header-cell *matHeaderCellDef > Offer ID </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.offerid}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="accountname">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                                    <th mat-header-cell *matHeaderCellDef > Customer Name </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.accountname}} </td>
                                 </ng-container>
 
 
                                 <ng-container matColumnDef="division">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> DIV</th>
+                                    <th mat-header-cell *matHeaderCellDef > DIV</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.division}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="planttext">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Deliver Mill</th>
+                                    <th mat-header-cell *matHeaderCellDef >Deliver Mill</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.planttext}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="rfqreference">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cust ref</th>
+                                    <th mat-header-cell *matHeaderCellDef > Cust ref</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.rfqreference}} </td>
                                 </ng-container>
 
 
                                 <ng-container matColumnDef="creationdatetime">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created</th>
+                                    <th mat-header-cell *matHeaderCellDef > Created</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.creationdatetime }} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="closedate">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Valid Till</th>
+                                    <th mat-header-cell *matHeaderCellDef > Valid Till</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.closedate }} </td>
                                 </ng-container>
 
@@ -156,17 +156,17 @@
                                 </ng-container>
 
                                 <ng-container matColumnDef="creationuser">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By</th>
+                                    <th mat-header-cell *matHeaderCellDef > Created By</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.creationuser }} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="tons">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume</th>
+                                    <th mat-header-cell *matHeaderCellDef > Volume</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.tons }} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="items">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Items</th>
+                                    <th mat-header-cell *matHeaderCellDef > Items</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.items }} </td>
                                 </ng-container>
 
