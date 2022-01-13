@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { CitGlobalConstantService } from 'src/app/services/api-collection';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -8,10 +11,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ResetPasswordComponent implements OnInit {
 resetPassword:any=FormGroup;
-  constructor(private fb: FormBuilder) { }
+resultData:any
+category:any
+  constructor(private _formbuilder: FormBuilder,
+    private apiMethod: ApiService,
+    private apiString: CitGlobalConstantService,
+    private router: Router,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.resetPassword = this.fb.group({
+    this.resetPassword = this._formbuilder.group({
       'NewPassword': ['', [
         Validators.required,
       ]],
@@ -20,6 +29,35 @@ resetPassword:any=FormGroup;
 
       ]]
     })
+
+    // this.category=this.router.url
+    //   console.log('Category = ',this.category)
+
+    this.route.queryParams
+      .subscribe(params => {
+        this.category = params.user_id;
+        console.log('category = ', this.category);
+      })
+  }
+
+  
+  reset(newpwd : any) {
+    let token ={
+      encrypt_user_id : this.category ,
+      new_password : newpwd
+    }
+    console.log(token)
+    this.apiMethod.get_request_Param(this.apiString.userAccess.reset_password, token).subscribe(result=>{
+      this.resultData=result
+      if(this.resultData.status_code == 200){
+        this.apiMethod.popupMessage('success',this.resultData.status)
+      }
+      else {
+        this.apiMethod.popupMessage('error','Password is Not Updated')
+      }
+      
+    })
+    
   }
 
 }
