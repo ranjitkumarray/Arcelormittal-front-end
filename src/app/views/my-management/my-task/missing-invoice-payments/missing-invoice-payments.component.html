@@ -102,50 +102,50 @@
                 <div class="text-center ">
                     <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
                         <div class="table-inner-container hc">
-                            <table mat-table [dataSource]="dataSource" class="custom_table order_table" matSort>
+                            <table mat-table [dataSource]="dataSource" class="custom_table order_table" >
                                 <ng-container matColumnDef="customer_number">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Number </th>
+                                    <th mat-header-cell *matHeaderCellDef > Customer Number </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.customer_number}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="customer_name">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                                    <th mat-header-cell *matHeaderCellDef > Customer Name </th>
                                     <td mat-cell *matCellDef="let element"> {{element?.customer_name}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="sales_order_number">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sales Order Number</th>
+                                    <th mat-header-cell *matHeaderCellDef > Sales Order Number</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.sales_order_number}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="invoice_number">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Number</th>
+                                    <th mat-header-cell *matHeaderCellDef >Invoice Number</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_number}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="invoice_posting_date">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Posting Date</th>
+                                    <th mat-header-cell *matHeaderCellDef > Invoice Posting Date</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_posting_date}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="item_number">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Item Numbar</th>
+                                    <th mat-header-cell *matHeaderCellDef > Item Numbar</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.item_number}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="amount">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount</th>
+                                    <th mat-header-cell *matHeaderCellDef > Amount</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.amount }}
                                     </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="invoice_aging">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Ageing</th>
+                                    <th mat-header-cell *matHeaderCellDef > Invoice Ageing</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_aging }} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="invoice_aging_bucket">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Ageing Bucket</th>
+                                    <th mat-header-cell *matHeaderCellDef > Invoice Ageing Bucket</th>
                                     <td mat-cell *matCellDef="let element"> {{element?.invoice_aging_bucket }} </td>
                                 </ng-container>
 

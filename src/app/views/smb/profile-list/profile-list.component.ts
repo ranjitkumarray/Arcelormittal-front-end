@@ -32,6 +32,7 @@ export class ProfileListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any='';
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -99,8 +100,11 @@ export class ProfileListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<profileData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -115,7 +119,9 @@ export class ProfileListComponent implements OnInit {
     this.getProfile()
   }
   //filter 
-  applyFilter() {
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getProfile()

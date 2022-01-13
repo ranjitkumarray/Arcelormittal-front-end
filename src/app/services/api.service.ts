@@ -23,29 +23,25 @@ export class ApiService {
         return this.https.get(url);
     }
     get_request_header(url: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
         return this.https.get(url, {
             headers: headers
         })
     }
     post_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
         return this.https.post(url, param, {
             headers: headers
         })
     }
     put_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
         return this.https.put(url, param, {
             headers: headers
         })
     }
     patch_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
 
         return this.https.patch(url, param, {
             headers: headers
@@ -57,16 +53,14 @@ export class ApiService {
         })
     }
     get_request_header_Param(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
         return this.https.get(url, {
             params: param,
             headers: headers
         })
     }
     delete_request_header_Param(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
         return this.https.delete(url, {
             params: param,
             headers: headers

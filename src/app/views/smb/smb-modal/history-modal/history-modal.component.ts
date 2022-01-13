@@ -39,6 +39,7 @@ export class HistoryModalComponent implements OnInit {
   totalCount :any = 0;
   dataSource : any;
   pageEvent :any = PageEvent;
+  filterValue: any='';
 
 
   constructor(
@@ -192,8 +193,11 @@ console.log(this.url[2])
       this.loadingRouteConfig = false
       this.dataSource = resultData.data
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -209,10 +213,11 @@ console.log(this.url[2])
     this.getHistory()
   }
   //filter 
-  applyFilter() {
-    const filterValue = this.searchValue;
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
-    this.pageLength = 10
+    this.pageLength = 500
     this.getHistory()
   }
   

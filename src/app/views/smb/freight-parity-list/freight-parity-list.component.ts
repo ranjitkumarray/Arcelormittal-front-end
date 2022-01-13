@@ -32,6 +32,7 @@ export class FreightParityListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any='';
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -87,7 +88,7 @@ export class FreightParityListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.dataSource = new MatTableDataSource<freightParityData>(this.data)
+    // this.dataSource = new MatTableDataSource<freightParityData>(this.data)
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -95,8 +96,11 @@ export class FreightParityListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<freightParityData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -111,7 +115,9 @@ export class FreightParityListComponent implements OnInit {
     this.getFreightParity()
   }
   //filter 
-  applyFilter() {
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getFreightParity()
