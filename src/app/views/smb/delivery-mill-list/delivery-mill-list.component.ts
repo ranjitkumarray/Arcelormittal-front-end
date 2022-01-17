@@ -49,10 +49,10 @@ export class DeliveryMillListComponent implements OnInit {
         this.displayedColumns = [
           
           'BusinessCode',
-          'Beam_Category',
           'Market_Country',
           'Delivering_Mill',
           'Product_Division',
+          'Beam_Category',
           'Document_Item_Currency',
           'Amount',
           'Currency',

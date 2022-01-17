@@ -11,6 +11,7 @@ import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-extra-certificate-list',
@@ -38,6 +39,8 @@ export class ExtraCertificateListComponent implements OnInit {
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
+  selection = new SelectionModel<certificateData>(true, []);
+
   pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
@@ -58,7 +61,7 @@ export class ExtraCertificateListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.certificate
-        this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select','sequence_id','BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
@@ -187,4 +190,28 @@ export class ExtraCertificateListComponent implements OnInit {
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
+    /** Whether the number of selected elements matches the total number of rows. */
+    isAllSelected() {
+      const numSelected = this.selection.selected.length;
+      const numRows = this.dataSource.data.length;
+      return numSelected === numRows;
+    }
+  
+    /** Selects all rows if they are not all selected; otherwise clear selection. */
+    masterToggle() {
+      if (this.isAllSelected()) {
+        this.selection.clear();
+        return;
+      }
+  
+      this.selection.select(...this.dataSource.data);
+    }
+  
+    /** The label for the checkbox on the passed row */
+    checkboxLabel(row?: certificateData): string {
+      if (!row) {
+        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+      }
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+    }
 }

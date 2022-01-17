@@ -25,6 +25,7 @@ export interface incotermExceptionsData {
     "action": any
 }
 export interface certificateData {
+    "sequence_id":any,
     'BusinessCode': any,
     'Certificate': any,
     'Grade_Category': any,

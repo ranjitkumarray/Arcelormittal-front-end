@@ -35,9 +35,9 @@
             <div class="text-center">
                 <div class="my_offer_table_container">
                     <div class="text-center ">
-                        <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
-                            <div class="table-inner-container hc">
-                                <table mat-table [dataSource]="dataSource" class="custom_table order_table" >
+                        <div class="table-outer-container offer_table_container position-relative ">
+                            <div class="table-inner-container  hc example-container mat-elevation-z8">
+                                <table mat-table [dataSource]="dataSource" >
 
                                     <ng-container matColumnDef="BusinessCode">
                                         <th mat-header-cell *matHeaderCellDef > Business Code </th>
@@ -119,7 +119,7 @@
                                         </td>
                                     </ng-container>
 
-                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns ;sticky: true"></tr>
                                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
                                     <tr class="mat-row" *matNoDataRow>
