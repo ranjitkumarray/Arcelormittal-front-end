@@ -13,6 +13,7 @@ import { filter } from 'rxjs/operators';
 import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/incoterm-exceptions-edit.component';
 import { rowData } from 'src/app/sample';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-incoterm-exceptions-list',
@@ -34,7 +35,8 @@ export class IncotermExceptionsListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
+  selection = new SelectionModel<incotermExceptionsData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -49,10 +51,37 @@ export class IncotermExceptionsListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.incoterm_exceptions
-        this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = [
+          'select',
+          'sequence_id',
+          'Market_Country',
+          'Product_Division',
+          'Incoterm1',
+          'Customer_Group',
+          'Beam_Category',
+          'Delivering_Mill',
+          'Document_Item_Currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
       } else {
         this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-        this.displayedColumns = ['Sequence_id','Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = [
+          'select',
+          'sequence_id',
+          'Sequence_id',
+          'Market_Country',
+          'Product_Division',
+          'Incoterm1',
+          'Customer_Group',
+          'Beam_Category',
+          'Delivering_Mill',
+          'Document_Item_Currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
       }
     });
   }
@@ -175,5 +204,29 @@ export class IncotermExceptionsListComponent implements OnInit {
   }
   downloadIncotermExceptions() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: incotermExceptionsData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

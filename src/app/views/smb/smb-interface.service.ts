@@ -1,4 +1,5 @@
 export interface basePriceAddtionData {
+    "sequence_id": any,
     'BusinessCode': any
     'Market_Country': any
     'Product_Division': any
@@ -13,6 +14,7 @@ export interface basePriceAddtionData {
 }
 
 export interface incotermExceptionsData {
+    "sequence_id": any,
     'Market_Country': any,
     'Product_Division': any,
     'Incoterm1': any,
@@ -25,7 +27,7 @@ export interface incotermExceptionsData {
     "action": any
 }
 export interface certificateData {
-    "sequence_id":any,
+    "sequence_id": any,
     'BusinessCode': any,
     'Certificate': any,
     'Grade_Category': any,
@@ -40,6 +42,7 @@ export interface certificateData {
 
 }
 export interface freightParityData {
+    "sequence_id": any,
     "Delivering_Mill": any,
     "Market_Country": any,
     "Zip_Code_Dest": any,
@@ -54,6 +57,7 @@ export interface freightParityData {
 }
 
 export interface gradeData {
+    "sequence_id": any,
     'BusinessCode': any,
     'Grade_Category': any,
     'Country_Group': any,
@@ -69,6 +73,7 @@ export interface gradeData {
 }
 
 export interface lengthLogisticData {
+    "sequence_id": any,
     'Country_Group': any,
     'Market_Country': any,
     'Delivering_Mill': any,
@@ -82,6 +87,7 @@ export interface lengthLogisticData {
 
 }
 export interface lengthProductionData {
+    "sequence_id": any,
     'BusinessCode': any,
     'Market_Country': any,
     'Delivering_Mill': any,
@@ -95,6 +101,7 @@ export interface lengthProductionData {
     'action': any,
 }
 export interface profileData {
+    "sequence_id": any,
     'BusinessCode': any,
     'Market_Country': any,
     'Product_Level_04': any,
@@ -109,6 +116,7 @@ export interface profileData {
     'action': any
 }
 export interface profileLberiaItaly {
+    "sequence_id": any,
     'BusinessCode': any,
     'Market_Country': any,
     'Delivering Mill': any,
@@ -122,13 +130,29 @@ export interface profileLberiaItaly {
     'action': any
 }
 export interface transportModeData {
-    'Product_Division':any,
-    'Market_Country':any,
-    'Transport_Mode':any,
-    'Document_Item_Currency':any,
-    'Market_Customer_Group':any,
-    'Market_Customer':any,
-    'Amount':any,
-    'Currency':any,
-    'action':any,
+    "sequence_id": any,
+    'Product_Division': any,
+    'Market_Country': any,
+    'Transport_Mode': any,
+    'Document_Item_Currency': any,
+    'Market_Customer_Group': any,
+    'Market_Customer': any,
+    'Amount': any,
+    'Currency': any,
+    'action': any,
+}
+
+export interface deliveryMillModeData {
+    'sequence_id': any,
+    'BusinessCode': any,
+    'Beam_Category': any,
+    'Market_Customer_Group': any,
+    'Market_Customer': any,
+    'Market_Country': any,
+    'Delivering_Mill': any,
+    'Product_Division': any,
+    'Document_Item_Currency': any,
+    'Amount': any,
+    'Currency': any,
+    'action': any,
 }

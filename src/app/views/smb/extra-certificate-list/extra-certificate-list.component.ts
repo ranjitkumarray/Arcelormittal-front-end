@@ -191,9 +191,9 @@ export class ExtraCertificateListComponent implements OnInit {
     window.open(this.apiStringURL.download, "_blank")
   }
     /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected() {
+    isAllSelected():any {
       const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource.data.length;
+      const numRows = this.dataSource?.data.length;
       return numSelected === numRows;
     }
   
@@ -204,7 +204,7 @@ export class ExtraCertificateListComponent implements OnInit {
         return;
       }
   
-      this.selection.select(...this.dataSource.data);
+      this.selection.select(...this.dataSource?.data);
     }
   
     /** The label for the checkbox on the passed row */

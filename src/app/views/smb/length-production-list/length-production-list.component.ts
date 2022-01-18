@@ -11,6 +11,7 @@ import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-length-production-list',
@@ -31,7 +32,8 @@ export class LengthProductionListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
+  selection = new SelectionModel<lengthProductionData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -48,11 +50,13 @@ export class LengthProductionListComponent implements OnInit {
         this.apiStringURL = this.apiString.length_production
 
         this.displayedColumns = [
+          'select',
+          'sequence_id',
           'BusinessCode',
           'Market_Country',
           'Delivering_Mill',
-          'Length', 
-          'Length_From', 
+          'Length',
+          'Length_From',
           'Length_To',
           'Document_Item_Currency',
           'Country_Group',
@@ -63,12 +67,13 @@ export class LengthProductionListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.length_production_mini_bar
         this.displayedColumns = [
+          'select',
           'sequence_id',
           'BusinessCode',
           'Market_Country',
           'Delivering_Mill',
-          'Length', 
-          'Length_From', 
+          'Length',
+          'Length_From',
           'Length_To',
           'Document_Item_Currency',
           'Market_Customer',
@@ -196,5 +201,29 @@ export class LengthProductionListComponent implements OnInit {
   }
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: lengthProductionData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

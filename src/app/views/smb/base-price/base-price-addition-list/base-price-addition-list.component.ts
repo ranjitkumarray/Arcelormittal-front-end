@@ -13,6 +13,7 @@ import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -33,7 +34,7 @@ export class BasePriceAdditionListComponent implements OnInit {
   apiStringURL: any;
   resultData: any = [];
   filterValue: any = '';
-
+  selection = new SelectionModel<basePriceAddtionData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -50,10 +51,10 @@ export class BasePriceAdditionListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
-        this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select','sequence_id','BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select','sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -173,5 +174,29 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
   downloadBasePriceAddition() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+   /** Whether the number of selected elements matches the total number of rows. */
+   isAllSelected():any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: basePriceAddtionData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

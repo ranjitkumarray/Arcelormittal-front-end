@@ -11,6 +11,7 @@ import { gradeData } from '../smb-interface.service';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 @Component({
   selector: 'app-grade-list',
   templateUrl: './grade-list.component.html',
@@ -31,6 +32,7 @@ export class GradeListComponent implements OnInit {
   url: any;
   apiStringURL: any;
   filterValue: any='';
+  selection = new SelectionModel<gradeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -46,6 +48,8 @@ export class GradeListComponent implements OnInit {
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.grade
         this.displayedColumns = [
+          'select',
+          'sequence_id',
           'BusinessCode',
           'Grade_Category',
           'Market_Country',
@@ -59,6 +63,7 @@ export class GradeListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.grade_mini_bar
         this.displayedColumns = [
+          'select',
           'sequence_id',
           'BusinessCode',
           'Grade_Category',
@@ -189,4 +194,28 @@ export class GradeListComponent implements OnInit {
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
+    /** Whether the number of selected elements matches the total number of rows. */
+    isAllSelected():any {
+      const numSelected = this.selection.selected.length;
+      const numRows = this.dataSource?.data.length;
+      return numSelected === numRows;
+    }
+  
+    /** Selects all rows if they are not all selected; otherwise clear selection. */
+    masterToggle() {
+      if (this.isAllSelected()) {
+        this.selection.clear();
+        return;
+      }
+  
+      this.selection.select(...this.dataSource?.data);
+    }
+  
+    /** The label for the checkbox on the passed row */
+    checkboxLabel(row?: gradeData): string {
+      if (!row) {
+        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+      }
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+    }
 }
