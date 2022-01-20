@@ -54,7 +54,7 @@ export class BasePriceAdditionListComponent implements OnInit {
         this.displayedColumns = ['select','sequence_id','BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['select','sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select','sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }

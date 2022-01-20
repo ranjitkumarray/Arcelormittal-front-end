@@ -70,7 +70,6 @@ export class TransportModeListComponent implements OnInit {
           'Transport_Mode',
           'Document_Item_Currency',
           'Market_Customer_Group',
-          'Market_Customer',
           'Amount',
           'Currency',
           'action'

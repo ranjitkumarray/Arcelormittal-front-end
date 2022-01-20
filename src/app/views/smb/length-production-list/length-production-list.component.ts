@@ -76,7 +76,6 @@ export class LengthProductionListComponent implements OnInit {
           'Length_From',
           'Length_To',
           'Document_Item_Currency',
-          'Market_Customer',
           'Customer_Group',
           'Amount',
           'Currency',

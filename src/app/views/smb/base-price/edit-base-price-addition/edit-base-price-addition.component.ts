@@ -56,7 +56,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Document_Item_Currency: [''],
         Market_Country: [''],
         Customer_Group: [''],
-        Market_Customer: [''],
+        // Market_Customer: [''],
         Beam_Category: [''],
         id_value: [''],
         sequence_id:[]
@@ -89,7 +89,7 @@ export class EditBasePriceAdditionComponent implements OnInit {
       } else {
         this.editBasePriceAddition.patchValue({
           Customer_Group: resultData.record[0].Customer_Group,
-          Market_Customer: resultData.record[0].Market_Customer,
+          // Market_Customer: resultData.record[0].Market_Customer,
           Beam_Category: resultData.record[0].Beam_Category,
         })
       }

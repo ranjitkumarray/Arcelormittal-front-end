@@ -69,7 +69,7 @@ export class GradeListComponent implements OnInit {
           'Grade_Category',
           'Market_Country',
           'Document_Item_Currency',
-          'Market_Customer',
+          
           'Customer_Group',
           'Amount',
           'Currency',

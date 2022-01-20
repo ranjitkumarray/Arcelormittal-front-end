@@ -76,7 +76,6 @@ export class ProfileListComponent implements OnInit {
           'Product_Level_02',
           'Delivering_Mill',
           'Customer_Group',
-          'Market_Customer',
           'Document_Item_Currency',
           'Amount',
           'Currency',

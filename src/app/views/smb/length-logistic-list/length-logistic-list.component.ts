@@ -78,7 +78,6 @@ export class LengthLogisticListComponent implements OnInit {
           'Length_To',
           'Transport_Mode',
           'Document_Item_Currency',
-          'Market_Customer',
           'Amount',
           'Currency',
           'action'

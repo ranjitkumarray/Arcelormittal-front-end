@@ -73,7 +73,6 @@ export class FreightParityListComponent implements OnInit {
           "Document_Item_Currency",
           "Amount",
           "Currency",
-          "Market_Customer",
           "Market_Customer_Group",
           "action"
         ]
