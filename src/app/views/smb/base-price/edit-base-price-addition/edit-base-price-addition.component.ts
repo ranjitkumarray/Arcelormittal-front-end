@@ -44,7 +44,9 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Market_Country: [''],
         Product_Division: [''],
         Product_Level_02: [''],
-        id_value: ['']
+        id_value: [''],
+        sequence_id:[]
+
       })
     } else {
       this.editBasePriceAddition = this.fb.group({
@@ -75,7 +77,8 @@ export class EditBasePriceAdditionComponent implements OnInit {
         Currency: resultData.record[0].Currency,
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Market_Country: resultData.record[0].Market_Country,
-        id_value: this.data.id
+        id_value: this.data.id,
+        sequence_id:resultData.record[0].sequence_id
 
       })
       if (this.data.type != 'edit-min-bar') {
@@ -88,7 +91,6 @@ export class EditBasePriceAdditionComponent implements OnInit {
           Customer_Group: resultData.record[0].Customer_Group,
           Market_Customer: resultData.record[0].Market_Customer,
           Beam_Category: resultData.record[0].Beam_Category,
-          sequence_id:resultData.record[0].sequence_id
         })
       }
     }, error => {

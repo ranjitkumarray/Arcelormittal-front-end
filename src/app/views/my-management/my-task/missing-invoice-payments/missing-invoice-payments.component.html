@@ -28,7 +28,7 @@
             </mat-form-field>
         </div>
         <div class="col-8 text-right filter">
-            <button mat-icon-button class="filter-icon" (click)="isShown = !isShown">
+            <button mat-icon-button class="filter-icon" type="button" (click)="isShown = !isShown">
                 <i class="fa fa-filter"></i>
             </button>
 
@@ -100,8 +100,8 @@
         <div class="text-center">
             <div class="my_offer_table_container">
                 <div class="text-center ">
-                    <div class="table-outer-container mat-elevation-z8 offer_table_container position-relative ">
-                        <div class="table-inner-container hc">
+                    <div class="table-outer-container offer_table_container position-relative ">
+                        <div class="table-inner-container hc example-container mat-elevation-z8">
                             <table mat-table [dataSource]="dataSource" class="custom_table order_table" >
                                 <ng-container matColumnDef="customer_number">
                                     <th mat-header-cell *matHeaderCellDef > Customer Number </th>
