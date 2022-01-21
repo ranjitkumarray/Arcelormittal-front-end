@@ -51,10 +51,10 @@ export class BasePriceAdditionListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
-        this.displayedColumns = ['select','sequence_id','BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['select','sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -145,14 +145,23 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -175,8 +184,8 @@ export class BasePriceAdditionListComponent implements OnInit {
   downloadBasePriceAddition() {
     window.open(this.apiStringURL.download, "_blank")
   }
-   /** Whether the number of selected elements matches the total number of rows. */
-   isAllSelected():any {
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource?.data.length;
     return numSelected === numRows;

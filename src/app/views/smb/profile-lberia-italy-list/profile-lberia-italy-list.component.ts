@@ -169,14 +169,23 @@ export class ProfileLberiaItalyListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete

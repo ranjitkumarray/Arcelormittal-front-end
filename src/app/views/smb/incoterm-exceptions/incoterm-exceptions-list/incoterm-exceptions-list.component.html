@@ -20,7 +20,7 @@
                     (click)="downloadIncotermExceptions()">
                     <i class="fa fa-download"></i> Incoterm
                 </button>
-                <button type="button" color="primary" mat-raised-button (click)="incotermExceptionsClick('all','delete')">
+                <button type="button" color="primary" mat-raised-button (click)="incotermExceptionsClick(selection,'delete-all')">
                     <i class="fa fa-trash"></i> Incoterm
                 </button>
             </div>
@@ -118,7 +118,7 @@
                                         <td mat-cell *matCellDef="let row">
                                             <mat-icon class="mr-10" (click)="incotermExceptionsClick(row,'edit')">edit
                                             </mat-icon>
-                                            <mat-icon class="mr-10" (click)="incotermExceptionsClick(row,'delete')">
+                                            <mat-icon class="mr-10" (click)="incotermExceptionsClick([row.id],'delete')">
                                                 delete</mat-icon>
 
                                         </td>

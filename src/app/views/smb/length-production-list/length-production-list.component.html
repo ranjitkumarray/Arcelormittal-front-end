@@ -16,7 +16,7 @@
                 <button type="button" color="primary" class="mr-10"  mat-raised-button (click)="downloadInXlFile()">
                     <i class="fa fa-upload"></i>  Length Production
                 </button>
-                <button type="button" color="primary" mat-raised-button (click)="actionClicked('all','delete')">
+                <button type="button" color="primary" mat-raised-button (click)="actionClicked(selection,'delete-all')">
                     <i class="fa fa-trash"></i>  Length Production
                 </button>
             </div>
@@ -134,7 +134,7 @@
                                         <th mat-header-cell *matHeaderCellDef> Action </th>
                                         <td mat-cell *matCellDef="let row">
                                             <mat-icon class="mr-10" (click)="actionClicked(row,'edit')">edit</mat-icon>
-                                            <mat-icon class="mr-10" (click)="actionClicked(row,'delete')">delete
+                                            <mat-icon class="mr-10" (click)="actionClicked([row.id],'delete')">delete
                                             </mat-icon>
 
                                         </td>
