@@ -196,7 +196,10 @@ export class ProfileListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getProfile()
+        if (result != undefined) {
+          this.getProfile()
+          this.selection.clear()
+        }
       })
     }
   }

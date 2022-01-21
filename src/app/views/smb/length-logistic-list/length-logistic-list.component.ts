@@ -197,7 +197,10 @@ export class LengthLogisticListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getLengthLogistic()
+        if (result != undefined) {
+          this.getLengthLogistic()
+          this.selection.clear()
+        }
       })
     }
   }

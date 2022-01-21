@@ -32,7 +32,7 @@ export class DeliveryMillListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
   selection = new SelectionModel<deliveryMillModeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
@@ -190,7 +190,10 @@ export class DeliveryMillListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getDeliveryMill()
+        if (result != undefined) {
+          this.getDeliveryMill()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -204,28 +207,28 @@ export class DeliveryMillListComponent implements OnInit {
   downloadFreightParity() {
     window.open(this.apiStringURL.download, "_blank")
   }
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected():any {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource?.data.length;
-      return numSelected === numRows;
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
-  
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
-      }
-  
-      this.selection.select(...this.dataSource?.data);
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: deliveryMillModeData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-  
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: deliveryMillModeData): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-      }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
-    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+  }
 }

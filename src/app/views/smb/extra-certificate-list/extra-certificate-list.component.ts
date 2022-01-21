@@ -46,7 +46,7 @@ export class ExtraCertificateListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -61,11 +61,11 @@ export class ExtraCertificateListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.certificate
-        this.displayedColumns = ['select','sequence_id','BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['sequence_id','BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['sequence_id', 'BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }
@@ -185,7 +185,10 @@ export class ExtraCertificateListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getCertificate()
+        if (result != undefined) {
+          this.getCertificate()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -199,28 +202,28 @@ export class ExtraCertificateListComponent implements OnInit {
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected():any {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource?.data.length;
-      return numSelected === numRows;
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
-  
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
-      }
-  
-      this.selection.select(...this.dataSource?.data);
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: certificateData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-  
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: certificateData): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-      }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
-    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+  }
 }

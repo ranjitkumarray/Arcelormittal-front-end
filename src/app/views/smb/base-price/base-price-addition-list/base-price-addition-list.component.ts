@@ -147,6 +147,7 @@ export class BasePriceAdditionListComponent implements OnInit {
 
     if (viewOn === 'delete' || viewOn === 'delete-all') {
       let deleteID: any = []
+      console.log(this.selection.selected, rowData)
       if (this.selection.selected.length > 0) {
         this.selection.selected.forEach((x: any) => {
           deleteID.push(x.id)
@@ -169,7 +170,10 @@ export class BasePriceAdditionListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getBasePriceAddition()
+        if (result != undefined) {
+          this.getBasePriceAddition()
+          this.selection.clear()
+        }
       })
 
     }

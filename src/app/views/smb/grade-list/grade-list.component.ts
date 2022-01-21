@@ -31,7 +31,7 @@ export class GradeListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
   selection = new SelectionModel<gradeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
@@ -69,7 +69,7 @@ export class GradeListComponent implements OnInit {
           'Grade_Category',
           'Market_Country',
           'Document_Item_Currency',
-          
+
           'Customer_Group',
           'Amount',
           'Currency',
@@ -189,7 +189,10 @@ export class GradeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getGrade()
+        if (result != undefined) {
+          this.getGrade()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -203,28 +206,28 @@ export class GradeListComponent implements OnInit {
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected():any {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource?.data.length;
-      return numSelected === numRows;
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
-  
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
-      }
-  
-      this.selection.select(...this.dataSource?.data);
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: gradeData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-  
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: gradeData): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-      }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
-    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+  }
 }

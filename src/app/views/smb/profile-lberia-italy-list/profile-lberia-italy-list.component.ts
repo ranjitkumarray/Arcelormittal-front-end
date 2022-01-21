@@ -194,7 +194,10 @@ export class ProfileLberiaItalyListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getProfileLberiaItaly()
+        if (result != undefined) {
+          this.getProfileLberiaItaly()
+          this.selection.clear()
+        }
       })
     }
   }

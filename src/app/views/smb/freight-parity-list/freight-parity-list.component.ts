@@ -192,7 +192,11 @@ export class FreightParityListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getFreightParity()
+        if (result != undefined) {
+          this.getFreightParity()
+          this.selection.clear()
+
+        }
       })
     }
   }

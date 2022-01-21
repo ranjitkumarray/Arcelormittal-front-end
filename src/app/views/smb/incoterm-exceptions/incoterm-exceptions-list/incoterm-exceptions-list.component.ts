@@ -199,7 +199,10 @@ export class IncotermExceptionsListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
+        if (result != undefined) {
         this.getIncotermExceptions()
+        this.selection.clear()
+        }
       })
 
     }

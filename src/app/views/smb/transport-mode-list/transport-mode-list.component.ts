@@ -189,7 +189,10 @@ export class TransportModeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getTransportMode()
+        if (result != undefined) {
+          this.getTransportMode()
+          this.selection.clear()
+        }
       })
     }
   }

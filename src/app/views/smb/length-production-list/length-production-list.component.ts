@@ -196,7 +196,10 @@ export class LengthProductionListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
+        if (result != undefined) {
         this.getLengthProduction()
+        this.selection.clear()
+        }
       })
     }
   }
