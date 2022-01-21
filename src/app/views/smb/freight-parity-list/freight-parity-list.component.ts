@@ -169,6 +169,9 @@ export class FreightParityListComponent implements OnInit {
 
     if (viewOn === 'delete' || viewOn === 'delete-all') {
       let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
       if (this.selection.selected.length > 0) {
         this.selection.selected.forEach((x: any) => {
           deleteID.push(x.id)
