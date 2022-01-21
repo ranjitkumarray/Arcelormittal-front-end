@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ActivatedRoute,Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-reset-password',
@@ -30,6 +31,7 @@ category:any
       ]]
     })
 
+   
     // this.category=this.router.url
     //   console.log('Category = ',this.category)
 
@@ -41,22 +43,27 @@ category:any
   }
 
   
-  reset(newpwd : any) {
-    let token ={
-      encrypt_user_id : this.category ,
-      new_password : newpwd
+  reset() {
+    if(this.resetPassword.value.NewPassword == this.resetPassword.value.ConfirmPassword){
+      let token ={
+        encrypt_user_id : this.category ,
+        new_password : this.resetPassword
+      }
+      console.log(token)
+      this.apiMethod.get_request_Param(this.apiString.userAccess.reset_password, token).subscribe(result=>{
+        this.resultData=result
+        if(this.resultData.status_code == 200){
+          this.apiMethod.popupMessage('success',this.resultData.status)
+        }
+        else {
+          this.apiMethod.popupMessage('error','Password is Not Updated')
+        }
+        
+      })            
     }
-    console.log(token)
-    this.apiMethod.get_request_Param(this.apiString.userAccess.reset_password, token).subscribe(result=>{
-      this.resultData=result
-      if(this.resultData.status_code == 200){
-        this.apiMethod.popupMessage('success',this.resultData.status)
-      }
-      else {
-        this.apiMethod.popupMessage('error','Password is Not Updated')
-      }
-      
-    })
+    else {
+      this.apiMethod.popupMessage('error','Password is Not matched')
+    }
     
   }
 
