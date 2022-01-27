@@ -11,6 +11,7 @@ import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-transport-mode-list',
@@ -31,7 +32,8 @@ export class TransportModeListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
+  selection = new SelectionModel<transportModeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -47,6 +49,8 @@ export class TransportModeListComponent implements OnInit {
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.transport_mode
         this.displayedColumns = [
+          'select',
+          'sequence_id',
           'Product_Division',
           'Market_Country',
           'Transport_Mode',
@@ -59,13 +63,13 @@ export class TransportModeListComponent implements OnInit {
         this.apiStringURL = this.apiString.transport_mode_mini_bar
 
         this.displayedColumns = [
+          'select',
           'sequence_id',
           'Product_Division',
           'Market_Country',
           'Transport_Mode',
           'Document_Item_Currency',
           'Market_Customer_Group',
-          'Market_Customer',
           'Amount',
           'Currency',
           'action'
@@ -160,14 +164,26 @@ export class TransportModeListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -176,7 +192,10 @@ export class TransportModeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getTransportMode()
+        if (result != undefined) {
+          this.getTransportMode()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -189,5 +208,29 @@ export class TransportModeListComponent implements OnInit {
   }
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: transportModeData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

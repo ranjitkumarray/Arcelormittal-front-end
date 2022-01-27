@@ -59,7 +59,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.smb_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group', 'Market_Customer', 'Beam_Category','Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Customer_Group',  'Beam_Category','Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.smb
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
@@ -79,7 +79,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.certificate_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Certificate',  'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.certificate
           this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency','updated_on','Username']
@@ -89,7 +89,7 @@ export class HistoryModalComponent implements OnInit {
         console.log("coming in  freight-parity")
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.freight_parity_mini_bar
-          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", "Market_Customer", "Market_Customer_Group",'updated_on','Username']
+          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", "Market_Customer_Group",'updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.freight_parity
           this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency",'updated_on','Username']
@@ -99,7 +99,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.grade_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Market_Customer', 'Customer_Group', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency',  'Customer_Group', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.grade
           this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Product_Division', 'Country_Group', 'Amount', 'Currency','updated_on','Username']
@@ -109,7 +109,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_logistic_mini_bar
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode',  'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.length_logistic
           this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
@@ -119,7 +119,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_production_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Market_Customer', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To',  'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.length_production
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Country_Group', 'Amount', 'Currency','updated_on','Username']
@@ -129,7 +129,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Customer_Group', 'Market_Customer', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Customer_Group',  'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.profile
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
@@ -139,7 +139,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Market_Customer', 'Market_Customer_Group', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency',  'Market_Customer_Group', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.profile_lberia_italy
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
@@ -149,7 +149,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.transport_mode_mini_bar
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Market_Customer_Group', 'Market_Customer', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Market_Customer_Group',  'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.transport_mode
           this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
@@ -159,7 +159,7 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.delivery_mill_mini_bar
-          this.displayedColumns = ['Market_Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
+          this.displayedColumns = ['Market_Customer_Group',  'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
         } else {
           this.apiStringURL = this.apiString.delivery_mill
           this.displayedColumns = ['BusinessCode', 'Beam_Category', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency','updated_on','Username']
