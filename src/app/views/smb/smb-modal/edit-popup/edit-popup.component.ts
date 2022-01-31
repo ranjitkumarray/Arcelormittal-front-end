@@ -26,7 +26,7 @@ export class EditPopupComponent implements OnInit {
     private router: Router
   ) {
 
-    if (this.data.fileName === 'smb') {
+    if (this.data.fileName === 'price_addition') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.smb_mini_bar : this.apiString.smb
     } else if (this.data.fileName === 'incoterm_exceptions') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.incoterm_exceptions_mini_bar : this.apiString.incoterm_exceptions
@@ -64,7 +64,6 @@ export class EditPopupComponent implements OnInit {
       objects[element] = []
       if (index === this.data.fieldValue.length - 1) {
         objects['id'] = []
-        objects['sequence_id'] = []
       }
     });
     console.log(objects)
@@ -93,8 +92,11 @@ export class EditPopupComponent implements OnInit {
     }, error => {
       console.log(error)
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
-      // this.closeModel()
+      this.apiMethod.popupMessage('error', 'Error while updating Record')
+      this.closeModel()
     })
+  }
+  removeUnderScore(value: any) {
+    return value.split('_').join(" ");
   }
 }
