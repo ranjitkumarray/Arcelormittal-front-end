@@ -69,20 +69,20 @@ td.mat-footer-cell:first-of-type {
     }
 }
 table.mat-table {
-    width: 100%;
+    min-width: 100%;
     thead {
         background-color: $tableHeadBg;
         th {
             text-overflow: ellipsis;
             overflow: hidden;
-            white-space: pre-wrap;
+            // white-space: pre-wrap;
             padding: 5px;
             font-size: 0.875rem;
             text-align: center;
             color: $tableHeadColor;
             font-family: "semi-bold";
-            word-break: break-all;
-            word-break: break-word;
+            // word-break: break-all;
+            // word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06);
             border-left: 1px solid rgba(0, 0, 0, 0.06);
             min-width: 65px;
@@ -94,8 +94,8 @@ table.mat-table {
             background-color: $white;
             td {
                 padding: 5px 5px;
-                word-break: break-all;
-                word-break: break-word;
+                // word-break: break-all;
+                // word-break: break-word;
                 font-size: 0.875rem;
                 color: black;
                 text-align: center;
@@ -125,8 +125,8 @@ table.mat-table {
             text-align: center;
             color: $tableHeadColor !important;
             font-family: "semi-bold" !important;
-            word-break: break-all;
-            word-break: break-word;
+            // word-break: break-all;
+            // word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
             border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
             min-width: 65px;
@@ -143,8 +143,8 @@ table.mat-table {
             background-color: $primaryBg;
             td {
                 padding: 5px 5px;
-                word-break: break-all;
-                word-break: break-word;
+                // word-break: break-all;
+                // word-break: break-word;
                 font-size: 0.875rem;
                 color: black;
                 border-right: 1px solid rgba(0, 0, 0, 0.06);
@@ -185,9 +185,9 @@ table.mat-table {
     background-color: $primaryBg;
     .mat-cell {
         padding: 0 10px;
-        word-break: break-all;
-        word-break: break-word;
-        text-align: left;
+        // word-break: break-all;
+        // word-break: break-word;
+        text-align: center;
         border-right: 1px solid;
         border-color: $tableBorder !important;
         font-size: 0.875rem;

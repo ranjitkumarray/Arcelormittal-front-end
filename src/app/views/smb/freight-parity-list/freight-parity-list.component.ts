@@ -12,6 +12,7 @@ import { filter } from 'rxjs/operators';
 import { rowData } from 'src/app/sample';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-freight-parity-list',
@@ -32,6 +33,8 @@ export class FreightParityListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any = '';
+  selection = new SelectionModel<freightParityData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -47,6 +50,8 @@ export class FreightParityListComponent implements OnInit {
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.freight_parity
         this.displayedColumns = [
+          'select',
+          'sequence_id',
           "Delivering_Mill",
           "Market_Country",
           "Zip_Code_Dest",
@@ -59,6 +64,7 @@ export class FreightParityListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.freight_parity_mini_bar
         this.displayedColumns = [
+          'select',
           'sequence_id',
           "Delivering_Mill",
           "Market_Country",
@@ -67,7 +73,6 @@ export class FreightParityListComponent implements OnInit {
           "Document_Item_Currency",
           "Amount",
           "Currency",
-          "Market_Customer",
           "Market_Customer_Group",
           "action"
         ]
@@ -87,7 +92,7 @@ export class FreightParityListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.dataSource = new MatTableDataSource<freightParityData>(this.data)
+    // this.dataSource = new MatTableDataSource<freightParityData>(this.data)
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -95,8 +100,11 @@ export class FreightParityListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<freightParityData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -111,7 +119,9 @@ export class FreightParityListComponent implements OnInit {
     this.getFreightParity()
   }
   //filter 
-  applyFilter() {
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getFreightParity()
@@ -157,14 +167,26 @@ export class FreightParityListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -173,7 +195,11 @@ export class FreightParityListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getFreightParity()
+        if (result != undefined) {
+          this.getFreightParity()
+          this.selection.clear()
+
+        }
       })
     }
   }
@@ -186,5 +212,29 @@ export class FreightParityListComponent implements OnInit {
   }
   downloadFreightParity() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: freightParityData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

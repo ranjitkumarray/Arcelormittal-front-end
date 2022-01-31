@@ -46,7 +46,7 @@ export class OfferStatusComponent implements OnInit {
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private fb: FormBuilder,
-    private router:Router
+    private router: Router
   ) {
     this.filterForm = this.fb.group({
       search_string: [''],
@@ -84,8 +84,8 @@ export class OfferStatusComponent implements OnInit {
     setTimeout(() => {
       this.apiMethod.get_request_header_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
         this.loadingRouteConfig = false
-        this.resultdata = result     
-         this.totalCount=result.Count
+        this.resultdata = result
+        this.totalCount = result.Count
         this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
@@ -100,8 +100,11 @@ export class OfferStatusComponent implements OnInit {
     }, 1000);
 
   }
-  toggleShow() {
-    this.isShown = !this.isShown;
+  toggleShow(type: any) {
+    console.log(type)
+    if (type) {
+      this.isShown = !this.isShown;
+    }
   }
   pageChangeCall(event: any) {
     console.log(event)
@@ -134,7 +137,7 @@ export class OfferStatusComponent implements OnInit {
       this.router.navigateByUrl(link);
     }
   }
-  openMail(){
-    window.location.href=("mailto:ranjitkumarray25@outlook.com?subject=Level Validation &body=") 
+  openMail() {
+    window.location.href = ("mailto:ranjitkumarray25@outlook.com?subject=Level Validation &body=")
   }
 }

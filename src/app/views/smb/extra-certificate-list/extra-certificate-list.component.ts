@@ -11,6 +11,7 @@ import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-extra-certificate-list',
@@ -38,11 +39,14 @@ export class ExtraCertificateListComponent implements OnInit {
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
+  selection = new SelectionModel<certificateData>(true, []);
+
   pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any = '';
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -57,18 +61,18 @@ export class ExtraCertificateListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.certificate
-        this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['sequence_id','BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['sequence_id', 'BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }
 
   ngOnInit(): void {
-    // this.getCertificate()
-    this.dataSource = new MatTableDataSource<certificateData>(this.data)
+    this.getCertificate()
+    // this.dataSource = new MatTableDataSource<certificateData>(this.data)
 
   }
   //getting uploaded history of alloy scrap 
@@ -81,7 +85,7 @@ export class ExtraCertificateListComponent implements OnInit {
       searchString = "all"
     }
 
-    this.dataSource = new MatTableDataSource<certificateData>(this.data)
+    // this.dataSource = new MatTableDataSource<certificateData>(this.data)
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -89,8 +93,11 @@ export class ExtraCertificateListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<certificateData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -105,7 +112,9 @@ export class ExtraCertificateListComponent implements OnInit {
     this.getCertificate()
   }
   //filter 
-  applyFilter() {
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getCertificate()
@@ -152,14 +161,26 @@ export class ExtraCertificateListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -167,7 +188,10 @@ export class ExtraCertificateListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getCertificate()
+        if (result != undefined) {
+          this.getCertificate()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -180,5 +204,29 @@ export class ExtraCertificateListComponent implements OnInit {
   }
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: certificateData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

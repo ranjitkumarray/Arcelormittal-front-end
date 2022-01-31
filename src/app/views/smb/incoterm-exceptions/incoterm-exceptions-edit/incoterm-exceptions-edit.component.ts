@@ -47,7 +47,8 @@ export class IncotermExceptionsEditComponent implements OnInit {
         'Document_Item_Currency': [''],
         'Amount': [''],
         'Currency': [''],
-        'id': ['']
+        'id': [''],
+        'sequence_id':['']
       })
     } else {
       this.editIncotermExceptionsClick = this.fb.group({
@@ -60,7 +61,8 @@ export class IncotermExceptionsEditComponent implements OnInit {
         'Document_Item_Currency': [''],
         'Amount': [''],
         'Currency': [''],
-        'id': ['']
+        'id': [''],
+        'sequence_id':['']
       })
     }
     this.patchValue()
@@ -82,7 +84,9 @@ export class IncotermExceptionsEditComponent implements OnInit {
         Document_Item_Currency: resultData.record[0].Document_Item_Currency,
         Amount: resultData.record[0].Amount,
         Currency: resultData.record[0].Currency,
-        id_value: this.data.content.id
+        id_value: this.data.content.id,
+        sequence_id:resultData.record[0].sequence_id
+
       })
     }, error => {
       this.loadingRouteConfig = false

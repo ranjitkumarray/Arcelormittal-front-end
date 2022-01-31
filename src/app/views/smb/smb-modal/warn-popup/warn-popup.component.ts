@@ -15,9 +15,9 @@ export class WarnPopupComponent implements OnInit {
     public dialogRef: MatDialogRef<WarnPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiMethod: ApiService,
-    
-  ) { 
-    
+
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -28,8 +28,8 @@ export class WarnPopupComponent implements OnInit {
   }
   deleteRecord() {
     this.loadingRouteConfig = true
-    console.log(this.data,this.data.deleteURL)
-    this.apiMethod.delete_request_header_Param(this.data.deleteURL, { id: this.data.id }).subscribe((result) => {
+    console.log(this.data, this.data.deleteURL)
+    this.apiMethod.post_request_header(this.data.deleteURL, { id: this.data.id }).subscribe((result) => {
       this.loadingRouteConfig = false
       this.dialogRef.close()
       this.apiMethod.popupMessage('success', 'Record deleted successfully')
