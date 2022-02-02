@@ -63,7 +63,7 @@ export class EditPopupComponent implements OnInit {
     this.data.fieldValue.forEach((element: any, index: any) => {
       objects[element] = []
       if (index === this.data.fieldValue.length - 1) {
-        objects['id'] = []
+        objects['id_value'] = []
       }
     });
     console.log(objects)
@@ -75,6 +75,9 @@ export class EditPopupComponent implements OnInit {
   }
   patchValue() {
     this.updateRecord.patchValue(this.data.content)
+    this.updateRecord.patchValue({
+      "id_value": this.data.content.id
+    })
   }
   closeModel() {
     this.dialogRef.close()

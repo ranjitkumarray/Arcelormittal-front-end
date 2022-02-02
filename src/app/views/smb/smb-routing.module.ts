@@ -14,6 +14,7 @@ import { LengthProductionListComponent } from './length-production-list/length-p
 import { ProfileLberiaItalyListComponent } from './profile-lberia-italy-list/profile-lberia-italy-list.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.component';
+import { RecordApprovalComponent } from './smb-modal/record-approval/record-approval.component';
 import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/upload-validate-modal.component';
 import { TransportModeListComponent } from './transport-mode-list/transport-mode-list.component';
 
@@ -308,6 +309,16 @@ const routes: Routes = [
               ]
             }))
           ]
+      },
+      {
+        path: "record",
+        canActivate: [AuthGuardService],
+        children: [
+          {
+            path: 'approve',
+            component: RecordApprovalComponent
+          }
+        ]
       }
     ]
   }

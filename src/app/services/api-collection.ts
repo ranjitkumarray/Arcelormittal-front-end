@@ -18,7 +18,7 @@ export class CitGlobalConstantService {
     alloy_scrap_history: string = this.baseUrl + "alloy_surcharge_history";
     get_history_file_data: string = this.baseUrl + "getfile_data";
 
-    
+
     //base price addition 
     smb: any = {
         list: this.baseUrl + "Base_Price_Data",
@@ -299,7 +299,7 @@ export class CitGlobalConstantService {
         update: this.baseUrl + "update_record_baseprice_incoterm",
         download: this.baseUrl + "download_baseprice_incoterm",
 
-        
+
     };
     registration: any = {
         usergroupmanagement: this.baseUrl + "",
@@ -317,6 +317,7 @@ export class CitGlobalConstantService {
         user_availability_check: this.baseUrl + "existUsername",
         add_single_user_management: this.baseUrl + "insert_values",
         user_access: this.baseUrl + "user_access"
-    }
-
+    };
+    getAprovalRecord: string = this.baseUrl + "aproval_data";
+    aproveRecords: string = this.baseUrl + "aprove_records"
 }
