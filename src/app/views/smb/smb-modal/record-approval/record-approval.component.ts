@@ -28,7 +28,8 @@ export class RecordApprovalComponent implements OnInit {
   pageOffset: any = 0;
   totalCount: any = 0;
   filterValue: any = '';
-  resultValue: any;
+  resultValue: any = [];
+  resultData: any = [];
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -56,19 +57,19 @@ export class RecordApprovalComponent implements OnInit {
     this.apiMethod.get_request_header_Param(this.apiString.getAprovalRecord, this.queryParam).subscribe((result: any) => {
       console.log(result)
       this.resultValue = result.data
-      let resultData: any = result
-      resultData.data.forEach((e: any) => {
+      this.resultData = result
+      this.resultData.data.forEach((e: any) => {
         delete e.flag;
         delete e.status;
         delete e.table_name;
         delete e.Username;
-        delete e.id;
+        // delete e.id;
 
       });
-      this.displayedColumns = Object.keys(resultData.data[0])
-      this.totalCount = resultData.totalCount
+      this.displayedColumns = Object.keys(this.resultData.data[0])
+      this.totalCount = this.resultData.totalCount
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<any>(resultData.data)
+      this.dataSource = new MatTableDataSource<any>(this.resultData.data)
       setTimeout(() => {
         if (this.filterValue) {
           this.dataSource.paginator = this.paginator;
@@ -98,19 +99,17 @@ export class RecordApprovalComponent implements OnInit {
     this.getApprovalRecord()
   }
   approved() {
-    let body = {
+    this.loadingRouteConfig = true
+    this.apiMethod.post_request_header(this.apiString.aproveRecords, this.resultValue).subscribe(result => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('success', 'Record approved successfully')
+      this.getApprovalRecord()
+    }, error => {
+      console.log(error)
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
 
-    }
-    // this.apiMethod.post_request_header(this.apiString.aproveRecords, body).subscribe(result => {
-    //   this.loadingRouteConfig = false
-    //   this.apiMethod.popupMessage('success', 'Record approved successfully')
-    //   this.getApprovalRecord()
-    // }, error => {
-    //   console.log(error)
-    //   this.loadingRouteConfig = false
-    //   this.apiMethod.popupMessage('error', 'Error while fatching history')
-
-    // })
+    })
   }
   updateBreadCrumb() {
     this.breadCrumblocationsList = [
