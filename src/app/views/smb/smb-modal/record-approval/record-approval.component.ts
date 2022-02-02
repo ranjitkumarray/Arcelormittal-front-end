@@ -100,7 +100,7 @@ export class RecordApprovalComponent implements OnInit {
   }
   approved() {
     this.loadingRouteConfig = true
-    this.apiMethod.post_request_header(this.apiString.aproveRecords, this.resultValue).subscribe(result => {
+    this.apiMethod.post_request_header(this.apiString.aproveRecords, { tablename: this.queryParam['tablename'], data: this.resultValue }).subscribe(result => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'Record approved successfully')
       this.getApprovalRecord()
