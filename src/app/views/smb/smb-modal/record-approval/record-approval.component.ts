@@ -59,7 +59,7 @@ export class RecordApprovalComponent implements OnInit {
       this.resultValue = result.data
       this.resultData = result
       this.resultData.data.forEach((e: any) => {
-        delete e.flag;
+        // delete e.flag;
         delete e.status;
         delete e.table_name;
         delete e.Username;
