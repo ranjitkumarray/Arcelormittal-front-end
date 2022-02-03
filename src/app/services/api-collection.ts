@@ -320,4 +320,5 @@ export class CitGlobalConstantService {
     };
     getAprovalRecord: string = this.baseUrl + "aproval_data";
     aproveRecords: string = this.baseUrl + "aprove_records"
+    rejectRecords: string = this.baseUrl + "reject_records"
 }

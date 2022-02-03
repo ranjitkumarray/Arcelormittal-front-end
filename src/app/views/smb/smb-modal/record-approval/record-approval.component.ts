@@ -111,6 +111,19 @@ export class RecordApprovalComponent implements OnInit {
 
     })
   }
+  reject() {
+    this.loadingRouteConfig = true
+    this.apiMethod.post_request_header(this.apiString.rejectRecords, this.queryParam).subscribe(result => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('success', 'Record Rejected successfully')
+      this.getApprovalRecord()
+    }, error => {
+      console.log(error)
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
+
+    })
+  }
   updateBreadCrumb() {
     this.breadCrumblocationsList = [
       {
