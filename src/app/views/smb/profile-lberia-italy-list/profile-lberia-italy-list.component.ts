@@ -140,7 +140,9 @@ export class ProfileLberiaItalyListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "profile_lberia_italy",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -160,7 +162,9 @@ export class ProfileLberiaItalyListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "profile_lberia_italy",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {

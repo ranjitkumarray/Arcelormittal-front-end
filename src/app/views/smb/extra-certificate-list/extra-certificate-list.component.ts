@@ -65,7 +65,7 @@ export class ExtraCertificateListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['sequence_id', 'BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }
@@ -132,7 +132,9 @@ export class ExtraCertificateListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "certificate",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -152,7 +154,9 @@ export class ExtraCertificateListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "certificate",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {

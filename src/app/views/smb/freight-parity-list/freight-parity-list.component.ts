@@ -138,7 +138,9 @@ export class FreightParityListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "freight_parity",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -158,7 +160,9 @@ export class FreightParityListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "freight_parity",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {

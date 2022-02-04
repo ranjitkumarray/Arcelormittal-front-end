@@ -32,7 +32,7 @@ export class LengthLogisticListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  filterValue: any='';
+  filterValue: any = '';
   selection = new SelectionModel<lengthLogisticData>(true, []);
 
   constructor(
@@ -55,8 +55,8 @@ export class LengthLogisticListComponent implements OnInit {
           'Country_Group',
           'Market_Country',
           'Delivering_Mill',
-          'Length', 
-          'Length_From', 
+          'Length',
+          'Length_From',
           'Length_To',
           'Transport_Mode',
           'Document_Item_Currency',
@@ -73,8 +73,8 @@ export class LengthLogisticListComponent implements OnInit {
           'Customer_Group',
           'Market_Country',
           'Delivering_Mill',
-          'Length', 
-          'Length_From', 
+          'Length',
+          'Length_From',
           'Length_To',
           'Transport_Mode',
           'Document_Item_Currency',
@@ -143,7 +143,9 @@ export class LengthLogisticListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "length_logistic",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -163,7 +165,9 @@ export class LengthLogisticListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "length_logistic",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -217,28 +221,28 @@ export class LengthLogisticListComponent implements OnInit {
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected():any {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource?.data.length;
-      return numSelected === numRows;
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
-  
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
-      }
-  
-      this.selection.select(...this.dataSource?.data);
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: lengthLogisticData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-  
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: lengthLogisticData): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-      }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
-    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+  }
 }
