@@ -87,12 +87,12 @@ export class AddPopupComponent implements OnInit {
       this.apiMethod.post_request_header(this.data.addURL, this.addRecordForm.value).subscribe(result => {
         console.log(result)
         this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('success', ' Record successfully Added.')
+        this.apiMethod.popupMessage('success', ' Record Successfully Added & Sent For Apporoval.')
         this.closeModel()
       }, error => {
         console.log(error)
         this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
+        this.apiMethod.popupMessage('error', 'Error While Adding Record')
         this.closeModel()
       })
     }
