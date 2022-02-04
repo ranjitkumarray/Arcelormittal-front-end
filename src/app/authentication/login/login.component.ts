@@ -41,7 +41,12 @@ export class LoginComponent implements OnInit {
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
         localStorage.setItem('arc-userDetails', JSON.stringify(result))
-        this.router.navigate(['/alloy-scrap/upload/'])
+        console.log(document.referrer)
+        if (document.referrer != '') {
+          this.location.back()
+        } else {
+          this.router.navigate(['/alloy-scrap/upload/'])
+        }
       }, error => {
         console.log(error)
         this.loadingRouteConfig = false
