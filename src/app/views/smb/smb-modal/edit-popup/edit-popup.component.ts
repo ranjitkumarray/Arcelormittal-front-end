@@ -90,12 +90,12 @@ export class EditPopupComponent implements OnInit {
     this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', ' Record successfully updated')
+      this.apiMethod.popupMessage('success', ' Reord Sent for Approval')
       this.closeModel()
     }, error => {
       console.log(error)
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while updating Record')
+      this.apiMethod.popupMessage('error', 'Error While Updating Record')
       this.closeModel()
     })
   }
