@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
     private apiString: CitGlobalConstantService,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.login = this.fb.group({

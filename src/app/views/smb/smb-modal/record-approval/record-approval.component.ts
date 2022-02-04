@@ -58,6 +58,11 @@ export class RecordApprovalComponent implements OnInit {
       console.log(result)
       this.resultValue = result.data
       this.resultData = result
+      this.loadingRouteConfig = false
+
+      if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
+        return 
+      }
       this.resultData.data.forEach((e: any) => {
         // delete e.flag;
         delete e.status;
@@ -68,7 +73,6 @@ export class RecordApprovalComponent implements OnInit {
       });
       this.displayedColumns = Object.keys(this.resultData.data[0])
       this.totalCount = this.resultData.totalCount
-      this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<any>(this.resultData.data)
       setTimeout(() => {
         if (this.filterValue) {
@@ -115,7 +119,7 @@ export class RecordApprovalComponent implements OnInit {
     this.loadingRouteConfig = true
     this.apiMethod.post_request_header(this.apiString.rejectRecords, this.queryParam).subscribe(result => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', 'Record Rejected successfully')
+      this.apiMethod.popupMessage('success', 'Record Rejected  successfully')
       this.getApprovalRecord()
     }, error => {
       console.log(error)
