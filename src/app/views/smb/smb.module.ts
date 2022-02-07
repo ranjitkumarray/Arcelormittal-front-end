@@ -24,6 +24,7 @@ import { IncotermExceptionsEditComponent } from './incoterm-exceptions/incoterm-
 import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/upload-validate-modal.component';
 import { AddPopupComponent } from './smb-modal/add-popup/add-popup.component';
 import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.component';
+import { RecordApprovalComponent } from './smb-modal/record-approval/record-approval.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.c
     UploadValidateModalComponent,
     AddPopupComponent,
     HistoryModalComponent,
+    RecordApprovalComponent,
   ],
   imports: [
     CommonModule,

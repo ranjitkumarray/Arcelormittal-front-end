@@ -14,6 +14,7 @@ import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.compon
 import { filter } from 'rxjs/operators';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -119,7 +120,9 @@ export class BasePriceAdditionListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "price_addition",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -128,15 +131,20 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
     }
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "price_addition",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -144,6 +152,7 @@ export class BasePriceAdditionListComponent implements OnInit {
         this.getBasePriceAddition()
       })
     }
+
 
     if (viewOn === 'delete' || viewOn === 'delete-all') {
       let deleteID: any = []
