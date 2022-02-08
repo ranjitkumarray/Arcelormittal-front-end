@@ -153,8 +153,8 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
     }
 
-
-    if (viewOn === 'delete' || viewOn === 'delete-all') {
+    // viewOn === 'delete' ||
+    if ( viewOn === 'delete-all') {
       let deleteID: any = []
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
@@ -163,9 +163,10 @@ export class BasePriceAdditionListComponent implements OnInit {
         this.selection.selected.forEach((x: any) => {
           deleteID.push(x.id)
         })
-      } else {
-        deleteID = rowData
-      }
+      } 
+      // else {
+      //   deleteID = rowData
+      // }
       console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
