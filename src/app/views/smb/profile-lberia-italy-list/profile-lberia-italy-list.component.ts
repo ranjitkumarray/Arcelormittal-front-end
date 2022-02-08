@@ -70,11 +70,11 @@ export class ProfileLberiaItalyListComponent implements OnInit {
             'sequence_id',
             'BusinessCode',
             'Market_Country',
+            'Market_Customer_Group',
             'Delivering_Mill',
             'Product_Level_02',
             'Product_Level_05',
             'Document_Item_Currency',
-            'Market_Customer_Group',
             'Amount',
             'Currency',
             'action'
