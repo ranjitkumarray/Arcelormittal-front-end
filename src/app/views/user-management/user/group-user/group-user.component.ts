@@ -73,9 +73,11 @@ export class GroupUserComponent implements OnInit {
     console.log(this.groupUserForm.value)
     this.apiMethod.post_request_header(this.apiString.userAccess.group_management_insert, this.groupUserForm.value).subscribe(result => {
       console.log(result)
+      this.apiMethod.popupMessage("success","Successfully added User Group")
       this.loadingRouteConfig = false
     }, error => {
       this.loadingRouteConfig = false
+      this.apiMethod.popupMessage("error","Unable to add the user Group")
       console.log(error)
     })
   }
