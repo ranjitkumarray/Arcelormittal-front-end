@@ -11,9 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/incoterm-exceptions-edit.component';
-import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
 import { rowData } from 'src/app/sample';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
+import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-incoterm-exceptions-list',
@@ -35,6 +36,8 @@ export class IncotermExceptionsListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any = '';
+  selection = new SelectionModel<incotermExceptionsData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -49,10 +52,37 @@ export class IncotermExceptionsListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.incoterm_exceptions
-        this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = [
+          'select',
+          'sequence_id',
+          'Market_Country',
+          'Product_Division',
+          'Incoterm1',
+          'Customer_Group',
+          'Beam_Category',
+          'Delivering_Mill',
+          'Document_Item_Currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
       } else {
         this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-        this.displayedColumns = ['Sequence_id','Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = [
+          'select',
+          'sequence_id',
+          'Sequence_id',
+          'Market_Country',
+          'Product_Division',
+          'Incoterm1',
+          'Customer_Group',
+          'Beam_Category',
+          'Delivering_Mill',
+          'Document_Item_Currency',
+          'Amount',
+          'Currency',
+          "action"
+        ]
       }
     });
   }
@@ -69,7 +99,7 @@ export class IncotermExceptionsListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.dataSource = new MatTableDataSource<incotermExceptionsData>(this.data)
+    // this.dataSource = new MatTableDataSource<incotermExceptionsData>(this.data)
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
@@ -77,8 +107,11 @@ export class IncotermExceptionsListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<incotermExceptionsData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -93,8 +126,9 @@ export class IncotermExceptionsListComponent implements OnInit {
     this.getIncotermExceptions()
   }
   //filter 
-  applyFilter() {
-    const filterValue = this.searchValue;
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getIncotermExceptions()
@@ -112,7 +146,9 @@ export class IncotermExceptionsListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "incoterm_exceptions",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -121,7 +157,7 @@ export class IncotermExceptionsListComponent implements OnInit {
       })
     }
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(IncotermExceptionsEditComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
@@ -132,7 +168,9 @@ export class IncotermExceptionsListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "incoterm_exceptions",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -141,14 +179,26 @@ export class IncotermExceptionsListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -157,7 +207,10 @@ export class IncotermExceptionsListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getIncotermExceptions()
+        if (result != undefined) {
+          this.getIncotermExceptions()
+          this.selection.clear()
+        }
       })
 
     }
@@ -171,5 +224,29 @@ export class IncotermExceptionsListComponent implements OnInit {
   }
   downloadIncotermExceptions() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: incotermExceptionsData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

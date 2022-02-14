@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup } from '@angular/forms';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -19,13 +19,19 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(private _formbuilder: FormBuilder,
     private apiMethod: ApiService,
     private apiString: CitGlobalConstantService,
-    private router: Router
+    private router: Router,
+    private activeRoute : ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.ForgotPassword = this._formbuilder.group({
       'email': ['', Validators.pattern(this.emailPattern)]
     })
+    
+    this.activeRoute.queryParams
+    .subscribe(params=>
+      console.log(params))
+
   }
 
   forgotPassword() {

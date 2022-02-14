@@ -26,7 +26,7 @@ export class EditPopupComponent implements OnInit {
     private router: Router
   ) {
 
-    if (this.data.fileName === 'smb') {
+    if (this.data.fileName === 'price_addition') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.smb_mini_bar : this.apiString.smb
     } else if (this.data.fileName === 'incoterm_exceptions') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.incoterm_exceptions_mini_bar : this.apiString.incoterm_exceptions
@@ -63,8 +63,7 @@ export class EditPopupComponent implements OnInit {
     this.data.fieldValue.forEach((element: any, index: any) => {
       objects[element] = []
       if (index === this.data.fieldValue.length - 1) {
-        objects['id'] = []
-        objects['sequence_id'] = []
+        objects['id_value'] = []
       }
     });
     console.log(objects)
@@ -76,6 +75,9 @@ export class EditPopupComponent implements OnInit {
   }
   patchValue() {
     this.updateRecord.patchValue(this.data.content)
+    this.updateRecord.patchValue({
+      "id_value": this.data.content.id
+    })
   }
   closeModel() {
     this.dialogRef.close()
@@ -88,13 +90,16 @@ export class EditPopupComponent implements OnInit {
     this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
       console.log(result)
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', ' Record successfully updated')
+      this.apiMethod.popupMessage('success', ' Reord Sent for Approval')
       this.closeModel()
     }, error => {
       console.log(error)
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while updating bace price addition')
-      // this.closeModel()
+      this.apiMethod.popupMessage('error', 'Error While Updating Record')
+      this.closeModel()
     })
+  }
+  removeUnderScore(value: any) {
+    return value.split('_').join(" ");
   }
 }

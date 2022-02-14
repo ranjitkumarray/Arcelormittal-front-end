@@ -11,6 +11,7 @@ import { gradeData } from '../smb-interface.service';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
 @Component({
   selector: 'app-grade-list',
   templateUrl: './grade-list.component.html',
@@ -30,6 +31,8 @@ export class GradeListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  filterValue: any = '';
+  selection = new SelectionModel<gradeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -45,6 +48,8 @@ export class GradeListComponent implements OnInit {
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.grade
         this.displayedColumns = [
+          'select',
+          'sequence_id',
           'BusinessCode',
           'Grade_Category',
           'Market_Country',
@@ -58,12 +63,13 @@ export class GradeListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.grade_mini_bar
         this.displayedColumns = [
+          'select',
           'sequence_id',
           'BusinessCode',
           'Grade_Category',
           'Market_Country',
           'Document_Item_Currency',
-          'Market_Customer',
+
           'Customer_Group',
           'Amount',
           'Currency',
@@ -92,8 +98,11 @@ export class GradeListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<gradeData>(resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -108,7 +117,9 @@ export class GradeListComponent implements OnInit {
     this.getGrade()
   }
   //filter 
-  applyFilter() {
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getGrade()
@@ -125,7 +136,9 @@ export class GradeListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "grade",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -145,7 +158,9 @@ export class GradeListComponent implements OnInit {
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             fileName: "grade",
             updateURL: this.apiStringURL.update,
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -153,14 +168,26 @@ export class GradeListComponent implements OnInit {
         this.getGrade()
       })
     }
-    if (viewOn === 'delete') {
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -169,7 +196,10 @@ export class GradeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getGrade()
+        if (result != undefined) {
+          this.getGrade()
+          this.selection.clear()
+        }
       })
     }
   }
@@ -182,5 +212,29 @@ export class GradeListComponent implements OnInit {
   }
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: gradeData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }

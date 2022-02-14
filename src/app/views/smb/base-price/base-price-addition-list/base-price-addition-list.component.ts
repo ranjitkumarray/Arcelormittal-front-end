@@ -13,6 +13,8 @@ import { EditBasePriceAdditionComponent } from '../edit-base-price-addition/edit
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
+import { SelectionModel } from '@angular/cdk/collections';
+import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -31,7 +33,9 @@ export class BasePriceAdditionListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
-  resultData: any=[];
+  resultData: any = [];
+  filterValue: any = '';
+  selection = new SelectionModel<basePriceAddtionData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -48,10 +52,10 @@ export class BasePriceAdditionListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.smb
-        this.displayedColumns = ['BusinessCode', 'Market_Country','Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['sequence_id','BusinessCode', 'Market_Country','Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Market_Country', 'Customer_Group', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -68,16 +72,21 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.resultData=[]
+    this.resultData = []
+    this.totalCount = 0
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
-      this.resultData=result
+      this.resultData = result
       this.totalCount = this.resultData.totalCount
+      console.log(this.totalCount)
       this.loadingRouteConfig = false
       this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.resultData.data)
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
         this.dataSource.sort = this.sort;
+
       })
     }, error => {
       this.loadingRouteConfig = false
@@ -92,8 +101,9 @@ export class BasePriceAdditionListComponent implements OnInit {
     this.getBasePriceAddition()
   }
   //filter 
-  applyFilter() {
-    const filterValue = this.searchValue;
+  applyFilter(filterValue: any) {
+    console.log(filterValue.trim().toLowerCase())
+    this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
     this.getBasePriceAddition()
@@ -110,7 +120,9 @@ export class BasePriceAdditionListComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
             fileName: "price_addition",
-            fieldValue: this.displayedColumns
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'sequence_id' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -119,15 +131,20 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
     }
     if (viewOn === 'edit') {
-      const dialogRef = this.popup.open(EditBasePriceAdditionComponent,
+      const dialogRef = this.popup.open(EditPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
-            type: this.url[3] === 'mini-bar' ? 'edit-min-bar' : 'edit'
+            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
+            fileName: "price_addition",
+            updateURL: this.apiStringURL.update,
+            fieldValue: this.displayedColumns.filter((x: any) =>
+              x != 'select' && x != 'action'
+            )
           },
         });
       dialogRef.afterClosed().subscribe(result => {
@@ -136,14 +153,27 @@ export class BasePriceAdditionListComponent implements OnInit {
       })
     }
 
-    if (viewOn === 'delete') {
+
+    if (viewOn === 'delete' || viewOn === 'delete-all') {
+      let deleteID: any = []
+      if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
+        return this.apiMethod.popupMessage('error', 'Select At-least on record')
+      }
+      if (this.selection.selected.length > 0) {
+        this.selection.selected.forEach((x: any) => {
+          deleteID.push(x.id)
+        })
+      } else {
+        deleteID = rowData
+      }
+      console.log(deleteID)
       const dialogRef = this.popup.open(WarnPopupComponent,
         {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            id: rowData.id,
+            id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
@@ -151,7 +181,10 @@ export class BasePriceAdditionListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
-        this.getBasePriceAddition()
+        if (result != undefined) {
+          this.getBasePriceAddition()
+          this.selection.clear()
+        }
       })
 
     }
@@ -165,5 +198,29 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
   downloadBasePriceAddition() {
     window.open(this.apiStringURL.download, "_blank")
+  }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): any {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource?.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource?.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: basePriceAddtionData): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
   }
 }
