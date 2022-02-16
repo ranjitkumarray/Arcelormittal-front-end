@@ -147,7 +147,7 @@ export class SingleUserComponent implements OnInit {
         'currentPage': false
       },
       {
-        'locationName': 'User Group',
+        'locationName': 'User',
         'link': '/user/group-management',
         'currentPage': true
       }
