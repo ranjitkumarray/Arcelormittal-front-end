@@ -49,42 +49,47 @@
             </mat-form-field>
 
         </div>
-        <!-- <div class="col-4">
-            <mat-form-field appearance="outline">
-                <mat-label>Pending With</mat-label>
-                <mat-select formControlName='pending_with' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let pending of resultdata?.pending_with" [value]="pending">
-                        {{pending}}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-        </div> -->
-        <div class="col-3">
-            <mat-form-field appearance="outline">
-                <mat-label>Created</mat-label>
-                <mat-select formControlName='created' (selectionChange)="getOfferStatus()">
-                    <mat-option *ngFor="let createdAt of resultdata?.created" [value]="createdAt">
-                        {{createdAt }}
-                    </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-3">
+        
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Offer ID</mat-label>
                 <input matInput placeholder="Offer ID" formControlName='offerid' (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <mat-form-field appearance="outline">
                 <mat-label>Cust Ref</mat-label>
                 <input matInput placeholder="Cust Ref" formControlName='customer_ref' (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
+    </div>
+    <div class="row" *ngIf="isShown">
+    
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Posting From</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="posting_date_from"
+                   (dateChange)="getOfferStatus()" autocomplete="off" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Posting to</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="posting_date_to"
+                    (dateChange)="getOfferStatus()" autocomplete="off" readonly [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    
     </div>
 </form>
 <div class="row">

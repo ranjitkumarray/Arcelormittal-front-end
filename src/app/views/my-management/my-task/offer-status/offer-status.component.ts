@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -6,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
-import { offerStatus } from '../../managment-interface.serviec';
+import { offerStatus, pendingInvoiceStatus } from '../../managment-interface.serviec';
 import { offer } from './dummydata';
 
 @Component({
@@ -41,6 +42,7 @@ export class OfferStatusComponent implements OnInit {
   breadCrumblocationsList: any = []
   pageEvent: any = PageEvent;
   totalCount: any;
+  minDate: any
 
   constructor(
     private apiString: CitGlobalConstantService,
@@ -53,53 +55,22 @@ export class OfferStatusComponent implements OnInit {
       customer: [''],
       // pending_with: [''],
       status: [''],
-      created: [''],
+      posting_date_from: [''],
+      posting_date_to: [''],
       offerid: [''],
       customer_ref: [''],
-      // offset: ['0'],
-      // limit: ['100']
+      offset: ['0'],
+      limit: ['100']
     })
   }
 
   ngOnInit(): void {
     this.getOfferStatus()
     this.updateBreadCrumb()
+    console.log(this.filterForm)
 
   }
-  getOfferStatus() {
-    this.loadingRouteConfig = true
-    let body = this.filterForm.value
-    Object.keys(body).forEach(key => {
-      if (body[key] === 'limit' || body[key] === 'offset') {
-      } else {
-        if (body[key] === "") {
-          body[key] = 'all';
-        }
-      }
-    });
-    console.log(body)
-    // this.resultdata = this.offer
-    this.resultdata = []
-    // this.dataSource=""
-    setTimeout(() => {
-      this.apiMethod.get_request_header_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
-        this.loadingRouteConfig = false
-        this.resultdata = result
-        this.totalCount = result.Count
-        this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-
-        }, 1000);
-
-      }, error => {
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('error', 'Error while getting offer status')
-      })
-    }, 1000);
-
-  }
+ 
   toggleShow(type: any) {
     console.log(type)
     if (type) {
@@ -140,4 +111,59 @@ export class OfferStatusComponent implements OnInit {
   openMail() {
     window.location.href = ("mailto:ranjitkumarray25@outlook.com?subject=Level Validation &body=")
   }
+
+
+  getOfferStatus() {
+    if (this.filterForm.value.posting_date_from) {
+      this.minDate = this.filterForm.value.posting_date_from
+    }
+    if (this.filterForm.value.posting_date_from || this.filterForm.value.posting_date_to) {
+      if (this.filterForm.value.posting_date_from && this.filterForm.value.posting_date_to) {
+        this.getResultData()
+      } else {
+        return
+      }
+    }
+    if (this.filterForm.value.ageing_from || this.filterForm.value.ageing_to) {
+      if (this.filterForm.value.ageing_from && this.filterForm.value.ageing_to) {
+        this.getResultData()
+      } else {
+        return
+      }
+    } else {
+      this.getResultData()
+    }
+  }
+  getResultData() {
+    this.loadingRouteConfig = true
+    const pipe = new DatePipe('en-US');
+    let body = {
+      search_string: this.filterForm.value.search_string ? this.filterForm.value.search_string : 'all',
+      customer: this.filterForm.value.customer ? this.filterForm.value.customer : 'all',
+      offerid : this.filterForm.value.offerid ? this.filterForm.value.offerid : 'all',
+      customer_ref : this.filterForm.value.customer_ref ? this.filterForm.value.customer_ref :'all',
+      posting_date_from: this.filterForm.value.posting_date_from ? pipe.transform(this.filterForm.value.posting_date_from, 'yyyy-MM-dd') : 'all',
+      posting_date_to: this.filterForm.value.posting_date_to ? pipe.transform(this.filterForm.value.posting_date_to, 'yyyy-MM-dd') : 'all',
+      offset: this.filterForm.value.offset,
+      limit: this.filterForm.value.limit
+    }
+    this.resultdata = []
+    this.apiMethod.get_request_header_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
+      this.loadingRouteConfig = false
+      this.resultdata = result
+      this.totalCount = result.Coun
+      this.dataSource = new MatTableDataSource<pendingInvoiceStatus>(this.resultdata.data)
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+      }, 1000);
+
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while getting offer status')
+    })
+  }
+
+  
 }
