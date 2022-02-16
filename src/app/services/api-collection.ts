@@ -316,7 +316,8 @@ export class CitGlobalConstantService {
         email_availability_check: this.baseUrl + "existEmail",
         user_availability_check: this.baseUrl + "existUsername",
         add_single_user_management: this.baseUrl + "insert_values",
-        user_access: this.baseUrl + "user_access"
+        user_access: this.baseUrl + "user_access",
+        group_management_insert : this.baseUrl + "group_management_insert"
     };
     getAprovalRecord: string = this.baseUrl + "aproval_data";
     aproveRecords: string = this.baseUrl + "aprove_records"

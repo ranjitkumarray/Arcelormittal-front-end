@@ -1,4 +1,8 @@
-
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
 
 <div class=row>
     <div class="col-12">
@@ -18,447 +22,454 @@
         </div>
     </div>
 </div>
- <div class="row">
-        <div class="col-12">
-            <table mat-table [dataSource]="dataSource" class="custom_table order_table" >
-                <div *ngIf="url[3]==='mini-bar';else sample">
-                    <div *ngIf="!(
-                        (url[2]==='delivery-mill') || 
-                        (url[2]==='freight-parity') || 
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='transport-mode') 
-                        )">
-                        <ng-container matColumnDef="BusinessCode">
-                            <th mat-header-cell *matHeaderCellDef > Business Code </th>
-                            <td mat-cell *matCellDef="let row of dataSource"> {{row.BusinessCode}} </td>
-                        </ng-container>
-                    </div>
-                    <div *ngIf="!(
-                        (url[2]==='smb') || 
-                        (url[2]==='extra-certificate') ||
-                        (url[2]==='grade') ||
-                        (url[2]==='transport-mode') 
-                    )">
-                        <ng-container matColumnDef="Delivering_Mill">
-                            <th mat-header-cell *matHeaderCellDef >Delivering Mill </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
-                        </ng-container>
-                    </div>
-                    <div *ngIf="(
-                        (url[2]==='delivery-mill') ||
-                        (url[2]==='freight-parity') ||
-                        (url[2]==='transport-mode') 
-                    )">
-                        <ng-container matColumnDef="Product_Division">
-                            <th mat-header-cell *matHeaderCellDef >Product Division </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
-                        </ng-container>
-                    </div>
+<div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            <div class="my_offer_table_container">
+                <div class="text-center ">
+                    <div class="table-outer-container offer_table_container position-relative ">
+                        <div class="table-inner-container hc example-container mat-elevation-z8">
+                            <table mat-table [dataSource]="dataSource">
+                                <div *ngIf="url[3]==='mini-bar';else sample">
+                                    <div *ngIf="!(
+                                                (url[2]==='delivery-mill') || 
+                                                (url[2]==='freight-parity') || 
+                                                (url[2]==='length-logistic') ||
+                                                (url[2]==='transport-mode') 
+                                                )">
+                                        <ng-container matColumnDef="BusinessCode">
+                                            <th mat-header-cell *matHeaderCellDef> Business Code </th>
+                                            <td mat-cell *matCellDef="let row of dataSource"> {{row.BusinessCode}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="!(
+                                                    (url[2]==='smb') || 
+                                                    (url[2]==='extra-certificate') ||
+                                                    (url[2]==='grade') ||
+                                                    (url[2]==='transport-mode') 
+                                                )">
+                                        <ng-container matColumnDef="Delivering_Mill">
+                                            <th mat-header-cell *matHeaderCellDef>Delivering Mill </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="(
+                                                    (url[2]==='delivery-mill') ||
+                                                    (url[2]==='freight-parity') ||
+                                                    (url[2]==='transport-mode') 
+                                                )">
+                                        <ng-container matColumnDef="Product_Division">
+                                            <th mat-header-cell *matHeaderCellDef>Product Division </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
+                                        </ng-container>
+                                    </div>
 
 
-                    <div *ngIf="!(
-                        (url[2]==='delivery-mill') ||
-                        (url[2]==='freight_-arity') ||
-                        (url[2]==='profile-lberia_italy') ||
-                        (url[2]==='transport-mode') 
-                        )">
-                        <ng-container matColumnDef="Customer_Group">
-                            <th mat-header-cell *matHeaderCellDef >Customer Group </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Customer_Group}} </td>
-                        </ng-container>
-                    </div>
-                    <div *ngIf="(
-                        (url[2]==='delivery-mill') ||
-                        (url[2]==='freight-parity') ||
-                        (url[2]==='profile-lberia-italy') ||
-                        (url[2]==='transport-mode') 
-                        )">
-                        <ng-container matColumnDef="Market_Customer_Group">
-                            <th mat-header-cell *matHeaderCellDef >Market Customer Group </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Market_Customer_Group}} </td>
-                        </ng-container>
-                    </div>
-                    <!-- <ng-container matColumnDef="Market_Customer">
-                        <th mat-header-cell *matHeaderCellDef > Market - Customer </th>
-                        <td mat-cell *matCellDef="let row"> {{row.Market_Customer}} </td>
-                    </ng-container> -->
+                                                                <div *ngIf="!(
+                                                    (url[2]==='delivery-mill') ||
+                                                    (url[2]==='freight_-arity') ||
+                                                    (url[2]==='profile-lberia_italy') ||
+                                                    (url[2]==='transport-mode') 
+                                                    )">
+                                        <ng-container matColumnDef="Customer_Group">
+                                            <th mat-header-cell *matHeaderCellDef>Customer Group </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Customer_Group}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="(
+                                                    (url[2]==='delivery-mill') ||
+                                                    (url[2]==='freight-parity') ||
+                                                    (url[2]==='profile-lberia-italy') ||
+                                                    (url[2]==='transport-mode') 
+                                                    )">
+                                        <ng-container matColumnDef="Market_Customer_Group">
+                                            <th mat-header-cell *matHeaderCellDef>Market Customer Group </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Market_Customer_Group}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <!-- <ng-container matColumnDef="Market_Customer">
+                                        <th mat-header-cell *matHeaderCellDef > Market - Customer </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.Market_Customer}} </td>
+                                    </ng-container> -->
 
-                    <div *ngIf="(
-                        (url[2]==='extra-certificate') ||
-                        (url[2]==='grade') 
-                        )">
-                        <ng-container matColumnDef="Grade_Category">
-                            <th mat-header-cell *matHeaderCellDef >Grade Category </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Grade_Category}} </td>
-                        </ng-container>
+                                    <div *ngIf="(
+                                                    (url[2]==='extra-certificate') ||
+                                                    (url[2]==='grade') 
+                                                    )">
+                                        <ng-container matColumnDef="Grade_Category">
+                                            <th mat-header-cell *matHeaderCellDef>Grade Category </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Grade_Category}} </td>
+                                        </ng-container>
 
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='profile') ||
+                                                    (url[2]==='profile-lberia-italy')
+                                                    )">
+
+                                        <ng-container matColumnDef="Product_Level_02">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 02 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='profile')">
+                                        <ng-container matColumnDef="Product_Level_04">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 04 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_04}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='profile') ||
+                                                    (url[2]==='profile-lberia-italy')
+                                                    )">
+                                        <ng-container matColumnDef="Product_Level_05">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 05 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_05}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='transport-mode')
+                                                    )">
+                                        <ng-container matColumnDef="Transport_Mode">
+                                            <th mat-header-cell *matHeaderCellDef> Transport Mode </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Transport_Mode}} </td>
+                                        </ng-container>
+
+                                    </div>
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='length-production')
+                                                    )">
+                                        <ng-container matColumnDef="Length">
+                                            <th mat-header-cell *matHeaderCellDef> Length </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='extra-certificate')">
+                                        <ng-container matColumnDef="Certificate">
+                                            <th mat-header-cell *matHeaderCellDef> Certificate </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='freight-parity')">
+                                        <ng-container matColumnDef="Zip_Code_Dest">
+                                            <th mat-header-cell *matHeaderCellDef> Zip Code Dest </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div class="col-6" *ngIf="(
+                                                                (data?.fileName==='length_logistic') ||
+                                                                (data?.fileName==='length_production')
+                                                                )">
+                                        <ng-container matColumnDef="Length_From">
+                                            <th mat-header-cell *matHeaderCellDef> Length From </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div class="col-6" *ngIf="(
+                                                                (data?.fileName==='length_logistic') ||
+                                                                (data?.fileName==='length_production')
+                                                                )">
+                                        <ng-container matColumnDef="Length_To">
+                                            <th mat-header-cell *matHeaderCellDef> Length To </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                                        </ng-container>
+                                    </div>
+
+
+                                    <div *ngIf="(url[2]==='smb')">
+                                        <ng-container matColumnDef="Beam_Category">
+                                            <th mat-header-cell *matHeaderCellDef> BeamCatagory</th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic')
+                                                    )">
+                                        <ng-container matColumnDef="Country_Group">
+                                            <th mat-header-cell *matHeaderCellDef> Country Group </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Country_Group}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='length-production')
+                                                    )">
+                                        <ng-container matColumnDef="Length_From">
+                                            <th mat-header-cell *matHeaderCellDef> Length From </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='length-production')
+                                                    )">
+                                        <ng-container matColumnDef="Length_To">
+                                            <th mat-header-cell *matHeaderCellDef> Length To </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <!-- =========================simple table ================================ -->
+                                <ng-template #sample>
+                                    <div *ngIf="!(
+                                                    (url[2]==='freight-parity') || 
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='transport-mode') 
+                                                )">
+                                        <ng-container matColumnDef="BusinessCode">
+                                            <th mat-header-cell *matHeaderCellDef> Business Code </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.BusinessCode}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="!(
+                                                    (url[2]==='smb') || 
+                                                    (url[2]==='grade') ||
+                                                    (url[2]==='transport-mode')
+                                                )">
+                                        <ng-container matColumnDef="Delivering_Mill">
+                                            <th mat-header-cell *matHeaderCellDef> Delivering Mill </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='smb') ||
+                                                    (url[2]==='delivery-mill') ||
+                                                    (url[2]==='freight-parity') ||
+                                                    (url[2]==='profile') ||
+                                                    (url[2]==='grade') ||
+                                                    (url[2]==='transport-mode') ||
+                                                    (url[2]==='incoterm-exceptions')  
+                                                    )">
+                                        <ng-container matColumnDef="Product_Division">
+                                            <th mat-header-cell *matHeaderCellDef> Product Division </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
+                                        </ng-container>
+                                    </div>
+
+
+                                    <div *ngIf="(
+                                                    (url[2]==='extra-certificate') ||
+                                                    (url[2]==='grade') 
+                                                    )">
+                                        <ng-container matColumnDef="Grade_Category">
+                                            <th mat-header-cell *matHeaderCellDef> Grade Category </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Grade_Category}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='smb') ||
+                                                    (url[2]==='profile') ||
+                                                    (url[2]==='profile-lberia-italy') 
+                                                    )">
+                                        <ng-container matColumnDef="Product_Level_02">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 02 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='profile') 
+                                                    )">
+                                        <ng-container matColumnDef="Product_Level_04">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 04 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_04}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='profile') ||
+                                                    (url[2]==='profile-lberia-italy')
+                                                    )">
+                                        <ng-container matColumnDef="Product_Level_05">
+                                            <th mat-header-cell *matHeaderCellDef> Product Level 05 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_05}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='transport-mode')
+                                                    )">
+                                        <ng-container matColumnDef="Transport_Mode">
+                                            <th mat-header-cell *matHeaderCellDef> Transport Mode </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Transport_Mode}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='length-production')
+                                                    )">
+                                        <ng-container matColumnDef="Length">
+                                            <th mat-header-cell *matHeaderCellDef> Length </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(
+                                                    (url[2]==='grade') ||
+                                                    (url[2]==='length-logistic') ||
+                                                    (url[2]==='length-production')
+                                                    )">
+                                        <ng-container matColumnDef="Country_Group">
+                                            <th mat-header-cell *matHeaderCellDef> Country Group </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Country_Group}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='freight-parity')">
+                                        <ng-container matColumnDef="Zip_Code_Dest">
+                                            <th mat-header-cell *matHeaderCellDef> Zip Code Dest </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='extra-certificate') ">
+                                        <ng-container matColumnDef="Certificate">
+                                            <th mat-header-cell *matHeaderCellDef> Certificate </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="((url[2]==='delivery-mill') ||
+                                                 (url[2]==='incoterm-exceptions') )">
+                                        <ng-container matColumnDef="Beam_Category">
+                                            <th mat-header-cell *matHeaderCellDef> Beam Category </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="(url[2]==='incoterm-exceptions')">
+                                        <ng-container matColumnDef="Customer_Group">
+                                            <th mat-header-cell *matHeaderCellDef>Customer Group </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Customer_Group}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="(url[2]==='incoterm-exceptions')">
+                                        <ng-container matColumnDef="Incoterm1">
+                                            <th mat-header-cell *matHeaderCellDef>Incoterm1 </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Incoterm1}} </td>
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-6" *ngIf="(
+                                                            (url[2]==='length-logistic') ||
+                                                            (url[2]==='length-production')
+                                                            )">
+                                        <ng-container matColumnDef="Length_From">
+                                            <th mat-header-cell *matHeaderCellDef> Length From </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
+                                        </ng-container>
+                                    </div>
+
+                                    <div class="col-6" *ngIf="(
+                                                            (url[2]==='length-logistic') ||
+                                                            (url[2]==='length-production')
+                                                            )">
+                                        <ng-container matColumnDef="Length_To">
+                                            <th mat-header-cell *matHeaderCellDef> Length To </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
+                                        </ng-container>
+                                    </div>
+                                </ng-template>
+                                <ng-container matColumnDef="Market_Country">
+                                    <th mat-header-cell *matHeaderCellDef> Market Country </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.Market_Country}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Document_Item_Currency">
+                                    <th mat-header-cell *matHeaderCellDef> Doc Item Cur</th>
+                                    <td mat-cell *matCellDef="let row"> {{row.Document_Item_Currency}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Amount">
+                                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.Amount}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Currency">
+                                    <th mat-header-cell *matHeaderCellDef> Currency </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
+                                </ng-container>
+
+                                <div *ngIf="(
+                                                (url[2]==='freight-parity') ||
+                                                (url[2]==='length-production')||
+                                                (url[2]==='smb') ||
+                                                (url[2]==='incoterm-exceptions') ||
+                                                (url[2]==='extra-certificate') ||
+                                                (url[2]==='grade') ||
+                                                (url[2]==='transport-mode') ||
+                                                (url[2]==='delivery-mill') ||
+                                                (url[2]==='length-logistic') ||
+                                                (url[2]==='profile') ||
+                                                (url[2]==='profile-lberia-italy')
+                                                )">
+                                    <ng-container matColumnDef="updated_on">
+                                        <th mat-header-cell *matHeaderCellDef> Updated_On </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.updated_on}} </td>
+                                    </ng-container>
+                                </div>
+
+                                <div *ngIf="(
+                                                (url[2]==='freight-parity') ||
+                                                (url[2]==='length-production')||
+                                                (url[2]==='smb') ||
+                                                (url[2]==='incoterm-exceptions') ||
+                                                (url[2]==='extra-certificate') ||
+                                                (url[2]==='grade') ||
+                                                (url[2]==='transport-mode') ||
+                                                (url[2]==='delivery-mill') ||
+                                                (url[2]==='length-logistic') ||
+                                                (url[2]==='profile') ||
+                                                (url[2]==='profile-lberia-italy')
+                                                )">
+                                    <ng-container matColumnDef="Username">
+                                        <th mat-header-cell *matHeaderCellDef> Username </th>
+                                        <td mat-row *matCellDef="let row"> {{row.Username}} </td>
+                                    </ng-container>
+                                </div>
+
+
+                                <!--=====================================simple design end ===============================  -->
+
+                                <!--========================== common rows ================================= -->
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <!-- <tr *ngFor="let data of dataSource;let i = index">dsdfsf</tr> -->
+
+
+                            </table>
+                        </div>
                     </div>
-
-                    <div *ngIf="(
-                        (url[2]==='profile') ||
-                        (url[2]==='profile-lberia-italy')
-                        )">
-
-                        <ng-container matColumnDef="Product_Level_02">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 02 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='profile')">
-                        <ng-container matColumnDef="Product_Level_04">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 04 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_04}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='profile') ||
-                        (url[2]==='profile-lberia-italy')
-                        )">
-                        <ng-container matColumnDef="Product_Level_05">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 05 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_05}} </td>
-                        </ng-container>
-                    </div>
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='transport-mode')
-                        )">
-                        <ng-container matColumnDef="Transport_Mode">
-                            <th mat-header-cell *matHeaderCellDef > Transport Mode </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Transport_Mode}} </td>
-                        </ng-container>
-
-                    </div>
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length">
-                            <th mat-header-cell *matHeaderCellDef > Length </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='extra-certificate')">
-                        <ng-container matColumnDef="Certificate">
-                            <th mat-header-cell *matHeaderCellDef > Certificate </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='freight-parity')">
-                        <ng-container matColumnDef="Zip_Code_Dest">
-                            <th mat-header-cell *matHeaderCellDef > Zip Code Dest </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div class="col-6" *ngIf="(
-                        (data?.fileName==='length_logistic') ||
-                        (data?.fileName==='length_production')
-                        )">
-                        <ng-container matColumnDef="Length_From">
-                            <th mat-header-cell *matHeaderCellDef > Length From </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div class="col-6" *ngIf="(
-                        (data?.fileName==='length_logistic') ||
-                        (data?.fileName==='length_production')
-                        )">
-                        <ng-container matColumnDef="Length_To">
-                            <th mat-header-cell *matHeaderCellDef > Length To </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
-                        </ng-container>
-                    </div>
-                    
-
-                    <div *ngIf="(url[2]==='smb')">
-                        <ng-container matColumnDef="Beam_Category">
-                            <th mat-header-cell *matHeaderCellDef > BeamCatagory</th>
-                            <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='length-logistic')
-                        )">
-                        <ng-container matColumnDef="Country_Group">
-                            <th mat-header-cell *matHeaderCellDef > Country Group </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Country_Group}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length_From">
-                            <th mat-header-cell *matHeaderCellDef > Length From </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length_To">
-                            <th mat-header-cell *matHeaderCellDef > Length To </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
-                        </ng-container>
-                    </div>
-
                 </div>
-
-                
-
-                
-
-                <!-- =========================simple table ================================ -->
-                <ng-template #sample>
-                    <div *ngIf="!(
-                        (url[2]==='freight-parity') || 
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='transport-mode') 
-                    )">
-                        <ng-container matColumnDef="BusinessCode">
-                            <th mat-header-cell *matHeaderCellDef > Business Code </th>
-                            <td mat-cell *matCellDef="let row"> {{row.BusinessCode}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="!(
-                        (url[2]==='smb') || 
-                        (url[2]==='grade') ||
-                        (url[2]==='transport-mode')
-                    )">
-                        <ng-container matColumnDef="Delivering_Mill">
-                            <th mat-header-cell *matHeaderCellDef > Delivering Mill </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Delivering_Mill}} </td>
-                        </ng-container>
-                    </div>
-                   
-                    <div *ngIf="(
-                        (url[2]==='smb') ||
-                        (url[2]==='delivery-mill') ||
-                        (url[2]==='freight-parity') ||
-                        (url[2]==='profile') ||
-                        (url[2]==='grade') ||
-                        (url[2]==='transport-mode') ||
-                        (url[2]==='incoterm-exceptions')  
-                        )">
-                        <ng-container matColumnDef="Product_Division">
-                            <th mat-header-cell *matHeaderCellDef > Product Division </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Division}} </td>
-                        </ng-container>
-                    </div>
-
-
-                    <div *ngIf="(
-                        (url[2]==='extra-certificate') ||
-                        (url[2]==='grade') 
-                        )">
-                        <ng-container matColumnDef="Grade_Category">
-                            <th mat-header-cell *matHeaderCellDef > Grade Category </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Grade_Category}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='smb') ||
-                        (url[2]==='profile') ||
-                        (url[2]==='profile-lberia-italy') 
-                        )">
-                        <ng-container matColumnDef="Product_Level_02">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 02 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_02}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='profile') 
-                        )">
-                        <ng-container matColumnDef="Product_Level_04">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 04 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_04}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='profile') ||
-                        (url[2]==='profile-lberia-italy')
-                        )">
-                        <ng-container matColumnDef="Product_Level_05">
-                            <th mat-header-cell *matHeaderCellDef > Product Level 05 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Product_Level_05}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='transport-mode')
-                        )">
-                        <ng-container matColumnDef="Transport_Mode">
-                            <th mat-header-cell *matHeaderCellDef > Transport Mode </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Transport_Mode}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length">
-                            <th mat-header-cell *matHeaderCellDef > Length </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(
-                        (url[2]==='grade') ||
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Country_Group">
-                            <th mat-header-cell *matHeaderCellDef > Country Group </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Country_Group}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='freight-parity')">
-                        <ng-container matColumnDef="Zip_Code_Dest">
-                            <th mat-header-cell *matHeaderCellDef > Zip Code Dest </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Zip_Code_Dest}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='extra-certificate') ">
-                        <ng-container matColumnDef="Certificate">
-                            <th mat-header-cell *matHeaderCellDef > Certificate </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Certificate}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="((url[2]==='delivery-mill') ||
-                    (url[2]==='incoterm-exceptions') )">
-                        <ng-container matColumnDef="Beam_Category">
-                            <th mat-header-cell *matHeaderCellDef > Beam Category </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Beam_Category}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div *ngIf="(url[2]==='incoterm-exceptions')">
-                        <ng-container matColumnDef="Customer_Group">
-                            <th mat-header-cell *matHeaderCellDef >Customer Group </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Customer_Group}} </td>
-                        </ng-container>
-                    </div>
-                    <div *ngIf="(url[2]==='incoterm-exceptions')">
-                        <ng-container matColumnDef="Incoterm1">
-                            <th mat-header-cell *matHeaderCellDef >Incoterm1 </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Incoterm1}} </td>
-                        </ng-container>
-                    </div>
-                    <div class="col-6" *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length_From">
-                            <th mat-header-cell *matHeaderCellDef > Length From </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_From}} </td>
-                        </ng-container>
-                    </div>
-
-                    <div class="col-6" *ngIf="(
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='length-production')
-                        )">
-                        <ng-container matColumnDef="Length_To">
-                            <th mat-header-cell *matHeaderCellDef > Length To </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Length_To}} </td>
-                        </ng-container>
-                    </div>
-                </ng-template>
-                <ng-container matColumnDef="Market_Country">
-                    <th mat-header-cell *matHeaderCellDef > Market Country </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Market_Country}} </td>
-                </ng-container>
-                <ng-container matColumnDef="Document_Item_Currency">
-                    <th mat-header-cell *matHeaderCellDef > Doc Item Cur</th>
-                    <td mat-cell *matCellDef="let row"> {{row.Document_Item_Currency}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Amount">
-                    <th mat-header-cell *matHeaderCellDef > Amount </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Amount}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Currency">
-                    <th mat-header-cell *matHeaderCellDef > Currency </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Currency}} </td>
-                </ng-container>
-
-                <div *ngIf="(
-                        (url[2]==='freight-parity') ||
-                        (url[2]==='length-production')||
-                        (url[2]==='smb') ||
-                        (url[2]==='incoterm-exceptions') ||
-                        (url[2]==='extra-certificate') ||
-                        (url[2]==='grade') ||
-                        (url[2]==='transport-mode') ||
-                        (url[2]==='delivery-mill') ||
-                        (url[2]==='length-logistic') ||
-                        (url[2]==='profile') ||
-                        (url[2]==='profile-lberia-italy')
-                        )">
-                        <ng-container matColumnDef="updated_on">
-                            <th mat-header-cell *matHeaderCellDef > Updated_On </th>
-                            <td mat-cell *matCellDef="let row"> {{row.updated_on}} </td>
-                        </ng-container>
-                 </div>
-            
-                 <div *ngIf="(
-                    (url[2]==='freight-parity') ||
-                    (url[2]==='length-production')||
-                    (url[2]==='smb') ||
-                    (url[2]==='incoterm-exceptions') ||
-                    (url[2]==='extra-certificate') ||
-                    (url[2]==='grade') ||
-                    (url[2]==='transport-mode') ||
-                    (url[2]==='delivery-mill') ||
-                    (url[2]==='length-logistic') ||
-                    (url[2]==='profile') ||
-                    (url[2]==='profile-lberia-italy')
-                    )">
-                    <ng-container matColumnDef="Username">
-                        <th mat-header-cell *matHeaderCellDef > Username </th>
-                        <td mat-cell *matCellDef="let row"> {{row.Username}} </td>
-                    </ng-container>
-             </div>
-        
-
-                <!--=====================================simple design end ===============================  -->
-
-                <!--========================== common rows ================================= -->
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                <tr *ngFor="let data of dataSource;let i = index">dsdfsf</tr>
-
-
-            </table>
-            <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200]" #paginators>
+            </div>
+        </div>
+        <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200]" #paginators>
             </mat-paginator> -->
 
-            <mat-paginator [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200]" #paginators
-                                (page)="pageEvent = pageChangeCall($event)">
-                            </mat-paginator>
-        </div>
+        <mat-paginator [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[10,25,50,100,150,200,500]" #paginators
+            (page)="pageEvent = pageChangeCall($event)">
+        </mat-paginator>
     </div>
-        <!-- ========================== simple design ================================= -->
-
-
-
+</div>
+<!-- ========================== simple design ================================= -->
