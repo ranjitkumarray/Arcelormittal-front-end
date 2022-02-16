@@ -69,7 +69,7 @@
     
         <div class="col-4">
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Posting From</mat-label>
+                <mat-label>Created From</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="posting_date_from"
                    (dateChange)="getOfferStatus()" autocomplete="off" readonly>
                 <mat-datepicker-toggle matSuffix [for]="picker">
@@ -80,7 +80,7 @@
         </div>
         <div class="col-4">
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Posting to</mat-label>
+                <mat-label>Created To</mat-label>
                 <input matInput [matDatepicker]="picker2" formControlName="posting_date_to"
                     (dateChange)="getOfferStatus()" autocomplete="off" readonly [min]="minDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2">
