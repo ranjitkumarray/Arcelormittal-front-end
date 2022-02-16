@@ -97,8 +97,8 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       invoice_posting_date_from: this.filterForm.value.invoice_posting_date_from ? pipe.transform(this.filterForm.value.invoice_posting_date_from, 'yyyy-MM-dd') : 'all',
       invoice_posting_date_to: this.filterForm.value.invoice_posting_date_to ? pipe.transform(this.filterForm.value.invoice_posting_date_to, 'yyyy-MM-dd') : 'all',
       invoice_ageing_bucket: this.filterForm.value.invoice_ageing_bucket ? this.filterForm.value.invoice_ageing_bucket : 'all',
-      offset: this.filterForm.value.offset,
-      limit: this.filterForm.value.limit
+      offset: this.filterForm.value.offset ? this.filterForm.value.offset:'0',
+      limit: this.filterForm.value.limit ? this.filterForm.value.limit:"100"
     }
     this.resultdata = []
     this.apiMethod.get_request_header_Param(this.apiString.myTask.missingInvoicePayment, body).subscribe((result: any) => {
@@ -154,4 +154,9 @@ export class MissingInvoicePaymentsComponent implements OnInit {
       this.router.navigateByUrl(link);
     }
   }
+  resetAll(){
+    this.filterForm.reset()
+    this.getOfferStatus()
+  }
+  
 }

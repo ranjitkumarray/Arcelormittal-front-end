@@ -20,14 +20,14 @@
 </div>
 <form [formGroup]="filterForm">
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Search</mat-label>
                 <input matInput placeholder="Search" formControlName="search_string" (keyup.enter)="getOfferStatus()">
                 <mat-icon matSuffix (click)="getOfferStatus()" class="pointer">search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="col-8 text-right filter">
+        <div class="col-9 text-right filter">
             <button mat-icon-button class="filter-icon" type="button" (click)="isShown = !isShown">
                 <i class="fa fa-filter"></i>
             </button>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="row" *ngIf="isShown">
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Customer</mat-label>
                 <mat-select formControlName="customer" (selectionChange)="getOfferStatus()">
@@ -45,7 +45,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing From</mat-label>
                 <mat-select formControlName='invoice_ageing_from' (selectionChange)="getOfferStatus()">
@@ -53,7 +53,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing To</mat-label>
                 <mat-select formControlName='invoice_ageing_to' (selectionChange)="getOfferStatus()">
@@ -61,7 +61,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field appearance="outline">
                 <mat-label>Invoice Ageing Bucket</mat-label>
                 <mat-select formControlName='invoice_ageing_bucket' (selectionChange)="getOfferStatus()">
@@ -70,7 +70,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Invoice Posting From</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="invoice_posting_date_from"
@@ -81,7 +81,7 @@
 
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Invoice Posting to</mat-label>
                 <input matInput [matDatepicker]="picker2" formControlName="invoice_posting_date_to"
@@ -90,9 +90,12 @@
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
-
         </div>
-
+        <div class="col-3">
+            <button mat-mini-fab type="button" color="primary"  (click)="resetAll()">
+                <i class="fa fa-undo" ></i>
+            </button>
+        </div>
     </div>
 </form>
 <div class="row">
