@@ -65,7 +65,7 @@ export class OfferStatusComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getOfferStatus()
+    this.getOfferStatus()
     this.updateBreadCrumb()
     console.log(this.filterForm)
 
