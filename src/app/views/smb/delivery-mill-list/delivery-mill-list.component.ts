@@ -66,8 +66,8 @@ export class DeliveryMillListComponent implements OnInit {
         this.displayedColumns = [
           'select',
           'sequence_id',
-          'Market_Customer_Group',
           'Market_Country',
+          'Market_Customer_Group',
           'Delivering_Mill',
           'Product_Division',
           'Document_Item_Currency',

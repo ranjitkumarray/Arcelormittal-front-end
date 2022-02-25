@@ -59,7 +59,7 @@ export class OrderStatusComponent implements OnInit {
     Object.keys(body).forEach(key => {
       if (body[key] === 'limit' || body[key] === 'offset') {
       } else {
-        if (body[key] === "") {
+        if (body[key] === "" || body[key] === null) {
           body[key] = 'all';
         }
       }
@@ -90,5 +90,14 @@ export class OrderStatusComponent implements OnInit {
       limit: event.pageSize
     })
     this.getOfferStatus()
+  }
+  resetAll() {
+    this.filterForm.reset()
+    this.filterForm.patchValue({
+      limit: [100],
+      offset: [0]
+    })
+    this.getOfferStatus()
+
   }
 }

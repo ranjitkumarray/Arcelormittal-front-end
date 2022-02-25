@@ -230,8 +230,8 @@
                         </div>
 
                         <div class="col-6" *ngIf="(
-                            (data?.fileName==='length_logistic') ||
-                            (data?.fileName==='length_production')
+                            (url[2]==='length-logistic') ||
+                            (url[2]==='length-production')
                             )">
                             <ng-container matColumnDef="Length_From">
                                 <th mat-header-cell *matHeaderCellDef > Length From </th>
@@ -240,8 +240,8 @@
                         </div>
 
                         <div class="col-6" *ngIf="(
-                            (data?.fileName==='length_logistic') ||
-                            (data?.fileName==='length_production')
+                            (url[2]==='length-logistic') ||
+                            (url[2]==='length-production')
                             )">
                             <ng-container matColumnDef="Length_To">
                                 <th mat-header-cell *matHeaderCellDef > Length To </th>

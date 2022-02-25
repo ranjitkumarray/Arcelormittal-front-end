@@ -10,7 +10,6 @@ import { incotermExceptionsData } from '../../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WarnPopupComponent } from '../../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
-import { IncotermExceptionsEditComponent } from '../incoterm-exceptions-edit/incoterm-exceptions-edit.component';
 import { rowData } from 'src/app/sample';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -56,9 +55,9 @@ export class IncotermExceptionsListComponent implements OnInit {
           'select',
           'sequence_id',
           'Market_Country',
-          'Product_Division',
-          'Incoterm1',
           'Customer_Group',
+          'Incoterm1',
+          'Product_Division',
           'Beam_Category',
           'Delivering_Mill',
           'Document_Item_Currency',

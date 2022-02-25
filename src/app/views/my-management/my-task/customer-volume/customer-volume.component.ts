@@ -45,8 +45,9 @@ export class CustomerVolumeComponent implements OnInit {
   getOfferStatus() {
     this.loadingRouteConfig = true
     this.apiMethod.get_request_header(this.apiString.myTask.offerStatus).subscribe((result: any) => {
-      this.loadingRouteConfig = true
-      this.dataSource = new MatTableDataSource<offerStatus>(JSON.parse(result.data))
+      this.loadingRouteConfig = false
+      console.log(result)
+      this.dataSource = new MatTableDataSource<any>((result.data))
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -57,5 +58,13 @@ export class CustomerVolumeComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
+  }
+  resetAll(){
+    this.filterForm.reset()
+    this.filterForm.patchValue({
+      limit: [100],
+      offset: [0]
+    })
+    this.getOfferStatus()
   }
 }

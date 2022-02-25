@@ -61,11 +61,11 @@ export class ExtraCertificateListComponent implements OnInit {
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.certificate
-        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Document_Item_Currency', 'Delivering_Mill', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Certificate', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['select', 'sequence_id', 'BusinessCode', 'Customer_Group', 'Market_Country', 'Certificate', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }

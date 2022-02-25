@@ -164,6 +164,13 @@ export class OfferStatusComponent implements OnInit {
       this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
   }
-
+  resetAll(){
+    this.filterForm.reset()
+    this.filterForm.patchValue({
+      limit: [100],
+      offset: [0]
+    })
+    this.getOfferStatus()
+  }
   
 }
