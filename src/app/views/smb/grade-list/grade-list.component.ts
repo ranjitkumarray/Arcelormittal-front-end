@@ -58,6 +58,7 @@ export class GradeListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.grade_mini_bar
         this.displayedColumns = [
+          'sequence_id',
           'BusinessCode',
           'Grade_Category',
           'Market_Country',

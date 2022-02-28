@@ -61,13 +61,15 @@ export class ExtraCertificateListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.certificate_mini_bar
 
-        this.displayedColumns = ['BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
+        this.displayedColumns = ['sequence_id','BusinessCode', 'Certificate', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Customer_Group', 'Document_Item_Currency', 'Amount', 'Currency', 'action']
       }
     });
   }
 
   ngOnInit(): void {
-    this.getCertificate()
+    // this.getCertificate()
+    this.dataSource = new MatTableDataSource<certificateData>(this.data)
+
   }
   //getting uploaded history of alloy scrap 
   getCertificate() {
@@ -115,6 +117,7 @@ export class ExtraCertificateListComponent implements OnInit {
           panelClass: 'my-full-screen-dialog',
           autoFocus: false,
           maxHeight: '90vh',
+          maxWidth: '40vw',
           data: {
             content: '',
             addURL: this.apiStringURL.add,

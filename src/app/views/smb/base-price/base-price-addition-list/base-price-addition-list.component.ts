@@ -31,6 +31,7 @@ export class BasePriceAdditionListComponent implements OnInit {
   totalCount: any = 0;
   url: any;
   apiStringURL: any;
+  resultData: any=[];
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -50,7 +51,7 @@ export class BasePriceAdditionListComponent implements OnInit {
         this.displayedColumns = ['BusinessCode', 'Market_Country','Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.smb_mini_bar
-        this.displayedColumns = ['BusinessCode', 'Market_Country','Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['sequence_id','BusinessCode', 'Market_Country','Customer_Group', 'Market_Customer', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }
@@ -67,12 +68,13 @@ export class BasePriceAdditionListComponent implements OnInit {
     } else {
       searchString = "all"
     }
+    this.resultData=[]
     this.apiMethod.get_request(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
-      let resultData: any = result
-      this.totalCount = resultData.totalCount
+      this.resultData=result
+      this.totalCount = this.resultData.totalCount
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<basePriceAddtionData>(resultData.data)
+      this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.resultData.data)
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

@@ -85,13 +85,13 @@ table.mat-table {
             word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06);
             border-left: 1px solid rgba(0, 0, 0, 0.06);
-            width: 165px;
+            min-width: 65px;
         }
     }
     tbody {
         tr {
             cursor: pointer;
-            background-color: $primaryBg;
+            background-color: $white;
             td {
                 padding: 5px 5px;
                 word-break: break-all;
@@ -101,7 +101,7 @@ table.mat-table {
                 text-align: center;
                 border-right: 1px solid rgba(0, 0, 0, 0.06);
                 border-left: 1px solid rgba(0, 0, 0, 0.06);
-                width: 165px;
+                min-width: 65px;
             }
         }
     }
@@ -129,6 +129,7 @@ table.mat-table {
             word-break: break-word;
             border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
             border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+            min-width: 65px;
         }
     }
     tbody {
@@ -148,6 +149,7 @@ table.mat-table {
                 color: black;
                 border-right: 1px solid rgba(0, 0, 0, 0.06);
                 border-left: 1px solid rgba(0, 0, 0, 0.06);
+                min-width: 65px;
             }
         }
     }
@@ -161,14 +163,15 @@ table.mat-table {
     border-left: 1px solid;
     border-top: 1px solid;
     border-color: $tableBorder !important;
-    background-color: $tableHeadColor;
+    // background-color: $tableHeadColor;
     min-height: 35px;
     .mat-header-cell {
         padding: 0 10px;
         border-right: 1px solid;
         border-color: $tableBorder !important;
-        color: $white !important;
+        color: $black !important;
         font-size: 0.875rem;
+        min-width: 65px;
     }
 }
 .mat-row {
@@ -188,7 +191,10 @@ table.mat-table {
         border-right: 1px solid;
         border-color: $tableBorder !important;
         font-size: 0.875rem;
+        min-width: 65px;
     }
+
+
     .mat-column-expandedDetail {
         overflow: visible;
     }
@@ -299,6 +305,8 @@ table.mat-table {
 }
 .text-center {
     text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .success {
     background: #0b7702;
@@ -1326,3 +1334,67 @@ html {
 // -------------------------------- \\
 //           scroll bar             \\
 // -------------------------------- \\
+.filter-icon {
+    border-radius: 0% !important;
+    background: $primaryOrange;
+    width: 30px;
+    height: 32px;
+    line-height: 30px;
+    color: $white;
+}
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 1.25em 0;
+}
+.mat-form-field-wrapper {
+    padding-bottom: 0.34375em;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    top: -0.25em !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black;
+}
+.mat-form-field-infix {
+    border-top: 0px !important;
+}
+.breadCrumbBlue {
+    font-size: 14px;
+    color: grey !important;
+    text-transform: capitalize;
+    font-family: "regular";
+}
+
+.breadCrumb {
+    font-size: 14px;
+    color: #1d4498 !important;
+    text-transform: capitalize;
+    font-family: "regular";
+    cursor: pointer;
+}
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0px 14px 0px !important;
+    margin-bottom: 1rem !important;
+    list-style: none ;
+    border-bottom: 1px solid lightgray !important;
+    background: white !important;
+}
+.addArrow:not(:last-child) .addArroww::after {
+    content: ">";
+    color: $primaryOrange;
+    display: inline-block;
+    width: 10px;
+}
+
+.breadCrumbBlue:hover {
+    color: #000;
+}
+
+.breadCrumb:hover {
+    color: #000;
+}

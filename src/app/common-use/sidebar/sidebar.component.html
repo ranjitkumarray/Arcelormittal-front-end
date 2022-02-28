@@ -6,7 +6,7 @@
     <div class="">
         <div class="container-fluid logo_outer">
             <a class="logo">
-                <img src="../../../assets/images/arcelorMittal_logo.png"  alt="logo"/>
+                <img src="../../../assets/images/arcelorMittal_logo.png" alt="logo" />
             </a>
         </div>
     </div>
@@ -23,7 +23,7 @@
                             <div class=" items nav-link collapsed text-truncate" data-toggle="collapse"
                                 [attr.data-target]="'#' + item.tag">
                                 <img class="active_img" [src]="item.active_img " alt="icon" />
-                                <img class="inactive_img" [src]="item.inactive_img" alt="icon-inactive"/>
+                                <img class="inactive_img" [src]="item.inactive_img" alt="icon-inactive" />
                                 <span class="d-none d-sm-inline">{{item.name}} </span>
                             </div>
                         </div>
@@ -36,7 +36,8 @@
                                                 <div class=" items nav-link collapsed text-truncate"
                                                     data-toggle="collapse" [attr.data-target]="'#'+sub_item1.tag">
                                                     <img class="active_img" [src]="sub_item1.active_img " alt="icon" />
-                                                    <img class="inactive_img" [src]="sub_item1.inactive_img" alt="icon-inactive" />
+                                                    <img class="inactive_img" [src]="sub_item1.inactive_img"
+                                                        alt="icon-inactive" />
                                                     <span class="d-none d-sm-inline">{{sub_item1?.name}} </span>
                                                 </div>
                                             </div>
@@ -85,8 +86,11 @@
 </div>
 <div class="main_container_content" [class.main_container_content_toggled]="isOpen">
     <app-header></app-header>
-    <div style="margin-top: 65px;"></div>
+    <div>
+        <div style="margin-top: 10px;"></div>
 
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+    </div>
+
     <!-- <app-footer></app-footer> -->
 </div>
