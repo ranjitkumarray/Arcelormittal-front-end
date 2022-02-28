@@ -11,13 +11,9 @@ import { MaterialsModule } from './materials/materials.module';
 import { HeaderComponent } from './common-use/header/header.component';
 import { FooterComponent } from './common-use/footer/footer.component';
 import { SidebarComponent } from './common-use/sidebar/sidebar.component';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-
-
 const APP_CONTAINERS = [
   SidebarComponent
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +28,8 @@ const APP_CONTAINERS = [
     BrowserAnimationsModule,
     MaterialsModule,
     HttpClientModule,
-    
   ],
-  providers: [ApiService, CitGlobalConstantService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [ApiService, CitGlobalConstantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

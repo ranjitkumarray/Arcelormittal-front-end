@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavItems } from './sidebar';
 
 @Component({
@@ -15,29 +14,19 @@ export class SidebarComponent implements OnInit {
   version: string = '';
   user: any = 'user'
   navbarItem: any = []
+  constructor() {
 
-  details:any =localStorage.getItem(("userDetails"))
-  userDeatails =JSON.parse(this.details)
-
-  constructor(private router: Router) {
-    this.navbarItem = this.navLink
-    // if (this.userDeatails.usertype === 'Admin') {
-    //   //  this.router.navigate(['/alloy-scrap/upload/'])
-    //   this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin' || x.type === 'user')
-      
-    // } else {
-    //   this.router.navigate(['/management/offer-status/'])
-
-    //   this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
-    // }
+    if (this.user === 'admin') {
+      this.navbarItem = this.navLink.filter((x: any) => x.type === 'admin')
+    } else {
+      this.navbarItem = this.navLink.filter((x: any) => x.type === 'user')
+    }
     console.log(this.navbarItem, "Nav Item")
-    console.log(this.userDeatails.usertype)
   }
 
   ngOnInit(): void {
     this.version = "1";
-    // console.log(this.navbarItem)
-  
+    console.log(this.navbarItem)
   }
 
   toggleCollapse() {

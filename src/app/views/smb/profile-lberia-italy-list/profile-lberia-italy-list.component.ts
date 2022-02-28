@@ -60,7 +60,7 @@ export class ProfileLberiaItalyListComponent implements OnInit {
         this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
 
         this.displayedColumns =
-          ['sequence_id',
+          [
             'BusinessCode',
             'Market_Country',
             'Delivering_Mill',

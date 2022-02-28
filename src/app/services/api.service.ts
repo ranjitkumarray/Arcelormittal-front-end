@@ -15,13 +15,6 @@ export class ApiService {
     get_request(url: any) {
         return this.https.get(url);
     }
-    get_request_header(url: any) {
-        let headers: any = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.append('authorizationToken', "0cP$mb");
-        return this.https.get(url, {
-            headers: headers
-        })
-    }
     post_request(url: any, param: any) {
         return this.https.post(url, param)
     }

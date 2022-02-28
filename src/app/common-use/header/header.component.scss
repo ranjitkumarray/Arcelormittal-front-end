@@ -1,110 +1,19 @@
+.navhead {
+    text-align: center;
+    width: 100%;
+}
 
-@import '../../../assets/color.scss';
-.custom_header {
-    background-color: $primaryOrange;
-    position: relative;
-    z-index: 999;
-    box-shadow: 0px 1px 2px 0px $headerShadow;
+.mat-toolbar {
+    background: rgb(248, 171, 28);
+}
+.header {
+    box-shadow: 0px 0px 6px 0px #f05b31;
+    padding: 0px;
+    background: #f05b31;
     height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .profile_img {
-        color: $primaryOrange;
-        background-color: $white;
-        width: 30px;
-        height: 30px;
-        border-radius: 5000px;
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 10px;
-        font-family: 'semi-bold';
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .navbar-nav {
-        z-index: 999;
-    }
-}
-
-.myFab {
-    box-shadow: none;
-    font-size:medium ;
-    color:black;
-    background-color: white;
-     width: 32px;
-     height: 32px;
-     line-height: 14px;
-     
-
-     &::ng-deep .mat-button-wrapper{
-         line-height: 14px;
-         padding: 0;
-
-    }
-}
-
-.logo{
-    font-size: 20px;
-    font-family: 'medium';
-    color: $primary;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    margin-left: 10px;
-    justify-content: center;
-    img {
-        max-width: 100%;
-        max-height: 50px;
-        object-fit: contain;
-    }
-}
-
-.logo_text {
-    position: absolute;
-    left: 0;
+    left: 0px;
     right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-family: 'bold';
-    color: $white;
-    padding: 0 300px;
-    text-transform: uppercase;
-    
-}
-.main_container {
-    height: calc(100vh - 60px);
-    overflow: auto;
-}
-.button_text{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-variant: small-caps;
-    color: $white;
-    padding-left:85%;
-    text-transform: uppercase;
-}
-
-.version {
+    position: fixed;
+    z-index: 1000;
     color: white;
-    margin: 5px;
 }
-
-// ::ng-deep {mat-menu-item {
-//     max-width: 600px !important;
-// }
-//   }

@@ -46,7 +46,6 @@ export class DeliveryMillListComponent implements OnInit {
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.delivery_mill
         this.displayedColumns = [
-          
           'BusinessCode',
           'Beam_Category',
           'Market_Country',
@@ -60,7 +59,6 @@ export class DeliveryMillListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.delivery_mill_mini_bar
         this.displayedColumns = [
-          'sequence_id',
           'Market_Customer_Group',
           'Market_Customer',
           'Market_Country',

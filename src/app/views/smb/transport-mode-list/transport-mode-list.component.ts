@@ -58,7 +58,6 @@ export class TransportModeListComponent implements OnInit {
         this.apiStringURL = this.apiString.transport_mode_mini_bar
 
         this.displayedColumns = [
-          'sequence_id',
           'Product_Division',
           'Market_Country',
           'Transport_Mode',

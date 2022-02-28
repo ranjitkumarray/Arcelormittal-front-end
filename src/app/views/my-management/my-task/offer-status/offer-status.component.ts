@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { offerStatus } from '../../managment-interface.serviec';
@@ -16,19 +15,19 @@ import { offer } from './dummydata';
 })
 export class OfferStatusComponent implements OnInit {
   offer: any = offer
-  isShown: boolean = false; // hidden by default
-
   displayedColumns: string[] = [
-    'offerid',
-    'accountname',
-    'division',
-    'planttext',
-    'rfqreference',
-    'creationdatetime',
-    'closedate',
+    'offer_id',
+    'customer_name',
+    'DIV',
+    'deliver_mill',
+    'incoterm',
+    'cust_ref',
+    'status',
+    'created',
+    'valid_till',
     'pending_with',
-    'creationuser',
-    'tons',
+    'created_By',
+    'volume',
     'items'
 
   ];
@@ -38,103 +37,54 @@ export class OfferStatusComponent implements OnInit {
   loadingRouteConfig: boolean = false;
   filterForm: any = FormGroup
   resultdata: any;
-  breadCrumblocationsList: any = []
-  pageEvent: any = PageEvent;
-  totalCount: any;
-
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
-    private fb: FormBuilder,
-    private router:Router
-  ) {
+    private fb: FormBuilder
+  ) { }
+
+  ngOnInit(): void {
     this.filterForm = this.fb.group({
       search_string: [''],
       customer: [''],
-      // pending_with: [''],
+      pending_with: [''],
       status: [''],
       created: [''],
       offerid: [''],
-      customer_ref: [''],
-      // offset: ['0'],
-      // limit: ['100']
+      customer_ref: ['']
     })
-  }
-
-  ngOnInit(): void {
     this.getOfferStatus()
-    this.updateBreadCrumb()
 
   }
   getOfferStatus() {
     this.loadingRouteConfig = true
     let body = this.filterForm.value
     Object.keys(body).forEach(key => {
-      if (body[key] === 'limit' || body[key] === 'offset') {
-      } else {
-        if (body[key] === "") {
-          body[key] = 'all';
-        }
+      if (body[key] === "") {
+        body[key] = 'all';
       }
     });
     console.log(body)
     // this.resultdata = this.offer
     this.resultdata = []
     // this.dataSource=""
-    setTimeout(() => {
-      this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
-        this.loadingRouteConfig = false
-        this.resultdata = result     
-         this.totalCount=result.Count
-        this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+    setTimeout(() => { 
+      
+    this.apiMethod.get_request_Param(this.apiString.myTask.offerStatus, body).subscribe((result: any) => {
+      this.loadingRouteConfig = false
+      this.resultdata = result
+      this.dataSource = new MatTableDataSource<offerStatus>((this.resultdata.data))
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
 
-        }, 1000);
+      }, 3000);
 
-      }, error => {
-        this.loadingRouteConfig = false
-        this.apiMethod.popupMessage('error', 'Error while getting offer status')
-      })
-    }, 1000);
-
-  }
-  toggleShow() {
-    this.isShown = !this.isShown;
-  }
-  pageChangeCall(event: any) {
-    console.log(event)
-    this.filterForm.patchValue({
-      offset: event.pageIndex,
-      limit: event.pageSize
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while getting offer status')
     })
-    this.getOfferStatus()
+  }, 1000);
   }
-  updateBreadCrumb() {
-    this.breadCrumblocationsList = [
-      {
-        'locationName': 'My Task',
-        'link': '/management/offer-status',
-        'currentPage': false
-      },
-      {
-        'locationName': 'Offer Status',
-        'link': '/management/offer-status',
-        'currentPage': true
-      }
-    ];
 
-    window.scrollTo(0, 0);
-    console.log("breadCrumblocationsList", this.breadCrumblocationsList);
-  }
-  redirect(link: any) {
-    console.log(link);
-    if (link != undefined && link != '') {
-      this.router.navigateByUrl(link);
-    }
-  }
-  openMail(){
-    window.location.href=("mailto:ranjitkumarray25@outlook.com?subject=Level Validation &body=") 
-  }
 }

@@ -52,7 +52,7 @@ export class IncotermExceptionsListComponent implements OnInit {
         this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       } else {
         this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-        this.displayedColumns = ['Sequence_id','Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
+        this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', "action"]
       }
     });
   }

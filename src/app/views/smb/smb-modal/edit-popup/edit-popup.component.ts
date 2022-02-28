@@ -54,17 +54,11 @@ export class EditPopupComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.url, this.data)
-    // this.data.fieldValue.push('sequence_id')
-
-    this.apiMethod.get_request(this.data.url).subscribe(result => {
-      console.log(result)
-    })
     var objects: any = {};
     this.data.fieldValue.forEach((element: any, index: any) => {
       objects[element] = []
       if (index === this.data.fieldValue.length - 1) {
         objects['id'] = []
-        objects['sequence_id'] = []
       }
     });
     console.log(objects)

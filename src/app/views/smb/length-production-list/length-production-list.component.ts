@@ -62,7 +62,6 @@ export class LengthProductionListComponent implements OnInit {
       } else {
         this.apiStringURL = this.apiString.length_production_mini_bar
         this.displayedColumns = [
-          'sequence_id',
           'BusinessCode',
           'Market_Country',
           'Delivering_Mill',
