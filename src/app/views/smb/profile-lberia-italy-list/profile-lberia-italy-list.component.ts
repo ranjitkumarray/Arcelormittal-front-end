@@ -71,6 +71,7 @@ export class ProfileLberiaItalyListComponent implements OnInit {
             'BusinessCode',
             'Market_Country',
             'Market_Customer_Group',
+            'Market_Customer',
             'Delivering_Mill',
             'Product_Level_02',
             'Product_Level_05',

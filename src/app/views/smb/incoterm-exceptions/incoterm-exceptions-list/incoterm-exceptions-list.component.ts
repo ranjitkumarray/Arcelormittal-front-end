@@ -70,7 +70,6 @@ export class IncotermExceptionsListComponent implements OnInit {
         this.displayedColumns = [
           'select',
           'sequence_id',
-          'Sequence_id',
           'Market_Country',
           'Product_Division',
           'Incoterm1',

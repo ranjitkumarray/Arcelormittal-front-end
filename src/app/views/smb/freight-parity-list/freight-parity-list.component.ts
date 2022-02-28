@@ -69,6 +69,7 @@ export class FreightParityListComponent implements OnInit {
           "Delivering_Mill",
           "Market_Country",
           "Market_Customer_Group",
+          'Market_Customer',
           "Zip_Code_Dest",
           "Product_Division",
           "Document_Item_Currency",

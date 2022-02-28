@@ -71,6 +71,7 @@ export class LengthLogisticListComponent implements OnInit {
           'select',
           'sequence_id',
           'Customer_Group',
+          'Market_Customer',
           'Market_Country',
           'Delivering_Mill',
           'Length',

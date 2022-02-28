@@ -71,6 +71,7 @@ export class ProfileListComponent implements OnInit {
           'sequence_id',
           'BusinessCode',
           'Customer_Group',
+          'Market_Customer',
           'Market_Country',
           'Product_Level_04',
           'Product_Level_05',

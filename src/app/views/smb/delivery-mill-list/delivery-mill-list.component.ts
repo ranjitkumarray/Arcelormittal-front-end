@@ -68,6 +68,7 @@ export class DeliveryMillListComponent implements OnInit {
           'sequence_id',
           'Market_Country',
           'Market_Customer_Group',
+          'Market_Customer',
           'Delivering_Mill',
           'Product_Division',
           'Document_Item_Currency',

@@ -65,6 +65,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
           'BusinessCode',
           'Market_Country',
           'Customer_Group',
+          'Market_Customer',
           'Beam_Category',
           'document_item_currency',
           'Amount',
