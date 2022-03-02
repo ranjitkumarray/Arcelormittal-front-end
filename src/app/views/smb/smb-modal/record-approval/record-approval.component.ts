@@ -27,6 +27,7 @@ export class RecordApprovalComponent implements OnInit {
   pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
+  a:any;
   filterValue: any = '';
   resultValue: any = [];
   resultData: any = [];
@@ -56,6 +57,7 @@ export class RecordApprovalComponent implements OnInit {
     this.resultValue = []
     this.apiMethod.get_request_header_Param(this.apiString.getAprovalRecord, this.queryParam).subscribe((result: any) => {
       console.log(result)
+      this.a=result.lis
       this.resultValue = result.data
       this.resultData = result
       this.loadingRouteConfig = false
@@ -71,7 +73,7 @@ export class RecordApprovalComponent implements OnInit {
         // delete e.id;
 
       });
-      this.displayedColumns = Object.keys(this.resultData.data[0])
+      this.displayedColumns =this.a;
       this.totalCount = this.resultData.totalCount
       this.dataSource = new MatTableDataSource<any>(this.resultData.data)
       setTimeout(() => {
