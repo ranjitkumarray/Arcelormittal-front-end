@@ -323,7 +323,81 @@ export const NavItems = [
                     }
                 ]
 
-            }
+            },
+            //mine
+            {
+                name: 'Extra MinTon Leans',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'SMBExtMinTon_Leans',
+                children: [
+                    {
+                        name: 'Extra MinTon Leans List',
+                        url: '/smb/minton-leans/list',
+                        icon: 'fa fa-file',
+                        tag: 'SMBExtMinTon_Leans_sub_menu',
+        
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/minton-leans/history',
+                        icon: 'fa fa-history',
+                        tag: 'SMBExtMinTon_Leans_sub_menu',
+        
+                    }
+                ]
+        
+            },
+            {
+                name: 'Extra Piece Count',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'SMBExtPieceCount',
+                children: [
+                    {
+                        name: 'Extra Piece Count List',
+                        url: '/smb/pricecount/list',
+                        icon: 'fa fa-file',
+                        tag: 'SMBExtPieceCount_sub_menu',
+        
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/pricecount/history',
+                        icon: 'fa fa-history',
+                        tag: 'SMBExtPieceCount_sub_menu',
+        
+                    }
+                ]
+        
+            },
+            {
+                name: 'DisEarlyPtm',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'DisEarlyPtm',
+                children: [
+                    {
+                        name: 'DisEarlyPtm List',
+                        url: '/smb/dis-earlyptm/list',
+                        icon: 'fa fa-file',
+                        tag: 'ExtPieceCount_sub_menu',
+        
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/dis-earlyptm/history',
+                        icon: 'fa fa-history',
+                        tag: 'ExtPieceCount_sub_menu',
+        
+                    }
+                ]
+        
+            },
+
 
         ]
 
@@ -575,11 +649,85 @@ export const NavItems = [
                     }
                 ]
 
+            },
+            //mine
+            {
+                name: 'Extra MinTon Leans',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_SMBExtMinTon_Leans',
+                children: [
+                    {
+                        name: 'Extra MinTon Leans List',
+                        url: '/smb/minton-leans/mini-bar/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_SMBExtMinTon_Leans_sub_menu',
+
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/minton-leans/mini-bar/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_SMBExtMinTon_Leans_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'Extra PieceCount',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_ExtPieceCount',
+                children: [
+                    {
+                        name: 'Extra PieceCount List',
+                        url: '/smb/pricecount/mini-bar/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
+
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/pricecount/mini-bar/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
+
+                    }
+                ]
+
+            },
+            {
+                name: 'DisEarly Ptm',
+                url: '',
+                active_img: '../../../assets/images/order.png',
+                inactive_img: '../../../assets/images/order 2.png',
+                tag: 'smb_mini_bar_DisEarlyPtm',
+                children: [
+                    {
+                        name: 'DisEarly Ptm List',
+                        url: '/smb/dis-earlyptm/mini-bar/list',
+                        icon: 'fa fa-file',
+                        tag: 'smb_mini_bar_DisEarlyPtm_sub_menu',
+
+                    },
+                    {
+                        name: 'Upload History',
+                        url: '/smb/dis-earlyptm/mini-bar/history',
+                        icon: 'fa fa-history',
+                        tag: 'smb_mini_bar_DisEarlyPtm_sub_menu',
+
+                    }
+                ]
+
             }
 
         ]
 
     },
+    
     {
         name: 'My Tasks',
         url: '',

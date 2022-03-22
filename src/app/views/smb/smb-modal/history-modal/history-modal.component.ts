@@ -59,110 +59,137 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.smb_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.smb
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_02', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'incoterm-exceptions') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.incoterm_exceptions_mini_bar
-          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Country', 'Product_Division', 'Incoterm1', 'Customer_Group', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.incoterm_exceptions
-          this.displayedColumns = ['Market_Country', 'Customer_Group', 'Incoterm1', 'Product_Division', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Country', 'Customer_Group', 'Incoterm1', 'Product_Division', 'Beam_Category', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'extra-certificate') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.certificate_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Certificate', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Certificate', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.certificate
-          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Certificate', 'Grade_Category', 'Market_Country', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'freight-parity') {
         console.log("coming in  freight-parity")
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.freight_parity_mini_bar
-          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Market_Customer_Group", 'Market_Customer', "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency"]
+          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Market_Customer_Group", 'Market_Customer', "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.freight_parity
-          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency"]
+          this.displayedColumns = ["Delivering_Mill", "Market_Country", "Zip_Code_Dest", "Product_Division", "Document_Item_Currency", "Amount", "Currency", 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'grade') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.grade_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.grade
-          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Country_Group', 'Market_Country', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Country_Group', 'Market_Country', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'length-logistic') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_logistic_mini_bar
-          this.displayedColumns = ['Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.length_logistic
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'length-production') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.length_production_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.length_production
-          this.displayedColumns = ['BusinessCode', 'Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'profile') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.profile
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Product_Division', 'Product_Level_04', 'Product_Level_05', 'Product_Level_02', 'Delivering_Mill', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'profile-lberia-italy') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.profile_lberia_italy_mini_bar
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.profile_lberia_italy
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Level_02', 'Product_Level_05', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'transport-mode') {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.transport_mode_mini_bar
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.transport_mode
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.delivery_mill_mini_bar
-          this.displayedColumns = ['Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Delivering_Mill', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.delivery_mill
-          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
+        }
+        if (this.url[2] === "minton-leans") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.minton_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.minton
+            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+          }
+        }
+        if (this.url[2] === "pricecount") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.pricecount_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.pricecount
+            this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+          }
+        }
+        if (this.url[2] === "dis-earlyptm") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.dis_earlyptm_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.dis_earlyptm
+            this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit', 'Username', 'updated_on']
+          }
         }
 
       }

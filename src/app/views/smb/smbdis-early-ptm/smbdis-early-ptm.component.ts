@@ -1,30 +1,30 @@
-
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
-import { profileData } from '../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
+import { disearlyptm } from '../smb-interface.service';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-profile-list',
-  templateUrl: './profile-list.component.html',
-  styleUrls: ['./profile-list.component.scss']
+  selector: 'app-smbdis-early-ptm',
+  templateUrl: './smbdis-early-ptm.component.html',
+  styleUrls: ['./smbdis-early-ptm.component.scss']
 })
-export class ProfileListComponent implements OnInit {
+export class SMBDisEarlyPtmComponent implements OnInit {
 
   loadingRouteConfig: boolean = false
-  displayedColumns: string[] = [];
-  dataSource: any;
   searchValue: any
+  displayedColumns: string[] = [];
+  tablename:any;
+  dataSource: any;
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
@@ -34,7 +34,8 @@ export class ProfileListComponent implements OnInit {
   url: any;
   apiStringURL: any;
   filterValue: any = '';
-  selection = new SelectionModel<profileData>(true, []);
+  testing:any = "test"
+  selection = new SelectionModel<disearlyptm>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -47,91 +48,59 @@ export class ProfileListComponent implements OnInit {
       console.log(event.url.split('/'));
       this.url = event.url.split('/')
       console.log("myurl = ",router.url)
-      if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.profile
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'BusinessCode',
-          'Market_Country',
-          'Product_Division',
-          'Product_Level_04',
-          'Product_Level_05',
-          'Product_Level_02',
-          'Delivering_Mill',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      } else {
-        this.apiStringURL = this.apiString.profile_mini_bar
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'BusinessCode',
-          'Customer_Group',
-          'Market_Customer',
-          'Market_Country',
-          'Product_Level_04',
-          'Product_Level_05',
-          'Product_Level_02',
-          'Delivering_Mill',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      }
-    });
+    if(this.url[3]!='mini-bar'){
+      this.apiStringURL = this.apiString.minton
+      this.tablename = "SMBDisEarlyPtm"
+      this.displayedColumns=[
+        'select',
+        'BusinessCode',
+        'Country',
+        'Value',
+        'Unit',
+        'action'
+      ]
+    }else{
+      this.apiStringURL = this.apiString.minton_mini_bar
+      this.tablename = "SMBDisEarlyPmt_Minibar"
+      this.displayedColumns = [
+        'select',
+        'BusinessCode',
+        'Customer_Group',
+        'Customer',
+        'Value',
+        'Unit',
+        'action'
+      ]
+    }
+   });
   }
+
 
   ngOnInit(): void {
-    this.getProfile()
+    this.getMinton()
+    
   }
-  //getting uploaded history of alloy scrap 
-  getProfile() {
-    this.loadingRouteConfig = true
-    let searchString: any
-    if (this.searchValue) {
-      searchString = this.searchValue
-    } else {
-      searchString = "all"
-    }
-    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
-      console.log(result)
-      let resultData: any = result
-      this.totalCount = resultData.totalCount
-      this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<profileData>(resultData.data)
-      setTimeout(() => {
-        if (this.filterValue) {
-          this.dataSource.paginator = this.paginator;
-        }
-        this.dataSource.sort = this.sort;
+  getMinton() {   
+  
+  }
 
-      })
-    }, error => {
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while fatching history')
-    })
-  }
-  //page change 
   pageChangeCall(event: any) {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getProfile()
+    this.getMinton()
   }
-  //filter 
+
   applyFilter(filterValue: any) {
     console.log(filterValue.trim().toLowerCase())
     this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
-    this.getProfile()
+    this.getMinton()
   }
+  
   actionClicked(rowData: any, viewOn: any) {
+    console.log(viewOn)
     if (viewOn === 'add') {
       const dialogRef = this.popup.open(AddPopupComponent,
         {
@@ -141,17 +110,19 @@ export class ProfileListComponent implements OnInit {
           data: {
             content: '',
             addURL: this.apiStringURL.add,
-            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
-            fileName: "profile",
+            type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
+            tablename: this.tablename,
+            fileName: "disearly_ptm",
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'sequence_id' && x != 'action'
+              x != 'select' && x != 'action'
             )
+            
           },
         });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The edit dialog was closed', result);
-        this.getProfile()
-      })
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The edit dialog was closed', result);
+          this.getMinton()
+        })
     }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
@@ -163,8 +134,9 @@ export class ProfileListComponent implements OnInit {
             content: rowData,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
-            fileName: "profile",
-            updateURL: this.apiStringURL.update,
+            tablename: this.tablename,
+            fileName: "disearly_ptm",
+            // updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
             )
@@ -172,10 +144,9 @@ export class ProfileListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getProfile()
+        this.getMinton()
       })
     }
-
     if (viewOn === 'delete' || viewOn === 'delete-all') {
       let deleteID: any = []
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
@@ -198,51 +169,50 @@ export class ProfileListComponent implements OnInit {
             id: deleteID,
             url: this.apiStringURL.get + "?id=" + rowData.id,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
+            tablename: this.tablename,
             deleteURL: this.apiStringURL.delete
-
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
         if (result != undefined) {
-          this.getProfile()
+          this.getMinton()
           this.selection.clear()
         }
       })
-    }
+    }  
   }
+   
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/profile/bulk-upload'])
+      this.router.navigate(['/smb/dis-earlyptm/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/profile/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/dis-earlyptm/mini-bar/bulk-upload'])
     }
   }
+
   downloadInXlFile() {
     window.open(this.apiStringURL.download, "_blank")
   }
-  /** Whether the number of selected elements matches the total number of rows. */
+
   isAllSelected(): any {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource?.data.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
     }
-
     this.selection.select(...this.dataSource?.data);
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: profileData): string {
+  checkboxLabel(row?: disearlyptm): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.BusinessCode + 1}`;
   }
 }

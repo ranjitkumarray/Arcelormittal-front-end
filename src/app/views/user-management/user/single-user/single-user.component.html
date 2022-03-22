@@ -90,7 +90,7 @@
 
                         <div class="col-12">
                             <div class="text-right">
-                                <button type="button" color="primary" mat-raised-button matStepperNext>
+                                <button type="button" color="primary" [disabled]="firstFormGroup.invalid" mat-raised-button matStepperNext>
                                     Next
                                 </button>
                             </div>

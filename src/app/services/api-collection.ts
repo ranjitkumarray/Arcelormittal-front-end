@@ -301,6 +301,84 @@ export class CitGlobalConstantService {
 
 
     };
+    //Mine
+    //minton
+    minton: any = {
+        list: this.baseUrl + "data_extra_minton",
+        get: this.baseUrl + "get_record_minton",
+        add: this.baseUrl + "add_record_extra_minton",
+        delete: this.baseUrl + "delete_record_extra_minton",
+        upload: this.baseUrl + "upload_extra_minton",
+        validate: this.baseUrl + "validate_extra_minton",
+        update: this.baseUrl + "update_record_extra_minton",
+        download: this.baseUrl + "download_extra_minton",
+
+        history: this.baseUrl + "history_Extra_minton"
+    };
+    minton_mini_bar: any = {
+        list: this.baseUrl + "data_extra_minton_minibar",
+        get: this.baseUrl + "get_record_extra_minton_minibar",
+        add: this.baseUrl + "add_record_extra_minton_minibar",
+        delete: this.baseUrl + "delete_record_extra_minton_minibar",
+        upload: this.baseUrl + "upload_extra_minton_minibar",
+        validate: this.baseUrl + "validate_extra_minton_minibar",
+        update: this.baseUrl + "update_record_extra_minton_minibar",
+        download: this.baseUrl + "download_extra_minton_minibar",
+
+        history: this.baseUrl + "history_Extra_minton_MiniBar"
+    };
+
+    pricecount: any = {
+        list: this.baseUrl + "data_extra_pricecount",
+        get: this.baseUrl + "get_record_pricecount",
+        add: this.baseUrl + "add_record_extra_pricecount",
+        delete: this.baseUrl + "delete_record_extra_pricecount",
+        upload: this.baseUrl + "upload_extra_pricecount",
+        validate: this.baseUrl + "validate_extra_pricecount",
+        update: this.baseUrl + "update_record_extra_pricecount",
+        download: this.baseUrl + "download_extra_pricecount",
+
+        history: this.baseUrl + "history_Extra_pricecount"
+    };
+    pricecount_mini_bar: any = {
+       list: this.baseUrl + "data_extra_pricecount_minibar",
+        get: this.baseUrl + "get_record_extra_pricecount_minibar",
+        add: this.baseUrl + "add_record_extra_pricecount_minibar",
+        delete: this.baseUrl + "delete_record_extra_pricecount_minibar",
+        upload: this.baseUrl + "upload_extra_pricecount_minibar",
+        validate: this.baseUrl + "validate_extra_pricecount_minibar",
+        update: this.baseUrl + "update_record_extra_pricecount_minibar",
+        download: this.baseUrl + "download_extra_pricecount_minibar",
+
+        history: this.baseUrl + "history_Extra_pricecount_MiniBar"
+    };
+
+    dis_earlyptm: any = {
+        list: this.baseUrl + "data_dis_earlyptm",
+        get: this.baseUrl + "get_record_dis_earlyptm",
+        add: this.baseUrl + "add_record_dis_earlyptm",
+        delete: this.baseUrl + "delete_record_dis_earlyptm",
+        upload: this.baseUrl + "upload_extra_dis_earlyptm",
+        validate: this.baseUrl + "validate_dis_earlyptm",
+        update: this.baseUrl + "update_record_dis_earlyptm",
+        download: this.baseUrl + "download_dis_earlyptm",
+
+        history: this.baseUrl + "history_dis_earlyptm"
+    };
+    dis_earlyptm_mini_bar: any = {
+       list: this.baseUrl + "data_dis_earlyptm_minibar",
+        get: this.baseUrl + "get_record_dis_earlyptm_minibar",
+        add: this.baseUrl + "add_record_dis_earlyptm_minibar",
+        delete: this.baseUrl + "delete_record_dis_earlyptm_minibar",
+        upload: this.baseUrl + "upload_dis_earlyptm_minibar",
+        validate: this.baseUrl + "validate_dis_earlyptm_minibar",
+        update: this.baseUrl + "update_record_dis_earlyptm_minibar",
+        download: this.baseUrl + "download_dis_earlyptm_minibar",
+
+        history: this.baseUrl + "history_dis_earlyptm_MiniBar"
+    };
+
+
     registration: any = {
         usergroupmanagement: this.baseUrl + "",
     }

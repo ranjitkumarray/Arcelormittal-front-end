@@ -13,7 +13,7 @@
                     <div class="col-12" *ngFor="let form of data?.fieldValue">
                         <mat-form-field appearance="outline">
                             <mat-label>{{removeUnderScore(form)}}</mat-label>
-                            <input matInput type="text" formControlName="{{form}}">
+                            <input matInput type="text" formControlName="{{form}}" required>
                         </mat-form-field>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
         <button mat-stroked-button class="mr-10" (click)="closeModel()">
             Close
         </button>
-        <button mat-raised-button color="primary" (click)="addRecord()">
+        <button mat-raised-button color="primary" [disabled]="addRecordForm.invalid" (click)="addRecord()">
             Add
             <span *ngIf="data.fileName.split('_').length===1" style="text-transform: capitalize;">
                 {{data.fileName.split('_')[0]}}

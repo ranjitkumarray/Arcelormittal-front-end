@@ -16,6 +16,9 @@ import { ProfileListComponent } from './profile-list/profile-list.component';
 import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.component';
 import { RecordApprovalComponent } from './smb-modal/record-approval/record-approval.component';
 import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/upload-validate-modal.component';
+import { SMBDisEarlyPtmComponent } from './smbdis-early-ptm/smbdis-early-ptm.component';
+import { SMBExtMinTonLeanSComponent } from './smbext-min-ton-lean-s/smbext-min-ton-lean-s.component';
+import { SMBExtPieceCountComponent } from './smbext-piece-count/smbext-piece-count.component';
 import { TransportModeListComponent } from './transport-mode-list/transport-mode-list.component';
 
 const routes: Routes = [
@@ -294,6 +297,86 @@ const routes: Routes = [
                 {
                   path: "list",
                   component: IncotermExceptionsListComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "bulk-upload",
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "history",
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
+                }
+              ]
+            }))
+          ]
+      },
+
+      //mine
+      {
+        path: "minton-leans",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: SMBExtMinTonLeanSComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "bulk-upload",
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "history",
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
+                }
+              ]
+            }))
+          ]
+      },
+      {
+        path: "pricecount",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: SMBExtPieceCountComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "bulk-upload",
+                  component: UploadValidateModalComponent,
+                  canActivate: [AuthGuardService]
+                },
+                {
+                  path: "history",
+                  component: HistoryModalComponent,
+                  canActivate: [AuthGuardService]
+                }
+              ]
+            }))
+          ]
+      },
+      {
+        path: "dis-earlyptm",
+        children:
+          [
+            ...['', 'mini-bar'].map(path => ({
+              path,
+              children: [
+                {
+                  path: "list",
+                  component: SMBDisEarlyPtmComponent,
                   canActivate: [AuthGuardService]
                 },
                 {

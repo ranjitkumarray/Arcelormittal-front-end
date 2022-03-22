@@ -25,6 +25,9 @@ import { UploadValidateModalComponent } from './smb-modal/upload-validate-modal/
 import { AddPopupComponent } from './smb-modal/add-popup/add-popup.component';
 import { HistoryModalComponent } from './smb-modal/history-modal/history-modal.component';
 import { RecordApprovalComponent } from './smb-modal/record-approval/record-approval.component';
+import { SMBExtMinTonLeanSComponent } from './smbext-min-ton-lean-s/smbext-min-ton-lean-s.component';
+import { SMBExtPieceCountComponent } from './smbext-piece-count/smbext-piece-count.component';
+import { SMBDisEarlyPtmComponent } from './smbdis-early-ptm/smbdis-early-ptm.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import { RecordApprovalComponent } from './smb-modal/record-approval/record-appr
     AddPopupComponent,
     HistoryModalComponent,
     RecordApprovalComponent,
+    SMBExtMinTonLeanSComponent,
+    SMBExtPieceCountComponent,
+    SMBDisEarlyPtmComponent,
   ],
   imports: [
     CommonModule,
