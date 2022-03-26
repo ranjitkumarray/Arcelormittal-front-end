@@ -158,7 +158,8 @@ export interface deliveryMillModeData {
 }
 //mine
 export interface mintonModeData {
-    'BusinessCode':any,
+    'sequence_id':any,
+    'Business_Code':any,
     'Country':any,
     'Customer_Group':any,
     'Customer':any,
@@ -170,17 +171,19 @@ export interface mintonModeData {
     'action':any
 }
 export interface pricecountModeData {
-    'BusinessCode':any,
+    'sequence_id':any,
+    'Business_Code':any,
     'Country':any,
     'Customer_Group':any,
     'Custromer':any,
-    'UnitOf_Quantity':any,
+    'Unit_of_Quantity':any,
     'Amount':any,
     'Currency':any,
     'action':any 
 }
-export interface disearlyptm {
-    'BusinessCode':any,
+export interface disearlyptmData {
+    'sequence_id':any,
+    'Business_Code':any,
     'Country':any,
     'Customer_Group':any,
     'Customer':any,

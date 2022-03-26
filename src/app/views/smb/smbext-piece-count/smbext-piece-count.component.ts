@@ -49,26 +49,28 @@ export class SMBExtPieceCountComponent implements OnInit {
       this.url = event.url.split('/')
       console.log("myurl = ",this.url)
     if(this.url[3]!='mini-bar'){
-      this.apiStringURL = this.apiString.minton
+      this.apiStringURL = this.apiString.generic
       this.tablename = "SMBExtPieceCount"
       this.displayedColumns=[
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Country',
-        'UnitOf_Quantity',
+        'Unit_of_Quantity',
         'Amount',
         'Currency',
         'action'
       ]
     }else{
-      this.apiStringURL = this.apiString.minton_mini_bar
+      this.apiStringURL = this.apiString.generic
       this.tablename = "SMBExtPieceCount_Minibar"
       this.displayedColumns = [
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Customer_Group',
         'Customer',
-        'UnitOf_Quantity',
+        'Unit_of_Quantity',
         'Amount',
         'Currency',
         'action'
@@ -79,21 +81,45 @@ export class SMBExtPieceCountComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getPriceCount()
+    this.getPieceCount()
     
   }
   //getting uploaded history of alloy scrap 
-  getPriceCount() {
-    
-      
   
+  getPieceCount() {   
+    // this.loadingRouteConfig = true
+    let searchString: any
+    if (this.searchValue) {
+      searchString = this.searchValue
+    } else {
+      searchString = "all"
+    }
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?tablename=" + this.tablename + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+      console.log(result)
+      let resultData: any = result
+      this.totalCount = resultData.totalCount
+      this.loadingRouteConfig = false
+      this.dataSource = new MatTableDataSource<pricecountModeData>(resultData.data)
+      setTimeout(() => {
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
+        this.dataSource.sort = this.sort;
+
+      })
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
+    })
+    console.log(this.dataSource)
   }
+
   //page change 
   pageChangeCall(event: any) {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getPriceCount()
+    this.getPieceCount()
   }
   //filter 
   applyFilter(filterValue: any) {
@@ -101,7 +127,7 @@ export class SMBExtPieceCountComponent implements OnInit {
     this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
-    this.getPriceCount()
+    this.getPieceCount()
   }
   actionClicked(rowData: any, viewOn: any) {
     console.log(viewOn)
@@ -125,7 +151,7 @@ export class SMBExtPieceCountComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
           console.log('The edit dialog was closed', result);
-          this.getPriceCount()
+          this.getPieceCount()
         })
     }
     if (viewOn === 'edit') {
@@ -136,7 +162,7 @@ export class SMBExtPieceCountComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             tablename: this.tablename,
             fileName: "price_count",
@@ -148,11 +174,11 @@ export class SMBExtPieceCountComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getPriceCount()
+        this.getPieceCount()
       })
     }
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = []
+      let deleteID: any = [this.tablename]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
@@ -171,7 +197,7 @@ export class SMBExtPieceCountComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             tablename: this.tablename,
             deleteURL: this.apiStringURL.delete
@@ -181,7 +207,7 @@ export class SMBExtPieceCountComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
         if (result != undefined) {
-          this.getPriceCount()
+          this.getPieceCount()
           this.selection.clear()
         }
       })
@@ -197,7 +223,7 @@ export class SMBExtPieceCountComponent implements OnInit {
     }
   }
   downloadInXlFile() {
-    window.open(this.apiStringURL.download, "_blank")
+    window.open(this.apiStringURL.download + "?tablename=" + this.tablename, "_blank")
   }
   isAllSelected(): any {
     const numSelected = this.selection.selected.length;
@@ -218,6 +244,6 @@ export class SMBExtPieceCountComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.BusinessCode + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Business_Code + 1}`;
   }
 }

@@ -7,7 +7,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs/operators';
-import { disearlyptm } from '../smb-interface.service';
+import { disearlyptmData } from '../smb-interface.service';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
@@ -35,7 +35,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
   apiStringURL: any;
   filterValue: any = '';
   testing:any = "test"
-  selection = new SelectionModel<disearlyptm>(true, []);
+  selection = new SelectionModel<disearlyptmData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -49,22 +49,24 @@ export class SMBDisEarlyPtmComponent implements OnInit {
       this.url = event.url.split('/')
       console.log("myurl = ",router.url)
     if(this.url[3]!='mini-bar'){
-      this.apiStringURL = this.apiString.minton
-      this.tablename = "SMBDisEarlyPtm"
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBDisEarlyPmt"
       this.displayedColumns=[
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Country',
         'Value',
         'Unit',
         'action'
       ]
     }else{
-      this.apiStringURL = this.apiString.minton_mini_bar
+      this.apiStringURL = this.apiString.generic
       this.tablename = "SMBDisEarlyPmt_Minibar"
       this.displayedColumns = [
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Customer_Group',
         'Customer',
         'Value',
@@ -77,18 +79,42 @@ export class SMBDisEarlyPtmComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getMinton()
+    this.getEarlyPtm()
     
   }
-  getMinton() {   
-  
+  getEarlyPtm() {   
+    // this.loadingRouteConfig = true
+    let searchString: any
+    if (this.searchValue) {
+      searchString = this.searchValue
+    } else {
+      searchString = "all"
+    }
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?tablename=" + this.tablename + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+      console.log(result)
+      let resultData: any = result
+      this.totalCount = resultData.totalCount
+      this.loadingRouteConfig = false
+      this.dataSource = new MatTableDataSource<disearlyptmData>(resultData.data)
+      setTimeout(() => {
+        if (this.filterValue) {
+          this.dataSource.paginator = this.paginator;
+        }
+        this.dataSource.sort = this.sort;
+
+      })
+    }, error => {
+      this.loadingRouteConfig = false
+      this.apiMethod.popupMessage('error', 'Error while fatching history')
+    })
+    console.log(this.dataSource)
   }
 
   pageChangeCall(event: any) {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getMinton()
+    this.getEarlyPtm()
   }
 
   applyFilter(filterValue: any) {
@@ -96,7 +122,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
     this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
-    this.getMinton()
+    this.getEarlyPtm()
   }
   
   actionClicked(rowData: any, viewOn: any) {
@@ -112,7 +138,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
             tablename: this.tablename,
-            fileName: "disearly_ptm",
+            fileName: "disearly_pmt",
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
             )
@@ -121,7 +147,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
           console.log('The edit dialog was closed', result);
-          this.getMinton()
+          this.getEarlyPtm()
         })
     }
     if (viewOn === 'edit') {
@@ -132,11 +158,11 @@ export class SMBDisEarlyPtmComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             tablename: this.tablename,
-            fileName: "disearly_ptm",
-            // updateURL: this.apiStringURL.update,
+            fileName: "disearly_pmt",
+            updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
             )
@@ -144,11 +170,11 @@ export class SMBDisEarlyPtmComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getMinton()
+        this.getEarlyPtm()
       })
     }
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = []
+      let deleteID: any = [this.tablename]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
@@ -167,7 +193,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id  + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             tablename: this.tablename,
             deleteURL: this.apiStringURL.delete
@@ -176,7 +202,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
         if (result != undefined) {
-          this.getMinton()
+          this.getEarlyPtm()
           this.selection.clear()
         }
       })
@@ -192,7 +218,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
   }
 
   downloadInXlFile() {
-    window.open(this.apiStringURL.download, "_blank")
+    window.open(this.apiStringURL.download+ "?tablename=" + this.tablename, "_blank")
   }
 
   isAllSelected(): any {
@@ -209,10 +235,10 @@ export class SMBDisEarlyPtmComponent implements OnInit {
     this.selection.select(...this.dataSource?.data);
   }
 
-  checkboxLabel(row?: disearlyptm): string {
+  checkboxLabel(row?: disearlyptmData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.BusinessCode + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Business_Code + 1}`;
   }
 }

@@ -303,6 +303,21 @@ export class CitGlobalConstantService {
     };
     //Mine
     //minton
+
+    generic: any = {
+        list: this.baseUrl + "generic_list",
+        get: this.baseUrl + "generic_get",
+        add: this.baseUrl + "generic_add",
+        delete: this.baseUrl + "generic_delete",
+        upload: this.baseUrl + "generic_upload",
+        validate: this.baseUrl + "generic_validate",
+        update: this.baseUrl + "generic_update",
+        download: this.baseUrl + "generic_download",
+
+        history: this.baseUrl + "gemeric_history"
+    }
+
+
     minton: any = {
         list: this.baseUrl + "data_extra_minton",
         get: this.baseUrl + "get_record_minton",

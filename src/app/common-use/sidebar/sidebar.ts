@@ -374,14 +374,14 @@ export const NavItems = [
         
             },
             {
-                name: 'DisEarlyPtm',
+                name: 'DisEarlyPmt',
                 url: '',
                 active_img: '../../../assets/images/order.png',
                 inactive_img: '../../../assets/images/order 2.png',
                 tag: 'DisEarlyPtm',
                 children: [
                     {
-                        name: 'DisEarlyPtm List',
+                        name: 'DisEarlyPmt List',
                         url: '/smb/dis-earlyptm/list',
                         icon: 'fa fa-file',
                         tag: 'ExtPieceCount_sub_menu',
@@ -700,14 +700,14 @@ export const NavItems = [
 
             },
             {
-                name: 'DisEarly Ptm',
+                name: 'DisEarly Pmt',
                 url: '',
                 active_img: '../../../assets/images/order.png',
                 inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_DisEarlyPtm',
+                tag: 'smb_mini_bar_DisEarlyPmt',
                 children: [
                     {
-                        name: 'DisEarly Ptm List',
+                        name: 'DisEarly Pmt List',
                         url: '/smb/dis-earlyptm/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_DisEarlyPtm_sub_menu',

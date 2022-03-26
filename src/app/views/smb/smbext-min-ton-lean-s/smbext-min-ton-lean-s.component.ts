@@ -49,11 +49,12 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       this.url = event.url.split('/')
       // console.log("myurl = ",router.url)
     if(this.url[3]!='mini-bar'){
-      this.apiStringURL = this.apiString.minton
-      this.tablename = "SMBExtMinTon_&_LeanS"
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtMinTon_*_LeanS"
       this.displayedColumns=[
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Country',
         'Tonnage',
         'Tonnage_From',
@@ -63,11 +64,12 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
         'action'
       ]
     }else{
-      this.apiStringURL = this.apiString.minton_mini_bar
-      this.tablename = "SMBExtMinTon_&_LeanS_Minibar"
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtMinTon_*_LeanS_Minibar"
       this.displayedColumns = [
         'select',
-        'BusinessCode',
+        'sequence_id',
+        'Business_Code',
         'Customer_Group',
         'Customer',
         'Tonnage',
@@ -160,11 +162,11 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
             tablename : this.tablename,
             fileName: "minton_leans",
-            // updateURL: this.apiStringURL.update,
+            updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
             )
@@ -176,13 +178,14 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       })
     }
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = []
+      let deleteID: any = [this.tablename]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
       if (this.selection.selected.length > 0) {
         this.selection.selected.forEach((x: any) => {
           deleteID.push(x.id)
+  
         })
       } else {
         deleteID = rowData
@@ -194,10 +197,10 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
           autoFocus: false,
           maxHeight: '90vh',
           data: {
+            tablename:this.tablename,
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "?tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
-            tablename : this.tablename,
             deleteURL: this.apiStringURL.delete
           },
         });
@@ -220,7 +223,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
   }
 
   downloadInXlFile() {
-    window.open(this.apiStringURL.download, "_blank")
+       window.open(this.apiStringURL.download + "?tablename=" + this.tablename, "_blank")
   }
 
   isAllSelected(): any {
@@ -241,6 +244,6 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.BusinessCode + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Business_Code + 1}`;
   }
 }

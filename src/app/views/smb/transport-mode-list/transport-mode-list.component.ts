@@ -47,7 +47,7 @@ export class TransportModeListComponent implements OnInit {
       this.url = event.url.split('/')
       console.log(this.url)
       if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.transport_mode
+        this.apiStringURL = this.apiString.generic
         this.displayedColumns = [
           'select',
           'sequence_id',
@@ -60,7 +60,7 @@ export class TransportModeListComponent implements OnInit {
           'action'
         ]
       } else {
-        this.apiStringURL = this.apiString.transport_mode_mini_bar
+        this.apiStringURL = this.apiString.generic
 
         this.displayedColumns = [
           'select',
