@@ -156,3 +156,37 @@ export interface deliveryMillModeData {
     'Currency': any,
     'action': any,
 }
+//mine
+export interface mintonModeData {
+    'sequence_id':any,
+    'Business_Code':any,
+    'Country':any,
+    'Customer_Group':any,
+    'Customer':any,
+    'Tonnage':any,
+    'Tonnage_From':any,
+    'Tonnage_To':any,
+    'Amount':any,
+    'Currency':any,
+    'action':any
+}
+export interface pricecountModeData {
+    'sequence_id':any,
+    'Business_Code':any,
+    'Country':any,
+    'Customer_Group':any,
+    'Custromer':any,
+    'Unit_of_Quantity':any,
+    'Amount':any,
+    'Currency':any,
+    'action':any 
+}
+export interface disearlyptmData {
+    'sequence_id':any,
+    'Business_Code':any,
+    'Country':any,
+    'Customer_Group':any,
+    'Customer':any,
+    'Value':any,
+    'Unit':any
+}

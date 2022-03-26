@@ -1,29 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
-import { transportModeData } from '../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
+import { gradeData, mintonModeData } from '../smb-interface.service';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-transport-mode-list',
-  templateUrl: './transport-mode-list.component.html',
-  styleUrls: ['./transport-mode-list.component.scss']
+  selector: 'app-smbext-min-ton-lean-s',
+  templateUrl: './smbext-min-ton-lean-s.component.html',
+  styleUrls: ['./smbext-min-ton-lean-s.component.scss']
 })
-export class TransportModeListComponent implements OnInit {
+export class SMBExtMinTonLeanSComponent implements OnInit {
 
   loadingRouteConfig: boolean = false
-  displayedColumns: string[] = [];
-  dataSource: any;
   searchValue: any
+  displayedColumns: string[] = [];
+  tablename: any;
+  dataSource: any;
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
@@ -33,7 +34,8 @@ export class TransportModeListComponent implements OnInit {
   url: any;
   apiStringURL: any;
   filterValue: any = '';
-  selection = new SelectionModel<transportModeData>(true, []);
+  testing:any = "test"
+  selection = new SelectionModel<mintonModeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -43,60 +45,62 @@ export class TransportModeListComponent implements OnInit {
     router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      console.log(event.url.split('/'));
+      // console.log(event.url.split('/'));
       this.url = event.url.split('/')
-      console.log(this.url)
-      if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.generic
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'Product_Division',
-          'Market_Country',
-          'Transport_Mode',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      } else {
-        this.apiStringURL = this.apiString.generic
-
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'Product_Division',
-          'Market_Country',
-          'Market_Customer_Group',
-          'Market_Customer',
-          'Transport_Mode',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      }
-    });
+      // console.log("myurl = ",router.url)
+    if(this.url[3]!='mini-bar'){
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtMinTon_*_LeanS"
+      this.displayedColumns=[
+        'select',
+        'sequence_id',
+        'Business_Code',
+        'Country',
+        'Tonnage',
+        'Tonnage_From',
+        'Tonnage_To',
+        'Amount',
+        'Currency',
+        'action'
+      ]
+    }else{
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtMinTon_*_LeanS_Minibar"
+      this.displayedColumns = [
+        'select',
+        'sequence_id',
+        'Business_Code',
+        'Customer_Group',
+        'Customer',
+        'Tonnage',
+        'Tonnage_From',
+        'Tonnage_To',
+        'Amount',
+        'Currency',
+        'action'
+      ]
+    }
+   });
   }
-
+ 
   ngOnInit(): void {
-    this.getTransportMode()
+    this.getMinton()
   }
-  //getting uploaded history of alloy scrap 
-  getTransportMode() {
-    this.loadingRouteConfig = true
+
+  getMinton() {   
+    // this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
       searchString = this.searchValue
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?tablename=" + this.tablename + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<transportModeData>(resultData.data)
+      this.dataSource = new MatTableDataSource<mintonModeData>(resultData.data)
       setTimeout(() => {
         if (this.filterValue) {
           this.dataSource.paginator = this.paginator;
@@ -108,23 +112,26 @@ export class TransportModeListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching history')
     })
+    console.log(this.dataSource)
   }
-  //page change 
+
   pageChangeCall(event: any) {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getTransportMode()
+    this.getMinton()
   }
-  //filter 
+
   applyFilter(filterValue: any) {
     console.log(filterValue.trim().toLowerCase())
     this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
-    this.getTransportMode()
+    this.getMinton()
   }
+  
   actionClicked(rowData: any, viewOn: any) {
+    console.log(viewOn)
     if (viewOn === 'add') {
       const dialogRef = this.popup.open(AddPopupComponent,
         {
@@ -134,17 +141,18 @@ export class TransportModeListComponent implements OnInit {
           data: {
             content: '',
             addURL: this.apiStringURL.add,
-            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
-            fileName: "transport_mode",
+            type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
+            tablename : this.tablename,
+            fileName: "minton_leans",
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'sequence_id' && x != 'action'
+              x != 'select' && x != 'action'
             )
           },
         });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The edit dialog was closed', result);
-        this.getTransportMode()
-      })
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The edit dialog was closed', result);
+          this.getMinton()
+        })
     }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
@@ -154,9 +162,10 @@ export class TransportModeListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
-            fileName: "transport_mode",
+            tablename : this.tablename,
+            fileName: "minton_leans",
             updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
@@ -165,18 +174,18 @@ export class TransportModeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getTransportMode()
+        this.getMinton()
       })
     }
-
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = []
+      let deleteID: any = [this.tablename]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
       if (this.selection.selected.length > 0) {
         this.selection.selected.forEach((x: any) => {
           deleteID.push(x.id)
+  
         })
       } else {
         deleteID = rowData
@@ -188,54 +197,53 @@ export class TransportModeListComponent implements OnInit {
           autoFocus: false,
           maxHeight: '90vh',
           data: {
+            tablename:this.tablename,
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "?tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
-
           },
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
         if (result != undefined) {
-          this.getTransportMode()
+          this.getMinton()
           this.selection.clear()
         }
       })
-    }
+    }  
   }
+   
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/transport-mode/bulk-upload'])
+      this.router.navigate(['/smb/minton-leans/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/transport-mode/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/minton-leans/mini-bar/bulk-upload'])
     }
   }
+
   downloadInXlFile() {
-    window.open(this.apiStringURL.download, "_blank")
+       window.open(this.apiStringURL.download + "?tablename=" + this.tablename, "_blank")
   }
-  /** Whether the number of selected elements matches the total number of rows. */
+
   isAllSelected(): any {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource?.data.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
     }
-
     this.selection.select(...this.dataSource?.data);
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: transportModeData): string {
+  checkboxLabel(row?: mintonModeData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Business_Code + 1}`;
   }
 }

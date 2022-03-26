@@ -1,7 +1,9 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
+import { range } from 'lodash';
 import { filter, map } from 'rxjs/operators';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,6 +20,7 @@ export class AddPopupComponent implements OnInit {
   apiStringURL: any;
   formFieldName: any = [];
   addRecordForm: any = FormGroup;
+  k: any;
 
   constructor(
     public dialogRef: MatDialogRef<AddPopupComponent>,
@@ -48,18 +51,21 @@ export class AddPopupComponent implements OnInit {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.profile_lberia_italy_mini_bar : this.apiString.profile_lberia_italy
     } else if (this.data.fileName === 'transport_mode') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.transport_mode_mini_bar : this.apiString.transport_mode
-    } else {
+    } else if (this.data.fileName === 'delivery_mill') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.delivery_mill_mini_bar : this.apiString.delivery_mill
-
+    } else if (this.data.fileName === 'minton_leans') {
+      this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.minton_mini_bar : this.apiString.minton
     }
 
 
   }
-
   ngOnInit(): void {
     this.addRecordForm = this.fb.group({});
     this.addingNewForm()
+    // console.log("Data = ",this.data.tablename)
+    this.k = Object.keys(this.addRecordForm.value)
   }
+
   closeModel() {
     this.dialogRef.close()
   }
@@ -67,21 +73,33 @@ export class AddPopupComponent implements OnInit {
   addingNewForm() {
 
     let formControlFields: any = [];
-    console.log(this.data.fieldValue)
     this.data.fieldValue.forEach((element: any, index: any) => {
       formControlFields.push({ name: element, control: new FormControl('') });
     })
     formControlFields.forEach((f: any) => this.addRecordForm.addControl(f.name, f.control));
-
-    console.log(this.addRecordForm, "==========NEXT")
+    // console.log(this.addRecordForm, "==========NEXT")
   }
+
   addRecord(): any {
     console.log(this.data.addURL)
-    let formInputValue = Object.keys(this.addRecordForm.value).some(k => !!this.addRecordForm.value[k])
+    let formInputValue = Object.keys(this.addRecordForm.value).some(k => this.addRecordForm.value[k])
+    this.k = Object.keys(this.addRecordForm.value)
+
+    let l = this.k.length
+    for (let i in range(l)) {
+      console.log(this.addRecordForm.value[this.k[i]])
+      if (this.addRecordForm.value[this.k[i]] == '') {
+        formInputValue = false
+        break
+      }
+    }
+
     if (formInputValue === false) {
       return false;
     } else {
       delete this.addRecordForm.value.action
+      let tablename = { tablename: this.data.tablename }
+      Object.assign(this.addRecordForm.value, tablename)
       console.group(this.addRecordForm.value)
       this.loadingRouteConfig = true
       this.apiMethod.post_request_header(this.data.addURL, this.addRecordForm.value).subscribe(result => {

@@ -1,29 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NavigationEnd, Router } from '@angular/router';
-import { transportModeData } from '../smb-interface.service';
 import { MatDialog } from '@angular/material/dialog';
-import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
+import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { pricecountModeData } from '../smb-interface.service';
 
 @Component({
-  selector: 'app-transport-mode-list',
-  templateUrl: './transport-mode-list.component.html',
-  styleUrls: ['./transport-mode-list.component.scss']
+  selector: 'app-smbext-piece-count',
+  templateUrl: './smbext-piece-count.component.html',
+  styleUrls: ['./smbext-piece-count.component.scss']
 })
-export class TransportModeListComponent implements OnInit {
+export class SMBExtPieceCountComponent implements OnInit {
 
   loadingRouteConfig: boolean = false
-  displayedColumns: string[] = [];
-  dataSource: any;
   searchValue: any
+  displayedColumns: string[] = [];
+  tablename: any;
+  dataSource: any;
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
@@ -33,7 +34,8 @@ export class TransportModeListComponent implements OnInit {
   url: any;
   apiStringURL: any;
   filterValue: any = '';
-  selection = new SelectionModel<transportModeData>(true, []);
+  testing:any = "test"
+  selection = new SelectionModel<pricecountModeData>(true, []);
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -45,58 +47,59 @@ export class TransportModeListComponent implements OnInit {
     ).subscribe((event: NavigationEnd) => {
       console.log(event.url.split('/'));
       this.url = event.url.split('/')
-      console.log(this.url)
-      if (this.url[3] != 'mini-bar') {
-        this.apiStringURL = this.apiString.generic
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'Product_Division',
-          'Market_Country',
-          'Transport_Mode',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      } else {
-        this.apiStringURL = this.apiString.generic
-
-        this.displayedColumns = [
-          'select',
-          'sequence_id',
-          'Product_Division',
-          'Market_Country',
-          'Market_Customer_Group',
-          'Market_Customer',
-          'Transport_Mode',
-          'Document_Item_Currency',
-          'Amount',
-          'Currency',
-          'action'
-        ]
-      }
-    });
+      console.log("myurl = ",this.url)
+    if(this.url[3]!='mini-bar'){
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtPieceCount"
+      this.displayedColumns=[
+        'select',
+        'sequence_id',
+        'Business_Code',
+        'Country',
+        'Unit_of_Quantity',
+        'Amount',
+        'Currency',
+        'action'
+      ]
+    }else{
+      this.apiStringURL = this.apiString.generic
+      this.tablename = "SMBExtPieceCount_Minibar"
+      this.displayedColumns = [
+        'select',
+        'sequence_id',
+        'Business_Code',
+        'Customer_Group',
+        'Customer',
+        'Unit_of_Quantity',
+        'Amount',
+        'Currency',
+        'action'
+      ]
+    }
+   });
   }
+
 
   ngOnInit(): void {
-    this.getTransportMode()
+    this.getPieceCount()
+    
   }
   //getting uploaded history of alloy scrap 
-  getTransportMode() {
-    this.loadingRouteConfig = true
+  
+  getPieceCount() {   
+    // this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
       searchString = this.searchValue
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?tablename=" + this.tablename + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
-      this.dataSource = new MatTableDataSource<transportModeData>(resultData.data)
+      this.dataSource = new MatTableDataSource<pricecountModeData>(resultData.data)
       setTimeout(() => {
         if (this.filterValue) {
           this.dataSource.paginator = this.paginator;
@@ -108,13 +111,15 @@ export class TransportModeListComponent implements OnInit {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching history')
     })
+    console.log(this.dataSource)
   }
+
   //page change 
   pageChangeCall(event: any) {
     console.log(event)
     this.pageOffset = event.pageIndex
     this.pageLength = event.pageSize
-    this.getTransportMode()
+    this.getPieceCount()
   }
   //filter 
   applyFilter(filterValue: any) {
@@ -122,9 +127,10 @@ export class TransportModeListComponent implements OnInit {
     this.filterValue = filterValue
     this.pageOffset = 0
     this.pageLength = 500
-    this.getTransportMode()
+    this.getPieceCount()
   }
   actionClicked(rowData: any, viewOn: any) {
+    console.log(viewOn)
     if (viewOn === 'add') {
       const dialogRef = this.popup.open(AddPopupComponent,
         {
@@ -134,17 +140,19 @@ export class TransportModeListComponent implements OnInit {
           data: {
             content: '',
             addURL: this.apiStringURL.add,
-            type: this.url[3] === 'mini-bar' ? 'miniBar' : 'add',
-            fileName: "transport_mode",
+            type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
+            tablename: this.tablename,
+            fileName: "price_count",
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'sequence_id' && x != 'action'
+              x != 'select' && x != 'action'
             )
+            
           },
         });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The edit dialog was closed', result);
-        this.getTransportMode()
-      })
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The edit dialog was closed', result);
+          this.getPieceCount()
+        })
     }
     if (viewOn === 'edit') {
       const dialogRef = this.popup.open(EditPopupComponent,
@@ -154,9 +162,10 @@ export class TransportModeListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
-            fileName: "transport_mode",
+            tablename: this.tablename,
+            fileName: "price_count",
             updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'action'
@@ -165,12 +174,11 @@ export class TransportModeListComponent implements OnInit {
         });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The edit dialog was closed', result);
-        this.getTransportMode()
+        this.getPieceCount()
       })
     }
-
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = []
+      let deleteID: any = [this.tablename]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
@@ -189,8 +197,9 @@ export class TransportModeListComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
+            tablename: this.tablename,
             deleteURL: this.apiStringURL.delete
 
           },
@@ -198,30 +207,30 @@ export class TransportModeListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The Delete dialog was closed', result);
         if (result != undefined) {
-          this.getTransportMode()
+          this.getPieceCount()
           this.selection.clear()
         }
       })
     }
+    
   }
+   
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/transport-mode/bulk-upload'])
+      this.router.navigate(['/smb/pricecount/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/transport-mode/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/pricecount/mini-bar/bulk-upload'])
     }
   }
   downloadInXlFile() {
-    window.open(this.apiStringURL.download, "_blank")
+    window.open(this.apiStringURL.download + "?tablename=" + this.tablename, "_blank")
   }
-  /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected(): any {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource?.data.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
@@ -231,11 +240,10 @@ export class TransportModeListComponent implements OnInit {
     this.selection.select(...this.dataSource?.data);
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: transportModeData): string {
+  checkboxLabel(row?: pricecountModeData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.sequence_id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Business_Code + 1}`;
   }
 }

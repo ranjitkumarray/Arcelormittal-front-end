@@ -149,10 +149,10 @@ export class HistoryModalComponent implements OnInit {
 
         if (this.url[3] === 'mini-bar') {
           this.apiStringURL = this.apiString.transport_mode_mini_bar
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','Username', 'updated_on', 'Username', 'updated_on']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Market_Customer_Group', 'Market_Customer', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.transport_mode
-          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency','Username', 'updated_on', 'Username', 'updated_on']
+          this.displayedColumns = ['Product_Division', 'Market_Country', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else {
@@ -163,6 +163,33 @@ export class HistoryModalComponent implements OnInit {
         } else {
           this.apiStringURL = this.apiString.delivery_mill
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
+        }
+        if (this.url[2] === "minton-leans") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.minton_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.minton
+            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+          }
+        }
+        if (this.url[2] === "pricecount") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.pricecount_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.pricecount
+            this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+          }
+        }
+        if (this.url[2] === "dis-earlyptm") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.dis_earlyptm_mini_bar
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit', 'Username', 'updated_on']
+          } else {
+            this.apiStringURL = this.apiString.dis_earlyptm
+            this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit', 'Username', 'updated_on']
+          }
         }
 
       }

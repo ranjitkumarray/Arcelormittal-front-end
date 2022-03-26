@@ -90,7 +90,7 @@
 
                         <div class="col-12">
                             <div class="text-right">
-                                <button type="button" color="primary" mat-raised-button matStepperNext>
+                                <button type="button" color="primary" [disabled]="firstFormGroup.invalid" mat-raised-button matStepperNext>
                                     Next
                                 </button>
                             </div>
@@ -118,7 +118,7 @@
                             <div class="text-right">
                                 <button type="button" color="primary" class="mr-10" mat-stroked-button
                                     matStepperPrevious>Back</button>
-                                <button type="button" color="primary" mat-raised-button matStepperNext>Next</button>
+                                <button type="button" [disabled]="secondFormGroup.invalid" color="primary" mat-raised-button matStepperNext>Next</button>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                                 matStepperPrevious>Back</button>
                             <button type="button" color="primary" class="mr-10" id="reset" mat-stroked-button
                                 (click)="stepper.reset()">Reset</button>
-                            <button type="button" color="primary" mat-raised-button (click)="submit()">Submit</button>
+                            <button type="button" [disabled]="secondFormGroup.invalid" color="primary" mat-raised-button (click)="submit()">Submit</button>
                         </div>
                     </div>
                 </div>

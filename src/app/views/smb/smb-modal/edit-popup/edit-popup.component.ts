@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
+import { range } from 'lodash';
 import { filter, map } from 'rxjs/operators';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,6 +18,7 @@ export class EditPopupComponent implements OnInit {
   updateRecord: any = FormGroup
   url: any;
   apiStringURL: any;
+
   constructor(
     public dialogRef: MatDialogRef<EditPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -46,10 +48,16 @@ export class EditPopupComponent implements OnInit {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.profile_lberia_italy_mini_bar : this.apiString.profile_lberia_italy
     } else if (this.data.fileName === 'transport_mode') {
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.transport_mode_mini_bar : this.apiString.transport_mode
-    } else {
+    } else if (this.data.fileName === 'delivery_mill'){
       this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.delivery_mill_mini_bar : this.apiString.delivery_mill
-
+    } else if (this.data.fileName === 'minton_leans') {
+      this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.minton_mini_bar : this.apiString.minton
+    }  else if (this.data.fileName === 'price_count'){
+      this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.pricecount_mini_bar : this.apiString.pricecount
+    } else if (this.data.fileName === 'dis_earlyptm') {
+      this.apiStringURL = this.data.type === 'miniBar' ? this.apiString.dis_earlyptm_mini_bar : this.apiString.dis_earlyptm
     }
+
   }
 
   ngOnInit(): void {
@@ -57,7 +65,8 @@ export class EditPopupComponent implements OnInit {
     // this.data.fieldValue.push('sequence_id')
 
     this.apiMethod.get_request_header(this.data.url).subscribe(result => {
-      console.log(result)
+      // console.log(result)
+      console.log(this.data.fieldValue)
     })
     var objects: any = {};
     this.data.fieldValue.forEach((element: any, index: any) => {
@@ -83,21 +92,38 @@ export class EditPopupComponent implements OnInit {
     this.dialogRef.close()
 
   }
+ 
+
   editRecord() {
-    delete this.updateRecord.value.action
-    console.group(this.updateRecord.value)
-    this.loadingRouteConfig = true
-    this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
-      console.log(result)
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', ' Reord Sent for Approval')
-      this.closeModel()
-    }, error => {
-      console.log(error)
-      this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error While Updating Record')
-      this.closeModel()
-    })
+    let status = true
+    let l = this.data.fieldValue.length
+    for(let i in range(l)){
+      if(this.updateRecord.value[this.data.fieldValue[i]]==''){
+        status = false
+      }
+    }
+    if(status == true){
+      delete this.updateRecord.value.action
+      let tablename = {tablename : this.data.tablename}
+      Object.assign(this.updateRecord.value,tablename)
+      console.group(this.updateRecord.value)
+      this.loadingRouteConfig = true
+      this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
+        console.log(result)
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('success', ' Reord Sent for Approval')
+        this.closeModel()
+      }, error => {
+        console.log(error)
+        this.loadingRouteConfig = false
+        this.apiMethod.popupMessage('error', 'Error While Updating Record')
+        this.closeModel()
+      })
+    }
+    else {
+      this.apiMethod.popupMessage('error','All Fields Are Mandatory')
+    }
+    
   }
   removeUnderScore(value: any) {
     return value.split('_').join(" ");

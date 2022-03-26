@@ -46,7 +46,7 @@ export class ProfileListComponent implements OnInit {
     ).subscribe((event: NavigationEnd) => {
       console.log(event.url.split('/'));
       this.url = event.url.split('/')
-      console.log(this.url)
+      console.log("myurl = ",router.url)
       if (this.url[3] != 'mini-bar') {
         this.apiStringURL = this.apiString.profile
         this.displayedColumns = [

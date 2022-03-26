@@ -33,6 +33,8 @@ export class UploadValidateModalComponent implements OnInit {
   uploadValidateModal_data: any;
   url: any;
   apiStringURL: any;
+  tablename: any;
+  f_data: any;
 
   constructor(
     private apiString: CitGlobalConstantService,
@@ -157,6 +159,40 @@ export class UploadValidateModalComponent implements OnInit {
           this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Product_Division', 'Beam_Category', 'Document_Item_Currency', 'Amount', 'Currency']
         }
 
+        if (this.url[2] === "minton-leans") {
+          if (this.url[3] === "mini-bar") {
+            this.apiStringURL = this.apiString.generic
+            this.tablename = "SMBExtMinTon_&_LeanS_Minibar"
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
+          } else {
+            this.apiStringURL = this.apiString.generic
+            this.tablename = "SMBExtMinTon_&_LeanS"
+            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
+          }
+        }
+        if (this.url[2] === "pricecount") {
+          if (this.url[3] === "mini-bar") {
+            this.tablename = "SMBExtPieceCount_Minibar"
+            this.apiStringURL = this.apiString.generic
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency']
+          } else {
+            this.tablename = "SMBExtPieceCount"
+            this.apiStringURL = this.apiString.generic
+            this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency']
+          }
+        }
+        if (this.url[2] === "dis-earlyptm") {
+          if (this.url[3] === "mini-bar") {
+            this.tablename = "SMBDisEarlyPmt_Minibar"
+            this.apiStringURL = this.apiString.generic
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit']
+          } else {
+            this.tablename = "SMBDisEarlyPmt"
+            this.apiStringURL = this.apiString.generic
+            this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit']
+          }
+        }
+
       }
     });
   }
@@ -253,10 +289,11 @@ export class UploadValidateModalComponent implements OnInit {
   uploadFiles() {
     console.log("coming", this.selectedFiles)
     const formData = new FormData();
-    formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile)
+    this.f_data = formData
+    formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile,this.tablename)
     this.loadingRouteConfig = true
-    this.apiMethod.post_request_header(this.apiStringURL.upload, formData).subscribe((data) => {
-      console.log(data)
+    this.apiMethod.post_request_header(this.apiStringURL.upload,this.f_data ).subscribe((data) => {
+      console.log("Mydata :",data)
       let resultData: any = data
       this.loadingRouteConfig = false
       this.uploadValidateModal_data = resultData
