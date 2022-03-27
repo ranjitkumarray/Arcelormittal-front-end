@@ -33,7 +33,7 @@ export class UploadValidateModalComponent implements OnInit {
   uploadValidateModal_data: any;
   url: any;
   apiStringURL: any;
-  tablename: any;
+  table_name: any;
   f_data: any;
 
   constructor(
@@ -162,32 +162,35 @@ export class UploadValidateModalComponent implements OnInit {
         if (this.url[2] === "minton-leans") {
           if (this.url[3] === "mini-bar") {
             this.apiStringURL = this.apiString.generic
-            this.tablename = "SMBExtMinTon_&_LeanS_Minibar"
+            this.table_name = "SMBExtMinTon_LeanS_Minibar"
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
           } else {
             this.apiStringURL = this.apiString.generic
-            this.tablename = "SMBExtMinTon_&_LeanS"
+            this.table_name = "SMBExtMinTon_LeanS"
             this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
           }
         }
         if (this.url[2] === "pricecount") {
           if (this.url[3] === "mini-bar") {
-            this.tablename = "SMBExtPieceCount_Minibar"
+            
+            this.table_name = "SMBExtPieceCount_Minibar"
             this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency']
           } else {
-            this.tablename = "SMBExtPieceCount"
+
+            
+            this.table_name = "SMBExtPieceCount"
             this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency']
           }
         }
         if (this.url[2] === "dis-earlyptm") {
           if (this.url[3] === "mini-bar") {
-            this.tablename = "SMBDisEarlyPmt_Minibar"
+            this.table_name = "SMBDisEarlyPmt_Minibar"
             this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit']
           } else {
-            this.tablename = "SMBDisEarlyPmt"
+            this.table_name = "SMBDisEarlyPmt"
             this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit']
           }
@@ -290,7 +293,7 @@ export class UploadValidateModalComponent implements OnInit {
     console.log("coming", this.selectedFiles)
     const formData = new FormData();
     this.f_data = formData
-    formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile,this.tablename)
+    formData.append("filename", this.selectedFiles.uploadValidateModal.file.selectedFile,this.table_name)
     this.loadingRouteConfig = true
     this.apiMethod.post_request_header(this.apiStringURL.upload,this.f_data ).subscribe((data) => {
       console.log("Mydata :",data)
@@ -321,11 +324,13 @@ export class UploadValidateModalComponent implements OnInit {
 
   //data validate
   validateDataForm() {
-    console.log(this.uploadValidateModal)
+    console.log('gggggggg ',this.uploadValidateModal_data.table_name)
     let data: any = {
       "billet": this.uploadValidateModal_data.data,
       "filename": this.uploadValidateModal_data.filename
     }
+    data.table_name = this.table_name
+    this.uploadValidateModal_data.data.table_name = this.uploadValidateModal_data.table_name
     this.loadingRouteConfig = true
     this.apiMethod.post_request_header(this.apiStringURL.validate, data).subscribe((result: any) => {
       console.log("success")

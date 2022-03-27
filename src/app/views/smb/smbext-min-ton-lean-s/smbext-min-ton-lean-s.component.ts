@@ -28,7 +28,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
    localData: any 
    username:any
   displayedColumns: string[] = [];
-  tablename: any;
+  table_name: any;
   dataSource: any;
   pageEvent: any = PageEvent;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
@@ -56,7 +56,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       // console.log("myurl = ",router.url)
     if(this.url[3]!='mini-bar'){
       this.apiStringURL = this.apiString.generic
-      this.tablename = "SMBExtMinTon_*_LeanS"
+      this.table_name = "SMBExtMinTon_LeanS"
       this.displayedColumns=[
         'select',
         'sequence_id',
@@ -71,7 +71,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       ]
     }else{
       this.apiStringURL = this.apiString.generic
-      this.tablename = "SMBExtMinTon_*_LeanS_Minibar"
+      this.table_name = "SMBExtMinTon_LeanS_Minibar"
       this.displayedColumns = [
         'select',
         'sequence_id',
@@ -104,7 +104,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request_header(this.apiStringURL.list + "?tablename=" + this.tablename + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request_header(this.apiStringURL.list + "?table_name=" + this.table_name + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
@@ -151,7 +151,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
             content: '',
             addURL: this.apiStringURL.add,
             type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
-            tablename : this.tablename,
+            table_name : this.table_name,
             fileName: "minton_leans",
             fieldValue: this.displayedColumns.filter((x: any) =>
               x != 'select' && x != 'sequence_id' && x != 'action'
@@ -171,9 +171,9 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
           maxHeight: '90vh',
           data: {
             content: rowData,
-            url: this.apiStringURL.get + "?id=" + rowData.id + "&tablename=" + this.tablename,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "&table_name=" + this.table_name,
             type: this.url[3] === 'mini-bar' ? 'miniBar' : 'edit',
-            tablename : this.tablename,
+            table_name : this.table_name,
             fileName: "minton_leans",
             updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
@@ -187,7 +187,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       })
     }
     if (viewOn === 'delete' || viewOn === 'delete-all') {
-      let deleteID: any = [this.tablename]
+      let deleteID: any = [this.table_name]
       if (viewOn === 'delete-all' && this.selection.selected.length === 0) {
         return this.apiMethod.popupMessage('error', 'Select At-least on record')
       }
@@ -206,9 +206,9 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
           autoFocus: false,
           maxHeight: '90vh',
           data: {
-            tablename:this.tablename,
+            table_name:this.table_name,
             id: deleteID,
-            url: this.apiStringURL.get + "?id=" + rowData.id + "?tablename=" + this.tablename,
+            url: this.apiStringURL.get + "?id=" + rowData.id + "?table_name=" + this.table_name,
             type: this.url[3] === 'mini-bar' ? 'delete-min-bar' : 'delete',
             deleteURL: this.apiStringURL.delete
           },
@@ -232,7 +232,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
   }
 
   downloadInXlFile() {
-       window.open(this.apiStringURL.download + "?tablename=" + this.tablename, "_blank")
+       window.open(this.apiStringURL.download + "?table_name=" + this.table_name, "_blank")
   }
 
   isAllSelected(): any {

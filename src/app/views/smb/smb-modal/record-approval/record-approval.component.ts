@@ -32,7 +32,7 @@ export class RecordApprovalComponent implements OnInit {
   resultValue: any = [];
   resultData: any = [];
   lis:any = []
-  common:any =["Document Item Currency","Amount","Currency","updated_on","status","flag","table_name","id","tableid"]
+  common:any =["Amount","Currency","updated_on","status","flag","table_name","id","tableid"]
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -134,7 +134,7 @@ export class RecordApprovalComponent implements OnInit {
         this.lis=["sequence_id","Product Division","Market Country","Market Customer Group","Transport Mode"]
     }
     
-      this.displayedColumns = this.lis.concat(this.common)
+      this.displayedColumns = this.a
       console.log(this.displayedColumns)
       this.totalCount = this.resultData.totalCount
       this.dataSource = new MatTableDataSource<any>(this.resultData.data)

@@ -18,6 +18,10 @@ export class EditPopupComponent implements OnInit {
   updateRecord: any = FormGroup
   localData:any
   url: any;
+  Username:any;
+  
+  user:any;
+  localdata:any;
   apiStringURL: any;
 
   constructor(
@@ -62,6 +66,8 @@ export class EditPopupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+
     console.log(this.url, this.data)
     // this.data.fieldValue.push('sequence_id')
 
@@ -72,8 +78,15 @@ export class EditPopupComponent implements OnInit {
     var objects: any = {};
     this.data.fieldValue.forEach((element: any, index: any) => {
       objects[element] = []
+
+       
+      objects.table_name = this.data.table_name
+      objects.Username=this.user
+      
+      
       if (index === this.data.fieldValue.length - 1) {
         objects['id_value'] = []
+        
       }
     });
     console.log(objects)
@@ -85,7 +98,10 @@ export class EditPopupComponent implements OnInit {
   }
   patchValue() {
     this.localData = localStorage.getItem('arc-userDetails')
-       var user = JSON.parse(this.localData).username
+       var user = JSON.parse(this.localData)
+       this.user=user.user['user_name']
+       
+       console.log(this.user)
 
     this.updateRecord.patchValue(this.data.content)
     this.updateRecord.patchValue({
@@ -99,6 +115,8 @@ export class EditPopupComponent implements OnInit {
  
 
   editRecord() {
+    
+
     let status = true
     let l = this.data.fieldValue.length
     for(let i in range(l)){
@@ -110,10 +128,12 @@ export class EditPopupComponent implements OnInit {
       
       delete this.updateRecord.value.action
       let tablename = {tablename : this.data.tablename}
+      let Username={Username:this.user}
      
 
       Object.assign(this.updateRecord.value,tablename)
-      
+     
+      Object.assign(this.updateRecord.value,Username)
      
       
       console.group(this.updateRecord.value)

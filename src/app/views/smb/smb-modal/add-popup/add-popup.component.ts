@@ -62,7 +62,7 @@ export class AddPopupComponent implements OnInit {
   ngOnInit(): void {
     this.addRecordForm = this.fb.group({});
     this.addingNewForm()
-    // console.log("Data = ",this.data.tablename)
+    // console.log("Data = ",this.data.table_name)
     this.k = Object.keys(this.addRecordForm.value)
   }
 
@@ -98,8 +98,8 @@ export class AddPopupComponent implements OnInit {
       return false;
     } else {
       delete this.addRecordForm.value.action
-      let tablename = { tablename: this.data.tablename }
-      Object.assign(this.addRecordForm.value, tablename)
+      let table_name = { table_name: this.data.table_name }
+      Object.assign(this.addRecordForm.value, table_name)
       console.group(this.addRecordForm.value)
       this.loadingRouteConfig = true
       this.apiMethod.post_request_header(this.data.addURL, this.addRecordForm.value).subscribe(result => {
