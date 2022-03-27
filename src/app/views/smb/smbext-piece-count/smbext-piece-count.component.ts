@@ -54,7 +54,7 @@ export class SMBExtPieceCountComponent implements OnInit {
       this.displayedColumns=[
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Country',
         'Unit_of_Quantity',
         'Amount',
@@ -67,7 +67,7 @@ export class SMBExtPieceCountComponent implements OnInit {
       this.displayedColumns = [
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Customer_Group',
         'Customer',
         'Unit_of_Quantity',
@@ -168,8 +168,8 @@ export class SMBExtPieceCountComponent implements OnInit {
             fileName: "price_count",
             updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'action'
-            )
+            x != 'select' && x != 'sequence_id' && x != 'action'
+          )
           },
         });
       dialogRef.afterClosed().subscribe(result => {

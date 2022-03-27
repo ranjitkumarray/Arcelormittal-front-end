@@ -13,6 +13,9 @@ import { WarnPopupComponent } from '../smb-modal/warn-popup/warn-popup.component
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
+
+
+
 @Component({
   selector: 'app-smbext-min-ton-lean-s',
   templateUrl: './smbext-min-ton-lean-s.component.html',
@@ -22,6 +25,8 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
 
   loadingRouteConfig: boolean = false
   searchValue: any
+   localData: any 
+   username:any
   displayedColumns: string[] = [];
   tablename: any;
   dataSource: any;
@@ -32,6 +37,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
   pageOffset: any = 0;
   totalCount: any = 0;
   url: any;
+  
   apiStringURL: any;
   filterValue: any = '';
   testing:any = "test"
@@ -54,7 +60,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       this.displayedColumns=[
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Country',
         'Tonnage',
         'Tonnage_From',
@@ -69,7 +75,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
       this.displayedColumns = [
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Customer_Group',
         'Customer',
         'Tonnage',
@@ -88,6 +94,9 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
   }
 
   getMinton() {   
+
+    this.localData = localStorage.getItem('arc-userDetails')
+    this.username = JSON.parse(this.localData).username
     // this.loadingRouteConfig = true
     let searchString: any
     if (this.searchValue) {
@@ -145,7 +154,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
             tablename : this.tablename,
             fileName: "minton_leans",
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'action'
+              x != 'select' && x != 'sequence_id' && x != 'action'
             )
           },
         });

@@ -54,7 +54,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
       this.displayedColumns=[
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Country',
         'Value',
         'Unit',
@@ -66,7 +66,7 @@ export class SMBDisEarlyPtmComponent implements OnInit {
       this.displayedColumns = [
         'select',
         'sequence_id',
-        'Business_Code',
+        'BusinessCode',
         'Customer_Group',
         'Customer',
         'Value',
@@ -140,8 +140,8 @@ export class SMBDisEarlyPtmComponent implements OnInit {
             tablename: this.tablename,
             fileName: "disearly_pmt",
             fieldValue: this.displayedColumns.filter((x: any) =>
-              x != 'select' && x != 'action'
-            )
+            x != 'select' && x != 'sequence_id' && x != 'action'
+          )
             
           },
         });

@@ -16,6 +16,7 @@ export class EditPopupComponent implements OnInit {
 
   loadingRouteConfig: boolean = false
   updateRecord: any = FormGroup
+  localData:any
   url: any;
   apiStringURL: any;
 
@@ -83,6 +84,9 @@ export class EditPopupComponent implements OnInit {
     })
   }
   patchValue() {
+    this.localData = localStorage.getItem('arc-userDetails')
+       var user = JSON.parse(this.localData).username
+
     this.updateRecord.patchValue(this.data.content)
     this.updateRecord.patchValue({
       "id_value": this.data.content.id
@@ -103,9 +107,15 @@ export class EditPopupComponent implements OnInit {
       }
     }
     if(status == true){
+      
       delete this.updateRecord.value.action
       let tablename = {tablename : this.data.tablename}
+     
+
       Object.assign(this.updateRecord.value,tablename)
+      
+     
+      
       console.group(this.updateRecord.value)
       this.loadingRouteConfig = true
       this.apiMethod.post_request_header(this.data.updateURL, this.updateRecord.value).subscribe(result => {
