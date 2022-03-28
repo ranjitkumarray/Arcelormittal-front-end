@@ -368,7 +368,7 @@ const routes: Routes = [
           ]
       },
       {
-        path: "dis-earlyptm",
+        path: "dis-earlypmt",
         children:
           [
             ...['', 'mini-bar'].map(path => ({

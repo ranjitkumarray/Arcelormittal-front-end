@@ -166,33 +166,33 @@ export class HistoryModalComponent implements OnInit {
         if (this.url[2] === "minton-leans") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBExtMinTon_LeanS_Minibar"
-            this.apiStringURL = this.apiString.minton_mini_bar
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
             this.table_name = "SMBExtMinTon_LeanS"
-            this.apiStringURL = this.apiString.minton
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
         if (this.url[2] === "pricecount") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBExtPieceCount_Minibar"
-            this.apiStringURL = this.apiString.pricecount_mini_bar
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
             this.table_name = "SMBExtPieceCount"
-            this.apiStringURL = this.apiString.pricecount
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
-        if (this.url[2] === "dis-earlyptm") {
+        if (this.url[2] === "dis-earlypmt") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBDisEarlyPmt_Minibar"
-            this.apiStringURL = this.apiString.dis_earlyptm_mini_bar
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit', 'Username', 'updated_on']
           } else {
             this.table_name = "SMBDisEarlyPmt"
-            this.apiStringURL = this.apiString.dis_earlyptm
+            this.apiStringURL = this.apiString.generic
             this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit', 'Username', 'updated_on']
           }
         }
