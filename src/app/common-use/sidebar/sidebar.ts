@@ -358,14 +358,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Extra Piece Count List',
-                        url: '/smb/pricecount/list',
+                        url: '/smb/piececount/list',
                         icon: 'fa fa-file',
                         tag: 'SMBExtPieceCount_sub_menu',
         
                     },
                     {
                         name: 'Upload History',
-                        url: '/smb/pricecount/history',
+                        url: '/smb/piececount/history',
                         icon: 'fa fa-history',
                         tag: 'SMBExtPieceCount_sub_menu',
         
@@ -684,14 +684,14 @@ export const NavItems = [
                 children: [
                     {
                         name: 'Extra PieceCount List',
-                        url: '/smb/pricecount/mini-bar/list',
+                        url: '/smb/piececount/mini-bar/list',
                         icon: 'fa fa-file',
                         tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
 
                     },
                     {
                         name: 'Upload History',
-                        url: '/smb/pricecount/mini-bar/history',
+                        url: '/smb/piececount/mini-bar/history',
                         icon: 'fa fa-history',
                         tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
 

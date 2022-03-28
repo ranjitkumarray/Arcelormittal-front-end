@@ -342,7 +342,7 @@ const routes: Routes = [
           ]
       },
       {
-        path: "pricecount",
+        path: "piececount",
         children:
           [
             ...['', 'mini-bar'].map(path => ({

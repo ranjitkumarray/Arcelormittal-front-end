@@ -174,15 +174,15 @@ export class HistoryModalComponent implements OnInit {
             this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
-        if (this.url[2] === "pricecount") {
+        if (this.url[2] === "piececount") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBExtPieceCount_Minibar"
             this.apiStringURL = this.apiString.generic
-            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Unit_of_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
             this.table_name = "SMBExtPieceCount"
             this.apiStringURL = this.apiString.generic
-            this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
+            this.displayedColumns = ['BusinessCode', 'Country', 'Unit_of_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
         if (this.url[2] === "dis-earlypmt") {
