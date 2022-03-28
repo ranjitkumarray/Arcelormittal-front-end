@@ -314,7 +314,7 @@ export class CitGlobalConstantService {
         update: this.baseUrl + "generic_update",
         download: this.baseUrl + "generic_download",
 
-        history: this.baseUrl + "gemeric_history"
+        history: this.baseUrl + "generic_history"
     }
 
 
