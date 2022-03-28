@@ -170,7 +170,7 @@ export class UploadValidateModalComponent implements OnInit {
             this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
           }
         }
-        if (this.url[2] === "pricecount") {
+        if (this.url[2] === "piececount") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBExtPieceCount_Minibar"
             this.apiStringURL = this.apiString.generic
@@ -181,7 +181,7 @@ export class UploadValidateModalComponent implements OnInit {
             this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency']
           }
         }
-        if (this.url[2] === "dis-earlyptm") {
+        if (this.url[2] === "dis-earlypmt") {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBDisEarlyPmt_Minibar"
             this.apiStringURL = this.apiString.generic
