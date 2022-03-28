@@ -211,9 +211,9 @@ export class SMBDisEarlyPtmComponent implements OnInit {
    
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/dis-earlyptm/bulk-upload'])
+      this.router.navigate(['/smb/dis-earlypmt/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/dis-earlyptm/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/dis-earlypmt/mini-bar/bulk-upload'])
     }
   }
 

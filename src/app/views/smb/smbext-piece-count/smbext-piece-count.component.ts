@@ -221,9 +221,9 @@ export class SMBExtPieceCountComponent implements OnInit {
    
   uploadByXlFile() {
     if (this.url[3] != 'mini-bar') {
-      this.router.navigate(['/smb/pricecount/bulk-upload'])
+      this.router.navigate(['/smb/piececount/bulk-upload'])
     } else {
-      this.router.navigate(['/smb/pricecount/mini-bar/bulk-upload'])
+      this.router.navigate(['/smb/piececount/mini-bar/bulk-upload'])
     }
   }
   downloadInXlFile() {
