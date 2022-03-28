@@ -31,8 +31,6 @@ export class HistoryModalComponent implements OnInit {
   uploadValidateModal_data: any;
   url: any;
   apiStringURL: any;
-
-  //mine
   searchValue: any;
   pageOffset: any = 0;
   pageLength: any = 10;
@@ -40,6 +38,7 @@ export class HistoryModalComponent implements OnInit {
   dataSource: any;
   pageEvent: any = PageEvent;
   filterValue: any = '';
+  table_name: any;
 
 
   constructor(
@@ -166,27 +165,33 @@ export class HistoryModalComponent implements OnInit {
         }
         if (this.url[2] === "minton-leans") {
           if (this.url[3] === "mini-bar") {
+            this.table_name = "SMBExtMinTon_LeanS_Minibar"
             this.apiStringURL = this.apiString.minton_mini_bar
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
+            this.table_name = "SMBExtMinTon_LeanS"
             this.apiStringURL = this.apiString.minton
             this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
         if (this.url[2] === "pricecount") {
           if (this.url[3] === "mini-bar") {
+            this.table_name = "SMBExtPieceCount_Minibar"
             this.apiStringURL = this.apiString.pricecount_mini_bar
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
+            this.table_name = "SMBExtPieceCount"
             this.apiStringURL = this.apiString.pricecount
             this.displayedColumns = ['BusinessCode', 'Country', 'UnitOf_Quantity', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
         if (this.url[2] === "dis-earlyptm") {
           if (this.url[3] === "mini-bar") {
+            this.table_name = "SMBDisEarlyPmt_Minibar"
             this.apiStringURL = this.apiString.dis_earlyptm_mini_bar
             this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Value', 'Unit', 'Username', 'updated_on']
           } else {
+            this.table_name = "SMBDisEarlyPmt"
             this.apiStringURL = this.apiString.dis_earlyptm
             this.displayedColumns = ['BusinessCode', 'Country', 'Value', 'Unit', 'Username', 'updated_on']
           }
@@ -202,6 +207,7 @@ export class HistoryModalComponent implements OnInit {
     this.url[2] = this.url[2] == "base-price" ? "smb" : this.url[2];
     console.log(this.url[2])
     this.getHistory()
+    console.log('hhh ',this.data)
   }
   //getting uploaded history of smb
   getHistory() {
@@ -213,7 +219,7 @@ export class HistoryModalComponent implements OnInit {
     } else {
       searchString = "all"
     }
-    this.apiMethod.get_request(this.apiStringURL.history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
+    this.apiMethod.get_request(this.apiStringURL.history + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString + "&table_name=" + this.table_name).subscribe(result => {
       console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
@@ -247,10 +253,6 @@ export class HistoryModalComponent implements OnInit {
     this.pageLength = 500
     this.getHistory()
   }
-
-
-
-
 
   // ==================== file change event ========================
   // dropFiles(ev: any): any {
@@ -290,13 +292,6 @@ export class HistoryModalComponent implements OnInit {
   //   }
   // }
   // }
-
-
-
-
-
-
-
 
   //==========================end===================================
 
