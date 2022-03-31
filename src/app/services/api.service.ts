@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
     baseURI: string = environment.domain;
     selectedIndex: any = '';
+    user:any;
     token: any = '';
     constructor(
         private https: HttpClient,
@@ -16,6 +17,8 @@ export class ApiService {
         let localData: any = localStorage.getItem('arc-userDetails')
         if (localData) {
             this.token = JSON.parse(localData).token
+            this.user = JSON.parse(localData).user['user_name']
+
 
         }
     }
@@ -29,7 +32,7 @@ export class ApiService {
         })
     }
     post_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token).set('username',this.user);
         return this.https.post(url, param, {
             headers: headers
         })
