@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   a: any;
   emailPattern = "^[a-z0-9._%+-]+@['gmail']+\.[com]{2,4}$";
   loadingRouteConfig: boolean = false;
+  test = true
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
     private apiString: CitGlobalConstantService,
@@ -43,9 +44,27 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('arc-userDetails', JSON.stringify(result))
         console.log(document.referrer)
         if (document.referrer != '') {
-          this.location.back()
+          // Logic
+          if(this.test=true){
+            console.log(this.test)
+            setTimeout(()=>{
+              window.location.reload(),
+              this.test=false,
+              console.log(this.test)
+            }, 50);  
+            this.location.back()            
+          }
+          // this.location.back()
         } else {
-          this.router.navigate(['/alloy-scrap/upload/'])
+          if(this.test==true){
+            console.log(this.test)
+            setTimeout(()=>{
+              window.location.reload(),
+              this.test=false,
+              console.log(this.test)
+            }, 50);  
+            this.router.navigate(['/alloy-scrap/upload/'])          
+          }
         }
       }, error => {
         console.log(error)

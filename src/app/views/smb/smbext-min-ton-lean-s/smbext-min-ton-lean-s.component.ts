@@ -104,6 +104,7 @@ export class SMBExtMinTonLeanSComponent implements OnInit {
     } else {
       searchString = "all"
     }
+    this.loadingRouteConfig = true
     this.apiMethod.get_request_header(this.apiStringURL.list + "?table_name=" + this.table_name + "&offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
       console.log(result)
       let resultData: any = result
