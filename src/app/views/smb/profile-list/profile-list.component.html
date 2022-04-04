@@ -139,6 +139,7 @@
 
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns ;sticky: true"></tr>
                                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                        
 
                                     <tr class="mat-row" *matNoDataRow>
                                         <td class="mat-cell" colspan="4"> No data matching the filter "{{searchValue}}" </td>
@@ -156,3 +157,22 @@
         </div>
     </div>
 </div>
+
+<!-- <table border="1">   
+    
+    <div *ngFor="let i of d['data']">
+        <div *ngIf="(i['sequence_id']%2!=0); else t">
+            <tr> 
+                <th *ngFor="let k of obj_key" >{{k}}</th>
+            </tr>
+            <td *ngFor="let k of obj_key" style="background-color:rgb(251, 182, 182);">{{i[k]}}</td>
+        </div>
+        <div>
+        <ng-template #t >
+                <td  *ngFor="let k of obj_key" style="background-color:rgb(136, 253, 136)">{{i[k]}}</td><br>
+            
+        </ng-template> 
+    </div>
+    </div>
+</table> -->
+

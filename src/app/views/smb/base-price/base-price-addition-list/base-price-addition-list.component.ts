@@ -15,6 +15,7 @@ import { filter } from 'rxjs/operators';
 import { AddPopupComponent } from '../../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { EditPopupComponent } from '../../smb-modal/edit-popup/edit-popup.component';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-base-price-addition-list',
   templateUrl: './base-price-addition-list.component.html',
@@ -36,6 +37,7 @@ export class BasePriceAdditionListComponent implements OnInit {
   resultData: any = [];
   filterValue: any = '';
   selection = new SelectionModel<basePriceAddtionData>(true, []);
+  test = true
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -61,9 +63,9 @@ export class BasePriceAdditionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBasePriceAddition()
+      this.getBasePriceAddition()
   }
-  //getting uploaded history of alloy scrap 
+
   getBasePriceAddition() {
     this.loadingRouteConfig = true
     let searchString: any
@@ -80,17 +82,20 @@ export class BasePriceAdditionListComponent implements OnInit {
       this.totalCount = this.resultData.totalCount
       console.log(this.totalCount)
       this.loadingRouteConfig = false
+      window.stop()
       this.dataSource = new MatTableDataSource<basePriceAddtionData>(this.resultData.data)
       setTimeout(() => {
         if (this.filterValue) {
           this.dataSource.paginator = this.paginator;
         }
         this.dataSource.sort = this.sort;
+        window.stop()
 
       })
     }, error => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('error', 'Error while fatching history')
+      window.stop()
     })
   }
   //page change 

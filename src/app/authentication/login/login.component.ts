@@ -18,9 +18,10 @@ export class LoginComponent implements OnInit {
   loginData: any;
   Users = user;
   a: any;
+  test=true
+
   emailPattern = "^[a-z0-9._%+-]+@['gmail']+\.[com]{2,4}$";
   loadingRouteConfig: boolean = false;
-  test = true
   constructor(private fb: FormBuilder,
     private apimethod: ApiService,
     private apiString: CitGlobalConstantService,
@@ -33,7 +34,6 @@ export class LoginComponent implements OnInit {
       'password': ['', Validators.required]
     })
   }
-
 
   loginSubmit() {
     if (this.login.status == "VALID") {
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           }
           // this.location.back()
         } else {
-          if(this.test==true){
+          if(this.test=true){
             console.log(this.test)
             setTimeout(()=>{
               window.location.reload(),

@@ -319,9 +319,28 @@ export class UploadValidateModalComponent implements OnInit {
     }
   }
 
+  // custom pop-up
+  popupMessage(statusType: any, message: any) {
+    if (statusType === 'success') {
+        this._snackBar.open(message, "", {
+            duration: 4000,
+            panelClass: ['success'],
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+        });
+    } else {
+        this._snackBar.open(message, "", {
+            duration: 4000,
+            panelClass: ['error'],
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+        });
+    }
+
+}
+
   //data validate
   validateDataForm() {
-    console.log('gggggggg ',this.uploadValidateModal_data.table_name)
     let data: any = {
       "billet": this.uploadValidateModal_data.data,
       "filename": this.uploadValidateModal_data.filename
@@ -332,11 +351,11 @@ export class UploadValidateModalComponent implements OnInit {
     this.apiMethod.post_request_header(this.apiStringURL.validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', 'File validated successfully')
+      this.popupMessage('success','File Sent for Approval')
       this.location.back()
     }, error => {
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
+      this.popupMessage('error', 'Error while validating uploaded file')
     })
   }
   back() {

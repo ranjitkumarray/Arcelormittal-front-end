@@ -144,7 +144,7 @@ export class SMBExtPieceCountComponent implements OnInit {
             addURL: this.apiStringURL.add,
             type: this.url[3] == 'mini-bar' ? 'miniBar' : 'add',
             table_name: this.table_name,
-            fileName: "price_count",
+            fileName: "piece_couting",
             fieldValue: this.displayedColumns.filter((x: any) =>
             x != 'select' && x != 'sequence_id' && x != 'action'
           )
@@ -170,7 +170,7 @@ export class SMBExtPieceCountComponent implements OnInit {
             // user :localStorage.getItem('arc-userDetails'),
             // this.token = JSON.parse(localData).token
 
-            fileName: "price_count",
+            fileName: "piece_counting",
             updateURL: this.apiStringURL.update,
             fieldValue: this.displayedColumns.filter((x: any) =>
             x != 'select' && x != 'action'
