@@ -45,26 +45,30 @@ export class LoginComponent implements OnInit {
         console.log(document.referrer)
         if (document.referrer != '') {
           // Logic
-          if(this.test=true){
-            console.log(this.test)
-            setTimeout(()=>{
-              window.location.reload(),
-              this.test=false,
-              console.log(this.test)
-            }, 50);  
-            this.location.back()            
-          }
-          // this.location.back()
+          // if(this.test=true){
+          //   console.log(this.test)
+          //   setTimeout(()=>{
+          //     window.location.reload(),
+          //     this.test=false,
+          //     console.log(this.test)
+          //   }, 100);  
+          //   this.location.back()            
+          // }
+
+          this.location.back()
         } else {
-          if(this.test=true){
-            console.log(this.test)
-            setTimeout(()=>{
-              window.location.reload(),
-              this.test=false,
-              console.log(this.test)
-            }, 50);  
-            this.router.navigate(['/alloy-scrap/upload/'])          
-          }
+          //Logic
+          // if(this.test=true){
+          //   console.log(this.test)
+          //   setTimeout(()=>{
+          //     window.location.reload(),
+          //     this.test=false,
+          //     console.log(this.test)
+          //   }, 100);  
+          //   this.router.navigate(['/alloy-scrap/upload/'])          
+          // }
+          
+          this.router.navigate(['/alloy-scrap/upload/'])          
         }
       }, error => {
         console.log(error)
