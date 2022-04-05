@@ -13,7 +13,6 @@ import { filter } from 'rxjs/operators';
 import { EditPopupComponent } from '../smb-modal/edit-popup/edit-popup.component';
 import { AddPopupComponent } from '../smb-modal/add-popup/add-popup.component';
 import { SelectionModel } from '@angular/cdk/collections';
-import { getTreeNoValidDataSourceError } from '@angular/cdk/tree';
 
 @Component({
   selector: 'app-profile-list',
@@ -36,10 +35,6 @@ export class ProfileListComponent implements OnInit {
   apiStringURL: any;
   filterValue: any = '';
   selection = new SelectionModel<profileData>(true, []);
-  bg:any = 'green'
-  d:any
-  obj_key:any;
-  // data = [{name:'sayeesh',age:20},{name:'yatish',age:40}]
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -104,12 +99,7 @@ export class ProfileListComponent implements OnInit {
       searchString = "all"
     }
     this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
-      this.d = result
-      var k = this.displayedColumns
-       k.splice(k.indexOf('select'),1)
-       k.splice(k.indexOf('action'),1)
-      this.obj_key = k
-      console.log(this.obj_key)
+      console.log(result)
       let resultData: any = result
       this.totalCount = resultData.totalCount
       this.loadingRouteConfig = false
