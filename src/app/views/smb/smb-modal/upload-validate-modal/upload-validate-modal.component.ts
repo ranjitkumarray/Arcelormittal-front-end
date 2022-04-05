@@ -361,4 +361,11 @@ export class UploadValidateModalComponent implements OnInit {
   back() {
     this.location.back()
   }
+
+
+
+  
+
+
+  
 }

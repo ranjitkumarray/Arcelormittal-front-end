@@ -189,7 +189,7 @@ export class IncotermExceptionsUploadComponent implements OnInit {
     this.apiMethod.post_request_header(this.apiStringURL.incoterm_exceptions_validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', 'File validated successfully')
+      this.apiMethod.popupMessage('success', 'File Sent for Approval')
       this.back()
     }, error => {
       this.loadingRouteConfig = false

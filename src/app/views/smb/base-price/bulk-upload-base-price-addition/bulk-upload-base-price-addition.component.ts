@@ -205,7 +205,7 @@ export class BulkUploadBasePriceAdditionComponent implements OnInit {
     this.apiMethod.post_request_header(this.apiStringURL.validate, data).subscribe((result: any) => {
       console.log("success")
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('success', 'File validated successfully')
+      this.apiMethod.popupMessage('success', 'File Sent for Approval')
       this.router.navigate(['/smb/base-price/list'])
     }, error => {
       this.loadingRouteConfig = false
