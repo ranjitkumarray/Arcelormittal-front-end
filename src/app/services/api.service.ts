@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
     baseURI: string = environment.domain;
     selectedIndex: any = '';
-    user:any;
     token: any = '';
+    username:any;
     constructor(
         private https: HttpClient,
         private _snackBar: MatSnackBar,
@@ -17,22 +17,25 @@ export class ApiService {
         let localData: any = localStorage.getItem('arc-userDetails')
         if (localData) {
             this.token = JSON.parse(localData).token
-            this.user = JSON.parse(localData).user['user_name']
-
-
+            this.username=JSON.parse(localData).user['user_name']
+           
         }
     }
+
     get_request(url: any) {
         return this.https.get(url);
     }
+
     get_request_header(url: any) {
-        let headers: any = new HttpHeaders().set('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token).set('username',this.username);
+              console.log(headers)
         return this.https.get(url, {
             headers: headers
         })
     }
     post_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('x-access-token', this.token).set('username',this.user);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token);
+        
         return this.https.post(url, param, {
             headers: headers
         })
@@ -87,4 +90,6 @@ export class ApiService {
         }
 
     }
+
+    
 }

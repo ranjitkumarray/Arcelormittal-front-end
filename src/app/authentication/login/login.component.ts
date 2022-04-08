@@ -2,7 +2,6 @@ import { Location } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { windowWhen } from "rxjs/operators";
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 
 import { ApiService } from 'src/app/services/api.service';
@@ -44,7 +43,6 @@ export class LoginComponent implements OnInit {
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
 
-
         console.log(document.referrer)
         if (document.referrer != '') {
           // Logic
@@ -59,7 +57,8 @@ export class LoginComponent implements OnInit {
           //   }, 1000); 
             // this.location.back()            
           // }
-          
+
+          this.location.back()
         } else {
           //Logic
           // if(this.test=true){
@@ -74,6 +73,7 @@ export class LoginComponent implements OnInit {
             // this.router.navigate(['/alloy-scrap/upload/'])          
           // }
 
+          this.router.navigate(['/alloy-scrap/upload/'])          
         }
       }, error => {
         console.log(error)
