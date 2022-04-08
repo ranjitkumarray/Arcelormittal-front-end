@@ -39,35 +39,40 @@ export class LoginComponent implements OnInit {
     if (this.login.status == "VALID") {
       this.loadingRouteConfig = true
       this.apimethod.get_request_Param(this.apiString.userAccess.login, this.login.value).subscribe(result => {
+        localStorage.setItem('arc-userDetails', JSON.stringify(result))
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
-        localStorage.setItem('arc-userDetails', JSON.stringify(result))
+        
         console.log(document.referrer)
         if (document.referrer != '') {
           // Logic
-          // if(this.test=true){
-          //   console.log(this.test)
-          //   setTimeout(()=>{
-          //     window.location.reload(),
-          //     this.test=false,
-          //     console.log(this.test)
-          //   }, 100);  
-          //   this.location.back()            
-          // }
+          if(this.test=true){
+            this.loadingRouteConfig=true
+            console.log(this.test)
+            setTimeout(()=>{
+              window.location.reload(),
+              this.loadingRouteConfig=false,
+              this.test=false,
+              console.log(this.test)
+            }, 1000); 
+            // this.location.back()            
+          }
 
           this.location.back()
         } else {
           //Logic
-          // if(this.test=true){
-          //   console.log(this.test)
-          //   setTimeout(()=>{
-          //     window.location.reload(),
-          //     this.test=false,
-          //     console.log(this.test)
-          //   }, 100);  
-          //   this.router.navigate(['/alloy-scrap/upload/'])          
-          // }
-          
+          if(this.test=true){
+            this.loadingRouteConfig=true
+            console.log(this.test)
+            setTimeout(()=>{
+              window.location.reload(),
+              this.loadingRouteConfig=false,
+              this.test=false,
+              console.log(this.test)
+            }, 1000);
+            // this.router.navigate(['/alloy-scrap/upload/'])          
+          }
+
           this.router.navigate(['/alloy-scrap/upload/'])          
         }
       }, error => {
