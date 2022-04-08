@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
   version: string = '';
   user: any = 'user'
   navbarItem: any = []
+  test = true
 
   details:any =localStorage.getItem(("arc-userDetails"))
   userDeatails =JSON.parse(this.details)
