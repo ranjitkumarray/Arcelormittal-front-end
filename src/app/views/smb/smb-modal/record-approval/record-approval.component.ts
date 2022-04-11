@@ -27,12 +27,13 @@ export class RecordApprovalComponent implements OnInit {
   pageLength: any = 500;
   pageOffset: any = 0;
   totalCount: any = 0;
-  a:any;
+  col:any;
   filterValue: any = '';
   resultValue: any = [];
   resultData: any = [];
   lis:any = []
   common:any =["Amount","Currency","updated_on","status","flag","table_name","id","tableid"]
+  old_dataSource:any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -59,7 +60,7 @@ export class RecordApprovalComponent implements OnInit {
     this.resultValue = []
     this.apiMethod.get_request_header_Param(this.apiString.getAprovalRecord, this.queryParam).subscribe((result: any) => {
       console.log(result)
-      this.a=result.lis
+      this.col=result.lis
       this.resultValue = result.data
       this.resultData = result
       this.loadingRouteConfig = false
@@ -134,10 +135,11 @@ export class RecordApprovalComponent implements OnInit {
         this.lis=["sequence_id","Product Division","Market Country","Market Customer Group","Transport Mode"]
     }
     
-      this.displayedColumns = this.a
+      this.displayedColumns = this.col
       console.log(this.displayedColumns)
       this.totalCount = this.resultData.totalCount
       this.dataSource = new MatTableDataSource<any>(this.resultData.data)
+      this.old_dataSource = new MatTableDataSource<any>(this.resultData.old_json)
       setTimeout(() => {
         if (this.filterValue) {
           this.dataSource.paginator = this.paginator;
