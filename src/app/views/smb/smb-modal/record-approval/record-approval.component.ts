@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatTabBody } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitGlobalConstantService } from 'src/app/services/api-collection';
 import { ApiService } from 'src/app/services/api.service';
@@ -34,6 +35,8 @@ export class RecordApprovalComponent implements OnInit {
   lis:any = []
   common:any =["Amount","Currency","updated_on","status","flag","table_name","id","tableid"]
   old_dataSource:any;
+  flag: any;
+  bgcolor: any;
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
@@ -63,7 +66,17 @@ export class RecordApprovalComponent implements OnInit {
       this.col=result.lis
       this.resultValue = result.data
       this.resultData = result
+      this.flag = this.resultData.data[0].flag
+      console.log("Flag = ",this.resultData.data[0].flag)
       this.loadingRouteConfig = false
+      
+      if(this.flag=='add' || this.flag=='update'){
+        this.bgcolor = 'rgb(206, 236, 194)'
+        
+      }
+      if(this.flag=='delete'){
+        this.bgcolor = 'rgb(254, 223, 223)'
+      }
 
       if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
         return
