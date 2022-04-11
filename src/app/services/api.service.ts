@@ -34,7 +34,7 @@ export class ApiService {
         })
     }
     post_request_header(url: any, param: any) {
-        let headers: any = new HttpHeaders().set('x-access-token', this.token);
+        let headers: any = new HttpHeaders().set('x-access-token', this.token).set('username',this.username);
         
         return this.https.post(url, param, {
             headers: headers
