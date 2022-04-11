@@ -47,26 +47,6 @@ export class GroupUserComponent implements OnInit {
       console.log(error)
     })
   }
-  getSubMenu() {
-    console.log(this.groupUserForm.value)
-    let param: any=''
-    if (this.groupUserForm.value.menu.length > 0) {
-      let body={
-        "menu_id":this.groupUserForm.value.menu
-      }
-     
-      //console.log(body)
-      this.loadingRouteConfig = true
-      this.apiMethod.post_request_header(this.apiString.userAccess.group_management_data ,body).subscribe((result:any) => {
-        console.log(result)
-        this.loadingRouteConfig = false
-        this.subMenuList=result.sub_menu_items
-      }, error => {
-        console.log(error)
-        this.loadingRouteConfig = false
-      })
-    }
-  }
   submit() {
     console.log("test")
     this.loadingRouteConfig = true

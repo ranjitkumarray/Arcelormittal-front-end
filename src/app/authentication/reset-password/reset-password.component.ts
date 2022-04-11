@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { CitGlobalConstantService } from 'src/app/services/api-collection';
 
 @Component({
   selector: 'app-reset-password',
@@ -8,10 +12,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ResetPasswordComponent implements OnInit {
 resetPassword:any=FormGroup;
-  constructor(private fb: FormBuilder) { }
+  
+  queryParam: any;
+  constructor(private fb: FormBuilder,private apimethod:ApiService, private router: Router, private apiString: CitGlobalConstantService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe((param: any) => {
+      console.log("Record", param)
+      this.queryParam = param
+    })
+
     this.resetPassword = this.fb.group({
+     'email': this.queryParam.email,
+     'user_id':this.queryParam.user_id,
+    
       'NewPassword': ['', [
         Validators.required,
       ]],
@@ -22,4 +37,22 @@ resetPassword:any=FormGroup;
     })
   }
 
+
+
+  
+  reset_password() {
+    
+    
+    this.apimethod.get_request_Param(this.apiString.userAccess.reset_password, this.resetPassword.value).subscribe((result: any) => {
+        console.log("success")
+        
+        this.apimethod.popupMessage('success', 'Password Changed Successfully')
+
+        this.router.navigate(['/auth/login/'])
+      
+      }, error => {
+    
+        this.apimethod.popupMessage('error', 'Please enter the password correctly')
+      })
+    }
 }

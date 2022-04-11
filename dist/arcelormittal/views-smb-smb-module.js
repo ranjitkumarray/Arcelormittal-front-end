@@ -9577,7 +9577,6 @@ function ProfileListComponent_tr_74_Template(rf, ctx) { if (rf & 1) {
 } }
 const _c0 = function () { return [500, 1000, 1500, 2000]; };
 class ProfileListComponent {
-    // data = [{name:'sayeesh',age:20},{name:'yatish',age:40}]
     constructor(apiString, apiMethod, router, popup) {
         this.apiString = apiString;
         this.apiMethod = apiMethod;
@@ -9593,7 +9592,6 @@ class ProfileListComponent {
         this.totalCount = 0;
         this.filterValue = '';
         this.selection = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_8__["SelectionModel"](true, []);
-        this.bg = 'green';
         router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])((event) => event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"])).subscribe((event) => {
             console.log(event.url.split('/'));
             this.url = event.url.split('/');
@@ -9651,12 +9649,7 @@ class ProfileListComponent {
             searchString = "all";
         }
         this.apiMethod.get_request_header(this.apiStringURL.list + "?offset=" + this.pageOffset + "&limit=" + this.pageLength + "&search_string=" + searchString).subscribe(result => {
-            this.d = result;
-            var k = this.displayedColumns;
-            k.splice(k.indexOf('select'), 1);
-            k.splice(k.indexOf('action'), 1);
-            this.obj_key = k;
-            console.log(this.obj_key);
+            console.log(result);
             let resultData = result;
             this.totalCount = resultData.totalCount;
             this.loadingRouteConfig = false;
