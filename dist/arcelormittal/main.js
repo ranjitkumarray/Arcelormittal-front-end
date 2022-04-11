@@ -695,6 +695,8 @@ class CitGlobalConstantService {
         };
         this.userAccess = {
             login: this.baseUrl + "login",
+            resetemail: this.baseUrl + "resetemail",
+            reset_password: this.baseUrl + "reset_password",
             group_management_data: this.baseUrl + "group_management_data",
             email_availability_check: this.baseUrl + "existEmail",
             user_availability_check: this.baseUrl + "existUsername",
@@ -709,689 +711,6 @@ class CitGlobalConstantService {
 }
 CitGlobalConstantService.ɵfac = function CitGlobalConstantService_Factory(t) { return new (t || CitGlobalConstantService)(); };
 CitGlobalConstantService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: CitGlobalConstantService, factory: CitGlobalConstantService.ɵfac, providedIn: "root" });
-
-
-/***/ }),
-
-/***/ "WLZL":
-/*!***********************************************!*\
-  !*** ./src/app/common-use/sidebar/sidebar.ts ***!
-  \***********************************************/
-/*! exports provided: NavItems */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavItems", function() { return NavItems; });
-const NavItems = [
-    {
-        name: 'Management',
-        url: '',
-        active_img: '../../../assets/images/report 2.png',
-        inactive_img: '../../../assets/images/report 2.png',
-        tag: 'management',
-        type: "admin",
-        children: [
-            {
-                name: 'User',
-                url: '/user/management',
-                icon: 'fa fa-user',
-                tag: 'management_sub_menu',
-            },
-            {
-                name: 'User Group',
-                url: '/user/group-management',
-                icon: 'fa fa-users',
-                tag: 'management_sub_menu',
-            }
-        ]
-    },
-    {
-        name: 'Alloy & Scrap',
-        url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'alloy_scrap',
-        type: "admin",
-        children: [
-            {
-                name: 'Upload Alloy & Scrap',
-                url: '/alloy-scrap/upload',
-                icon: 'fa fa-file',
-                tag: 'alloy_scrap_sub_menu',
-            },
-            {
-                name: 'History',
-                url: '/alloy-scrap/history',
-                icon: 'fa fa-history',
-                tag: 'alloy_scrap_sub_menu',
-            }
-        ]
-    },
-    {
-        name: 'SMB',
-        url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'smb',
-        type: 'admin',
-        children: [
-            {
-                name: 'Base Price Addition',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Base_Price_Addition',
-                children: [
-                    {
-                        name: 'Price Addition List',
-                        url: '/smb/base-price/list',
-                        icon: 'fa fa-file',
-                        tag: 'alloy_scrap_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/base-price/history',
-                        icon: 'fa fa-history',
-                        tag: 'alloy_scrap_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Incoterm Exceptions',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Incoterm_Exceptions',
-                children: [
-                    {
-                        name: 'Incoterm Exceptions List',
-                        url: '/smb/incoterm-exceptions/list',
-                        icon: 'fa fa-file',
-                        tag: 'Incoterm_Exceptions_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/incoterm-exceptions/history',
-                        icon: 'fa fa-history',
-                        tag: 'Incoterm_Exceptions_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Certificate',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Certificate',
-                children: [
-                    {
-                        name: 'Certificate List',
-                        url: '/smb/extra-certificate/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Certificate_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/extra-certificate/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Certificate_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Delivery Mill',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Delivery_Mill',
-                children: [
-                    {
-                        name: 'Delivery Mill List',
-                        url: '/smb/delivery-mill/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Delivery_Mill_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/delivery-mill/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Delivery_Mill_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Freight Parity',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Freight_Parity',
-                children: [
-                    {
-                        name: 'Freight Parity List',
-                        url: '/smb/freight-parity/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Freight_Parity_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/freight-parity/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Freight_Parity_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Grade',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Grade',
-                children: [
-                    {
-                        name: 'Grade List',
-                        url: '/smb/grade/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Grade_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/grade/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Grade_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Length Logistic',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Length_Logistic',
-                children: [
-                    {
-                        name: 'Length Logistic List',
-                        url: '/smb/length-logistic/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Length_Logistic_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/length-logistic/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Length_Logistic_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Length Production',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Length_Production',
-                children: [
-                    {
-                        name: 'Length Production List',
-                        url: '/smb/length-production/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Length_Production_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/length-production/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Length_Production_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Profile',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Profile',
-                children: [
-                    {
-                        name: 'Profile List',
-                        url: '/smb/profile/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Profile_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/profile/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Profile_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Profile Iberia & Italy',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Profile_Iberia_and_Italy',
-                children: [
-                    {
-                        name: 'Profile Iberia & Italy List',
-                        url: '/smb/profile-lberia-italy/list',
-                        icon: 'fa fa-file',
-                        tag: 'Profile_Iberia_and_Italy_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/profile-lberia-italy/history',
-                        icon: 'fa fa-history',
-                        tag: 'Profile_Iberia_and_Italy_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra - Transport Mode',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'Extra_Transport_Mode',
-                children: [
-                    {
-                        name: 'Transport Mode List',
-                        url: '/smb/transport-mode/list',
-                        icon: 'fa fa-file',
-                        tag: 'Extra_Transport_Mode_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/transport-mode/history',
-                        icon: 'fa fa-history',
-                        tag: 'Extra_Transport_Mode_sub_menu',
-                    }
-                ]
-            },
-            //mine
-            {
-                name: 'Extra MinTon Leans',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'SMBExtMinTon_Leans',
-                children: [
-                    {
-                        name: 'Extra MinTon Leans List',
-                        url: '/smb/minton-leans/list',
-                        icon: 'fa fa-file',
-                        tag: 'SMBExtMinTon_Leans_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/minton-leans/history',
-                        icon: 'fa fa-history',
-                        tag: 'SMBExtMinTon_Leans_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Piece Count',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'SMBExtPieceCount',
-                children: [
-                    {
-                        name: 'Extra Piece Count List',
-                        url: '/smb/piececount/list',
-                        icon: 'fa fa-file',
-                        tag: 'SMBExtPieceCount_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/piececount/history',
-                        icon: 'fa fa-history',
-                        tag: 'SMBExtPieceCount_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'DisEarlyPmt',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'DisEarlyPmt',
-                children: [
-                    {
-                        name: 'DisEarlyPmt List',
-                        url: '/smb/dis-earlypmt/list',
-                        icon: 'fa fa-file',
-                        tag: 'ExtPieceCount_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/dis-earlypmt/history',
-                        icon: 'fa fa-history',
-                        tag: 'ExtPieceCount_sub_menu',
-                    }
-                ]
-            },
-        ]
-    },
-    {
-        name: 'SMB-miniBar',
-        url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'smb_mini_bar',
-        type: "admin",
-        children: [
-            {
-                name: 'Base Price Addition',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Base_Price_Addition',
-                children: [
-                    {
-                        name: 'Price Addition List',
-                        url: '/smb/base-price/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_alloy_scrap_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/base-price/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_alloy_scrap_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Certificate',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Certificate',
-                children: [
-                    {
-                        name: 'Certificate List',
-                        url: '/smb/extra-certificate/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/extra-certificate/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Certificate_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Delivery Mill',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Delivery_Mill',
-                children: [
-                    {
-                        name: 'Delivery Mill List',
-                        url: '/smb/delivery-mill/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/delivery-mill/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Delivery_Mill_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Freight Parity',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Freight_Parity',
-                children: [
-                    {
-                        name: 'Freight Parity List',
-                        url: '/smb/freight-parity/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/freight-parity/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Freight_Parity_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Grade',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Grade',
-                children: [
-                    {
-                        name: 'Grade List',
-                        url: '/smb/grade/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Grade_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/grade/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Grade_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Length Logistic',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Length_Logistic',
-                children: [
-                    {
-                        name: 'Length Logistic List',
-                        url: '/smb/length-logistic/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/length-logistic/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Length_Logistic_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Length Production',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Length_Production',
-                children: [
-                    {
-                        name: 'Length Production List',
-                        url: '/smb/length-production/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/length-production/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Length_Production_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Profile',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Profile',
-                children: [
-                    {
-                        name: 'Profile List',
-                        url: '/smb/profile/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Profile_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/profile/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Profile_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra Profile Iberia & Italy',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Profile_Iberia_and_Italy',
-                children: [
-                    {
-                        name: 'Profile Iberia & Italy List',
-                        url: '/smb/profile-lberia-italy/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/profile-lberia-italy/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Profile_Iberia_and_Italy_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra - Transport Mode',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_Extra_Transport_Mode',
-                children: [
-                    {
-                        name: 'Transport Mode List',
-                        url: '/smb/transport-mode/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/transport-mode/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_Extra_Transport_Mode_sub_menu',
-                    }
-                ]
-            },
-            //mine
-            {
-                name: 'Extra MinTon Leans',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_SMBExtMinTon_Leans',
-                children: [
-                    {
-                        name: 'Extra MinTon Leans List',
-                        url: '/smb/minton-leans/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_SMBExtMinTon_Leans_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/minton-leans/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_SMBExtMinTon_Leans_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'Extra PieceCount',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_ExtPieceCount',
-                children: [
-                    {
-                        name: 'Extra PieceCount List',
-                        url: '/smb/piececount/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/piececount/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_ExtPieceCount_sub_menu',
-                    }
-                ]
-            },
-            {
-                name: 'DisEarly Pmt',
-                url: '',
-                active_img: '../../../assets/images/order.png',
-                inactive_img: '../../../assets/images/order 2.png',
-                tag: 'smb_mini_bar_DisEarlyPmt',
-                children: [
-                    {
-                        name: 'DisEarly Pmt List',
-                        url: '/smb/dis-earlypmt/mini-bar/list',
-                        icon: 'fa fa-file',
-                        tag: 'smb_mini_bar_DisEarlyPmt_sub_menu',
-                    },
-                    {
-                        name: 'Upload History',
-                        url: '/smb/dis-earlypmt/mini-bar/history',
-                        icon: 'fa fa-history',
-                        tag: 'smb_mini_bar_DisEarlyPmt_sub_menu',
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        name: 'My Tasks',
-        url: '',
-        active_img: '../../../assets/images/order.png',
-        inactive_img: '../../../assets/images/order 2.png',
-        tag: 'My_Tasks',
-        type: "user",
-        children: [
-            {
-                name: 'Offer status / Pending Approval',
-                url: '/management/offer-status',
-                icon: '',
-                tag: 'offer_status_sub_menu',
-            },
-            {
-                name: 'Order Status & Delay',
-                url: '/management/order-status',
-                icon: '',
-                tag: 'order_status_sub_menu',
-            },
-            {
-                name: 'Customer Volume & Over Booking',
-                url: '/management/customer-volume',
-                icon: '',
-                tag: 'customer_volume_sub_menu',
-            },
-            {
-                name: 'Missing Invoice Payments',
-                url: '/management/missing-invoice-payment',
-                icon: '',
-                tag: 'missing_invoice_payment_sub_menu',
-            },
-        ]
-    },
-];
 
 
 /***/ }),
@@ -1680,174 +999,173 @@ MaterialsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_44__["ɵɵdefineI
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidebarComponent", function() { return SidebarComponent; });
-/* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sidebar */ "WLZL");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../header/header.component */ "1ivb");
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header/header.component */ "1ivb");
 
 
 
 
 function SidebarComponent_i_2_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "i", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "i", 14);
 } }
 function SidebarComponent_i_3_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "i", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "i", 15);
 } }
 const _c0 = function () { return ["active"]; };
 function SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "span", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "span", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const sub_item2_r11 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item2_r11.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](3, _c0));
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", sub_item2_r11 == null ? null : sub_item2_r11.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", sub_item2_r11.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", sub_item2_r11 == null ? null : sub_item2_r11.name, " ");
 } }
 function SidebarComponent_span_11_span_1_span_9_span_1_span_12_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template, 4, 4, "li", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_span_12_li_1_Template, 4, 4, "li", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2).$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", sub_item1_r6.children);
+    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", sub_item1_r6.children);
 } }
 function SidebarComponent_span_11_span_1_span_9_span_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "ul", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "li", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "img", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "img", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "span", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "ul", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](12, SidebarComponent_span_11_span_1_span_9_span_1_span_12_Template, 2, 1, "span", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "li", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "img", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "img", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "ul", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, SidebarComponent_span_11_span_1_span_9_span_1_span_12_Template, 2, 1, "span", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", item_r4.tag);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("data-target", "#" + sub_item1_r6.tag);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", sub_item1_r6.active_img, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", sub_item1_r6.inactive_img, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", sub_item1_r6 == null ? null : sub_item1_r6.name, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", sub_item1_r6.tag);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", sub_item1_r6.children);
+    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", item_r4.tag);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("data-target", "#" + sub_item1_r6.tag);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", sub_item1_r6.active_img, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", sub_item1_r6.inactive_img, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", sub_item1_r6 == null ? null : sub_item1_r6.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", sub_item1_r6.tag);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", sub_item1_r6.children);
 } }
 function SidebarComponent_span_11_span_1_span_9_span_2_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "ul", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "li", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "li", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", item_r4.tag);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", sub_item1_r6.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](4, _c0));
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", sub_item1_r6.name, " ");
+    const sub_item1_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", item_r4.tag);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", sub_item1_r6.url)("routerLinkActive", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](4, _c0));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", sub_item1_r6.name, " ");
 } }
 function SidebarComponent_span_11_span_1_span_9_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_Template, 13, 7, "span", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, SidebarComponent_span_11_span_1_span_9_span_2_Template, 6, 5, "span", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_span_9_span_1_Template, 13, 7, "span", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SidebarComponent_span_11_span_1_span_9_span_2_Template, 6, 5, "span", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const sub_item1_r6 = ctx.$implicit;
-    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", sub_item1_r6.children && item_r4.children);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !sub_item1_r6.children);
+    const item_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", sub_item1_r6.children && item_r4.children);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !sub_item1_r6.children);
 } }
 function SidebarComponent_span_11_span_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "li", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](5, "img", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "img", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, SidebarComponent_span_11_span_1_span_9_Template, 3, 2, "span", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "li", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "img", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "img", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, SidebarComponent_span_11_span_1_span_9_Template, 3, 2, "span", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const item_r4 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("data-target", "#" + item_r4.tag);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", item_r4.active_img, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", item_r4.inactive_img, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", item_r4.name, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", item_r4.children);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("data-target", "#" + item_r4.tag);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", item_r4.active_img, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", item_r4.inactive_img, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", item_r4.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", item_r4.children);
 } }
 function SidebarComponent_span_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_Template, 10, 5, "span", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SidebarComponent_span_11_span_1_Template, 10, 5, "span", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r2.navbarItem);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.navbarItem);
 } }
+// import { NavItems } from './sidebar';
 class SidebarComponent {
     constructor(router) {
         this.router = router;
-        this.navLink = _sidebar__WEBPACK_IMPORTED_MODULE_0__["NavItems"];
         this.showFiller = false;
         this.collapsed = false;
         this.isOpen = false;
         this.version = '';
+        // loadingRouteConfig: boolean = false;
         this.user = 'user';
         this.navbarItem = [];
-        this.test = true;
         this.details = localStorage.getItem(("arc-userDetails"));
         this.userDeatails = JSON.parse(this.details);
-        this.navbarItem = this.navLink;
+        let localData = localStorage.getItem('arc-userDetails');
+        this.navbarItem = JSON.parse(localData).sidebar_json;
         console.log(this.navbarItem, "Nav Item");
     }
     ngOnInit() {
@@ -1868,47 +1186,47 @@ class SidebarComponent {
         doc.click();
     }
 }
-SidebarComponent.ɵfac = function SidebarComponent_Factory(t) { return new (t || SidebarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-SidebarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: SidebarComponent, selectors: [["app-sidebar"]], decls: 18, vars: 7, consts: [[1, "sidebar"], [1, "sidebar_toggler", 3, "click"], ["class", "fa fa-bars", 4, "ngIf"], ["class", "fas fa-times", 4, "ngIf"], [1, ""], [1, "container-fluid", "logo_outer"], [1, "logo"], ["src", "../../../assets/images/arcelorMittal_logo.png", "alt", "logo"], [1, "content"], [1, "line"], [1, "nav", "flex-column", "flex-nowrap", "overflow-hidden"], [4, "ngIf"], [1, "main_container_content"], [2, "margin-top", "10px"], [1, "fa", "fa-bars"], [1, "fas", "fa-times"], [4, "ngFor", "ngForOf"], [1, "nav-item"], [1, "sub_menu_con"], ["data-toggle", "collapse", 1, "items", "nav-link", "collapsed", "text-truncate"], ["alt", "icon", 1, "active_img", 3, "src"], ["alt", "icon-inactive", 1, "inactive_img", 3, "src"], [1, "d-none", "d-sm-inline"], ["aria-expanded", "false", 1, "collapse", 3, "id"], [1, "flex-column", "pl-2", "nav"], ["class", "nav-item", 4, "ngFor", "ngForOf"], [1, "sub", "items", 3, "routerLink", "routerLinkActive"], [1, "sub_hyphen"]], template: function SidebarComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "button", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function SidebarComponent_Template_button_click_1_listener() { return ctx.isOpen = !ctx.isOpen; });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, SidebarComponent_i_2_Template, 1, 0, "i", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, SidebarComponent_i_3_Template, 1, 0, "i", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "a", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "img", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "ul", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, SidebarComponent_span_11_Template, 2, 1, "span", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "div", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "app-header");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](16, "div", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](17, "router-outlet");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+SidebarComponent.ɵfac = function SidebarComponent_Factory(t) { return new (t || SidebarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"])); };
+SidebarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SidebarComponent, selectors: [["app-sidebar"]], decls: 18, vars: 7, consts: [[1, "sidebar"], [1, "sidebar_toggler", 3, "click"], ["class", "fa fa-bars", 4, "ngIf"], ["class", "fas fa-times", 4, "ngIf"], [1, ""], [1, "container-fluid", "logo_outer"], [1, "logo"], ["src", "../../../assets/images/arcelorMittal_logo.png", "alt", "logo"], [1, "content"], [1, "line"], [1, "nav", "flex-column", "flex-nowrap", "overflow-hidden"], [4, "ngIf"], [1, "main_container_content"], [2, "margin-top", "10px"], [1, "fa", "fa-bars"], [1, "fas", "fa-times"], [4, "ngFor", "ngForOf"], [1, "nav-item"], [1, "sub_menu_con"], ["data-toggle", "collapse", 1, "items", "nav-link", "collapsed", "text-truncate"], ["alt", "icon", 1, "active_img", 3, "src"], ["alt", "icon-inactive", 1, "inactive_img", 3, "src"], [1, "d-none", "d-sm-inline"], ["aria-expanded", "false", 1, "collapse", 3, "id"], [1, "flex-column", "pl-2", "nav"], ["class", "nav-item", 4, "ngFor", "ngForOf"], [1, "sub", "items", 3, "routerLink", "routerLinkActive"], [1, "sub_hyphen"]], template: function SidebarComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SidebarComponent_Template_button_click_1_listener() { return ctx.isOpen = !ctx.isOpen; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SidebarComponent_i_2_Template, 1, 0, "i", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SidebarComponent_i_3_Template, 1, 0, "i", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "img", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "ul", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, SidebarComponent_span_11_Template, 2, 1, "span", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "app-header");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "router-outlet");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("sidebar_open", ctx.isOpen);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isOpen);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.isOpen);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.navbarItem.length > 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("main_container_content_toggled", ctx.isOpen);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkActive"]], styles: ["@charset \"UTF-8\";\n@font-face {\n  font-family: \"black\";\n  src: url('Poppins-Black.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"bold\";\n  src: url('Poppins-Bold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"regular\";\n  src: url('Poppins-Regular.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"semi-bold\";\n  src: url('Poppins-SemiBold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"light\";\n  src: url('Poppins-Light.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"extra-bold\";\n  src: url('Poppins-ExtraBold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"italic\";\n  src: url('Poppins-Italic.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"medium\";\n  src: url('Poppins-Medium.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\nbody[_ngcontent-%COMP%] {\n  font-family: \"regular\";\n  font-size: 0.875rem;\n}\n.font_weight_bold[_ngcontent-%COMP%] {\n  font-family: \"bold\";\n}\n.color_text[_ngcontent-%COMP%] {\n  color: #41464a !important;\n}\n.warning_bg[_ngcontent-%COMP%] {\n  background-color: #f4dca0;\n}\n.color_white[_ngcontent-%COMP%] {\n  color: #ffffff !important;\n}\n.delete[_ngcontent-%COMP%] {\n  color: #f76e6e;\n}\n.copy[_ngcontent-%COMP%] {\n  color: #32a6f3;\n}\n.primary_a[_ngcontent-%COMP%] {\n  color: #1d9de0;\n}\n.sidebar[_ngcontent-%COMP%] {\n  height: 100%;\n  width: 250px;\n  display: inline-block;\n  vertical-align: top;\n  box-shadow: 0px 0px 6px 0px #023e6d29;\n  position: absolute;\n  left: 0;\n  top: 0px;\n  bottom: 0;\n  z-index: 9998;\n  background-color: #ffffff;\n  transition: 0.1s;\n}\n.sidebar[_ngcontent-%COMP%]   .sidebar_toggler[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 15px;\n  right: -40px;\n  border: none;\n  border-radius: 3px;\n  background-color: white;\n  color: #f47d30;\n  padding: 5px 8px;\n  outline: none;\n  box-shadow: none;\n  font-size: 20px;\n  width: 33px;\n  height: 30px;\n}\n.sidebar[_ngcontent-%COMP%]   .logo_outer[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n  color: #ffffff;\n}\n.sidebar[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n  font-size: 20px;\n  font-family: \"medium\";\n  color: #1d9de0;\n  cursor: pointer;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  height: 60px;\n  justify-content: center;\n}\n.sidebar[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  max-width: 100%;\n  max-height: 50px;\n  object-fit: contain;\n}\n.sidebar[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%] {\n  height: calc(100% - 65px);\n  overflow: auto;\n  padding-bottom: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  border-left: 6px solid transparent;\n  padding: 13px 10px;\n  color: #6e6f70;\n  flex: 0 0 100%;\n  align-items: center;\n  cursor: pointer;\n  outline: none;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 20px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .active_img[_ngcontent-%COMP%] {\n  display: none;\n}\n.sidebar[_ngcontent-%COMP%]   .sub[_ngcontent-%COMP%] {\n  padding: 7px 5px 7px 5px;\n  margin-left: 20px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub[_ngcontent-%COMP%]   .sub_hyphen[_ngcontent-%COMP%] {\n  font-size: 11px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_l2[_ngcontent-%COMP%] {\n  padding: 7px 10px 7px 20px;\n  margin-left: 40px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_l2[_ngcontent-%COMP%]   .sub_hyphen[_ngcontent-%COMP%] {\n  font-size: 11px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  border-color: #1d9de0;\n  color: #1d9de0;\n  transition: border-color 0.5s;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%]   .img[_ngcontent-%COMP%]   .active_img[_ngcontent-%COMP%] {\n  display: inline-block;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%]   .img[_ngcontent-%COMP%]   .inactive_img[_ngcontent-%COMP%] {\n  display: none;\n}\n.sidebar[_ngcontent-%COMP%]   .line[_ngcontent-%COMP%] {\n  height: 1px;\n  background-color: #d7dfe8;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_menu_con[_ngcontent-%COMP%] {\n  padding: 10px 0px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_menu_con[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.main_container_content[_ngcontent-%COMP%] {\n  width: calc(100% - 250px);\n  display: inline-block;\n  vertical-align: top;\n  height: 100%;\n  float: right;\n  overflow: auto;\n  transition: 0.1s;\n}\n.sidebar_open[_ngcontent-%COMP%] {\n  left: -250px;\n}\n.main_container_content_toggled[_ngcontent-%COMP%] {\n  width: calc(100% - 0px);\n}\n.nav-link[data-toggle].collapsed[_ngcontent-%COMP%]:after {\n  content: \" \u25BE\";\n  float: right;\n}\n.nav-link[data-toggle][_ngcontent-%COMP%]:not(.collapsed):after {\n  content: \" \u25B4\";\n  float: right;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxzaWRlYmFyLmNvbXBvbmVudC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXGFzc2V0c1xcZm9udC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXGFzc2V0c1xcY29sb3Iuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDSSxvQkFBQTtFQUNBLGdEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREVKO0FDQ0E7RUFDSSxtQkFBQTtFQUNBLCtDQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBRENKO0FDRUE7RUFDSSxzQkFBQTtFQUNBLGtEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREFKO0FDR0E7RUFDSSx3QkFBQTtFQUNBLG1EQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBRERKO0FDSUE7RUFDSSxvQkFBQTtFQUNBLGdEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREZKO0FDS0E7RUFDSSx5QkFBQTtFQUNBLG9EQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREhKO0FDTUE7RUFDSSxxQkFBQTtFQUNBLGlEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREpKO0FDTUE7RUFDSSxxQkFBQTtFQUNBLGlEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREpKO0FDTUE7RUFDSSxzQkFBQTtFQUNBLG1CQUFBO0FESko7QUNNQTtFQUNJLG1CQUFBO0FESEo7QUUzQkE7RUFDSSx5QkFBQTtBRjhCSjtBRTVCQTtFQUNJLHlCQUFBO0FGK0JKO0FFN0JBO0VBQ0kseUJBQUE7QUZnQ0o7QUU5QkE7RUFDSSxjQWRLO0FGK0NUO0FFL0JBO0VBQ0ksY0FoQkc7QUZrRFA7QUVoQ0E7RUFDSSxjQXhDTTtBRjJFVjtBQS9FQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFDQUFBO0VBQ0Esa0JBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxhQUFBO0VBQ0EseUJFVE07RUZVTixnQkFBQTtBQWtGSjtBQWpGSTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx1QkFBQTtFQUNBLGNFRFE7RUZFUixnQkFBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQW1GUjtBQS9FUTtFQUNJLGNFL0JKO0FGZ0hSO0FBOUVJO0VBQ0ksZUFBQTtFQUNBLHFCQUFBO0VBQ0EsY0VqQ0U7RUZrQ0YsZUFBQTtFQUNBLHFCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLHVCQUFBO0FBZ0ZSO0FBL0VRO0VBQ0ksZUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7QUFpRlo7QUE5RUk7RUFDSSx5QkFBQTtFQUNBLGNBQUE7RUFDQSxvQkFBQTtBQWdGUjtBQTlFSTtFQUNJLGtDQUFBO0VBQ0Esa0JBQUE7RUFDQSxjRVBVO0VGUVYsY0FBQTtFQUNBLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7QUFnRlI7QUEvRVE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7QUFpRlo7QUEvRVE7RUFDSSxhQUFBO0FBaUZaO0FBOUVJO0VBQ0ksd0JBQUE7RUFDQSxpQkFBQTtBQWdGUjtBQS9FUTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtBQWlGWjtBQTlFSTtFQUNJLDBCQUFBO0VBQ0EsaUJBQUE7QUFnRlI7QUEvRVE7RUFDSSxlQUFBO0VBQ0Esa0JBQUE7QUFpRlo7QUE5RUk7RUFDSSxxQkVwRkU7RUZxRkYsY0VyRkU7RUZzRkYsNkJBQUE7QUFnRlI7QUE5RVk7RUFDSSxxQkFBQTtBQWdGaEI7QUE5RVk7RUFDSSxhQUFBO0FBZ0ZoQjtBQTVFSTtFQUNJLFdBQUE7RUFDQSx5QkVoR007QUY4S2Q7QUE1RUk7RUFDSSxpQkFBQTtBQThFUjtBQTdFUTtFQUNJLGdCQUFBO0VBQ0EsbUJBQUE7QUErRVo7QUEzRUE7RUFDSSx5QkFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7RUFFQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQTZFSjtBQTNFQTtFQUNJLFlBQUE7QUE4RUo7QUE1RUE7RUFDSSx1QkFBQTtBQStFSjtBQTdFQTtFQUNJLGFBQUE7RUFDQSxZQUFBO0FBZ0ZKO0FBOUVBO0VBQ0ksYUFBQTtFQUNBLFlBQUE7QUFpRkoiLCJmaWxlIjoic2lkZWJhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJibGFja1wiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1CbGFjay50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJib2xkXCI7XG4gIHNyYzogdXJsKFwiLi9mb250cy9Qb3BwaW5zLUJvbGQudHRmXCIpIGZvcm1hdChcInRydWV0eXBlXCIpO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwicmVndWxhclwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1SZWd1bGFyLnR0ZlwiKSBmb3JtYXQoXCJ0cnVldHlwZVwiKTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcInNlbWktYm9sZFwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1TZW1pQm9sZC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJsaWdodFwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1MaWdodC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJleHRyYS1ib2xkXCI7XG4gIHNyYzogdXJsKFwiLi9mb250cy9Qb3BwaW5zLUV4dHJhQm9sZC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJpdGFsaWNcIjtcbiAgc3JjOiB1cmwoXCIuL2ZvbnRzL1BvcHBpbnMtSXRhbGljLnR0ZlwiKSBmb3JtYXQoXCJ0cnVldHlwZVwiKTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcIm1lZGl1bVwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1NZWRpdW0udHRmXCIpIGZvcm1hdChcInRydWV0eXBlXCIpO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG59XG5ib2R5IHtcbiAgZm9udC1mYW1pbHk6IFwicmVndWxhclwiO1xuICBmb250LXNpemU6IDAuODc1cmVtO1xufVxuXG4uZm9udF93ZWlnaHRfYm9sZCB7XG4gIGZvbnQtZmFtaWx5OiBcImJvbGRcIjtcbn1cblxuLmNvbG9yX3RleHQge1xuICBjb2xvcjogIzQxNDY0YSAhaW1wb3J0YW50O1xufVxuXG4ud2FybmluZ19iZyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNGRjYTA7XG59XG5cbi5jb2xvcl93aGl0ZSB7XG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQ7XG59XG5cbi5kZWxldGUge1xuICBjb2xvcjogI2Y3NmU2ZTtcbn1cblxuLmNvcHkge1xuICBjb2xvcjogIzMyYTZmMztcbn1cblxuLnByaW1hcnlfYSB7XG4gIGNvbG9yOiAjMWQ5ZGUwO1xufVxuXG4uc2lkZWJhciB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDI1MHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIGJveC1zaGFkb3c6IDBweCAwcHggNnB4IDBweCAjMDIzZTZkMjk7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwcHg7XG4gIGJvdHRvbTogMDtcbiAgei1pbmRleDogOTk5ODtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbiAgdHJhbnNpdGlvbjogMC4xcztcbn1cbi5zaWRlYmFyIC5zaWRlYmFyX3RvZ2dsZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMTVweDtcbiAgcmlnaHQ6IC00MHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIGNvbG9yOiAjZjQ3ZDMwO1xuICBwYWRkaW5nOiA1cHggOHB4O1xuICBvdXRsaW5lOiBub25lO1xuICBib3gtc2hhZG93OiBub25lO1xuICBmb250LXNpemU6IDIwcHg7XG4gIHdpZHRoOiAzM3B4O1xuICBoZWlnaHQ6IDMwcHg7XG59XG4uc2lkZWJhciAubG9nb19vdXRlciAubG9nbyB7XG4gIGNvbG9yOiAjZmZmZmZmO1xufVxuLnNpZGViYXIgLmxvZ28ge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtZmFtaWx5OiBcIm1lZGl1bVwiO1xuICBjb2xvcjogIzFkOWRlMDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGhlaWdodDogNjBweDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG4uc2lkZWJhciAubG9nbyBpbWcge1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDUwcHg7XG4gIG9iamVjdC1maXQ6IGNvbnRhaW47XG59XG4uc2lkZWJhciAuY29udGVudCB7XG4gIGhlaWdodDogY2FsYygxMDAlIC0gNjVweCk7XG4gIG92ZXJmbG93OiBhdXRvO1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbn1cbi5zaWRlYmFyIC5pdGVtcyB7XG4gIGJvcmRlci1sZWZ0OiA2cHggc29saWQgdHJhbnNwYXJlbnQ7XG4gIHBhZGRpbmc6IDEzcHggMTBweDtcbiAgY29sb3I6ICM2ZTZmNzA7XG4gIGZsZXg6IDAgMCAxMDAlO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG91dGxpbmU6IG5vbmU7XG59XG4uc2lkZWJhciAuaXRlbXMgaW1nIHtcbiAgd2lkdGg6IDIwcHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cbi5zaWRlYmFyIC5pdGVtcyAuYWN0aXZlX2ltZyB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uc2lkZWJhciAuc3ViIHtcbiAgcGFkZGluZzogN3B4IDVweCA3cHggNXB4O1xuICBtYXJnaW4tbGVmdDogMjBweDtcbn1cbi5zaWRlYmFyIC5zdWIgLnN1Yl9oeXBoZW4ge1xuICBmb250LXNpemU6IDExcHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cbi5zaWRlYmFyIC5zdWJfbDIge1xuICBwYWRkaW5nOiA3cHggMTBweCA3cHggMjBweDtcbiAgbWFyZ2luLWxlZnQ6IDQwcHg7XG59XG4uc2lkZWJhciAuc3ViX2wyIC5zdWJfaHlwaGVuIHtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG59XG4uc2lkZWJhciAuYWN0aXZlIHtcbiAgYm9yZGVyLWNvbG9yOiAjMWQ5ZGUwO1xuICBjb2xvcjogIzFkOWRlMDtcbiAgdHJhbnNpdGlvbjogYm9yZGVyLWNvbG9yIDAuNXM7XG59XG4uc2lkZWJhciAuYWN0aXZlIC5pbWcgLmFjdGl2ZV9pbWcge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG4uc2lkZWJhciAuYWN0aXZlIC5pbWcgLmluYWN0aXZlX2ltZyB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uc2lkZWJhciAubGluZSB7XG4gIGhlaWdodDogMXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZDdkZmU4O1xufVxuLnNpZGViYXIgLnN1Yl9tZW51X2NvbiB7XG4gIHBhZGRpbmc6IDEwcHggMHB4O1xufVxuLnNpZGViYXIgLnN1Yl9tZW51X2NvbiAuaXRlbXMge1xuICBwYWRkaW5nLXRvcDogN3B4O1xuICBwYWRkaW5nLWJvdHRvbTogN3B4O1xufVxuXG4ubWFpbl9jb250YWluZXJfY29udGVudCB7XG4gIHdpZHRoOiBjYWxjKDEwMCUgLSAyNTBweCk7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgaGVpZ2h0OiAxMDAlO1xuICBmbG9hdDogcmlnaHQ7XG4gIG92ZXJmbG93OiBhdXRvO1xuICB0cmFuc2l0aW9uOiAwLjFzO1xufVxuXG4uc2lkZWJhcl9vcGVuIHtcbiAgbGVmdDogLTI1MHB4O1xufVxuXG4ubWFpbl9jb250YWluZXJfY29udGVudF90b2dnbGVkIHtcbiAgd2lkdGg6IGNhbGMoMTAwJSAtIDBweCk7XG59XG5cbi5uYXYtbGlua1tkYXRhLXRvZ2dsZV0uY29sbGFwc2VkOmFmdGVyIHtcbiAgY29udGVudDogXCIg4pa+XCI7XG4gIGZsb2F0OiByaWdodDtcbn1cblxuLm5hdi1saW5rW2RhdGEtdG9nZ2xlXTpub3QoLmNvbGxhcHNlZCk6YWZ0ZXIge1xuICBjb250ZW50OiBcIiDilrRcIjtcbiAgZmxvYXQ6IHJpZ2h0O1xufSIsIkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdibGFjayc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLUJsYWNrLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdib2xkJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtQm9sZC50dGYnKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5AZm9udC1mYWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiAncmVndWxhcic7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLVJlZ3VsYXIudHRmJykgZm9ybWF0KCd0cnVldHlwZScpO1xyXG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxufVxyXG5cclxuQGZvbnQtZmFjZSB7XHJcbiAgICBmb250LWZhbWlseTogJ3NlbWktYm9sZCc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLVNlbWlCb2xkLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdsaWdodCc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLUxpZ2h0LnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdleHRyYS1ib2xkJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtRXh0cmFCb2xkLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdpdGFsaWMnO1xyXG4gICAgc3JjOiB1cmwoJy4vZm9udHMvUG9wcGlucy1JdGFsaWMudHRmJykgZm9ybWF0KCd0cnVldHlwZScpO1xyXG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiAnbWVkaXVtJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtTWVkaXVtLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuYm9keSB7XHJcbiAgICBmb250LWZhbWlseTogJ3JlZ3VsYXInO1xyXG4gICAgZm9udC1zaXplOiAwLjg3NXJlbTtcclxufVxyXG4uZm9udF93ZWlnaHRfYm9sZCB7XHJcbiAgICBmb250LWZhbWlseTogJ2JvbGQnO1xyXG59IiwiQGltcG9ydCBcIi4vZm9udC5zY3NzXCI7XHJcbiR3aGl0ZTogI2ZmZmZmZjtcclxuJHByaW1hcnlCZzogI2YzZjNmMztcclxuJGJnV2hpdGU6ICNmZmZmZmY7XHJcbiRibGFjazogIzAwMDAwMDtcclxuJHByaW1hcnk6ICMxZDlkZTA7XHJcbiRwcmltYXJ5U2hhZGU6ICMzYWFjZTk7XHJcbiRpbnB1dEJvcmRlcjogI2Q3ZGZlODtcclxuJGlucHV0Qmc6ICNmMmY4ZmY7XHJcbiRpbnB1dFBsYWNlaG9sZGVyOiAjNDE0NjRhO1xyXG4kdGFibGVCb3JkZXI6ICNkZGRkZGQ7XHJcbiR0YWJsZUhlYWRCZzogI2ViZjBmNjtcclxuJHRhYmxlSGVhZGVyQm9yZGVyOiAjYWJjNGU0O1xyXG4kdGFibGVCb2R5Qm9yZGVyOiAjZTJlNmU5O1xyXG4kdGFibGVIZWFkQ29sb3I6ICM0NTQ5NGU7XHJcbiR0YWJsZUNvbG9yOiAjNDE0NjRhO1xyXG4kZGVsZXRlQnRuOiAjZDkzNDExO1xyXG4kdXBsb2FkQmc6ICNmNmY5ZmI7XHJcbiRtYWluQ29udGFpbmVySGVhZDogIzU2NTc1ODtcclxuJGludmFsaWQ6IHJnYigyNDgsIDk1LCA5NSk7XHJcbiRwcmltYXJ5T3JhbmdlOiAjZjQ3ZDMwO1xyXG4kc2Nyb2xsT3JhbmdlOiAjYzgzNjAwO1xyXG4kbGFiZWxDb2xvcjogcmdiYSgwLCAwLCAwLCAwLjYpO1xyXG4kdGFibGVTaGFkb3c6ICNjMGMwYzA7XHJcbiR0ZW1wbGF0ZV9jb2xvcjogIzc5Nzk3OTtcclxuJGRlbGV0ZTogcmdiKDI0NywgMTEwLCAxMTApO1xyXG4kY29weTogcmdiKDUwLCAxNjYsIDI0Myk7XHJcbi8vICRhVGFnOiMwMDdiZmY7XHJcbi8vIGRpcmVjdCBjb2xvclxyXG4uY29sb3JfdGV4dCB7XHJcbiAgICBjb2xvcjogIzQxNDY0YSAhaW1wb3J0YW50O1xyXG59XHJcbi53YXJuaW5nX2JnIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmNGRjYTA7XHJcbn1cclxuLmNvbG9yX3doaXRlIHtcclxuICAgIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQ7XHJcbn1cclxuLmRlbGV0ZSB7XHJcbiAgICBjb2xvcjogJGRlbGV0ZTtcclxufVxyXG4uY29weSB7XHJcbiAgICBjb2xvcjogJGNvcHk7XHJcbn1cclxuLnByaW1hcnlfYSB7XHJcbiAgICBjb2xvcjogJHByaW1hcnk7XHJcbn1cclxuLy8gbG9naW5cclxuJGxvZ2luSW5wdXRCb3JkZXI6ICMwMzYwYjg7XHJcbiRsb2dpbklucHV0UGxhY2Vob2xkZXI6ICMwNDUwOTc7XHJcblxyXG4vLyBzaWRlYmFyXHJcbiRzaWRlQmFySW5hY3RpdmU6ICM2ZTZmNzA7XHJcbiRzaWRlYmFyU2hhZG93OiAjMDIzZTZkMjk7XHJcblxyXG4vLyBoZWFkZXJcclxuJGhlYWRlclNoYWRvdzogIzAwMDAwMDI5O1xyXG5cclxuLy8gZGFzaGJvYXJkXHJcbiRjYXJkQ291bnQ6ICM1NzUzNTM7XHJcbiRjYXJkTmFtZTogIzg4OGY5NDtcclxuLy8gY2FyZHNcclxuJGNvcHlfY2FyZHM6ICNlOGJmYmI7XHJcbiR3YXJuaW5nX2NhcmRzOiAjZjRkY2EwO1xyXG4kY29uZmlybWVkX2NhcmRzOiAjZDRlM2JiO1xyXG4kYmx1ZV9jYXJkczogI2JiZDllYjtcclxuJHZpb2xldF9jYXJkczogI2RhYzVkNTtcclxuXHJcbi8vIGR1bW15IGlucHV0IGJvcmRlclxyXG4kZHVtbXlJbnB1dF9ib3JkZXI6ICM5ODk4OTg7XHJcblxyXG4vLyBvcmRlcl90YWJsZVxyXG4kZWRpdDogIzA4MzU5NjtcclxuJGFwcHJvdmU6IHJnYig5LCAxNDYsIDYxKTtcclxuJG9yZGVyX2Nsb3NlOiByZ2IoMjQwLCA4MiwgODIpO1xyXG5cclxuLy9teSB0YXNrXHJcbiRteVRhc2sxOiAjZThiZmJiO1xyXG4kbXlUYXNrMjogI2Y0ZGNhMDtcclxuJG15VGFzazM6ICNkNGUzYmI7XHJcbiRteVRhc2s0OiAjYmJkOWViO1xyXG5cclxuLy8gbXkgb2ZmZXJzXHJcbiRvZmZlckNvdW50OiAjNWQ1ZDVkO1xyXG5cclxuLy8gdGFibGUgZGV0YWlsc1xyXG4kZjVmNWY1OiAjZjVmNWY1O1xyXG4kaW5wdXRPbmU6ICNmNmMzYzQ7XHJcbiRpbnB1dFR3bzogI2Y2ZWVhYTtcclxuJGlucHV0VGhyZWU6ICNjNmY0YmM7XHJcbiR5ZWxsb3dJbnB1dDogI2ZjZmJmMDtcclxuLy9taW5pYmFyXHJcbiRtaW5pYmFyQWN0aXZlUm93OiAjYjFiMWIxO1xyXG4iXX0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("sidebar_open", ctx.isOpen);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isOpen);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isOpen);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.navbarItem.length > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("main_container_content_toggled", ctx.isOpen);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _header_header_component__WEBPACK_IMPORTED_MODULE_3__["HeaderComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkActive"]], styles: ["@charset \"UTF-8\";\n@font-face {\n  font-family: \"black\";\n  src: url('Poppins-Black.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"bold\";\n  src: url('Poppins-Bold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"regular\";\n  src: url('Poppins-Regular.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"semi-bold\";\n  src: url('Poppins-SemiBold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"light\";\n  src: url('Poppins-Light.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"extra-bold\";\n  src: url('Poppins-ExtraBold.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"italic\";\n  src: url('Poppins-Italic.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"medium\";\n  src: url('Poppins-Medium.ttf') format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\nbody[_ngcontent-%COMP%] {\n  font-family: \"regular\";\n  font-size: 0.875rem;\n}\n.font_weight_bold[_ngcontent-%COMP%] {\n  font-family: \"bold\";\n}\n.color_text[_ngcontent-%COMP%] {\n  color: #41464a !important;\n}\n.warning_bg[_ngcontent-%COMP%] {\n  background-color: #f4dca0;\n}\n.color_white[_ngcontent-%COMP%] {\n  color: #ffffff !important;\n}\n.delete[_ngcontent-%COMP%] {\n  color: #f76e6e;\n}\n.copy[_ngcontent-%COMP%] {\n  color: #32a6f3;\n}\n.primary_a[_ngcontent-%COMP%] {\n  color: #1d9de0;\n}\n.sidebar[_ngcontent-%COMP%] {\n  height: 100%;\n  width: 250px;\n  display: inline-block;\n  vertical-align: top;\n  box-shadow: 0px 0px 6px 0px #023e6d29;\n  position: absolute;\n  left: 0;\n  top: 0px;\n  bottom: 0;\n  z-index: 9998;\n  background-color: #ffffff;\n  transition: 0.1s;\n}\n.sidebar[_ngcontent-%COMP%]   .sidebar_toggler[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 15px;\n  right: -40px;\n  border: none;\n  border-radius: 3px;\n  background-color: white;\n  color: #f47d30;\n  padding: 5px 8px;\n  outline: none;\n  box-shadow: none;\n  font-size: 20px;\n  width: 33px;\n  height: 30px;\n}\n.sidebar[_ngcontent-%COMP%]   .logo_outer[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n  color: #ffffff;\n}\n.sidebar[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n  font-size: 20px;\n  font-family: \"medium\";\n  color: #1d9de0;\n  cursor: pointer;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  height: 60px;\n  justify-content: center;\n}\n.sidebar[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  max-width: 100%;\n  max-height: 50px;\n  object-fit: contain;\n}\n.sidebar[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%] {\n  height: calc(100% - 65px);\n  overflow: auto;\n  padding-bottom: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  border-left: 6px solid transparent;\n  padding: 13px 10px;\n  color: #6e6f70;\n  flex: 0 0 100%;\n  align-items: center;\n  cursor: pointer;\n  outline: none;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 20px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .active_img[_ngcontent-%COMP%] {\n  display: none;\n}\n.sidebar[_ngcontent-%COMP%]   .sub[_ngcontent-%COMP%] {\n  padding: 7px 5px 7px 5px;\n  margin-left: 20px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub[_ngcontent-%COMP%]   .sub_hyphen[_ngcontent-%COMP%] {\n  font-size: 11px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_l2[_ngcontent-%COMP%] {\n  padding: 7px 10px 7px 20px;\n  margin-left: 40px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_l2[_ngcontent-%COMP%]   .sub_hyphen[_ngcontent-%COMP%] {\n  font-size: 11px;\n  margin-right: 10px;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  border-color: #1d9de0;\n  color: #1d9de0;\n  transition: border-color 0.5s;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%]   .img[_ngcontent-%COMP%]   .active_img[_ngcontent-%COMP%] {\n  display: inline-block;\n}\n.sidebar[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%]   .img[_ngcontent-%COMP%]   .inactive_img[_ngcontent-%COMP%] {\n  display: none;\n}\n.sidebar[_ngcontent-%COMP%]   .line[_ngcontent-%COMP%] {\n  height: 1px;\n  background-color: #d7dfe8;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_menu_con[_ngcontent-%COMP%] {\n  padding: 10px 0px;\n}\n.sidebar[_ngcontent-%COMP%]   .sub_menu_con[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.main_container_content[_ngcontent-%COMP%] {\n  width: calc(100% - 250px);\n  display: inline-block;\n  vertical-align: top;\n  height: 100%;\n  float: right;\n  overflow: auto;\n  transition: 0.1s;\n}\n.sidebar_open[_ngcontent-%COMP%] {\n  left: -250px;\n}\n.main_container_content_toggled[_ngcontent-%COMP%] {\n  width: calc(100% - 0px);\n}\n.nav-link[data-toggle].collapsed[_ngcontent-%COMP%]:after {\n  content: \" \u25BE\";\n  float: right;\n}\n.nav-link[data-toggle][_ngcontent-%COMP%]:not(.collapsed):after {\n  content: \" \u25B4\";\n  float: right;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxzaWRlYmFyLmNvbXBvbmVudC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXGFzc2V0c1xcZm9udC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXGFzc2V0c1xcY29sb3Iuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDSSxvQkFBQTtFQUNBLGdEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREVKO0FDQ0E7RUFDSSxtQkFBQTtFQUNBLCtDQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBRENKO0FDRUE7RUFDSSxzQkFBQTtFQUNBLGtEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREFKO0FDR0E7RUFDSSx3QkFBQTtFQUNBLG1EQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBRERKO0FDSUE7RUFDSSxvQkFBQTtFQUNBLGdEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREZKO0FDS0E7RUFDSSx5QkFBQTtFQUNBLG9EQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREhKO0FDTUE7RUFDSSxxQkFBQTtFQUNBLGlEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREpKO0FDTUE7RUFDSSxxQkFBQTtFQUNBLGlEQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBREpKO0FDTUE7RUFDSSxzQkFBQTtFQUNBLG1CQUFBO0FESko7QUNNQTtFQUNJLG1CQUFBO0FESEo7QUUzQkE7RUFDSSx5QkFBQTtBRjhCSjtBRTVCQTtFQUNJLHlCQUFBO0FGK0JKO0FFN0JBO0VBQ0kseUJBQUE7QUZnQ0o7QUU5QkE7RUFDSSxjQWRLO0FGK0NUO0FFL0JBO0VBQ0ksY0FoQkc7QUZrRFA7QUVoQ0E7RUFDSSxjQXhDTTtBRjJFVjtBQS9FQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFDQUFBO0VBQ0Esa0JBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxhQUFBO0VBQ0EseUJFVE07RUZVTixnQkFBQTtBQWtGSjtBQWpGSTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx1QkFBQTtFQUNBLGNFRFE7RUZFUixnQkFBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQW1GUjtBQS9FUTtFQUNJLGNFL0JKO0FGZ0hSO0FBOUVJO0VBQ0ksZUFBQTtFQUNBLHFCQUFBO0VBQ0EsY0VqQ0U7RUZrQ0YsZUFBQTtFQUNBLHFCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLHVCQUFBO0FBZ0ZSO0FBL0VRO0VBQ0ksZUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7QUFpRlo7QUE5RUk7RUFDSSx5QkFBQTtFQUNBLGNBQUE7RUFDQSxvQkFBQTtBQWdGUjtBQTlFSTtFQUNJLGtDQUFBO0VBQ0Esa0JBQUE7RUFDQSxjRVBVO0VGUVYsY0FBQTtFQUNBLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7QUFnRlI7QUEvRVE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7QUFpRlo7QUEvRVE7RUFDSSxhQUFBO0FBaUZaO0FBOUVJO0VBQ0ksd0JBQUE7RUFDQSxpQkFBQTtBQWdGUjtBQS9FUTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtBQWlGWjtBQTlFSTtFQUNJLDBCQUFBO0VBQ0EsaUJBQUE7QUFnRlI7QUEvRVE7RUFDSSxlQUFBO0VBQ0Esa0JBQUE7QUFpRlo7QUE5RUk7RUFDSSxxQkVwRkU7RUZxRkYsY0VyRkU7RUZzRkYsNkJBQUE7QUFnRlI7QUE5RVk7RUFDSSxxQkFBQTtBQWdGaEI7QUE5RVk7RUFDSSxhQUFBO0FBZ0ZoQjtBQTVFSTtFQUNJLFdBQUE7RUFDQSx5QkVoR007QUY4S2Q7QUE1RUk7RUFDSSxpQkFBQTtBQThFUjtBQTdFUTtFQUNJLGdCQUFBO0VBQ0EsbUJBQUE7QUErRVo7QUEzRUE7RUFDSSx5QkFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7RUFFQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQTZFSjtBQTNFQTtFQUNJLFlBQUE7QUE4RUo7QUE1RUE7RUFDSSx1QkFBQTtBQStFSjtBQTdFQTtFQUNJLGFBQUE7RUFDQSxZQUFBO0FBZ0ZKO0FBOUVBO0VBQ0ksYUFBQTtFQUNBLFlBQUE7QUFpRkoiLCJmaWxlIjoic2lkZWJhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJibGFja1wiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1CbGFjay50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJib2xkXCI7XG4gIHNyYzogdXJsKFwiLi9mb250cy9Qb3BwaW5zLUJvbGQudHRmXCIpIGZvcm1hdChcInRydWV0eXBlXCIpO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwicmVndWxhclwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1SZWd1bGFyLnR0ZlwiKSBmb3JtYXQoXCJ0cnVldHlwZVwiKTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcInNlbWktYm9sZFwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1TZW1pQm9sZC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJsaWdodFwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1MaWdodC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJleHRyYS1ib2xkXCI7XG4gIHNyYzogdXJsKFwiLi9mb250cy9Qb3BwaW5zLUV4dHJhQm9sZC50dGZcIikgZm9ybWF0KFwidHJ1ZXR5cGVcIik7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJpdGFsaWNcIjtcbiAgc3JjOiB1cmwoXCIuL2ZvbnRzL1BvcHBpbnMtSXRhbGljLnR0ZlwiKSBmb3JtYXQoXCJ0cnVldHlwZVwiKTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcIm1lZGl1bVwiO1xuICBzcmM6IHVybChcIi4vZm9udHMvUG9wcGlucy1NZWRpdW0udHRmXCIpIGZvcm1hdChcInRydWV0eXBlXCIpO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG59XG5ib2R5IHtcbiAgZm9udC1mYW1pbHk6IFwicmVndWxhclwiO1xuICBmb250LXNpemU6IDAuODc1cmVtO1xufVxuXG4uZm9udF93ZWlnaHRfYm9sZCB7XG4gIGZvbnQtZmFtaWx5OiBcImJvbGRcIjtcbn1cblxuLmNvbG9yX3RleHQge1xuICBjb2xvcjogIzQxNDY0YSAhaW1wb3J0YW50O1xufVxuXG4ud2FybmluZ19iZyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNGRjYTA7XG59XG5cbi5jb2xvcl93aGl0ZSB7XG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQ7XG59XG5cbi5kZWxldGUge1xuICBjb2xvcjogI2Y3NmU2ZTtcbn1cblxuLmNvcHkge1xuICBjb2xvcjogIzMyYTZmMztcbn1cblxuLnByaW1hcnlfYSB7XG4gIGNvbG9yOiAjMWQ5ZGUwO1xufVxuXG4uc2lkZWJhciB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDI1MHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIGJveC1zaGFkb3c6IDBweCAwcHggNnB4IDBweCAjMDIzZTZkMjk7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwcHg7XG4gIGJvdHRvbTogMDtcbiAgei1pbmRleDogOTk5ODtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbiAgdHJhbnNpdGlvbjogMC4xcztcbn1cbi5zaWRlYmFyIC5zaWRlYmFyX3RvZ2dsZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMTVweDtcbiAgcmlnaHQ6IC00MHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIGNvbG9yOiAjZjQ3ZDMwO1xuICBwYWRkaW5nOiA1cHggOHB4O1xuICBvdXRsaW5lOiBub25lO1xuICBib3gtc2hhZG93OiBub25lO1xuICBmb250LXNpemU6IDIwcHg7XG4gIHdpZHRoOiAzM3B4O1xuICBoZWlnaHQ6IDMwcHg7XG59XG4uc2lkZWJhciAubG9nb19vdXRlciAubG9nbyB7XG4gIGNvbG9yOiAjZmZmZmZmO1xufVxuLnNpZGViYXIgLmxvZ28ge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtZmFtaWx5OiBcIm1lZGl1bVwiO1xuICBjb2xvcjogIzFkOWRlMDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGhlaWdodDogNjBweDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG4uc2lkZWJhciAubG9nbyBpbWcge1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDUwcHg7XG4gIG9iamVjdC1maXQ6IGNvbnRhaW47XG59XG4uc2lkZWJhciAuY29udGVudCB7XG4gIGhlaWdodDogY2FsYygxMDAlIC0gNjVweCk7XG4gIG92ZXJmbG93OiBhdXRvO1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbn1cbi5zaWRlYmFyIC5pdGVtcyB7XG4gIGJvcmRlci1sZWZ0OiA2cHggc29saWQgdHJhbnNwYXJlbnQ7XG4gIHBhZGRpbmc6IDEzcHggMTBweDtcbiAgY29sb3I6ICM2ZTZmNzA7XG4gIGZsZXg6IDAgMCAxMDAlO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG91dGxpbmU6IG5vbmU7XG59XG4uc2lkZWJhciAuaXRlbXMgaW1nIHtcbiAgd2lkdGg6IDIwcHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cbi5zaWRlYmFyIC5pdGVtcyAuYWN0aXZlX2ltZyB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uc2lkZWJhciAuc3ViIHtcbiAgcGFkZGluZzogN3B4IDVweCA3cHggNXB4O1xuICBtYXJnaW4tbGVmdDogMjBweDtcbn1cbi5zaWRlYmFyIC5zdWIgLnN1Yl9oeXBoZW4ge1xuICBmb250LXNpemU6IDExcHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cbi5zaWRlYmFyIC5zdWJfbDIge1xuICBwYWRkaW5nOiA3cHggMTBweCA3cHggMjBweDtcbiAgbWFyZ2luLWxlZnQ6IDQwcHg7XG59XG4uc2lkZWJhciAuc3ViX2wyIC5zdWJfaHlwaGVuIHtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG59XG4uc2lkZWJhciAuYWN0aXZlIHtcbiAgYm9yZGVyLWNvbG9yOiAjMWQ5ZGUwO1xuICBjb2xvcjogIzFkOWRlMDtcbiAgdHJhbnNpdGlvbjogYm9yZGVyLWNvbG9yIDAuNXM7XG59XG4uc2lkZWJhciAuYWN0aXZlIC5pbWcgLmFjdGl2ZV9pbWcge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG4uc2lkZWJhciAuYWN0aXZlIC5pbWcgLmluYWN0aXZlX2ltZyB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uc2lkZWJhciAubGluZSB7XG4gIGhlaWdodDogMXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZDdkZmU4O1xufVxuLnNpZGViYXIgLnN1Yl9tZW51X2NvbiB7XG4gIHBhZGRpbmc6IDEwcHggMHB4O1xufVxuLnNpZGViYXIgLnN1Yl9tZW51X2NvbiAuaXRlbXMge1xuICBwYWRkaW5nLXRvcDogN3B4O1xuICBwYWRkaW5nLWJvdHRvbTogN3B4O1xufVxuXG4ubWFpbl9jb250YWluZXJfY29udGVudCB7XG4gIHdpZHRoOiBjYWxjKDEwMCUgLSAyNTBweCk7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgaGVpZ2h0OiAxMDAlO1xuICBmbG9hdDogcmlnaHQ7XG4gIG92ZXJmbG93OiBhdXRvO1xuICB0cmFuc2l0aW9uOiAwLjFzO1xufVxuXG4uc2lkZWJhcl9vcGVuIHtcbiAgbGVmdDogLTI1MHB4O1xufVxuXG4ubWFpbl9jb250YWluZXJfY29udGVudF90b2dnbGVkIHtcbiAgd2lkdGg6IGNhbGMoMTAwJSAtIDBweCk7XG59XG5cbi5uYXYtbGlua1tkYXRhLXRvZ2dsZV0uY29sbGFwc2VkOmFmdGVyIHtcbiAgY29udGVudDogXCIg4pa+XCI7XG4gIGZsb2F0OiByaWdodDtcbn1cblxuLm5hdi1saW5rW2RhdGEtdG9nZ2xlXTpub3QoLmNvbGxhcHNlZCk6YWZ0ZXIge1xuICBjb250ZW50OiBcIiDilrRcIjtcbiAgZmxvYXQ6IHJpZ2h0O1xufSIsIkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdibGFjayc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLUJsYWNrLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdib2xkJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtQm9sZC50dGYnKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5AZm9udC1mYWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiAncmVndWxhcic7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLVJlZ3VsYXIudHRmJykgZm9ybWF0KCd0cnVldHlwZScpO1xyXG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxufVxyXG5cclxuQGZvbnQtZmFjZSB7XHJcbiAgICBmb250LWZhbWlseTogJ3NlbWktYm9sZCc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLVNlbWlCb2xkLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdsaWdodCc7XHJcbiAgICBzcmM6IHVybCgnLi9mb250cy9Qb3BwaW5zLUxpZ2h0LnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdleHRyYS1ib2xkJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtRXh0cmFCb2xkLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuXHJcbkBmb250LWZhY2Uge1xyXG4gICAgZm9udC1mYW1pbHk6ICdpdGFsaWMnO1xyXG4gICAgc3JjOiB1cmwoJy4vZm9udHMvUG9wcGlucy1JdGFsaWMudHRmJykgZm9ybWF0KCd0cnVldHlwZScpO1xyXG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiAnbWVkaXVtJztcclxuICAgIHNyYzogdXJsKCcuL2ZvbnRzL1BvcHBpbnMtTWVkaXVtLnR0ZicpIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbn1cclxuYm9keSB7XHJcbiAgICBmb250LWZhbWlseTogJ3JlZ3VsYXInO1xyXG4gICAgZm9udC1zaXplOiAwLjg3NXJlbTtcclxufVxyXG4uZm9udF93ZWlnaHRfYm9sZCB7XHJcbiAgICBmb250LWZhbWlseTogJ2JvbGQnO1xyXG59IiwiQGltcG9ydCBcIi4vZm9udC5zY3NzXCI7XHJcbiR3aGl0ZTogI2ZmZmZmZjtcclxuJHByaW1hcnlCZzogI2YzZjNmMztcclxuJGJnV2hpdGU6ICNmZmZmZmY7XHJcbiRibGFjazogIzAwMDAwMDtcclxuJHByaW1hcnk6ICMxZDlkZTA7XHJcbiRwcmltYXJ5U2hhZGU6ICMzYWFjZTk7XHJcbiRpbnB1dEJvcmRlcjogI2Q3ZGZlODtcclxuJGlucHV0Qmc6ICNmMmY4ZmY7XHJcbiRpbnB1dFBsYWNlaG9sZGVyOiAjNDE0NjRhO1xyXG4kdGFibGVCb3JkZXI6ICNkZGRkZGQ7XHJcbiR0YWJsZUhlYWRCZzogI2ViZjBmNjtcclxuJHRhYmxlSGVhZGVyQm9yZGVyOiAjYWJjNGU0O1xyXG4kdGFibGVCb2R5Qm9yZGVyOiAjZTJlNmU5O1xyXG4kdGFibGVIZWFkQ29sb3I6ICM0NTQ5NGU7XHJcbiR0YWJsZUNvbG9yOiAjNDE0NjRhO1xyXG4kZGVsZXRlQnRuOiAjZDkzNDExO1xyXG4kdXBsb2FkQmc6ICNmNmY5ZmI7XHJcbiRtYWluQ29udGFpbmVySGVhZDogIzU2NTc1ODtcclxuJGludmFsaWQ6IHJnYigyNDgsIDk1LCA5NSk7XHJcbiRwcmltYXJ5T3JhbmdlOiAjZjQ3ZDMwO1xyXG4kc2Nyb2xsT3JhbmdlOiAjYzgzNjAwO1xyXG4kbGFiZWxDb2xvcjogcmdiYSgwLCAwLCAwLCAwLjYpO1xyXG4kdGFibGVTaGFkb3c6ICNjMGMwYzA7XHJcbiR0ZW1wbGF0ZV9jb2xvcjogIzc5Nzk3OTtcclxuJGRlbGV0ZTogcmdiKDI0NywgMTEwLCAxMTApO1xyXG4kY29weTogcmdiKDUwLCAxNjYsIDI0Myk7XHJcbi8vICRhVGFnOiMwMDdiZmY7XHJcbi8vIGRpcmVjdCBjb2xvclxyXG4uY29sb3JfdGV4dCB7XHJcbiAgICBjb2xvcjogIzQxNDY0YSAhaW1wb3J0YW50O1xyXG59XHJcbi53YXJuaW5nX2JnIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmNGRjYTA7XHJcbn1cclxuLmNvbG9yX3doaXRlIHtcclxuICAgIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQ7XHJcbn1cclxuLmRlbGV0ZSB7XHJcbiAgICBjb2xvcjogJGRlbGV0ZTtcclxufVxyXG4uY29weSB7XHJcbiAgICBjb2xvcjogJGNvcHk7XHJcbn1cclxuLnByaW1hcnlfYSB7XHJcbiAgICBjb2xvcjogJHByaW1hcnk7XHJcbn1cclxuLy8gbG9naW5cclxuJGxvZ2luSW5wdXRCb3JkZXI6ICMwMzYwYjg7XHJcbiRsb2dpbklucHV0UGxhY2Vob2xkZXI6ICMwNDUwOTc7XHJcblxyXG4vLyBzaWRlYmFyXHJcbiRzaWRlQmFySW5hY3RpdmU6ICM2ZTZmNzA7XHJcbiRzaWRlYmFyU2hhZG93OiAjMDIzZTZkMjk7XHJcblxyXG4vLyBoZWFkZXJcclxuJGhlYWRlclNoYWRvdzogIzAwMDAwMDI5O1xyXG5cclxuLy8gZGFzaGJvYXJkXHJcbiRjYXJkQ291bnQ6ICM1NzUzNTM7XHJcbiRjYXJkTmFtZTogIzg4OGY5NDtcclxuLy8gY2FyZHNcclxuJGNvcHlfY2FyZHM6ICNlOGJmYmI7XHJcbiR3YXJuaW5nX2NhcmRzOiAjZjRkY2EwO1xyXG4kY29uZmlybWVkX2NhcmRzOiAjZDRlM2JiO1xyXG4kYmx1ZV9jYXJkczogI2JiZDllYjtcclxuJHZpb2xldF9jYXJkczogI2RhYzVkNTtcclxuXHJcbi8vIGR1bW15IGlucHV0IGJvcmRlclxyXG4kZHVtbXlJbnB1dF9ib3JkZXI6ICM5ODk4OTg7XHJcblxyXG4vLyBvcmRlcl90YWJsZVxyXG4kZWRpdDogIzA4MzU5NjtcclxuJGFwcHJvdmU6IHJnYig5LCAxNDYsIDYxKTtcclxuJG9yZGVyX2Nsb3NlOiByZ2IoMjQwLCA4MiwgODIpO1xyXG5cclxuLy9teSB0YXNrXHJcbiRteVRhc2sxOiAjZThiZmJiO1xyXG4kbXlUYXNrMjogI2Y0ZGNhMDtcclxuJG15VGFzazM6ICNkNGUzYmI7XHJcbiRteVRhc2s0OiAjYmJkOWViO1xyXG5cclxuLy8gbXkgb2ZmZXJzXHJcbiRvZmZlckNvdW50OiAjNWQ1ZDVkO1xyXG5cclxuLy8gdGFibGUgZGV0YWlsc1xyXG4kZjVmNWY1OiAjZjVmNWY1O1xyXG4kaW5wdXRPbmU6ICNmNmMzYzQ7XHJcbiRpbnB1dFR3bzogI2Y2ZWVhYTtcclxuJGlucHV0VGhyZWU6ICNjNmY0YmM7XHJcbiR5ZWxsb3dJbnB1dDogI2ZjZmJmMDtcclxuLy9taW5pYmFyXHJcbiRtaW5pYmFyQWN0aXZlUm93OiAjYjFiMWIxO1xyXG4iXX0= */"] });
 
 
 /***/ }),

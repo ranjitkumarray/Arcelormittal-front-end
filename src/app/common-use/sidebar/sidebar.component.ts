@@ -1,7 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavItems } from './sidebar';
+// import { NavItems } from './sidebar';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,26 +9,31 @@ import { NavItems } from './sidebar';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  navLink: any = NavItems
+
   showFiller: boolean = false
   collapsed: boolean = false;
   isOpen: boolean = false;
   version: string = '';
+  // loadingRouteConfig: boolean = false;
   user: any = 'user'
   navbarItem: any = []
-  test = true
 
   details:any =localStorage.getItem(("arc-userDetails"))
   userDeatails =JSON.parse(this.details)
 
   constructor(private router: Router) {
-    this.navbarItem = this.navLink
+    
+let localData: any = localStorage.getItem('arc-userDetails')
+
+
+    this.navbarItem = JSON.parse(localData).sidebar_json
   
     console.log(this.navbarItem, "Nav Item")
   }
 
   ngOnInit(): void {
     this.version = "1";
+    
     // console.log(this.navbarItem)
   
   }

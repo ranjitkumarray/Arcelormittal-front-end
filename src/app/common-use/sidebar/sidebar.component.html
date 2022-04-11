@@ -1,3 +1,9 @@
+<!-- <ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container> -->
+
 <div class="sidebar" [class.sidebar_open]="isOpen">
     <button (click)="isOpen = !isOpen" class="sidebar_toggler">
         <i class="fa fa-bars" *ngIf="isOpen"></i>
