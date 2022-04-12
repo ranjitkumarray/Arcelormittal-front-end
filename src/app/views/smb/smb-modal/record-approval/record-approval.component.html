@@ -69,16 +69,6 @@
         </div>
     </div>
 </div>
-<div *ngIf="(this.resultData?.data?.length === 0 || this.resultData?.data?.length === undefined)">
-    <div class="row">
-        <div class="col-12">
-            <div class="text-center">
-                <p>No Record Found !!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined  && flag=='update')">
     <!-- <p class="text-center" style="font-family: semi-bold;">Old Records</p> -->
@@ -104,15 +94,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div *ngIf="(this.resultData?.data?.length === 0 || this.resultData?.data?.length === undefined)">
-    <div class="row">
-        <div class="col-12">
-            <div class="text-center">
-                <p>No Record Found !!</p>
             </div>
         </div>
     </div>

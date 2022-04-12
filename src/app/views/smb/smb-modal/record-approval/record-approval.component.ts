@@ -62,12 +62,13 @@ export class RecordApprovalComponent implements OnInit {
     this.resultValue = []
     this.apiMethod.get_request_header_Param(this.apiString.getAprovalRecord, this.queryParam).subscribe((result: any) => {
       console.log(result)
+      this.loadingRouteConfig = false
       this.col=result.lis
       this.resultValue = result.data
       this.resultData = result
       this.flag = this.resultData.data[0].flag
       console.log("Flag = ",this.resultData.data[0].flag)
-      this.loadingRouteConfig = false
+      
       
       if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
         return
@@ -114,8 +115,8 @@ export class RecordApprovalComponent implements OnInit {
     this.getApprovalRecord()
   }
   approved() {
-    let userDetails: any = localStorage.getItem('arc-userDetails')
     this.loadingRouteConfig = true
+    let userDetails: any = localStorage.getItem('arc-userDetails')
     this.apiMethod.post_request_header(this.apiString.aproveRecords, { tablename: this.queryParam['tablename'], data: this.resultValue, email: JSON.parse(userDetails).user.email }).subscribe(result => {
       this.loadingRouteConfig = false
       this.apiMethod.popupMessage('success', 'Record approved successfully')
