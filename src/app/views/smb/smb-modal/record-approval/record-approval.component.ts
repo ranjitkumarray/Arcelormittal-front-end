@@ -19,7 +19,7 @@ export class RecordApprovalComponent implements OnInit {
   breadCrumblocationsList: any = []
   loadingRouteConfig: boolean = false
   param1: any;
-  displayedColumns: string[] = [];
+  displayedColumns:any = [];
   dataSource: any;
   searchValue: any
   pageEvent: any = PageEvent;
@@ -32,7 +32,8 @@ export class RecordApprovalComponent implements OnInit {
   filterValue: any = '';
   resultValue: any = [];
   resultData: any = [];
-  common:any =["Amount","Currency","updated_on","status","flag","table_name","id","tableid"]
+  changed:any;
+  // changed:any = ['Amount','Grade Category','Delivering Mill']
   old_dataSource:any;
   flag: any;
 
@@ -67,8 +68,9 @@ export class RecordApprovalComponent implements OnInit {
       this.resultValue = result.data
       this.resultData = result
       this.flag = this.resultData.data[0].flag
-      console.log("Flag = ",this.resultData.data[0].flag)
-      
+      // this.resultData['changed'] = this.changed
+      this.changed = this.resultData.changed
+      console.log("Flag = ",this.resultData)
       
       if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
         return
@@ -82,7 +84,7 @@ export class RecordApprovalComponent implements OnInit {
         if(element=='flag') this.col.splice(index);
       });
       this.displayedColumns = this.col
-      console.log(this.displayedColumns)
+      console.log("columns : ",this.displayedColumns)
       this.totalCount = this.resultData.totalCount
       this.dataSource = new MatTableDataSource<any>(this.resultData.data)
       this.old_dataSource = new MatTableDataSource<any>(this.resultData.old_json)
