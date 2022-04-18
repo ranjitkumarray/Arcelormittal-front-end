@@ -73,7 +73,7 @@ export class EditPopupComponent implements OnInit {
 
     this.apiMethod.get_request_header(this.data.url).subscribe(result => {
       // console.log(result)
-      console.log(this.data.fieldValue)
+      console.log("FieldValue = ",this.data.fieldValue)
     })
     var objects: any = {};
     this.data.fieldValue.forEach((element: any, index: any) => {

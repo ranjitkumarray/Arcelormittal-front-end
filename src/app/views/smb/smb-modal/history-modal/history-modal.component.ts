@@ -167,11 +167,11 @@ export class HistoryModalComponent implements OnInit {
           if (this.url[3] === "mini-bar") {
             this.table_name = "SMBExtMinTon_LeanS_Minibar"
             this.apiStringURL = this.apiString.generic
-            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           } else {
             this.table_name = "SMBExtMinTon_LeanS"
             this.apiStringURL = this.apiString.generic
-            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
+            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency', 'Username', 'updated_on']
           }
         }
         if (this.url[2] === "piececount") {

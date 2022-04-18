@@ -163,7 +163,7 @@ export interface mintonModeData {
     'Country':any,
     'Customer_Group':any,
     'Customer':any,
-    'Tonnage':any,
+    // 'Tonnage':any,
     'Tonnage_From':any,
     'Tonnage_To':any,
     'Amount':any,

@@ -10,7 +10,8 @@
                 <div class="col-12" *ngFor="let form of data?.fieldValue">
                     <mat-form-field appearance="outline">
                         <mat-label>{{removeUnderScore(form)}}</mat-label>
-                        <input matInput type="text" formControlName="{{form}}" required>
+                        <input *ngIf="form!='Unit'" matInput type="text" formControlName="{{form}}" required>
+                        <input *ngIf="form=='Unit'" matInput type="text" formControlName="{{form}}" readonly >
                     </mat-form-field>
                 </div>
             </div>
