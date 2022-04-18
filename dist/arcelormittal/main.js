@@ -153,20 +153,21 @@ class ApiService {
         let localData = localStorage.getItem('arc-userDetails');
         if (localData) {
             this.token = JSON.parse(localData).token;
-            this.user = JSON.parse(localData).user['user_name'];
+            this.username = JSON.parse(localData).user['user_name'];
         }
     }
     get_request(url) {
         return this.https.get(url);
     }
     get_request_header(url) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('x-access-token', this.token);
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('x-access-token', this.token).set('username', this.username);
+        console.log(headers);
         return this.https.get(url, {
             headers: headers
         });
     }
     post_request_header(url, param) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('x-access-token', this.token).set('username', this.user);
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('x-access-token', this.token).set('username', this.username);
         return this.https.post(url, param, {
             headers: headers
         });

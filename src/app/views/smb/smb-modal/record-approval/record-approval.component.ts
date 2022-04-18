@@ -69,8 +69,8 @@ export class RecordApprovalComponent implements OnInit {
       this.resultData = result
       this.flag = this.resultData.data[0].flag
       // this.resultData['changed'] = this.changed
-      this.changed = this.resultData.changed
-      console.log("Flag = ",this.resultData)
+      this.changed = this.resultData.data.changed
+      console.log("test = ",this.resultData.data[0].changed)
       
       if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
         return

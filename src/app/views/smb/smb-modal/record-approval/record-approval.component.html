@@ -57,10 +57,12 @@
                                         <ng-container  [matColumnDef]="column">
                                             <th  mat-header-cell *matHeaderCellDef style="text-transform: capitalize;">{{
                                                 removeUnderScore(column) }}</th>
-                                            <div *ngFor="let color of changed">
+                                            <div *ngFor="let data of resultData?.data">
+                                            <div *ngFor="let color of data.changed">
                                                 <div *ngIf="column==color; else test">
                                                     <td mat-cell class="changed" *matCellDef="let row">{{row[column]}}</td>
                                                 </div>
+                                            </div>
                                             </div>
                                             <ng-template #test>
                                                 <div >
