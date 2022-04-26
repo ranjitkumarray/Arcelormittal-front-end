@@ -31,11 +31,10 @@ export class RecordApprovalComponent implements OnInit {
   col:any;
   filterValue: any = '';
   resultValue: any = [];
-  resultData: any = [];
-  changed:any;
-  // changed:any = ['Amount','Grade Category','Delivering Mill']
+  resultData: any = []
   old_dataSource:any;
   flag: any;
+  color:any = "not-changed"
 
   constructor(
     private apiString: CitGlobalConstantService,
@@ -65,12 +64,9 @@ export class RecordApprovalComponent implements OnInit {
       console.log(result)
       this.loadingRouteConfig = false
       this.col=result.lis
-      this.resultValue = result.data
       this.resultData = result
+      this.resultValue = result.data
       this.flag = this.resultData.data[0].flag
-      // this.resultData['changed'] = this.changed
-      this.changed = this.resultData.data.changed
-      console.log("test = ",this.resultData.data[0].changed)
       
       if (this.resultData.data.length === 0 || this.resultData.data.length === undefined) {
         return
@@ -164,4 +160,18 @@ export class RecordApprovalComponent implements OnInit {
   removeUnderScore(value: any) {
     return value.split('_').join(" ");
   }
+  //Changed colums color ncode
+  colorcode(ind:any,col:any){
+    for(let i=0;i<this.resultValue.length;i++){
+      var status=this.resultValue[i].changed.includes(col)
+      if(status==true){
+        if(ind==i){
+          this.color = "changed"
+          return this.color
+        }
+      }    
+    }
+    this.color="not-changed"
+    return this.color
+ }
 }

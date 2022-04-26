@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined && (flag=='add' || flag=='update'))">
+<div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined && flag=='update')">
     <div class="row">
         <div class="col-12">
             <div class="text-right mt-10">
@@ -29,18 +29,8 @@
                 <button type="button" color="primary" class="mr-10" mat-raised-button (click)="reject()">
                     <i class="fa fa-times-circle"></i> Reject
                 </button>
-                <!-- <p class="text-center" style="font-family: semi-bold;">Updated Records</p> -->
             </div>
         </div>
-        <!-- <div class="col-3">
-            <div class="text-right mt-10">
-                <mat-form-field appearance="outline">
-                    <mat-label>Search</mat-label>
-                    <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter('search')">
-                    <mat-icon matSuffix (click)="applyFilter('search')" class="pointer">search</mat-icon>
-                </mat-form-field>
-            </div> 
-        </div>-->
     </div>
 
     <div class="row">
@@ -57,19 +47,9 @@
                                         <ng-container  [matColumnDef]="column">
                                             <th  mat-header-cell *matHeaderCellDef style="text-transform: capitalize;">{{
                                                 removeUnderScore(column) }}</th>
-                                            <div *ngFor="let data of resultData?.data">
-                                            <div *ngFor="let color of data.changed">
-                                                <div *ngIf="column==color; else test">
-                                                    <td mat-cell class="changed" *matCellDef="let row">{{row[column]}}</td>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <ng-template #test>
-                                                <div >
-                                                    <td mat-cell class="not-changed" *matCellDef="let row">{{row[column]}}</td>
-                                                </div>
-                                            </ng-template>
-                                            <!-- <td  mat-cell *matCellDef="let row">{{row[column]}}</td> -->
+                                            <ng-container *matCellDef="let row;let ind=index" >
+                                                    <td mat-cell  class={{colorcode(ind,column)}} >{{row[column]}}</td>
+                                            </ng-container>
                                         </ng-container>
                                     </ng-container>
                                 </table>
@@ -111,7 +91,7 @@
     </div>
 </div>
 
-<div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined  && flag=='delete')">
+<div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined  && (flag=='add' || flag=='delete'))">
     <div class="row">
         <div class="col-12">
             <div class="text-right mt-10">
@@ -121,18 +101,8 @@
                 <button type="button" color="primary" class="mr-10" mat-raised-button (click)="reject()">
                     <i class="fa fa-times-circle"></i> Reject
                 </button>
-                <!-- <p class="text-center" style="font-family: semi-bold;">Updated Records</p> -->
             </div>
         </div>
-        <!-- <div class="col-3">
-            <div class="text-right mt-10">
-                <mat-form-field appearance="outline">
-                    <mat-label>Search</mat-label>
-                    <input matInput [(ngModel)]="searchValue" (keyup.enter)="applyFilter('search')">
-                    <mat-icon matSuffix (click)="applyFilter('search')" class="pointer">search</mat-icon>
-                </mat-form-field>
-            </div> 
-        </div>-->
     </div>
     <div class="row">
         <div class="col-12">
@@ -148,7 +118,12 @@
                                         <ng-container [matColumnDef]="column">
                                             <th mat-header-cell *matHeaderCellDef style="text-transform: capitalize;">{{
                                                 removeUnderScore(column) }}</th>
-                                            <td mat-cell *matCellDef="let row">{{row[column]}}</td>
+                                                <div *ngIf="flag=='add'; else delete">
+                                                    <td mat-cell class="not-changed" *matCellDef="let row">{{row[column]}}</td>
+                                                </div>
+                                                <ng-template #delete>
+                                                    <td mat-cell class="changed" *matCellDef="let row">{{row[column]}}</td>
+                                                </ng-template>
                                         </ng-container>
                                     </ng-container>
                                 </table>
