@@ -163,11 +163,11 @@ export class UploadValidateModalComponent implements OnInit {
           if (this.url[3] === "mini-bar") {
             this.apiStringURL = this.apiString.generic
             this.table_name = "SMBExtMinTon_LeanS_Minibar"
-            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
+            this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Customer', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
           } else {
             this.apiStringURL = this.apiString.generic
             this.table_name = "SMBExtMinTon_LeanS"
-            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
+            this.displayedColumns = ['BusinessCode', 'Country', 'Tonnage_From', 'Tonnage_To', 'Amount', 'Currency']
           }
         }
         if (this.url[2] === "piececount") {
