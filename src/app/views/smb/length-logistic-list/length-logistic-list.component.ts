@@ -52,7 +52,6 @@ export class LengthLogisticListComponent implements OnInit {
         this.displayedColumns = [
           'select',
           'sequence_id',
-          'Country_Group',
           'Market_Country',
           'Delivering_Mill',
           'Length',

@@ -53,7 +53,6 @@ export class LengthProductionListComponent implements OnInit {
           'select',
           'sequence_id',
           'BusinessCode',
-          'Country_Group',
           'Market_Country',
           'Delivering_Mill',
           'Length',

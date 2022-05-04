@@ -101,7 +101,7 @@ export class HistoryModalComponent implements OnInit {
           this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Grade_Category', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.grade
-          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Country_Group', 'Market_Country', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
+          this.displayedColumns = ['BusinessCode', 'Grade_Category', 'Market_Country', 'Product_Division', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'length-logistic') {
@@ -111,7 +111,7 @@ export class HistoryModalComponent implements OnInit {
           this.displayedColumns = ['Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.length_logistic
-          this.displayedColumns = ['Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
+          this.displayedColumns = [ 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Transport_Mode', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'length-production') {
@@ -121,7 +121,7 @@ export class HistoryModalComponent implements OnInit {
           this.displayedColumns = ['BusinessCode', 'Customer_Group', 'Market_Customer', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         } else {
           this.apiStringURL = this.apiString.length_production
-          this.displayedColumns = ['BusinessCode', 'Country_Group', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
+          this.displayedColumns = ['BusinessCode', 'Market_Country', 'Delivering_Mill', 'Length', 'Length_From', 'Length_To', 'Document_Item_Currency', 'Amount', 'Currency', 'Username', 'updated_on']
         }
 
       } else if (this.url[2] === 'profile') {

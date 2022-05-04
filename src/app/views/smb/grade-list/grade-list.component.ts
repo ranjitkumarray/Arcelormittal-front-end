@@ -52,7 +52,6 @@ export class GradeListComponent implements OnInit {
           'sequence_id',
           'BusinessCode',
           'Grade_Category',
-          'Country_Group',
           'Market_Country',
           'Product_Division',
           'Document_Item_Currency',
