@@ -21,7 +21,10 @@
 </div>
 <div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined && flag=='update')">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-2">
+        <h3  style="color:#e53606;margin-top:20px;"><b>&emsp;NEW</b></h3>
+        </div>
+        <div class="col-md-10">
             <div class="text-right mt-10">
                 <button type="button" color="primary" class="mr-10" mat-raised-button (click)="approved()">
                     <i class="fa fa-check-circle"></i> Approve
@@ -64,6 +67,7 @@
 
 <div *ngIf="(this.resultData?.data?.length != 0 && this.resultData?.data?.length != undefined  && flag=='update')">
     <!-- <p class="text-center" style="font-family: semi-bold;">Old Records</p> -->
+    <h3 style="color:#e53606;"><b>&emsp;&nbsp;&nbsp; PREVIOUS </b></h3>
     <div class="row">
         <div class="col-12">
             <div class="text-center">
