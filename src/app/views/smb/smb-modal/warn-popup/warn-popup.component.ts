@@ -36,7 +36,7 @@ export class WarnPopupComponent implements OnInit {
     }, error => {
       this.dialogRef.close()
       this.loadingRouteConfig = false
-      this.apiMethod.popupMessage('error', 'Error while fatching history')
+      this.apiMethod.popupMessage('error', 'Error while deleting the record')
     })
 
   }
