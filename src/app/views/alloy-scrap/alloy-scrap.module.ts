@@ -7,6 +7,7 @@ import { UploadAlloyScrapComponent } from './upload-alloy-scrap/upload-alloy-scr
 import { HistoryAlloyScrapComponent } from './history-alloy-scrap/history-alloy-scrap.component';
 import { MaterialsModule } from 'src/app/materials/materials.module';
 import { FilesDetailedPreviewComponent } from './files-detailed-preview/files-detailed-preview.component';
+import { ValidatePopupComponent } from './upload-alloy-scrap/validate-popup/validate-popup.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FilesDetailedPreviewComponent } from './files-detailed-preview/files-de
     AlloyScrapComponent,
     UploadAlloyScrapComponent,
     HistoryAlloyScrapComponent,
-    FilesDetailedPreviewComponent
+    FilesDetailedPreviewComponent,
+    ValidatePopupComponent
   ],
   imports: [
     CommonModule,

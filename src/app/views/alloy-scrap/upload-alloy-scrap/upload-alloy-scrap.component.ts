@@ -7,6 +7,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { billetData, wireData, scrapData } from '../alloy-scrap-interface.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ValidatePopupComponent } from './validate-popup/validate-popup.component';
+
+import { ngxCsv } from 'ngx-csv/ngx-csv';
+
 
 @Component({
   selector: 'app-upload-alloy-scrap',
@@ -15,7 +20,7 @@ import { billetData, wireData, scrapData } from '../alloy-scrap-interface.servic
 })
 export class UploadAlloyScrapComponent implements OnInit {
   loading: boolean = false
-  displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade'];
+  displayedColumns_wire: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'Customer_ID', 'Internal_Grade','OFFER_ALLOY','OFFER_EFF_PR','OFFER_ALLOY_NUMBER','OFFER_EFF_PR_NUMBER'];
   displayedColumns_billet: string[] = ['VKORG', 'COND_TYPE', 'DST_CH', 'DIV', 'Month_year', 'Amount', 'WARENEMPFAENGER_NR', 'SEL_NR_MELDUNG', 'dRUCKSPERRE'];
   displayedColumns_scrap: string[] = [
     'VKORG',
@@ -47,11 +52,13 @@ export class UploadAlloyScrapComponent implements OnInit {
   alloy_surcharge_billet_data: any;
   scrap_surcharge_billet_data: any;
   alloy_surcharge_wire_data: any;
+  validationResult:any =false;
 
   constructor(
     private apiString: CitGlobalConstantService,
     private apiMethod: ApiService,
     private _snackBar: MatSnackBar,
+    private popup: MatDialog,
   ) {
   }
 
@@ -273,6 +280,7 @@ export class UploadAlloyScrapComponent implements OnInit {
 
   //data validate
   validateDataForm(uploadDataTo: any) {
+    console.log('validate fornm fucntion')
     let urlString: any
     let data: any
     if (uploadDataTo === "alloy_surcharge_billet") {
@@ -304,4 +312,79 @@ export class UploadAlloyScrapComponent implements OnInit {
       this.apiMethod.popupMessage('error', 'Error while validating uploaded file')
     })
   }
+
+downloadFiles(tab:any){
+   
+    
+    if(tab=='alloy_surcharge_billet'){
+      var options = { 
+        headers:this.displayedColumns_billet
+         };   
+    new ngxCsv(this.alloy_surcharge_billet_data.data, 'alloy_surcharge_billet',options);
+   
+
+    }
+    if(tab=='alloy_surcharge_wire'){
+      var options = { 
+        headers:this.displayedColumns_wire
+         };   
+    new ngxCsv(this.alloy_surcharge_wire_data.data, 'alloy_surcharge_wire',options);
+   
+
+    }
+    if(tab=='scrap_surcharge_billet'){
+      var options = { 
+        headers:this.displayedColumns_scrap
+         };   
+    new ngxCsv(this.scrap_surcharge_billet_data.data, 'scrap_surcharge_billet',options);
+   
+
+    }
+    
+
+
+ 
+
+  }
+
+
+
+
+
+  validatePopup(tabname:any){
+      const dialogRef = this.popup.open(ValidatePopupComponent,
+        {
+          panelClass: 'my-full-screen-dialog',
+          autoFocus: false,
+          maxHeight: '90vh',
+          data: { 
+        validationResult:true,
+        tabname:tabname
+          },
+        }
+        )
+        dialogRef.afterClosed().subscribe(result => {
+          
+if(result!=null){
+            if(result.validationResult==true ){
+
+             
+              
+              this.validateDataForm(result.tabname)
+              setTimeout(() => {
+                window.location.reload()
+              }, 2000);
+              
+            }}
+
+          console.log(result)
+         // this.validateDataForm(')
+        });
+        console.log('hello sayeesh')
+        ;
+      
+    }
 }
+
+
+

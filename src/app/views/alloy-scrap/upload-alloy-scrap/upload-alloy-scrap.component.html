@@ -62,9 +62,17 @@
                 <!-- <div class="row"> -->
                 <div class="col-6">
                     <div class="text-left mt-10">
-                        <button type="button" color="primary" mat-raised-button
-                            (click)="validateDataForm('alloy_surcharge_wire')">
+                        <!-- <button type="button" color="primary" mat-raised-button
+                            (click)="validateDataForm('alloy_surcharge_wire')" style="margin-right:10px">
                             Validate Alloy Surcharge Wire
+                        </button> -->
+                        <button mat-raised-button type="button" color="primary"  style="margin-right:10px"
+                            (click)="validatePopup('alloy_surcharge_wire')">
+                            Validate Alloy Surcharge Wire
+                        </button>
+                        
+                        <button type="button" color="primary" class="mr-5" mat-raised-button (click)="downloadFiles('alloy_surcharge_wire')">
+                            <i class="fa fa-download"></i> Download
                         </button>
                     </div>
                 </div>
@@ -85,21 +93,23 @@
                         <div class="text-center h-100">
                             <div class="table-outer-container offer_table_container position-relative h-100">
                                 <div class="table-inner-container h-100">
+
+
                                     <table mat-table [dataSource]="alloy_surcharge_wire"
-                                        class="custom_table order_table" >
+                                        class="custom_table order_table">
 
                                         <ng-container matColumnDef="VKORG">
-                                            <th mat-header-cell *matHeaderCellDef > VKORG</th>
+                                            <th mat-header-cell *matHeaderCellDef > VKORG </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.VKORG}} </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="COND_TYPE">
-                                            <th mat-header-cell *matHeaderCellDef > COND_TYPE</th>
+                                            <th mat-header-cell *matHeaderCellDef > COND TYPE</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.COND_TYPE}} </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="DST_CH">
-                                            <th mat-header-cell *matHeaderCellDef > DST_CH </th>
+                                            <th mat-header-cell *matHeaderCellDef > DST CH </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.DST_CH}} </td>
                                         </ng-container>
 
@@ -109,7 +119,7 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="Month_year">
-                                            <th mat-header-cell *matHeaderCellDef > Month_year</th>
+                                            <th mat-header-cell *matHeaderCellDef > Month year</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
                                         </ng-container>
 
@@ -119,14 +129,34 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="Customer_ID">
-                                            <th mat-header-cell *matHeaderCellDef > Customer_ID </th>
+                                            <th mat-header-cell *matHeaderCellDef > Customer ID </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.Customer_ID}} </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="Internal_Grade">
-                                            <th mat-header-cell *matHeaderCellDef > Internal_Grade </th>
+                                            <th mat-header-cell *matHeaderCellDef > Internal Grade </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.Internal_Grade}} </td>
                                         </ng-container>
+
+                                     
+                                        <ng-container matColumnDef="OFFER_ALLOY">
+                                            <th mat-header-cell *matHeaderCellDef > OFFER ALLOY </th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.OFFER_ALLOY}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="OFFER_EFF_PR">
+                                            <th mat-header-cell *matHeaderCellDef > OFFER EFF PR </th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.OFFER_EFF_PR}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="OFFER_ALLOY_NUMBER">
+                                            <th mat-header-cell *matHeaderCellDef > OFFER ALLOY NUMBER</th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.OFFER_ALLOY_NUMBER}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="OFFER_EFF_PR_NUMBER">
+                                            <th mat-header-cell *matHeaderCellDef > OFFER EFF PR NUMBER </th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.OFFER_EFF_PR_NUMBER}} </td>
+                                        </ng-container>
+
+
 
                                         <tr mat-header-row *matHeaderRowDef="displayedColumns_wire"></tr>
                                         <tr mat-row *matRowDef="let row; columns: displayedColumns_wire;"></tr>
@@ -203,9 +233,13 @@
             <div class="row" *ngIf="alloy_surcharge_billet && (selectedFiles.alloy_surcharge_billet.file)">
                 <div class="col-6">
                     <div class="text-left mt-10">
-                        <button type="button" color="primary" class="text-right mt-10" mat-raised-button
-                            (click)="validateDataForm('alloy_surcharge_billet')">
+                        <button type="button" color="primary" style="margin-right:10px"
+                         class="text-right mt-10" mat-raised-button
+                            (click)="validatePopup('alloy_surcharge_billet')">
                             Validate Alloy Surcharge Billet
+                        </button>
+                        <button type="button" color="primary" class="mr-5" mat-raised-button (click)="downloadFiles('alloy_surcharge_billet')">
+                            <i class="fa fa-download"></i> Download
                         </button>
                     </div>
                 </div>
@@ -235,12 +269,12 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="COND_TYPE">
-                                            <th mat-header-cell *matHeaderCellDef> COND_TYPE</th>
+                                            <th mat-header-cell *matHeaderCellDef> COND TYPE</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.COND_TYPE}} </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="DST_CH">
-                                            <th mat-header-cell *matHeaderCellDef> DST_CH </th>
+                                            <th mat-header-cell *matHeaderCellDef> DST CH </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.DST_CH}} </td>
                                         </ng-container>
 
@@ -250,7 +284,7 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="Month_year">
-                                            <th mat-header-cell *matHeaderCellDef> Month_year</th>
+                                            <th mat-header-cell *matHeaderCellDef> Month year</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
                                         </ng-container>
 
@@ -260,13 +294,13 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="WARENEMPFAENGER_NR">
-                                            <th mat-header-cell *matHeaderCellDef> WARENEMPFAENGER_NR</th>
+                                            <th mat-header-cell *matHeaderCellDef> WARENEMPFAENGER NR</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.WARENEMPFAENGER_NR }}
                                             </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="SEL_NR_MELDUNG">
-                                            <th mat-header-cell *matHeaderCellDef> SEL_NR_MELDUNG</th>
+                                            <th mat-header-cell *matHeaderCellDef> SEL_NR MELDUNG</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.SEL_NR_MELDUNG }} </td>
                                         </ng-container>
 
@@ -345,9 +379,12 @@
             <div class="row" *ngIf="scrap_surcharge_billet && (selectedFiles.scrap_surcharge_billet.file)">
                 <div class="col-6 ">
                     <div class="text-left mt-10">
-                        <button type="button" color="primary" mat-raised-button
-                            (click)="validateDataForm('scrap_surcharge_billet')">
+                        <button type="button" color="primary" style="margin-right:10px" mat-raised-button
+                            (click)="validatePopup('scrap_surcharge_billet')">
                             Validate Scrap Surcharge Billet
+                        </button>
+                        <button type="button" color="primary" class="mr-5" mat-raised-button (click)="downloadFiles('scrap_surcharge_billet')">
+                            <i class="fa fa-download"></i> Download
                         </button>
                     </div>
                 </div>
@@ -377,12 +414,12 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="COND_TYPE">
-                                            <th mat-header-cell *matHeaderCellDef> COND_TYPE </th>
+                                            <th mat-header-cell *matHeaderCellDef> COND TYPE </th>
                                             <td mat-cell *matCellDef="let element"> {{element?.COND_TYPE}} </td>
                                         </ng-container>
 
                                         <ng-container matColumnDef="DST_CH">
-                                            <th mat-header-cell *matHeaderCellDef> DST_CH</th>
+                                            <th mat-header-cell *matHeaderCellDef> DST CH</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.DST_CH}} </td>
                                         </ng-container>
 
@@ -392,7 +429,7 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="Month_year">
-                                            <th mat-header-cell *matHeaderCellDef> Month_year</th>
+                                            <th mat-header-cell *matHeaderCellDef> Month year</th>
                                             <td mat-cell *matCellDef="let element"> {{element?.Month_year}} </td>
                                         </ng-container>
 

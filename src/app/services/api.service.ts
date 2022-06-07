@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 @Injectable()
 
 export class ApiService {
@@ -9,6 +10,7 @@ export class ApiService {
     selectedIndex: any = '';
     token: any = '';
     username:any;
+    
     constructor(
         private https: HttpClient,
         private _snackBar: MatSnackBar,

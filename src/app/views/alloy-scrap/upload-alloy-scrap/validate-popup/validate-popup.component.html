@@ -1,0 +1,18 @@
+<ng-container *ngIf="loadingRouteConfig">
+    <div class="loading-overlay is-active">
+        <span class="signal"></span>
+    </div>
+</ng-container>
+<div class="pd-card">
+    <p class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></p>
+    <h1>Are you sure?</h1>
+    <p>Do you really want to upload these data? This process cannot be undo.</p>
+    <div class=" text-right">
+        <button mat-stroked-button class="mr-10" (click)="closeModel()">
+            Close
+        </button>
+        <button mat-raised-button  color="primary" [mat-dialog-close]="data"  cdkFocusInitial >
+            OK
+        </button>
+    </div>
+</div>
