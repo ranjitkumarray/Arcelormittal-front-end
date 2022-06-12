@@ -227,7 +227,7 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "div", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "div", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, "Username/Email ID");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, "Username");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "sup");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, "*");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
