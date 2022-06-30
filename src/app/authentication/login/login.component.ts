@@ -35,21 +35,24 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  loginSubmit() {
+async loginSubmit() {
     if (this.login.status == "VALID") {
-      this.loadingRouteConfig = true
-      console.log(this.login.value)
-      this.apimethod.get_request_Param(this.apiString.userAccess.login, this.login.value).subscribe(result => {
+        this.loadingRouteConfig = true
+        console.log(this.login.value)
+        this.apimethod.get_request_Param(this.apiString.userAccess.login, this.login.value).subscribe(result => {
         this.loadingRouteConfig = false
         this.apimethod.popupMessage('success', 'Login Successfuly!!')
         localStorage.setItem('arc-userDetails', JSON.stringify(result))
         console.log(document.referrer)
                
         if (document.referrer != '') {
-          this.router.navigate(['/alloy-scrap/upload/'])  
-          setTimeout(() => {
+          this.router.navigate(['/alloy-scrap/upload']).then(()=>{
             window.location.reload()
-          }, 100); 
+          })
+          // setTimeout(() => {
+          //   window.location.reload()
+          // },  3000);
+          
           // Logic
           // if(this.test=true){
           //   console.log(this.test)
@@ -73,11 +76,14 @@ export class LoginComponent implements OnInit {
           //   }, 100);  
           //   this.router.navigate(['/alloy-scrap/upload/'])          
           // }
-          
-          this.router.navigate(['/alloy-scrap/upload/'])   
-          setTimeout(() => {
+  
+          this.router.navigate(['/alloy-scrap/upload']).then(()=>{
             window.location.reload()
-          }, 100);       
+          })
+          // setTimeout(() => {
+          //   window.location.reload()
+          // }, 3000); 
+            
         }
       }, error => {
         console.log(error)

@@ -1,5 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 // import { NavItems } from './sidebar';
 
@@ -14,10 +13,9 @@ export class SidebarComponent implements OnInit {
   collapsed: boolean = false;
   isOpen: boolean = false;
   version: string = '';
-  // loadingRouteConfig: boolean = false;
+  loadingRouteConfig: boolean = false;
   user: any = 'user'
   navbarItem: any = []
-
   details:any =localStorage.getItem(("arc-userDetails"))
   userDeatails =JSON.parse(this.details)
 
@@ -29,15 +27,18 @@ let localData: any = localStorage.getItem('arc-userDetails')
     this.navbarItem = JSON.parse(localData).sidebar_json
   
     console.log(this.navbarItem, "Nav Item")
+    
   }
 
   ngOnInit(): void {
     this.version = "1";
-    
+    console.log(this.router.url)
     // console.log(this.navbarItem)
   
   }
+  OnDestroy(){
 
+  }
   toggleCollapse() {
     this.collapsed = !this.collapsed;
     console.log("toggle")
