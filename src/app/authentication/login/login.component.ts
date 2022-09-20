@@ -46,10 +46,7 @@ export class LoginComponent implements OnInit {
         console.log(document.referrer)
                
         if (document.referrer != '') {
-          this.router.navigate(['/alloy-scrap/upload/'])  
-          setTimeout(() => {
-            window.location.reload()
-          }, 100); 
+          this.router.navigate(['/alloy-scrap/upload/'])   
           // Logic
           // if(this.test=true){
           //   console.log(this.test)
@@ -74,10 +71,7 @@ export class LoginComponent implements OnInit {
           //   this.router.navigate(['/alloy-scrap/upload/'])          
           // }
           
-          this.router.navigate(['/alloy-scrap/upload/'])   
-          setTimeout(() => {
-            window.location.reload()
-          }, 100);       
+          this.router.navigate(['/alloy-scrap/upload/'])          
         }
       }, error => {
         console.log(error)
